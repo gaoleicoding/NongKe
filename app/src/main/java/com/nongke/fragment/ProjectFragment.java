@@ -42,8 +42,6 @@ public class ProjectFragment extends BaseMvpFragment<ProjectPresenter> implement
     public void initData(Bundle bundle) {
 
 
-        mPresenter.getProjectInfo(1, 294);
-
     }
 
     @Override
@@ -59,7 +57,7 @@ public class ProjectFragment extends BaseMvpFragment<ProjectPresenter> implement
 
     @Override
     public void reload() {
-        mPresenter.getProjectInfo(1, 294);
+//        mPresenter.getProjectInfo(1, 294);
     }
 
     @Override
@@ -69,7 +67,7 @@ public class ProjectFragment extends BaseMvpFragment<ProjectPresenter> implement
 
     @Override
     protected void loadData() {
-        mPresenter.getProjectInfo(1, 294);
+//        mPresenter.getProjectInfo(1, 294);
     }
 
 
@@ -117,12 +115,12 @@ public class ProjectFragment extends BaseMvpFragment<ProjectPresenter> implement
         smartRefreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(RefreshLayout refreshLayout) {
-                mPresenter.onLoadMore(294);
+//                mPresenter.onLoadMore(294);
             }
 
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
-                mPresenter.onRefreshMore(294);
+//                mPresenter.onRefreshMore(294);
             }
         });
     }

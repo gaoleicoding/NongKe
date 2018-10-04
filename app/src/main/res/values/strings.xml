@@ -12,4 +12,11 @@
     <string name="refresh">刷新</string>
     <string name="article_detail">文章详情</string>
     <string name="author">作者：</string>
+    <string name="notice">通知</string>
+    <string name="phone_fee_recharge">话费充值</string>
+    <string name="vip_member">VIP会员</string>
+    <string name="app_download">APP下载</string>
+    <string name="company_introduction">公司介绍</string>
+    <string name="custom_center">客服中心</string>
+    <string name="hot_commodity">-热销商品-</string>
 </resources>

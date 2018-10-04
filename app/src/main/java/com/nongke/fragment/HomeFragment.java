@@ -71,8 +71,8 @@ public class HomeFragment extends BaseMvpFragment<HomePresenter> implements Home
 
     @Override
     public void reload() {
-        mPresenter.getFeedArticleList(0);
         mPresenter.getBannerInfo();
+//        mPresenter.getFeedArticleList(0);
     }
 
     @Override
@@ -82,8 +82,8 @@ public class HomeFragment extends BaseMvpFragment<HomePresenter> implements Home
 
     @Override
     protected void loadData() {
-        mPresenter.getFeedArticleList(0);
         mPresenter.getBannerInfo();
+//        mPresenter.getFeedArticleList(0);
 
     }
 
@@ -185,12 +185,12 @@ public class HomeFragment extends BaseMvpFragment<HomePresenter> implements Home
         smartRefreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(RefreshLayout refreshLayout) {
-                mPresenter.onLoadMore();
+//                mPresenter.onLoadMore();
             }
 
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
-                mPresenter.onRefreshMore();
+//                mPresenter.onRefreshMore();
             }
         });
     }
