@@ -19,4 +19,12 @@
     <string name="company_introduction">公司介绍</string>
     <string name="custom_center">客服中心</string>
     <string name="hot_commodity">-热销商品-</string>
+    <string name="my_bill">我的账单</string>
+    <string name="my_commission">我的佣金</string>
+    <string name="my_withdraw">我要提现</string>
+    <string name="my_withdraw_record">我的提现记录</string>
+    <string name="my_address">收货地址</string>
+    <string name="my_promotion">我要推广</string>
+    <string name="my_order">我的订单</string>
+
 </resources>
