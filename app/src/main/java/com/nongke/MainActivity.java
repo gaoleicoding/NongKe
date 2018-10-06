@@ -2,21 +2,17 @@ package com.nongke;
 
 import android.Manifest;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.view.View;
 import android.widget.TextView;
 
 import com.nongke.adapter.MainTabAdapter;
 import com.nongke.base.activity.BaseActivity;
-import com.nongke.base.utils.LogUtil;
 import com.nongke.base.utils.PermissionUtil;
-import com.nongke.base.utils.Utils;
 import com.nongke.fragment.HomeFragment;
-import com.nongke.fragment.KnowledgeFragment;
-import com.nongke.fragment.NavigationFragment;
-import com.nongke.fragment.ProjectFragment;
+import com.nongke.fragment.ClassifyFragment;
+import com.nongke.fragment.CartFragment;
+import com.nongke.fragment.RechargeFragment;
 import com.nongke.fragment.UserFragment;
 import com.nongke.view.CustomViewPager;
 
@@ -37,7 +33,7 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.title)
     TextView title;
     HomeFragment homeFragment;
-    ProjectFragment projectFragment;
+    RechargeFragment projectFragment;
 
     @Override
     protected int getLayoutId() {
@@ -53,11 +49,11 @@ public class MainActivity extends BaseActivity {
     protected void initView(){
         mFragments = new ArrayList<Fragment>();
         homeFragment = new HomeFragment();
-        projectFragment = new ProjectFragment();
+        projectFragment = new RechargeFragment();
         mFragments.add(homeFragment);
         mFragments.add(projectFragment);
-        mFragments.add(new KnowledgeFragment());
-        mFragments.add(new NavigationFragment());
+        mFragments.add(new ClassifyFragment());
+        mFragments.add(new CartFragment());
         mFragments.add(new UserFragment());
 
         titles = new ArrayList<String>();

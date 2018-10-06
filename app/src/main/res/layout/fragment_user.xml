@@ -37,9 +37,9 @@
                 style="@style/user_account_txt"
                 android:text="我的邀请人：186****1435" />
 
-            <TextView
-                style="@style/user_account_txt"
-                android:text="余额：0.00元" />
+            <!--<TextView-->
+                <!--style="@style/user_account_txt"-->
+                <!--android:text="余额：0.00元" />-->
 
             <TextView
                 style="@style/user_account_txt"

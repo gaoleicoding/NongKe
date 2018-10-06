@@ -26,5 +26,6 @@
     <string name="my_address">收货地址</string>
     <string name="my_promotion">我要推广</string>
     <string name="my_order">我的订单</string>
+    <string name="phone_fee_recharge_record">充值记录</string>
 
 </resources>
