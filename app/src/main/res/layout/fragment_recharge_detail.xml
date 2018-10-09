@@ -1,16 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <View style="@style/horizontal_divider" />
+
+    <LinearLayout
+        android:id="@+id/recharge_discount_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <TextView
+            style="@style/user_info_txt"
+            android:text="@string/recharge_discount" />
+
+        <TextView
+            style="@style/user_info_txt"
+            android:layout_marginLeft="0dp"
+            android:text="@string/you_are_not_vip"
+            android:textColor="@color/app_color" />
+    </LinearLayout>
+
+    <View style="@style/horizontal_divider" />
+
+    <LinearLayout
+        android:id="@+id/recharge_phone_num_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/color_f2f2f2">
+
+        <TextView
+            style="@style/user_info_txt"
+            android:text="156****9705"
+            android:textColor="@color/app_color" />
+
+    </LinearLayout>
+
+    <View style="@style/horizontal_divider" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_recharge_ammount_bg_select"
+                android:gravity="center"
+                android:padding="20dp"
+                android:text="@string/recharge_50"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/shape_recharge_ammount_bg"
+                android:gravity="center"
+                android:padding="20dp"
+                android:text="@string/recharge_100"
+                android:textColor="@color/color_black"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </RelativeLayout>
 
     <TextView
-        android:layout_width="wrap_content"
+        style="@style/user_info_txt"
+        android:layout_marginTop="20dp"
+        android:text="@string/pay_method" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_centerInParent="true"
-        android:text="@string/phone_fee_recharge" />
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
 
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/icon_pay_select" />
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/icon_alipay" />
 
-</RelativeLayout>
+        <TextView
+            style="@style/user_info_txt"
+            android:text="@string/pay_alipay" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/icon_pay_unselect" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/icon_wechat" />
+
+        <TextView
+            style="@style/user_info_txt"
+            android:text="@string/pay_wechat" />
+    </LinearLayout>
+    <TextView
+        style="@style/user_info_txt"
+        android:layout_marginTop="20dp"
+        android:text="@string/recharge_ammount" />
+    <TextView
+        style="@style/user_info_txt"
+        android:layout_marginTop="20dp"
+        android:text="@string/recharge_pay_indeed" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_recharge_ammount_bg_select"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:padding="10dp"
+        android:text="@string/recharge_immedate"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+    </LinearLayout>
+</ScrollView>

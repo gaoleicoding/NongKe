@@ -9,7 +9,7 @@
     <!--Dangerous Permissions-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:name=".base.application.CustomApplication"
@@ -19,20 +19,27 @@
         android:roundIcon="@mipmap/app_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity"
-            android:theme=" @style/FullScreenStyle" >
+        <activity
+            android:name=".SplashActivity"
+            android:theme=" @style/FullScreenStyle">
+
+        </activity>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
         <activity android:name=".activity.ArticleDetailActivity"></activity>
         <!--value的值填写你在友盟后台申请的应用Appkey-->
-        <meta-data android:value="5b856a95b27b0a712f0000fb" android:name="UMENG_APPKEY"/>
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5b856a95b27b0a712f0000fb" />
         <!--value的值填写渠道名称，例如yingyongbao。这里设置动态渠道名称变量-->
-        <meta-data android:value="${UMENG_CHANNEL_VALUE}" android:name="UMENG_CHANNEL"/>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${UMENG_CHANNEL_VALUE}" />
     </application>
 
 </manifest>

@@ -83,9 +83,15 @@
     <style name="user_account_txt">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginTop">10dp</item>
         <item name="android:textColor">@color/color_fff3eb</item>
         <item name="android:textSize">16sp</item>
     </style>
+    <style name="horizontal_divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/color_e1e1e1</item>
+    </style>
+
 
 </resources>

@@ -1,9 +1,11 @@
 package com.nongke;
 
 import android.Manifest;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.nongke.adapter.MainTabAdapter;
@@ -44,6 +46,10 @@ public class MainActivity extends BaseActivity {
     protected void initData(Bundle bundle) {
         initView();
         requestPermission();
+        String cacheDir=getCacheDir().getPath();
+        String filesDir=getFilesDir().getPath();
+        Log.d("gaolei","cacheDir---------"+cacheDir);
+        Log.d("gaolei","filesDir---------"+filesDir);
 
     }
     protected void initView(){
