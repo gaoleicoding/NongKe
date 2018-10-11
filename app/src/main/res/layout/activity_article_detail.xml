@@ -5,11 +5,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.nongke.base.view.TitleView
+    <com.nongke.jindao.base.view.TitleView
         android:layout_width="match_parent"
         android:layout_height="45dp" />
 
-    <com.nongke.base.view.Html5Webview
+    <com.nongke.jindao.base.view.Html5Webview
         android:id="@+id/webview_article"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

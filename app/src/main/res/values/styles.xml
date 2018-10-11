@@ -93,5 +93,13 @@
         <item name="android:background">@color/color_e1e1e1</item>
     </style>
 
-
+    <style name="classify_txt">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:textColor">@color/color_black</item>
+        <item name="android:textSize">18sp</item>
+    </style>
 </resources>

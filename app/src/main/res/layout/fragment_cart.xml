@@ -4,13 +4,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_centerInParent="true"
-        android:text="@string/cart" />
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_cart_empty"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="60dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/cart_empty"
+            android:textColor="@color/color_bfbfbf"
+            android:layout_marginTop="30dp"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tv_to_shop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_recharge_ammount_bg_select"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:padding="10dp"
+            android:text="@string/goto_shop"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
 
 
 </RelativeLayout>

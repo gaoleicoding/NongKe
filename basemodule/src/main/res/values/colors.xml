@@ -6,7 +6,10 @@
 
     <color name="app_color">#fa0007</color>
     <color name="color_tab_unselect">#9b9b9b</color>
+    <color name="color_bfbfbf">#bfbfbf</color>
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
     <color name="color_5b5d5c">#5b5d5c</color>
     <color name="color_f2f2f2">#f2f2f2</color>
     <color name="color_e1e1e1">#e1e1e1</color>

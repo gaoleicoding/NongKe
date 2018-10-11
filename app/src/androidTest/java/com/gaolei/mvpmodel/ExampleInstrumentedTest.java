@@ -1,4 +1,4 @@
-package com.nongke;
+package com.nongke.jindao;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

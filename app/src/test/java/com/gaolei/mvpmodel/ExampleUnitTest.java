@@ -1,4 +1,4 @@
-package com.nongke;
+package com.nongke.jindao;
 
 import org.junit.Test;
 
