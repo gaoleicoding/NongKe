@@ -53,9 +53,9 @@ public class HomeFragment extends BaseMvpFragment<HomePresenter> implements Home
     @Override
     public void initData(Bundle bundle) {
 
-        Debug.startMethodTracing("traceview");
-
-        Debug.stopMethodTracing();
+//        Debug.startMethodTracing("traceview");
+//
+//        Debug.stopMethodTracing();
     }
 
     @Override

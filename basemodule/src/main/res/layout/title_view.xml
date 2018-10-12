@@ -11,8 +11,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="15dp"
-        android:src="@mipmap/icon_comn_back"
+        android:layout_marginLeft="10dp"
+        android:padding="4dp"
+        android:src="@drawable/icon_back"
         android:visibility="gone" />
 
     <TextView

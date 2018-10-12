@@ -16,11 +16,13 @@ public abstract class BaseMvpActivity<V, P extends BasePresenter<V>> extends Bas
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter = initPresenter();
+        if(mPresenter!=null)
         mPresenter.attach((V) this);
     }
 
     @Override
     protected void onDestroy() {
+        if(mPresenter!=null)
         mPresenter.dettach();
         super.onDestroy();
     }

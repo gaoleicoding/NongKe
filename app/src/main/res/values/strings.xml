@@ -49,8 +49,23 @@
     <string name="classify_sales_price">价格</string>
     <string name="classify_sales_ammount">销量</string>
     <string name="classify_commodity">商品</string>
+    <string name="phone_num_colon">手机号：</string>
+    <string name="phone_num">手机号</string>
+    <string name="phone_num_input">请输入手机号</string>
+    <string name="password_colon">密码：</string>
+    <string name="password">密码</string>
+    <string name="password_input">请输入密码</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="register_free">免费注册</string>
+    <string name="forget_password">忘记密码</string>
+    <string name="veirfy_code">验证码</string>
+    <string name="get_veirfy_code">获取验证码</string>
+    <string name="new_password">新密码</string>
+    <string name="confirm_password">确认密码</string>
+    <string name="submit">提交</string>
 
-    <string name="customactivityoncrash_error_activity_error_occurred_explanation">一个未知异常出现，抱歉给您带来不便\n请先使用其它功能，我们会尽快修复！</string>
+    <string name="customactivityoncrash_error_activity_error_occurred_explanation">程序出错了，抱歉给您带来不便\n为了尽快解决此问题，您可以点击错误详情，并复制错误代码或截图，发邮件反馈到技术支持邮箱：tuohuangnongke@163.com </string>
     <string name="customactivityoncrash_error_activity_restart_app">重启</string>
     <string name="customactivityoncrash_error_activity_close_app">关闭</string>
     <string name="customactivityoncrash_error_activity_error_details">错误详情</string>

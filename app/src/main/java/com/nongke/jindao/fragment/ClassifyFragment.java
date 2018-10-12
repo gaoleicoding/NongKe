@@ -42,6 +42,7 @@ public class ClassifyFragment extends BaseMvpFragment {
         mFragments.add(new CommodityFragment());
         mFragments.add(new CommodityFragment());
         RechargeTabAdapter adapter = new RechargeTabAdapter(getChildFragmentManager(), mFragments);
+        viewPager.setCanScroll(false);
         viewPager.setOffscreenPageLimit(mFragments.size());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));

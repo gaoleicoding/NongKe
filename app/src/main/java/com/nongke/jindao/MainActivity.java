@@ -1,12 +1,16 @@
 package com.nongke.jindao;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.nongke.jindao.activity.LoginRegisterActivity;
 import com.nongke.jindao.adapter.MainTabAdapter;
 import com.nongke.jindao.base.activity.BaseActivity;
 import com.nongke.jindao.base.utils.PermissionUtil;
@@ -15,6 +19,7 @@ import com.nongke.jindao.fragment.ClassifyFragment;
 import com.nongke.jindao.fragment.CartFragment;
 import com.nongke.jindao.fragment.RechargeFragment;
 import com.nongke.jindao.fragment.UserFragment;
+import com.nongke.jindao.utils.UserUtils;
 import com.nongke.jindao.view.CustomViewPager;
 
 import java.util.ArrayList;
@@ -45,13 +50,14 @@ public class MainActivity extends BaseActivity {
     protected void initData(Bundle bundle) {
         initView();
         requestPermission();
-        String cacheDir=getCacheDir().getPath();
-        String filesDir=getFilesDir().getPath();
-        Log.d("gaolei","cacheDir---------"+cacheDir);
-        Log.d("gaolei","filesDir---------"+filesDir);
+        String cacheDir = getCacheDir().getPath();
+        String filesDir = getFilesDir().getPath();
+        Log.d("gaolei", "cacheDir---------" + cacheDir);
+        Log.d("gaolei", "filesDir---------" + filesDir);
 
     }
-    protected void initView(){
+
+    protected void initView() {
         mFragments = new ArrayList<Fragment>();
         homeFragment = new HomeFragment();
         projectFragment = new RechargeFragment();
@@ -95,7 +101,12 @@ public class MainActivity extends BaseActivity {
             //标签选中之后执行的方法
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                title.setText(titles.get(tab.getPosition()));
+                int position = tab.getPosition();
+                title.setText(titles.get(position));
+                if (position == 4 && !UserUtils.isLogined()) {
+                    LoginRegisterActivity.startActivity(MainActivity.this);
+                }
+
             }
 
             //标签没选中
@@ -140,5 +151,25 @@ public class MainActivity extends BaseActivity {
         super.onRestart();
         //跳转到设置界面后返回，重新检查权限
         requestPermission();
+    }
+
+    // 用来计算返回键的点击间隔时间
+    private long exitTime = 0;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK
+                && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - exitTime) > 2000) {
+                //弹出提示，可以有多种方式
+                Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            } else {
+                finish();
+            }
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 }

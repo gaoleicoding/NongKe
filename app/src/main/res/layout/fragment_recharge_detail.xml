@@ -8,7 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-    <View style="@style/horizontal_divider" />
 
     <LinearLayout
         android:id="@+id/recharge_discount_layout"
@@ -149,7 +148,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_recharge_ammount_bg_select"
+        android:background="@drawable/selector_btn_bg"
+        android:clickable="true"
         android:gravity="center"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
