@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.nongke.jindao.base.view.TitleView
+        android:id="@+id/layout_title"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+
+    <TextView
+        style="@style/common_txt_16dp"
+        android:text="@string/transferable_amount"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        />
+    <LinearLayout
+        android:id="@+id/layout_login"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layout_title"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="64dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/transfer_amount"
+                android:textColor="@color/color_black"
+                android:layout_marginRight="10dp"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_transfer_amount"
+                style="@style/code_edit_style"
+                android:hint="@string/input_transfer_amount"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="64dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/transfer_account"
+                android:textColor="@color/color_black"
+                android:layout_marginRight="10dp"
+
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_transfer_account"
+                style="@style/code_edit_style"
+                android:hint="@string/input_transfer_account"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_transfer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/selector_btn_bg"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/transfer_immediate"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/tv_transfer_record"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/selector_btn_bg"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/transfer_record"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</LinearLayout>
