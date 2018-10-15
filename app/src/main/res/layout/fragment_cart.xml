@@ -24,7 +24,7 @@
             android:text="@string/cart_empty"
             android:textColor="@color/color_bfbfbf"
             android:layout_marginTop="30dp"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
         <TextView
             android:id="@+id/tv_to_shop"
             android:layout_width="match_parent"

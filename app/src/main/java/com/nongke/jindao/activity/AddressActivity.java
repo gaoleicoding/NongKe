@@ -22,37 +22,25 @@ import butterknife.OnClick;
  * author: zlm
  * date: 2017/3/17 16:01
  */
-public class DeliveryAddressActivity extends BaseMvpActivity {
+public class AddressActivity extends BaseMvpActivity {
     @BindView(R.id.iv_back)
     ImageView iv_back;
     @BindView(R.id.title)
     TextView title;
-    @BindView(R.id.et_transfer_amount)
-    EditText et_transfer_amount;
-    @BindView(R.id.et_contact_phone_num)
-    EditText et_contact_phone_num;
-    @BindView(R.id.et_bank_card)
-    EditText et_bank_card;
-    @BindView(R.id.et_bank_card_owner)
-    EditText et_bank_card_owner;
-    @BindView(R.id.et_bank_branch_address)
-    EditText et_bank_branch_address;
-    @BindView(R.id.et_commission_convert_amount)
-    EditText et_commission_convert_amount;
+    @BindView(R.id.et_delivery_name)
+    EditText et_delivery_name;
+    @BindView(R.id.et_delivery_phone_num)
+    EditText et_delivery_phone_num;
+    @BindView(R.id.et_delivery_address)
+    EditText et_delivery_address;
 
-    @BindView(R.id.tv_commission_convert_to_balance)
-    TextView tv_commission_convert_to_balance;
-    @BindView(R.id.tv_withdraw_immediate)
-    TextView tv_withdraw_immediate;
-    @BindView(R.id.ll_withdraw_amount)
-    LinearLayout ll_withdraw_amount;
-    @BindView(R.id.ll_commission_convert_amount)
-    LinearLayout ll_commission_convert_amount;
 
-    boolean isInCommission = false;
+    @BindView(R.id.tv_save_modify)
+    TextView tv_save_modify;
+
 
     public static void startActivity(Context context) {
-        Intent intent = new Intent(context, DeliveryAddressActivity.class);
+        Intent intent = new Intent(context, AddressActivity.class);
         context.startActivity(intent);
     }
 
@@ -72,27 +60,16 @@ public class DeliveryAddressActivity extends BaseMvpActivity {
         return null;
     }
 
-    @OnClick({R.id.iv_back, R.id.tv_commission_convert_to_balance, R.id.tv_withdraw_immediate})
+    @OnClick({R.id.iv_back,  R.id.tv_save_modify})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
-                if (isInCommission) {
-                    ll_commission_convert_amount.setVisibility(View.GONE);
-                    ll_withdraw_amount.setVisibility(View.VISIBLE);
-                    title.setText(getString(R.string.my_withdraw));
-                    isInCommission = false;
-                } else
+
                     finish();
 
                 break;
 
-            case R.id.tv_commission_convert_to_balance:
-                ll_commission_convert_amount.setVisibility(View.VISIBLE);
-                ll_withdraw_amount.setVisibility(View.GONE);
-                title.setText(getString(R.string.commission_convert));
-                isInCommission = true;
-                break;
-            case R.id.tv_withdraw_immediate:
+            case R.id.tv_save_modify:
 
                 break;
 
@@ -103,21 +80,4 @@ public class DeliveryAddressActivity extends BaseMvpActivity {
     }
 
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK
-                && event.getAction() == KeyEvent.ACTION_DOWN) {
-            if (isInCommission) {
-                ll_commission_convert_amount.setVisibility(View.GONE);
-                ll_withdraw_amount.setVisibility(View.VISIBLE);
-                title.setText(getString(R.string.my_withdraw));
-                isInCommission = false;
-            } else
-                finish();
-
-            return true;
-        }
-
-        return super.onKeyDown(keyCode, event);
-    }
 }

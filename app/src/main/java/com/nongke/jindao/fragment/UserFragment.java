@@ -1,13 +1,16 @@
 package com.nongke.jindao.fragment;
 
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.nongke.jindao.MainActivity;
 import com.nongke.jindao.R;
+import com.nongke.jindao.activity.AddressActivity;
+import com.nongke.jindao.activity.DaoLiTransferActivity;
 import com.nongke.jindao.activity.LoginRegisterActivity;
+import com.nongke.jindao.activity.UserProfileActivity;
+import com.nongke.jindao.activity.WithdrawActivity;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.utils.UserUtils;
@@ -45,6 +48,10 @@ public class UserFragment extends BaseMvpFragment {
     LinearLayout my_order_layout;
     @BindView(R.id.my_logout_layout)
     LinearLayout my_logout_layout;
+    @BindView(R.id.ll_userinfo_profile_logined)
+    LinearLayout ll_userinfo_profile_logined;
+    @BindView(R.id.iv_user_default)
+    ImageView iv_user_default;
 
     @Override
     public void initData(Bundle bundle) {
@@ -53,7 +60,7 @@ public class UserFragment extends BaseMvpFragment {
 
     @Override
     public void initView() {
-
+        if (UserUtils.isLogined()) ll_userinfo_profile_logined.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -77,14 +84,15 @@ public class UserFragment extends BaseMvpFragment {
 
 
     @OnClick({R.id.my_daoli_recharge_layout, R.id.my_daoli_transfer_layout, R.id.my_recharge_layout, R.id.my_commission_layout, R.id.my_withdraw_layout,
-            R.id.my_withdraw_record_layout, R.id.my_profile_layout, R.id.my_promotion_layout, R.id.my_location_layout, R.id.my_order_layout, R.id.my_logout_layout})
+            R.id.my_withdraw_record_layout, R.id.my_profile_layout, R.id.my_promotion_layout, R.id.my_location_layout, R.id.my_order_layout, R.id.my_logout_layout,
+            R.id.iv_user_default})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.my_daoli_recharge_layout:
                 if (!UserUtils.isLogined()) LoginRegisterActivity.startActivity(getActivity());
                 break;
             case R.id.my_daoli_transfer_layout:
-
+                DaoLiTransferActivity.startActivity(getActivity());
                 break;
             case R.id.my_recharge_layout:
 
@@ -93,25 +101,29 @@ public class UserFragment extends BaseMvpFragment {
 
                 break;
             case R.id.my_withdraw_layout:
+                WithdrawActivity.startActivity(getActivity());
 
                 break;
             case R.id.my_withdraw_record_layout:
 
                 break;
             case R.id.my_profile_layout:
-
+                UserProfileActivity.startActivity(getActivity());
                 break;
             case R.id.my_promotion_layout:
 
                 break;
             case R.id.my_location_layout:
-
+                AddressActivity.startActivity(getActivity());
                 break;
             case R.id.my_order_layout:
 
                 break;
             case R.id.my_logout_layout:
 
+                break;
+            case R.id.iv_user_default:
+                LoginRegisterActivity.startActivity(getActivity());
                 break;
             default:
                 break;

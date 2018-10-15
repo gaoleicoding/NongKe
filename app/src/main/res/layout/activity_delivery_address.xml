@@ -26,10 +26,10 @@
 
                 <TextView
                     style="@style/common_txt_14dp"
-                    android:text="@string/bank_name" />
+                    android:text="@string/delivery_name" />
 
                 <EditText
-                    android:id="@+id/et_transfer_account"
+                    android:id="@+id/et_delivery_name"
                     style="@style/code_edit_style" />
             </LinearLayout>
 
@@ -37,10 +37,10 @@
 
                 <TextView
                     style="@style/common_txt_14dp"
-                    android:text="@string/bank_card_num" />
+                    android:text="@string/delivery_phone_num" />
 
                 <EditText
-                    android:id="@+id/et_bank_card"
+                    android:id="@+id/et_delivery_phone_num"
                     style="@style/code_edit_style" />
             </LinearLayout>
 
@@ -48,82 +48,18 @@
 
                 <TextView
                     style="@style/common_txt_14dp"
-                    android:text="@string/bank_card_owener_name" />
+                    android:text="@string/delivery_address" />
 
                 <EditText
-                    android:id="@+id/et_bank_card_owner"
+                    android:id="@+id/et_delivery_address"
                     style="@style/code_edit_style" />
             </LinearLayout>
 
-            <LinearLayout style="@style/code_edit_layout_style">
-
-                <TextView
-                    style="@style/common_txt_14dp"
-                    android:text="@string/bank_branch_address" />
-
-                <EditText
-                    android:id="@+id/et_bank_branch_address"
-                    style="@style/code_edit_style" />
-            </LinearLayout>
-
-            <LinearLayout style="@style/code_edit_layout_style">
-
-                <TextView
-                    style="@style/common_txt_14dp"
-                    android:text="@string/contact_phone_num" />
-
-                <EditText
-                    android:id="@+id/et_contact_phone_num"
-                    style="@style/code_edit_style" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
-                <TextView
-                    style="@style/common_txt_14dp"
-                    android:text="@string/veirfy_code" />
-                <EditText
-                    android:id="@+id/et_verify_code"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/code_edit_bg"
-                    android:hint="@string/veirfy_code"
-                    android:inputType="number"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/tv_forget_register_verify_code"
-
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="20dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/selector_btn_bg"
-                    android:clickable="true"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="@string/get_veirfy_code"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
 
             <TextView
-                android:id="@+id/tv_withdraw_immediate"
+                android:id="@+id/tv_save_modify"
                 style="@style/btn_selector_match_style"
-                android:text="@string/withdraw_immediate"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:text="@string/save_modify" />
         </LinearLayout>
     </LinearLayout>
 

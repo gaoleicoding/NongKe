@@ -21,210 +21,114 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout style="@style/code_edit_layout_style">
-
-                <TextView
-                    style="@style/common_txt_14dp"
-                    android:text="@string/share_commission" />
-
-                <TextView
-                    style="@style/common_txt_14dp"
-                    android:text="0.00元" />
-
-                <TextView
-                    android:id="@+id/tv_commission_convert_to_balance"
-                    style="@style/common_txt_14dp"
-                    android:layout_marginLeft="15dp"
-                    android:background="@drawable/selector_btn_bg"
-                    android:padding="8dp"
-                    android:text="@string/commission_convert_to_balance"
-                    android:textColor="@color/white" />
-
-            </LinearLayout>
-
-            <LinearLayout style="@style/code_edit_layout_style">
-
-                <TextView
-                    style="@style/common_txt_14dp"
-                    android:text="@string/withdrawable_amount" />
-
-                <TextView
-                    style="@style/common_txt_14dp"
-                    android:text="0.00元" />
-            </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/layout_login"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/layout_title"
-                android:orientation="vertical">
 
-                <LinearLayout style="@style/code_edit_layout_style">
-
-                    <TextView
-                        style="@style/common_txt_14dp"
-                        android:text="@string/withdraw_amount" />
-
-                    <EditText
-                        android:id="@+id/et_transfer_amount"
-                        style="@style/code_edit_style"
-                        android:hint="@string/input_with_amount_hint" />
-                </LinearLayout>
-
+                style="@style/code_edit_layout_style">
 
                 <TextView
                     style="@style/common_txt_14dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="20dp"
-                    android:text="@string/withdraw_first_way"
-                    android:textColor="@color/app_color"
-                    android:visibility="gone" />
+                    android:text="@string/bank_name" />
 
                 <LinearLayout
-                    style="@style/code_edit_layout_style"
-                    android:visibility="gone">
+                    android:id="@+id/ll_select_bank"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/code_edit_bg"
+                    android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/tv_select_bank"
                         style="@style/common_txt_14dp"
-                        android:text="@string/alipay_account" />
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/please_select_bank" />
 
-                    <EditText
-                        android:id="@+id/et_alipay_account"
-                        style="@style/code_edit_style" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/arrow_down" />
                 </LinearLayout>
-
-
-                <TextView
-                    style="@style/common_txt_14dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="20dp"
-                    android:text="@string/withdraw_second_way"
-                    android:textColor="@color/app_color"
-                    android:visibility="gone" />
-
-                <LinearLayout style="@style/code_edit_layout_style">
-
-                    <TextView
-                        style="@style/common_txt_14dp"
-                        android:text="@string/bank_name" />
-
-                    <EditText
-                        android:id="@+id/et_transfer_account"
-                        style="@style/code_edit_style" />
-                </LinearLayout>
-
-                <LinearLayout style="@style/code_edit_layout_style">
-
-                    <TextView
-                        style="@style/common_txt_14dp"
-                        android:text="@string/bank_card_num" />
-
-                    <EditText
-                        android:id="@+id/et_bank_card"
-                        style="@style/code_edit_style" />
-                </LinearLayout>
-
-                <LinearLayout style="@style/code_edit_layout_style">
-
-                    <TextView
-                        style="@style/common_txt_14dp"
-                        android:text="@string/bank_card_owener_name" />
-
-                    <EditText
-                        android:id="@+id/et_bank_card_owner"
-                        style="@style/code_edit_style" />
-                </LinearLayout>
-
-                <LinearLayout style="@style/code_edit_layout_style">
-
-                    <TextView
-                        style="@style/common_txt_14dp"
-                        android:text="@string/bank_branch_address" />
-
-                    <EditText
-                        android:id="@+id/et_bank_branch_address"
-                        style="@style/code_edit_style" />
-                </LinearLayout>
-
-                <LinearLayout style="@style/code_edit_layout_style">
-
-                    <TextView
-                        style="@style/common_txt_14dp"
-                        android:text="@string/contact_phone_num" />
-
-                    <EditText
-                        android:id="@+id/et_contact_phone_num"
-                        style="@style/code_edit_style" />
-                </LinearLayout>
-
-
-                <TextView
-                    android:id="@+id/tv_withdraw_immediate"
-                    style="@style/btn_selector_match_style"
-                    android:text="@string/withdraw_immediate"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
-
-
-                <TextView
-                    style="@style/common_txt_14dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginTop="20dp"
-                    android:text="@string/withdraw_hint" />
-
-                <TextView
-                    style="@style/common_txt_14dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/withdraw_hint2"
-                    android:textColor="@color/app_color" />
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_commission_convert_amount"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <LinearLayout style="@style/code_edit_layout_style">
-
-                <TextView
-                    style="@style/common_txt_14dp"
-                    android:text="@string/share_commission" />
-
-                <TextView
-                    style="@style/common_txt_14dp"
-                    android:text="0.00元" />
-
             </LinearLayout>
 
             <LinearLayout style="@style/code_edit_layout_style">
 
                 <TextView
                     style="@style/common_txt_14dp"
-                    android:text="@string/commission_convert_amount" />
+                    android:text="@string/bank_card_num" />
 
                 <EditText
-                    android:id="@+id/et_commission_convert_amount"
+                    android:id="@+id/et_bank_card"
                     style="@style/code_edit_style" />
             </LinearLayout>
 
+            <LinearLayout style="@style/code_edit_layout_style">
+
+                <TextView
+                    style="@style/common_txt_14dp"
+                    android:text="@string/bank_card_owener_name" />
+
+                <EditText
+                    android:id="@+id/et_bank_card_owner"
+                    style="@style/code_edit_style" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/code_edit_layout_style">
+
+                <TextView
+                    style="@style/common_txt_14dp"
+                    android:text="@string/bank_branch_address" />
+
+                <EditText
+                    android:id="@+id/et_bank_branch_address"
+                    style="@style/code_edit_style" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/code_edit_layout_style">
+
+                <TextView
+                    style="@style/common_txt_14dp"
+                    android:text="@string/contact_phone_num" />
+
+                <EditText
+                    android:id="@+id/et_contact_phone_num"
+                    style="@style/code_edit_style" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/common_txt_14dp"
+                    android:text="@string/veirfy_code_user_profile" />
+
+                <EditText
+                    android:id="@+id/et_verify_code"
+                    style="@style/code_edit_style"
+                    android:hint="@string/veirfy_code" />
+
+                <TextView
+                    android:id="@+id/tv_get_verify_code"
+                    style="@style/btn_selector_wrap_style"
+                    android:text="@string/get_veirfy_code" />
+
+            </LinearLayout>
+
             <TextView
-                android:id="@+id/tv_confirm_commission_convert"
+                android:id="@+id/tv_save_modify"
                 style="@style/btn_selector_match_style"
-                android:text="@string/confirm_commission_convert"
+                android:text="@string/save_modify"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
-
         </LinearLayout>
     </LinearLayout>
-
 
 </ScrollView>

@@ -51,29 +51,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tv_recharge_50"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_recharge_ammount_bg_select"
                 android:gravity="center"
-                android:padding="20dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
                 android:text="@string/recharge_50"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_recharge_100"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:background="@drawable/shape_recharge_ammount_bg"
                 android:gravity="center"
-                android:padding="20dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
                 android:text="@string/recharge_100"
                 android:textColor="@color/color_black"
                 android:textSize="16sp" />

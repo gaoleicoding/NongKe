@@ -1,0 +1,93 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="60dp"
+    android:paddingTop="60dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/common_txt_16dp_marginLeft"
+            android:layout_margin="10dp"
+            android:text="@string/please_select_bank" />
+
+        <View style="@style/horizontal_divider2" />
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioGroup
+                android:id="@+id/bank_group"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <RadioButton
+                    style="@style/bank_radio_button_style"
+                    android:text="@string/bank_100" />
+
+                <RadioButton
+                    style="@style/bank_radio_button_style"
+                    android:text="@string/bank_102" />
+
+                <RadioButton
+                    style="@style/bank_radio_button_style"
+                    android:text="@string/bank_103" />
+
+                <RadioButton
+                    style="@style/bank_radio_button_style"
+                    android:text="@string/bank_104" />
+
+                <RadioButton
+                    style="@style/bank_radio_button_style"
+                    android:text="@string/bank_105" />
+
+                <RadioButton
+                    style="@style/bank_radio_button_style"
+                    android:text="@string/bank_301" />
+
+                <RadioButton
+                    style="@style/bank_radio_button_style"
+                    android:text="@string/bank_302" />
+
+                <RadioButton
+                    style="@style/bank_radio_button_style"
+                    android:text="@string/bank_303" />
+
+                <RadioButton
+                    style="@style/bank_radio_button_style"
+                    android:text="@string/bank_304" />
+
+                <RadioButton
+                    style="@style/bank_radio_button_style"
+                    android:text="@string/bank_305" />
+
+                <RadioButton
+                    style="@style/bank_radio_button_style"
+                    android:text="@string/bank_306" />
+
+                <RadioButton
+                    style="@style/bank_radio_button_style"
+                    android:text="@string/bank_308" />
+
+                <RadioButton
+                    style="@style/bank_radio_button_style"
+                    android:text="@string/bank_309" />
+
+                <RadioButton
+                    style="@style/bank_radio_button_style"
+                    android:text="@string/bank_310" />
+
+            </RadioGroup>
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>

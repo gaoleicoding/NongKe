@@ -78,7 +78,41 @@
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:layout_marginLeft">20dp</item>
         <item name="android:textColor">@color/color_black</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="common_txt_14dp">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textColor">@color/color_black</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="common_txt_14dp_marginLeft">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textColor">@color/color_black</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+    </style>
+
+    <style name="common_txt_16dp">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textColor">@color/color_black</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="common_txt_16dp_marginLeft">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textColor">@color/color_black</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginLeft">20dp</item>
     </style>
 
     <style name="user_account_txt">
@@ -95,6 +129,12 @@
         <item name="android:background">@color/color_e1e1e1</item>
     </style>
 
+    <style name="horizontal_divider2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/color_e1e1e1</item>
+    </style>
+
     <style name="classify_txt">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -102,26 +142,37 @@
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">10dp</item>
         <item name="android:textColor">@color/color_black</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="code_edit_layout_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:layout_marginRight">30dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:orientation">horizontal</item>
     </style>
 
     <style name="code_edit_style">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:padding">8dp</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:singleLine">true</item>
         <item name="android:inputType">number</item>
-        <item name="android:maxLength">1</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:layout_marginLeft">10dp</item>
         <item name="android:background">@drawable/code_edit_bg</item>
     </style>
-    <style name="edit_register_style">
+
+    <style name="edit_match_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:padding">8dp</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:singleLine">true</item>
         <item name="android:inputType">number</item>
@@ -129,5 +180,58 @@
         <item name="android:layout_marginLeft">30dp</item>
         <item name="android:layout_marginRight">30dp</item>
         <item name="android:layout_marginTop">20dp</item>
+    </style>
+
+    <style name="btn_selector_match_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/selector_btn_bg</item>
+        <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:layout_marginRight">30dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+
+    <style name="btn_selector_wrap_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/selector_btn_bg</item>
+        <item name="android:layout_marginLeft">20dp</item>
+    </style>
+
+    <style name="bank_radio_button_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:checked">false</item>
+    </style>
+
+    <style name="CustomDialogTheme" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="DefaultDialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
     </style>
 </resources>
