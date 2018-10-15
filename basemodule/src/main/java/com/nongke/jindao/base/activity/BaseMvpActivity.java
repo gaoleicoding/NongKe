@@ -6,9 +6,7 @@ import android.support.annotation.Nullable;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
 
 
-
-
-public abstract class BaseMvpActivity<V, P extends BasePresenter<V>> extends BaseActivity {
+public abstract class BaseMvpActivity<P extends BasePresenter> extends BaseActivity {
 
     public P mPresenter;
 
@@ -16,17 +14,21 @@ public abstract class BaseMvpActivity<V, P extends BasePresenter<V>> extends Bas
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter = initPresenter();
-        if(mPresenter!=null)
-        mPresenter.attach((V) this);
+        if (mPresenter != null)
+            mPresenter.attach( this);
+        loadData();
     }
 
     @Override
     protected void onDestroy() {
-        if(mPresenter!=null)
-        mPresenter.dettach();
+        if (mPresenter != null)
+            mPresenter.dettach();
         super.onDestroy();
     }
 
     //实例presenter
     public abstract P initPresenter();
+
+    //加载数据
+    protected abstract void loadData();
 }

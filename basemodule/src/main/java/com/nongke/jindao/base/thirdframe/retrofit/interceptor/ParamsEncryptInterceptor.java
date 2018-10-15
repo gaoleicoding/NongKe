@@ -1,4 +1,4 @@
-package com.nongke.jindao.thirdframe.retrofit.interceptor;
+package com.nongke.jindao.base.thirdframe.retrofit.interceptor;
 
 import android.util.Base64;
 import android.util.Log;

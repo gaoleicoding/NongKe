@@ -1,8 +1,8 @@
-package com.nongke.jindao.thirdframe.retrofit.interceptor.util;
+package com.nongke.jindao.base.thirdframe.retrofit.interceptor.util;
 
 import android.util.Log;
 
-import com.nongke.jindao.thirdframe.retrofit.interceptor.ProgressInterceptor;
+import com.nongke.jindao.base.thirdframe.retrofit.interceptor.ProgressInterceptor;
 
 import java.io.IOException;
 

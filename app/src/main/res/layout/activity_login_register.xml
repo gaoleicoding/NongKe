@@ -33,7 +33,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/et_phone_num"
+                android:id="@+id/et_login_phone_num"
                 style="@style/code_edit_style" />
         </LinearLayout>
 
@@ -54,7 +54,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/et_password"
+                android:id="@+id/et_login_password"
                 style="@style/code_edit_style" />
         </LinearLayout>
 
@@ -136,13 +136,13 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/et_verify_code"
+                android:id="@+id/et_register_verify_code"
                 style="@style/code_edit_style"
                 android:layout_marginLeft="0dp"
                 android:hint="@string/veirfy_code" />
 
             <TextView
-                android:id="@+id/tv_forget_register_verify_code"
+                android:id="@+id/tv_register_get_verify_code"
                 style="@style/btn_selector_wrap_style"
                 android:text="@string/get_veirfy_code"
                 android:textColor="@color/white"

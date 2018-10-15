@@ -3,7 +3,7 @@ package com.nongke.jindao.base.api;
 
 import com.nongke.jindao.base.mmodel.BannerListData;
 import com.nongke.jindao.base.mmodel.ArticleListData;
-import com.nongke.jindao.base.mmodel.LoginData;
+import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.mmodel.ProjectListData;
 
 import io.reactivex.Observable;
@@ -26,7 +26,7 @@ public interface ApiService {
     Observable<ProjectListData> getProjectListData(@Path("page") int page, @Query("cid") int cid);
 
     /*
-        http://www.wanandroid.com/banner/json
+        http://www.wanapiandroid.com/banner/json
         广告栏数据
     */
     @GET("banner/json")
@@ -41,29 +41,19 @@ public interface ApiService {
     @GET("article/list/{num}/json")
     Observable<ArticleListData> getFeedArticleList(@Path("num") int num);
 
-    /**
-     * 登陆
-     * http://www.wanandroid.com/user/login
-     *
-     * @param username user name
-     * @param password password
-     * @return 登陆数据
-     */
+    //登录
     @POST("user/login")
     @FormUrlEncoded
-    Observable<LoginData> getLoginData(@Field("username") String username, @Field("password") String password);
+    Observable<LoginResData> getLoginData(@Field("phone") String username, @Field("password") String password);
 
-    /**
-     * 注册
-     * http://www.wanandroid.com/user/register
-     *
-     * @param username   user name
-     * @param password   password
-     * @param repassword re password
-     * @return 注册数据
-     */
+    //注册
     @POST("user/register")
     @FormUrlEncoded
-    Observable<LoginData> getRegisterData(@Field("username") String username, @Field("password") String password, @Field("repassword") String repassword);
+    Observable<LoginResData> getRegisterData(@Field("phone") String phone, @Field("password") String password, @Field("confirmPassword") String confirmPassword, @Field("code") String code);
+
+    //获取验证码，type：1注册 2找回手机密码
+    @POST("user/getMessageCode")
+    @FormUrlEncoded
+    Observable<LoginResData> getMessageCode(@Field("phone") String phone, @Field("type") int type);
 
 }

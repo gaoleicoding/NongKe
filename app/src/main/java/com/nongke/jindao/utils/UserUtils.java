@@ -2,8 +2,7 @@ package com.nongke.jindao.utils;
 
 import android.content.Intent;
 
-import com.nongke.jindao.MainActivity;
-import com.nongke.jindao.activity.LoginRegisterActivity;
+import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.base.application.CustomApplication;
 
 public class UserUtils {
@@ -19,7 +18,7 @@ public class UserUtils {
     }
 
     public static void handleNotLogin() {
-        CustomApplication.context.startActivity(new Intent(CustomApplication.context, LoginRegisterActivity.class));
+        CustomApplication.context.startActivity(new Intent(CustomApplication.context, RegisterLoginActivity.class));
     }
 
 }

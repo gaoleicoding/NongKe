@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 import com.nongke.jindao.R;
 import com.nongke.jindao.activity.AddressActivity;
 import com.nongke.jindao.activity.DaoLiTransferActivity;
-import com.nongke.jindao.activity.LoginRegisterActivity;
+import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.activity.UserProfileActivity;
 import com.nongke.jindao.activity.WithdrawActivity;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
@@ -89,7 +89,7 @@ public class UserFragment extends BaseMvpFragment {
     public void click(View view) {
         switch (view.getId()) {
             case R.id.my_daoli_recharge_layout:
-                if (!UserUtils.isLogined()) LoginRegisterActivity.startActivity(getActivity());
+                if (!UserUtils.isLogined()) RegisterLoginActivity.startActivity(getActivity());
                 break;
             case R.id.my_daoli_transfer_layout:
                 DaoLiTransferActivity.startActivity(getActivity());
@@ -123,7 +123,7 @@ public class UserFragment extends BaseMvpFragment {
 
                 break;
             case R.id.iv_user_default:
-                LoginRegisterActivity.startActivity(getActivity());
+                RegisterLoginActivity.startActivity(getActivity());
                 break;
             default:
                 break;

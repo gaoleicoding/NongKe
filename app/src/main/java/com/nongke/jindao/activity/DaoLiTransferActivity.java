@@ -59,6 +59,11 @@ public class DaoLiTransferActivity extends BaseMvpActivity {
         return null;
     }
 
+    @Override
+    protected void loadData() {
+
+    }
+
     @OnClick({R.id.iv_back, R.id.tv_transfer, R.id.tv_transfer_record })
     public void click(View view) {
         switch (view.getId()) {

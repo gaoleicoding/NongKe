@@ -2,10 +2,9 @@ apply plugin: 'com.android.library'
 //使用greendao
 apply plugin: 'org.greenrobot.greendao'
 apply plugin: 'com.jakewharton.butterknife'
-
 android {
-    compileSdkVersion rootProject.ext.android.compileSdkVersion
-    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
     defaultConfig {
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
@@ -19,15 +18,20 @@ android {
         }
     }
     buildTypes {
+        debug {
+            minifyEnabled false //是否启用Proguard
+            zipAlignEnabled false //是否启用zipAlign压缩
+        }
         release {
-            minifyEnabled false
+            minifyEnabled true //是否启用Proguard
+            zipAlignEnabled true //是否启用zipAlign压缩
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
     //执行lint检查，有任何的错误或者警告提示，都会终止构建
-    lintOptions {
-        abortOnError false
-    }
+//    lintOptions {
+//        abortOnError false
+//    }
 //    sourceSets {
 //        main {
 //            //jni库的调用会到资源文件夹下libs里面找so文件,对于so文件，android studio理论上是要求放置在一个jniLibs文件夹下的，这样程序才能够找到要所依赖的so文件
@@ -85,4 +89,6 @@ android {
         api 'cat.ereza:customactivityoncrash:2.2.0'
 
     }
+}
+dependencies {
 }

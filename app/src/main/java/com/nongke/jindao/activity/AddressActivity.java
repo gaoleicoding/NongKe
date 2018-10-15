@@ -60,6 +60,11 @@ public class AddressActivity extends BaseMvpActivity {
         return null;
     }
 
+    @Override
+    protected void loadData() {
+
+    }
+
     @OnClick({R.id.iv_back,  R.id.tv_save_modify})
     public void click(View view) {
         switch (view.getId()) {

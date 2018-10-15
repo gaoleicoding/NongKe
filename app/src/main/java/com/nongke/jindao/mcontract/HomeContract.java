@@ -14,19 +14,19 @@ public class HomeContract {
         /**
          * Get feed article list
          */
-        void getFeedArticleList(int num);
+        public void getFeedArticleList(int num);
 
-        void getBannerInfo();
+        public void getBannerInfo();
 
-        void onRefreshMore();
+        public void onRefreshMore();
 
-        void onLoadMore();
+        public void onLoadMore();
     }
 
     public interface View {
 
-        void showArticleList(ArticleListData itemBeans, boolean isRefresh);
+        public void showArticleList(ArticleListData itemBeans, boolean isRefresh);
 
-        void showBannerList(BannerListData itemBeans);
+        public void showBannerList(BannerListData itemBeans);
     }
 }

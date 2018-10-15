@@ -6,11 +6,12 @@ import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
 import com.nongke.jindao.base.api.ApiService;
 import com.nongke.jindao.base.application.CustomApplication;
-import com.nongke.jindao.thirdframe.retrofit.interceptor.GzipRequestInterceptor;
-import com.nongke.jindao.thirdframe.retrofit.interceptor.HttpLoggingInterceptor;
-import com.nongke.jindao.thirdframe.retrofit.interceptor.OfflineCacheInterceptor;
-import com.nongke.jindao.thirdframe.retrofit.interceptor.OnlineCacheInterceptor;
-import com.nongke.jindao.thirdframe.retrofit.interceptor.RetryIntercepter;
+import com.nongke.jindao.base.thirdframe.retrofit.UrlConfig;
+import com.nongke.jindao.base.thirdframe.retrofit.interceptor.GzipRequestInterceptor;
+import com.nongke.jindao.base.thirdframe.retrofit.interceptor.HttpLoggingInterceptor;
+import com.nongke.jindao.base.thirdframe.retrofit.interceptor.OfflineCacheInterceptor;
+import com.nongke.jindao.base.thirdframe.retrofit.interceptor.OnlineCacheInterceptor;
+import com.nongke.jindao.base.thirdframe.retrofit.interceptor.RetryIntercepter;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -60,7 +61,7 @@ public final class RetrofitProvider {
         if (mRetrofit == null) {
             mRetrofit = new Retrofit.Builder()
                     .client(mOkHttpClient)
-                    .baseUrl(com.nongke.jindao.thirdframe.retrofit.UrlConfig.BASE_URL)
+                    .baseUrl(UrlConfig.BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();

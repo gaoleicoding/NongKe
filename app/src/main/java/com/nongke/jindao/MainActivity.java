@@ -1,7 +1,6 @@
 package com.nongke.jindao;
 
 import android.Manifest;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -10,7 +9,7 @@ import android.view.KeyEvent;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nongke.jindao.activity.LoginRegisterActivity;
+import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.adapter.MainTabAdapter;
 import com.nongke.jindao.base.activity.BaseActivity;
 import com.nongke.jindao.base.utils.PermissionUtil;
@@ -104,7 +103,7 @@ public class MainActivity extends BaseActivity {
                 int position = tab.getPosition();
                 title.setText(titles.get(position));
                 if (position == 4 && !UserUtils.isLogined()) {
-                    LoginRegisterActivity.startActivity(MainActivity.this);
+                    RegisterLoginActivity.startActivity(MainActivity.this);
                 }
 
             }

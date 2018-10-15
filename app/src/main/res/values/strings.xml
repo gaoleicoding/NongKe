@@ -100,6 +100,8 @@
     <string name="delivery_phone_num">收货人电话</string>
     <string name="delivery_address">收货人地址</string>
     <string name="please_select_bank">请选择开户银行</string>
+    <string name="register_success">注册成功</string>
+    <string name="register_failure">注册失败</string>
 
 
     <string name="bank_100">中国邮政储蓄</string>

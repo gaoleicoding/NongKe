@@ -1,4 +1,4 @@
-package com.nongke.jindao.thirdframe.retrofit.interceptor; /** This interceptor compresses the HTTP request body. Many webservers can't handle this! */
+package com.nongke.jindao.base.thirdframe.retrofit.interceptor; /** This interceptor compresses the HTTP request body. Many webservers can't handle this! */
 
 import java.io.IOException;
 

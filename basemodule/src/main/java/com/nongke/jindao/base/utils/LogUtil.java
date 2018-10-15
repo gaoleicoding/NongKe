@@ -12,6 +12,7 @@ public class LogUtil {
 
     private static boolean isDebug = BuildConfig.DEBUG;
     private static final String TAG = "zmy";
+    private static final String TAG2 = "gaolei";
 
     public static void init(boolean isPrintable) {
         isDebug = isPrintable;
@@ -22,6 +23,13 @@ public class LogUtil {
             return;
         }
         Log.e(TAG, msg);
+    }
+
+    public static void d2(String msg) {
+        if (!isDebug) {
+            return;
+        }
+        Log.e(TAG2, msg);
     }
 
     public static void v(String tag, String msg) {

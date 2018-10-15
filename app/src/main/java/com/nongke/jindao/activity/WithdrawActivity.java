@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
-import com.nongke.jindao.utils.SharedPreferencesUtils;
+import com.nongke.jindao.base.utils.SharedPreferencesUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -78,6 +78,11 @@ public class WithdrawActivity extends BaseMvpActivity {
     @Override
     public BasePresenter initPresenter() {
         return null;
+    }
+
+    @Override
+    protected void loadData() {
+
     }
 
     @OnClick({R.id.iv_back, R.id.tv_commission_convert_to_balance, R.id.ll_select_bank,R.id.tv_withdraw_immediate})

@@ -1,4 +1,4 @@
-package com.nongke.jindao.thirdframe.retrofit.interceptor.util;
+package com.nongke.jindao.base.thirdframe.retrofit.interceptor.util;
 
 /**
  * @author guolin

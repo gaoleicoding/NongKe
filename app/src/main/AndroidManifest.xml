@@ -20,8 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.SplashActivity"
-            android:theme=" @style/FullScreenStyle">
+            android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,7 +31,7 @@
 
         </activity>
         <activity android:name=".activity.ArticleDetailActivity"></activity>
-        <activity android:name=".activity.LoginRegisterActivity"></activity>
+        <activity android:name=".activity.RegisterLoginActivity"></activity>
         <activity android:name=".activity.DaoLiTransferActivity"></activity>
         <activity android:name=".activity.WithdrawActivity"></activity>
         <activity android:name=".activity.UserProfileActivity"></activity>
