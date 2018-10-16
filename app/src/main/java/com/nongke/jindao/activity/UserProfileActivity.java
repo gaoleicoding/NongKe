@@ -16,6 +16,9 @@ import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.utils.SharedPreferencesUtils;
+import com.nongke.jindao.base.utils.Utils;
+import com.nongke.jindao.utils.Constants;
+import com.nongke.jindao.view.CountDownButton;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -41,17 +44,16 @@ public class UserProfileActivity extends BaseMvpActivity {
     EditText et_bank_branch_address;
     @BindView(R.id.et_contact_phone_num)
     EditText et_contact_phone_num;
-    @BindView(R.id.et_verify_code)
-    EditText et_verify_code;
-    @BindView(R.id.tv_get_verify_code)
-    TextView tv_get_verify_code;
+    @BindView(R.id.et_modify_profile_verify_code)
+    EditText et_modify_profile_verify_code;
+    @BindView(R.id.tv_modify_profile_get_verify_code)
+    CountDownButton tv_modify_profile_get_verify_code;
 
     @BindView(R.id.ll_select_bank)
     LinearLayout ll_select_bank;
 
     @BindView(R.id.tv_save_modify)
     TextView tv_save_modify;
-
 
     boolean isInCommission = false;
 
@@ -81,7 +83,7 @@ public class UserProfileActivity extends BaseMvpActivity {
 
     }
 
-    @OnClick({R.id.iv_back, R.id.ll_select_bank, R.id.tv_save_modify})
+    @OnClick({R.id.iv_back, R.id.ll_select_bank, R.id.tv_save_modify, R.id.tv_modify_profile_get_verify_code})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
@@ -90,16 +92,15 @@ public class UserProfileActivity extends BaseMvpActivity {
 
                 break;
             case R.id.ll_select_bank:
-                final String[] banks = new String[]{"中国邮政", "工商银行", "农业银行", "中国银行", "建设银行", "交通银行", "中信银行", "光大银行", "华夏银行", "民生银行", "广发银行", "招商银行", "兴业银行", "浦发银行"};
-               Integer storedWhich=(Integer) SharedPreferencesUtils.getParam(UserProfileActivity.this,"which_bank",new Integer(-1));
+                Integer storedWhich = (Integer) SharedPreferencesUtils.getParam(UserProfileActivity.this, "which_bank", new Integer(-1));
                 Dialog myDialog = new AlertDialog.Builder(this)
                         .setTitle(getString(R.string.please_select_bank))
-                        .setSingleChoiceItems(banks, storedWhich.intValue(), new DialogInterface.OnClickListener() {
+                        .setSingleChoiceItems(Constants.banks, storedWhich.intValue(), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 //                                Toast.makeText(UserProfileActivity.this, banks[which], Toast.LENGTH_SHORT).show();
-                                tv_select_bank.setText(banks[which]);
-                                SharedPreferencesUtils.setParam(UserProfileActivity.this,"which_bank",which);
+                                tv_select_bank.setText(Constants.banks[which]);
+                                SharedPreferencesUtils.setParam(UserProfileActivity.this, "which_bank", which);
 
                                 dialog.cancel();
                             }
@@ -107,7 +108,18 @@ public class UserProfileActivity extends BaseMvpActivity {
                         .create();
                 myDialog.show();
                 break;
+            case R.id.tv_modify_profile_get_verify_code:
+                String phoneNum;
+                phoneNum = et_contact_phone_num.getText().toString();
+                if (Utils.isMobileNO(phoneNum)) {
+                    if (tv_modify_profile_get_verify_code.isFinish()) {
+                        //发送验证码请求成功后调用
+                        tv_modify_profile_get_verify_code.start();
+                    }
+//                    mPresenter.getMessageCode(phoneNum, 1);
+                }
 
+                break;
             case R.id.tv_save_modify:
 
                 break;

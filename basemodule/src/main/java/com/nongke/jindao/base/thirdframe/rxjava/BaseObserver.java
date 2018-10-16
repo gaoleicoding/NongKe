@@ -1,4 +1,4 @@
-package com.nongke.jindao.thirdframe.rxjava;
+package com.nongke.jindao.base.thirdframe.rxjava;
 
 import android.app.Dialog;
 import android.content.Context;

@@ -2,7 +2,7 @@ package com.nongke.jindao.base.mpresenter;
 
 import com.nongke.jindao.base.api.ApiService;
 import com.nongke.jindao.thirdframe.retrofit.RetrofitProvider;
-import com.nongke.jindao.thirdframe.rxjava.BaseObserver;
+import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
 
 
 import io.reactivex.Observable;

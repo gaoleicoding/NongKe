@@ -17,6 +17,7 @@ import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.utils.SharedPreferencesUtils;
+import com.nongke.jindao.utils.Constants;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -106,15 +107,14 @@ public class WithdrawActivity extends BaseMvpActivity {
                 isInCommission = true;
                 break;
             case R.id.ll_select_bank:
-                final String[] banks = new String[]{"中国邮政", "工商银行", "农业银行", "中国银行", "建设银行", "交通银行", "中信银行", "光大银行", "华夏银行", "民生银行", "广发银行", "招商银行", "兴业银行", "浦发银行"};
                 Integer storedWhich=(Integer) SharedPreferencesUtils.getParam(WithdrawActivity.this,"which_bank",new Integer(-1));
                 Dialog myDialog = new AlertDialog.Builder(this)
                         .setTitle(getString(R.string.please_select_bank))
-                        .setSingleChoiceItems(banks, storedWhich.intValue(), new DialogInterface.OnClickListener() {
+                        .setSingleChoiceItems(Constants.banks, storedWhich.intValue(), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 //                                Toast.makeText(UserProfileActivity.this, banks[which], Toast.LENGTH_SHORT).show();
-                                tv_select_bank.setText(banks[which]);
+                                tv_select_bank.setText(Constants.banks[which]);
                                 SharedPreferencesUtils.setParam(WithdrawActivity.this,"which_bank",which);
 
                                 dialog.cancel();

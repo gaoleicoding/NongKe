@@ -20,7 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.SplashActivity">
+            android:name=".activity.SplashActivity"
+            android:theme="@style/FullScreenStyle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,6 +37,7 @@
         <activity android:name=".activity.WithdrawActivity"></activity>
         <activity android:name=".activity.UserProfileActivity"></activity>
         <activity android:name=".activity.AddressActivity"></activity>
+        <activity android:name=".activity.VipRechargeActivity"></activity>
         <!--value的值填写你在友盟后台申请的应用Appkey-->
         <meta-data
             android:name="UMENG_APPKEY"

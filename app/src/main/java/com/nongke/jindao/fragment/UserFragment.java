@@ -4,12 +4,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.nongke.jindao.R;
 import com.nongke.jindao.activity.AddressActivity;
 import com.nongke.jindao.activity.DaoLiTransferActivity;
 import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.activity.UserProfileActivity;
+import com.nongke.jindao.activity.VipRechargeActivity;
 import com.nongke.jindao.activity.WithdrawActivity;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
@@ -52,6 +54,8 @@ public class UserFragment extends BaseMvpFragment {
     LinearLayout ll_userinfo_profile_logined;
     @BindView(R.id.iv_user_default)
     ImageView iv_user_default;
+    @BindView(R.id.tv_vip_recharge)
+    TextView tv_vip_recharge;
 
     @Override
     public void initData(Bundle bundle) {
@@ -85,9 +89,12 @@ public class UserFragment extends BaseMvpFragment {
 
     @OnClick({R.id.my_daoli_recharge_layout, R.id.my_daoli_transfer_layout, R.id.my_recharge_layout, R.id.my_commission_layout, R.id.my_withdraw_layout,
             R.id.my_withdraw_record_layout, R.id.my_profile_layout, R.id.my_promotion_layout, R.id.my_location_layout, R.id.my_order_layout, R.id.my_logout_layout,
-            R.id.iv_user_default})
+            R.id.iv_user_default,R.id.tv_vip_recharge})
     public void click(View view) {
         switch (view.getId()) {
+            case R.id.tv_vip_recharge:
+                VipRechargeActivity.startActivity(getActivity());
+            break;
             case R.id.my_daoli_recharge_layout:
                 if (!UserUtils.isLogined()) RegisterLoginActivity.startActivity(getActivity());
                 break;

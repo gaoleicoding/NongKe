@@ -4,7 +4,7 @@ package com.nongke.jindao.mpresenter;
 import com.nongke.jindao.base.mmodel.ProjectListData;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.mcontract.ProjectContract;
-import com.nongke.jindao.thirdframe.rxjava.BaseObserver;
+import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
 
 import io.reactivex.Observable;
 

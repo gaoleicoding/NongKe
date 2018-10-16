@@ -125,6 +125,7 @@
                         android:text="普通会员" />
 
                     <TextView
+                        android:id="@+id/tv_vip_recharge"
                         style="@style/user_account_txt"
                         android:text=" 申请高级会员>>"
                         android:textColor="#efe620" />

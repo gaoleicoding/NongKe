@@ -40,7 +40,7 @@ public class ClassifyFragment extends BaseMvpFragment {
         mFragments.add(new CommodityFragment());
         mFragments.add(new CommodityFragment());
         mFragments.add(new CommodityFragment());
-        mFragments.add(new CommodityFragment());
+//        mFragments.add(new CommodityFragment());
         RechargeTabAdapter adapter = new RechargeTabAdapter(getChildFragmentManager(), mFragments);
         viewPager.setCanScroll(false);
         viewPager.setOffscreenPageLimit(mFragments.size());
@@ -58,8 +58,8 @@ public class ClassifyFragment extends BaseMvpFragment {
 
         tabLayout.getTabAt(0).setCustomView(R.layout.tab_classify_default);
         tabLayout.getTabAt(1).setCustomView(R.layout.tab_classify_sales);
-        tabLayout.getTabAt(2).setCustomView(R.layout.tab_classify_popularity);
-        tabLayout.getTabAt(3).setCustomView(R.layout.tab_classify_price);
+        tabLayout.getTabAt(2).setCustomView(R.layout.tab_classify_price);
+//        tabLayout.getTabAt(3).setCustomView(R.layout.tab_classify_popularity);
 
 
 

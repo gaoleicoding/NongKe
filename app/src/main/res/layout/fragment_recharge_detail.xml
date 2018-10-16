@@ -19,6 +19,7 @@
             android:text="@string/recharge_discount" />
 
         <TextView
+            android:id="@+id/tv_vip_recharge"
             style="@style/user_info_txt"
             android:layout_marginLeft="0dp"
             android:text="@string/you_are_not_vip"

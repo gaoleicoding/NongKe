@@ -4,12 +4,18 @@ package com.nongke.jindao.base.api;
 import com.nongke.jindao.base.mmodel.BannerListData;
 import com.nongke.jindao.base.mmodel.ArticleListData;
 import com.nongke.jindao.base.mmodel.LoginResData;
+import com.nongke.jindao.base.mmodel.MsgCodeRequestData;
+import com.nongke.jindao.base.mmodel.MsgCodeResData;
 import com.nongke.jindao.base.mmodel.ProjectListData;
+import com.nongke.jindao.base.mmodel.RegisterResData;
 
 import io.reactivex.Observable;
+import okhttp3.RequestBody;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -49,11 +55,12 @@ public interface ApiService {
     //注册
     @POST("user/register")
     @FormUrlEncoded
-    Observable<LoginResData> getRegisterData(@Field("phone") String phone, @Field("password") String password, @Field("confirmPassword") String confirmPassword, @Field("code") String code);
+    Observable<RegisterResData> getRegisterData(@Field("phone") String phone, @Field("password") String password, @Field("confirmPassword") String confirmPassword, @Field("code") String code);
 
     //获取验证码，type：1注册 2找回手机密码
+//    @Headers({"Content-type:application/json;charset=UTF-8"})
     @POST("user/getMessageCode")
-    @FormUrlEncoded
-    Observable<LoginResData> getMessageCode(@Field("phone") String phone, @Field("type") int type);
+//    @FormUrlEncoded
+    Observable<MsgCodeResData> getMessageCode(@Body RequestBody info);
 
 }

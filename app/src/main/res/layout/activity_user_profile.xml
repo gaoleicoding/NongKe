@@ -112,12 +112,12 @@
                     android:text="@string/veirfy_code_user_profile" />
 
                 <EditText
-                    android:id="@+id/et_verify_code"
+                    android:id="@+id/et_modify_profile_verify_code"
                     style="@style/code_edit_style"
                     android:hint="@string/veirfy_code" />
 
-                <TextView
-                    android:id="@+id/tv_get_verify_code"
+                <com.nongke.jindao.view.CountDownButton
+                    android:id="@+id/tv_modify_profile_get_verify_code"
                     style="@style/btn_selector_wrap_style"
                     android:text="@string/get_veirfy_code" />
 

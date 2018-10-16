@@ -13,9 +13,14 @@ public class DefaultHeaderInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
         Request originalrequest = chain.request();//原始request
         Headers headers = new Headers.Builder()
-                .add("name", "jason")
-                .add("age", "27")
-                .add("token", "dfedsdfsdfffdd12dsef123sdfef1s2dfe")
+//                .add("name", "jason")
+//                .add("age", "27")
+//                .add("token", "dfedsdfsdfffdd12dsef123sdfef1s2dfe")
+                .add("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
+                .add("Accept-Encoding", "gzip, deflate")
+                .add("Connection", "keep-alive")
+                .add("Accept", "*/*")
+
                 .build();//构造一个Headers
         Request request = originalrequest.newBuilder().headers(headers).build();//注意这行代码别写错了
         return chain.proceed(request);

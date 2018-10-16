@@ -7,6 +7,7 @@ import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersisto
 import com.nongke.jindao.base.api.ApiService;
 import com.nongke.jindao.base.application.CustomApplication;
 import com.nongke.jindao.base.thirdframe.retrofit.UrlConfig;
+import com.nongke.jindao.base.thirdframe.retrofit.interceptor.DefaultHeaderInterceptor;
 import com.nongke.jindao.base.thirdframe.retrofit.interceptor.GzipRequestInterceptor;
 import com.nongke.jindao.base.thirdframe.retrofit.interceptor.HttpLoggingInterceptor;
 import com.nongke.jindao.base.thirdframe.retrofit.interceptor.OfflineCacheInterceptor;
@@ -14,10 +15,14 @@ import com.nongke.jindao.base.thirdframe.retrofit.interceptor.OnlineCacheInterce
 import com.nongke.jindao.base.thirdframe.retrofit.interceptor.RetryIntercepter;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -40,11 +45,26 @@ public final class RetrofitProvider {
         if (mOkHttpClient == null) {
             mOkHttpClient = new OkHttpClient.Builder()
                     .addNetworkInterceptor(new HttpLoggingInterceptor())
-                    .addNetworkInterceptor(new OnlineCacheInterceptor())//有网缓存拦截器
-                    .addInterceptor(new OfflineCacheInterceptor())//无网缓存拦截器
+//                    .addNetworkInterceptor(new OnlineCacheInterceptor())//有网缓存拦截器
+//                    .addInterceptor(new OfflineCacheInterceptor())//无网缓存拦截器
                     .cache(new Cache(new File(netCachePath), 50 * 10240 * 1024))//缓存路径和空间设置
                     .addInterceptor(new RetryIntercepter(4))//重试
                     .addInterceptor(new GzipRequestInterceptor())//开启Gzip压缩
+//                    .addInterceptor(new Interceptor() {
+//                        @Override
+//                        public Response intercept(Chain chain) throws IOException {
+//                            Request request = chain.request()
+//                                    .newBuilder()
+//                                    .addHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
+//                                    .addHeader("Accept-Encoding", "gzip, deflate")
+//                                    .addHeader("Connection", "keep-alive")
+//                                    .addHeader("Accept", "*/*")
+//                                    .addHeader("Cookie", "add cookies here")
+//                                    .build();
+//                            return chain.proceed(request);
+//                        }
+//
+//                    })
 
 //                    .addInterceptor(new DefaultHeaderInterceptor())//请求连接中添加头信息
 //                    .addInterceptor(new ProgressInterceptor())//请求url的进度

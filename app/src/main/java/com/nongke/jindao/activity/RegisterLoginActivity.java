@@ -20,6 +20,7 @@ import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.mcontract.RegisterLoginContract;
 import com.nongke.jindao.mpresenter.RegisterLoginPresenter;
+import com.nongke.jindao.view.CountDownButton;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -57,6 +58,14 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
     EditText et_register_confirm_password;
     @BindView(R.id.et_register_verify_code)
     EditText et_register_verify_code;
+    @BindView(R.id.et_forget_pwd_verify_code)
+    EditText et_forget_pwd_verify_code;
+    @BindView(R.id.et_forget_pwd_phone_num)
+    EditText et_forget_pwd_phone_num;
+    @BindView(R.id.et_forget_pwd_password)
+    EditText et_forget_pwd_password;
+    @BindView(R.id.et_forget_pwd_confirm_password)
+    EditText et_forget_pwd_confirm_password;
 
     @BindView(R.id.et_login_phone_num)
     EditText et_login_phone_num;
@@ -64,7 +73,9 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
     EditText et_login_password;
 
     @BindView(R.id.tv_register_get_verify_code)
-    TextView tv_register_get_verify_code;
+    CountDownButton tv_register_get_verify_code;
+    @BindView(R.id.tv_forget_pwd_get_verify_code)
+    CountDownButton tv_forget_pwd_get_verify_code;
 
     boolean isInRegister = false, isInForgetPwd = false;
 
@@ -130,9 +141,26 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
                 break;
 
             case R.id.tv_register_get_verify_code:
+
                 phoneNum = et_register_phone_num.getText().toString();
-                if (Utils.isPhoneNumberRight(this, phoneNum))
+                if (Utils.isMobileNO(phoneNum)) {
+                    if (tv_register_get_verify_code.isFinish()) {
+                        //发送验证码请求成功后调用
+                        tv_register_get_verify_code.start();
+                    }
                     mPresenter.getMessageCode(phoneNum, 1);
+                }
+
+                break;
+
+            case R.id.tv_forget_pwd_get_verify_code:
+                phoneNum = et_forget_pwd_phone_num.getText().toString();
+                if (Utils.isMobileNO(phoneNum)) {
+                    if (tv_forget_pwd_get_verify_code.isFinish()) {
+                        //发送验证码请求成功后调用
+                        tv_forget_pwd_get_verify_code.start();
+                    }
+                }
 
                 break;
             case R.id.tv_register:
@@ -172,8 +200,8 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
 
     @Override
     public void showRegisterResData(RegisterResData registerResData) {
-        LogUtil.d("registerResData.toString():"+registerResData.toString());
-        if (registerResData.rspBody)
+        LogUtil.d("registerResData.toString():" + registerResData.toString());
+        if (registerResData.retCode.equals("10000"))
             Utils.showToast(getString(R.string.register_success), true);
         else
             Utils.showToast(getString(R.string.register_failure), true);
@@ -181,15 +209,19 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
 
     @Override
     public void showLoginResData(LoginResData loginResData) {
-        LogUtil.d("loginResData.toString():"+loginResData.toString());
-//        if (loginResData.rspBody)
-//            Utils.showToast(getString(R.string.register_success), true);
-//        else
-//            Utils.showToast(getString(R.string.register_failure), true);
+        LogUtil.d("loginResData.toString():" + loginResData.toString());
+        if (loginResData.retCode.equals("10000"))
+            Utils.showToast(getString(R.string.login_success), true);
+        else
+            Utils.showToast(getString(R.string.login_failure), true);
     }
 
     @Override
     public void showMsgCodeResData(MsgCodeResData msgCodeResData) {
-        LogUtil.d("msgCodeResData.toString():"+msgCodeResData.toString());
+        LogUtil.d("msgCodeResData.toString():" + msgCodeResData.toString());
+        if (msgCodeResData.retCode.equals("10000"))
+            Utils.showToast(getString(R.string.get_msgcode_success), true);
+        else
+            Utils.showToast(getString(R.string.get_msgcode_failure), true);
     }
 }

@@ -5,7 +5,7 @@ import com.nongke.jindao.base.mmodel.BannerListData;
 import com.nongke.jindao.base.mmodel.ArticleListData;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.mcontract.HomeContract;
-import com.nongke.jindao.thirdframe.rxjava.BaseObserver;
+import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
 
 import io.reactivex.Observable;
 

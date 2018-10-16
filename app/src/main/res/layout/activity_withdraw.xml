@@ -144,7 +144,9 @@
 
                     <EditText
                         android:id="@+id/et_bank_card"
-                        style="@style/code_edit_style" />
+                        style="@style/code_edit_style"
+                        android:inputType="number"
+                        />
                 </LinearLayout>
 
                 <LinearLayout style="@style/code_edit_layout_style">
@@ -173,7 +175,9 @@
 
                     <TextView
                         style="@style/common_txt_16dp"
-                        android:text="@string/contact_phone_num" />
+                        android:text="@string/contact_phone_num"
+                        android:inputType="number"
+                        />
 
                     <EditText
                         android:id="@+id/et_contact_phone_num"

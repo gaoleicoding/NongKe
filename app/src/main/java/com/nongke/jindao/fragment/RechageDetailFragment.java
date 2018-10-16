@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nongke.jindao.R;
+import com.nongke.jindao.activity.VipRechargeActivity;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
 
@@ -28,6 +29,8 @@ public class RechageDetailFragment extends BaseMvpFragment {
     TextView tv_recharge_50;
     @BindView(R.id.tv_recharge_100)
     TextView tv_recharge_100;
+    @BindView(R.id.tv_vip_recharge)
+    TextView tv_vip_recharge;
     @BindView(R.id.ll_pay_alipay)
     LinearLayout ll_pay_alipay;
     @BindView(R.id.ll_pay_wechat)
@@ -66,9 +69,12 @@ public class RechageDetailFragment extends BaseMvpFragment {
 
     }
 
-    @OnClick({R.id.tv_recharge_50, R.id.tv_recharge_100, R.id.ll_pay_alipay, R.id.ll_pay_wechat})
+    @OnClick({ R.id.tv_vip_recharge,R.id.tv_recharge_50, R.id.tv_recharge_100,R.id.ll_pay_alipay, R.id.ll_pay_wechat})
     public void click(View view) {
         switch (view.getId()) {
+            case R.id.tv_vip_recharge:
+                VipRechargeActivity.startActivity(getActivity());
+                break;
             case R.id.tv_recharge_50:
                 tv_recharge_50.setBackgroundResource(R.drawable.shape_recharge_ammount_bg_select);
                 tv_recharge_50.setTextColor(getResources().getColor(R.color.white));

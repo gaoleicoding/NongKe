@@ -17,7 +17,6 @@ import java.security.MessageDigest;
 public class Utils {
 
 
-
     /**
      * md5 加密
      *
@@ -56,30 +55,19 @@ public class Utils {
     }
 
     //判断手机号是否正确
-    public static boolean isPhoneNumberRight(Context context, String phone) {
-        if (TextUtils.isEmpty(phone)) {
-            Toast.makeText(context, "手机号码不能为空", Toast.LENGTH_SHORT).show();
-            return false;
-        } else if (phone.length() == 11) {
-            /*
-             * 移动:134、135、136、137、138、139、150、151、157(TD)、158、159、187、188
-             * 联通:130、131、132、152、155、156、185、186 电信:133、153、180、189、(1349卫通)
-             * 总结起来就是第一位必定为1,第二位必定为3或5或8,其他位置的可以为0-9
-             */
-            String telRegex = "[1][0123456789]//d{9}";// "[1]"代表第1位为数字1,"[358]"代表第二位可以为3、5、8中的一个,"//d{9}"代表后面是可以是0~9的数字,有9位。
-            if (!phone.matches(telRegex)) {
-                Toast.makeText(context, "请输入正确的手机号", Toast.LENGTH_SHORT).show();
-                return false;
-            } else {
-                return true;
-            }
-        } else if (!TextUtils.isEmpty(phone) && phone.length() < 11) {
+    public static boolean isMobileNO(String mobile) {
 
-            Toast.makeText(context, "请输入正确的手机号", Toast.LENGTH_SHORT).show();
-            return false;
+        String telRegex = "[1][3578]\\d{9}";//"[1]"代表第1位为数字1，"[358]"代表第二位可以为3、5、8中的一个，"\\d{9}"代表后面是可以是0～9的数字，有9位。
 
+        if (TextUtils.isEmpty(mobile)) {
+            Utils.showToast("请输入正确的手机号", true);
+            return false;
+        } else if (!mobile.matches(telRegex)) {
+            Utils.showToast("请输入正确的手机号", true);
+            return false;
         }
-        return false;
+        return true;
+
     }
 
     /**
@@ -117,7 +105,7 @@ public class Utils {
         return (luhmSum % 10 == 0) ? '0' : (char) ((10 - luhmSum % 10) + '0');
     }
 
-    public static void showToast( String content, boolean isShort) {
+    public static void showToast(String content, boolean isShort) {
         Toast.makeText(CustomApplication.context, content, isShort ? Toast.LENGTH_SHORT : Toast.LENGTH_LONG).show();
 
     }
