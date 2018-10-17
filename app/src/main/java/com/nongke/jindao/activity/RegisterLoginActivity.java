@@ -166,6 +166,8 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
             case R.id.tv_register:
                 phoneNum = et_register_phone_num.getText().toString();
                 password = et_register_password.getText().toString();
+                if (password.length() < 6)
+                    Utils.showToast(getString(R.string.register_password_too_short), true);
                 String confirmPassword = et_register_confirm_password.getText().toString();
                 String code = et_register_verify_code.getText().toString();
                 mPresenter.getRegisterData(phoneNum, password, confirmPassword, code);
@@ -201,27 +203,30 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
     @Override
     public void showRegisterResData(RegisterResData registerResData) {
         LogUtil.d("registerResData.toString():" + registerResData.toString());
-        if (registerResData.retCode.equals("10000"))
+        if ("10000".equals(registerResData.retCode)) {
             Utils.showToast(getString(R.string.register_success), true);
-        else
+        } else {
             Utils.showToast(getString(R.string.register_failure), true);
+        }
     }
 
     @Override
     public void showLoginResData(LoginResData loginResData) {
         LogUtil.d("loginResData.toString():" + loginResData.toString());
-        if (loginResData.retCode.equals("10000"))
+        if ("10000".equals(loginResData.retCode)) {
             Utils.showToast(getString(R.string.login_success), true);
-        else
+        } else {
             Utils.showToast(getString(R.string.login_failure), true);
+        }
     }
 
     @Override
     public void showMsgCodeResData(MsgCodeResData msgCodeResData) {
         LogUtil.d("msgCodeResData.toString():" + msgCodeResData.toString());
-        if (msgCodeResData.retCode.equals("10000"))
-            Utils.showToast(getString(R.string.get_msgcode_success), true);
-        else
-            Utils.showToast(getString(R.string.get_msgcode_failure), true);
+        if ("10000".equals(msgCodeResData.retCode)) {
+//            Utils.showToast(getString(R.string.get_msgcode_success), true);
+        } else if (msgCodeResData.retDesc.contains("isv.BUSINESS_LIMIT_CONTROL") && "20000".equals(msgCodeResData.retCode))
+            Utils.showToast(getString(R.string.get_msgcode_frequent), true);
+        else Utils.showToast(getString(R.string.get_msgcode_failure), true);
     }
 }

@@ -1,6 +1,6 @@
 package com.nongke.jindao.base.mmodel;
 
-public class MsgCodeRequestData {
+public class MsgCodeReqData {
 
 /*    {
   "phone": "15652009705",
@@ -10,14 +10,14 @@ public class MsgCodeRequestData {
     public String phone;
     public int type;
 
-    public MsgCodeRequestData(String phone, int type) {
+    public MsgCodeReqData(String phone, int type) {
         this.phone = phone;
         this.type = type;
     }
 
     @Override
     public String toString() {
-        return "MsgCodeRequestData{" +
+        return "MsgCodeReqData{" +
                 "phone='" + phone + '\'' +
                 ", type=" + type +
                 '}';

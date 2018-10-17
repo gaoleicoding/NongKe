@@ -17,7 +17,7 @@ import retrofit2.HttpException;
 
 public abstract class BaseObserver<T> extends ResourceObserver<T> {
 
-    protected String errMsg = "";
+    protected String errMsg;
     private boolean isShowError = true;
     private Context context;
     Dialog prgressDialog;
@@ -54,8 +54,8 @@ public abstract class BaseObserver<T> extends ResourceObserver<T> {
         } else if (e instanceof IOException) {
             errMsg = "服务器访问异常(IOException)";
         }
-
-        Utils.showToast(errMsg, true);
+        if (errMsg != null)
+            Utils.showToast(errMsg, true);
 
     }
 

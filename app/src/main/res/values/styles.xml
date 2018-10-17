@@ -115,6 +115,23 @@
         <item name="android:layout_marginLeft">20dp</item>
     </style>
 
+    <style name="common_txt_18sp">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textColor">@color/color_black</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="common_txt_18sp_marginLeft20">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textColor">@color/color_black</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+    </style>
+
     <style name="user_account_txt">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -194,7 +211,7 @@
         <item name="android:background">@drawable/selector_btn_bg</item>
         <item name="android:layout_marginLeft">30dp</item>
         <item name="android:layout_marginRight">30dp</item>
-        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginTop">30dp</item>
     </style>
 
     <style name="btn_selector_wrap_style">

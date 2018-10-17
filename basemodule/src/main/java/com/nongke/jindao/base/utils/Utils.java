@@ -3,6 +3,7 @@ package com.nongke.jindao.base.utils;
 import android.app.ActivityManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.widget.Toast;
 
@@ -106,7 +107,14 @@ public class Utils {
     }
 
     public static void showToast(String content, boolean isShort) {
-        Toast.makeText(CustomApplication.context, content, isShort ? Toast.LENGTH_SHORT : Toast.LENGTH_LONG).show();
+        try {
+            Toast.makeText(CustomApplication.context, content, isShort ? Toast.LENGTH_SHORT : Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            //解决在子线程中调用Toast的异常情况处理
+            Looper.prepare();
+            Toast.makeText(CustomApplication.context, content, isShort ? Toast.LENGTH_SHORT : Toast.LENGTH_LONG).show();
+            Looper.loop();
+        }
 
     }
 }

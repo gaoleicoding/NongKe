@@ -1,4 +1,4 @@
-package com.nongke.jindao.thirdframe.retrofit;
+package com.nongke.jindao.base.thirdframe.retrofit;
 
 
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
@@ -33,48 +33,32 @@ public final class RetrofitProvider {
     private Retrofit mRetrofit;
     private OkHttpClient mOkHttpClient;
     private static volatile RetrofitProvider sInstance;
-    private ApiService restService;
     public static String netCachePath;
 
     private RetrofitProvider() {
+        init();
     }
 
 
-    public RetrofitProvider builder() {
+    private void  init() {
         netCachePath= CustomApplication.context.getExternalFilesDir("net_cache").getAbsolutePath();
         if (mOkHttpClient == null) {
             mOkHttpClient = new OkHttpClient.Builder()
                     .addNetworkInterceptor(new HttpLoggingInterceptor())
 //                    .addNetworkInterceptor(new OnlineCacheInterceptor())//有网缓存拦截器
 //                    .addInterceptor(new OfflineCacheInterceptor())//无网缓存拦截器
-                    .cache(new Cache(new File(netCachePath), 50 * 10240 * 1024))//缓存路径和空间设置
-                    .addInterceptor(new RetryIntercepter(4))//重试
-                    .addInterceptor(new GzipRequestInterceptor())//开启Gzip压缩
-//                    .addInterceptor(new Interceptor() {
-//                        @Override
-//                        public Response intercept(Chain chain) throws IOException {
-//                            Request request = chain.request()
-//                                    .newBuilder()
-//                                    .addHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
-//                                    .addHeader("Accept-Encoding", "gzip, deflate")
-//                                    .addHeader("Connection", "keep-alive")
-//                                    .addHeader("Accept", "*/*")
-//                                    .addHeader("Cookie", "add cookies here")
-//                                    .build();
-//                            return chain.proceed(request);
-//                        }
-//
-//                    })
-
+//                    .cache(new Cache(new File(netCachePath), 50 * 10240 * 1024))//缓存路径和空间设置
+//                    .addInterceptor(new RetryIntercepter(4))//重试
+//                    .addInterceptor(new GzipRequestInterceptor())//开启Gzip压缩
 //                    .addInterceptor(new DefaultHeaderInterceptor())//请求连接中添加头信息
 //                    .addInterceptor(new ProgressInterceptor())//请求url的进度
 //                    .addInterceptor(new TokenInterceptor())//token过期，自动刷新Token
 //                    .addInterceptor(new SignInterceptor())//所有的接口，默认需要带上sign,timestamp2个参数
 //                    .addNetworkInterceptor(new ParamsEncryptInterceptor())//参数加密,一般针对表单中的字段和值进行加密，防止中途第三方进行窥探和篡改
-.cookieJar(new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(CustomApplication.context)))
-                    .connectTimeout(5, TimeUnit.SECONDS)
-                    .readTimeout(5, TimeUnit.SECONDS)
-                    .writeTimeout(5, TimeUnit.SECONDS)
+//.cookieJar(new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(CustomApplication.context)))
+                    .connectTimeout(10, TimeUnit.SECONDS)
+                    .readTimeout(10, TimeUnit.SECONDS)
+                    .writeTimeout(10, TimeUnit.SECONDS)
                     .build();
 
         }
@@ -86,7 +70,6 @@ public final class RetrofitProvider {
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();
         }
-        return sInstance;
     }
 
     public static RetrofitProvider getInstance() {
@@ -100,9 +83,7 @@ public final class RetrofitProvider {
         return sInstance;
     }
 
-    public ApiService getApiService() {
-        if (restService == null)
-            restService = mRetrofit.create(ApiService.class);
-        return restService;
+    public <T> T createService(Class<T> tClass) {
+        return mRetrofit.create(tClass);
     }
 }

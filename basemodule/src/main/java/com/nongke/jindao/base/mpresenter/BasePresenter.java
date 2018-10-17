@@ -1,7 +1,7 @@
 package com.nongke.jindao.base.mpresenter;
 
 import com.nongke.jindao.base.api.ApiService;
-import com.nongke.jindao.thirdframe.retrofit.RetrofitProvider;
+import com.nongke.jindao.base.thirdframe.retrofit.RetrofitProvider;
 import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
 
 
@@ -13,9 +13,8 @@ import io.reactivex.schedulers.Schedulers;
 public abstract class BasePresenter<V> {
 
     public V mView;
-//    public Observable observable;
-    public ApiService mRestService = RetrofitProvider.getInstance().builder().getApiService();
-    CompositeDisposable mCompositeDisposable ;
+    public ApiService apiService = RetrofitProvider.getInstance().createService(ApiService.class);
+    CompositeDisposable mCompositeDisposable;
 
     /**
      * 绑定View
@@ -39,8 +38,8 @@ public abstract class BasePresenter<V> {
         }
     }
 
-    public void addSubscribe( Observable observable,BaseObserver observer){
-                mCompositeDisposable.add(observer);
+    public void addSubscribe(Observable observable, BaseObserver observer) {
+        mCompositeDisposable.add(observer);
         observable.subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

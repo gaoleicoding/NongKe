@@ -1,25 +1,35 @@
 package com.nongke.jindao.fragment;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Debug;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
+import com.nongke.jindao.MainActivity;
 import com.nongke.jindao.R;
 import com.nongke.jindao.activity.ArticleDetailActivity;
+import com.nongke.jindao.activity.UserProfileActivity;
+import com.nongke.jindao.activity.VipRechargeActivity;
 import com.nongke.jindao.adapter.DividerItemDecoration;
 import com.nongke.jindao.adapter.ArticleListAdapter;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mmodel.BannerListData;
 import com.nongke.jindao.base.mmodel.ArticleListData;
 import com.nongke.jindao.base.mmodel.ArticleListData.FeedArticleData;
+import com.nongke.jindao.base.utils.SharedPreferencesUtils;
+import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.mcontract.HomeContract;
 import com.nongke.jindao.mpresenter.HomePresenter;
+import com.nongke.jindao.utils.Constants;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
@@ -32,6 +42,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 
 /**
@@ -47,6 +58,17 @@ public class HomeFragment extends BaseMvpFragment<HomePresenter> implements Home
     Banner banner;
     @BindView(R.id.smartRefreshLayout_home)
     SmartRefreshLayout smartRefreshLayout;
+
+    @BindView(R.id.home_recharge_layout)
+    LinearLayout home_recharge_layout;
+    @BindView(R.id.home_vip_layout)
+    LinearLayout home_vip_layout;
+    @BindView(R.id.home_company_layout)
+    LinearLayout home_company_layout;
+    @BindView(R.id.home_download_layout)
+    LinearLayout home_download_layout;
+    @BindView(R.id.home_custom_layout)
+    LinearLayout home_custom_layout;
     private List<FeedArticleData> articleDataList;
     private ArticleListAdapter feedArticleAdapter;
 
@@ -194,7 +216,35 @@ public class HomeFragment extends BaseMvpFragment<HomePresenter> implements Home
             }
         });
     }
-    public void scrollToTop(){
+
+
+    @OnClick({R.id.home_recharge_layout, R.id.home_vip_layout, R.id.home_company_layout, R.id.home_download_layout, R.id.home_custom_layout})
+    public void click(View view) {
+        switch (view.getId()) {
+            case R.id.home_recharge_layout:
+                MainActivity mainActivity=(MainActivity) getActivity();
+                mainActivity.viewPager.setCurrentItem(1);
+                break;
+            case R.id.home_vip_layout:
+                VipRechargeActivity.startActivity(getActivity());
+                break;
+            case R.id.home_company_layout:
+
+                break;
+            case R.id.home_download_layout:
+
+                break;
+            case R.id.home_custom_layout:
+
+                break;
+
+            default:
+                break;
+        }
+
+    }
+
+    public void scrollToTop() {
         project_recyclerview.scrollToPosition(0);
     }
 

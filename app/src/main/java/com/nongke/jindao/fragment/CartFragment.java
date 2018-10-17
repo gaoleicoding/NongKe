@@ -56,7 +56,6 @@ public class CartFragment extends BaseMvpFragment {
         switch (view.getId()) {
             case R.id.tv_to_shop:
                 MainActivity mainActivity=(MainActivity) getActivity();
-                mainActivity.tabLayout.getTabAt(2).getCustomView().setSelected(true);
                 mainActivity.viewPager.setCurrentItem(2);
             default:
                 break;
