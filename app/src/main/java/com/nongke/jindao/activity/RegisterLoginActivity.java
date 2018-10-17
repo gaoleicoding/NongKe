@@ -205,7 +205,9 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
         LogUtil.d("registerResData.toString():" + registerResData.toString());
         if ("10000".equals(registerResData.retCode)) {
             Utils.showToast(getString(R.string.register_success), true);
-        } else {
+        } else if (registerResData.retDesc.contains("验证码已失效") && "20000".equals(registerResData.retCode))
+            Utils.showToast(getString(R.string.register_msg_code_invalid), true);
+        else {
             Utils.showToast(getString(R.string.register_failure), true);
         }
     }

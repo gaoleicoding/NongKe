@@ -3,13 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
-    <ImageView
-        android:layout_width="@dimen/tab_icon_size"
-        android:layout_height="@dimen/tab_icon_size"
-        android:src="@drawable/tab_selector_home"
-        android:visibility="gone"/>
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -17,5 +13,12 @@
         android:text="@string/classify_sales_price"
         android:textColor="@color/selector_tab_text"
         android:textSize="16sp" />
-
+    <ImageView
+        android:id="@+id/iv_price"
+        android:layout_width="11dp"
+        android:layout_height="11dp"
+        android:src="@drawable/icon_price_ascend"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="4dp"
+        />
 </LinearLayout>

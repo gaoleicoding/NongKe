@@ -9,11 +9,22 @@
         android:layout_width="match_parent"
         android:layout_height="45dp" />
 
-    <TextView
-        style="@style/common_txt_14sp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/transferable_amount" />
+    <LinearLayout style="@style/code_edit_layout_style">
+
+        <TextView
+            style="@style/common_txt_16sp"
+            android:text="@string/transferable_amount" />
+
+        <TextView
+            style="@style/common_txt_16sp"
+            android:text="100"
+            android:textColor="@color/app_color"
+            android:textSize="18sp" />
+
+        <TextView
+            style="@style/common_txt_16sp"
+            android:text=" 元" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layout_login"
@@ -25,7 +36,7 @@
         <LinearLayout style="@style/code_edit_layout_style">
 
             <TextView
-                style="@style/common_txt_14sp"
+                style="@style/common_txt_16sp"
                 android:text="@string/transfer_amount" />
 
             <EditText
@@ -36,7 +47,7 @@
         <LinearLayout style="@style/code_edit_layout_style">
 
             <TextView
-                style="@style/common_txt_14sp"
+                style="@style/common_txt_16sp"
                 android:text="@string/transfer_account" />
 
             <EditText

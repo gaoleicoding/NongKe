@@ -54,7 +54,7 @@
     <string name="phone_num">手机号</string>
     <string name="phone_num_input">请输入手机号</string>
     <!--<string name="password_colon">密码：</string>-->
-    <string name="password">密码</string>
+    <string name="password">密码&#160;&#160;&#160;&#160;</string>
     <string name="password_input">请输入密码</string>
     <string name="login">登录</string>
     <string name="register">注册</string>
@@ -104,12 +104,13 @@
     <string name="please_select_bank">请选择开户银行</string>
     <string name="register_success">注册成功，请登录</string>
     <string name="register_failure">注册失败</string>
-    <string name="register_password_too_short">密码太短，请重新设置</string>
+    <string name="register_password_too_short">密码不能少于6位，请重新设置</string>
     <string name="login_success">登录成功</string>
     <string name="login_failure">登录失败</string>
     <string name="get_msgcode_success">获取短信验证码成功</string>
     <string name="get_msgcode_failure">获取短信验证码失败</string>
     <string name="get_msgcode_frequent">获取短信验证码太频繁，请稍后再试</string>
+    <string name="register_msg_code_invalid">验证码无效</string>
     <string name="vip_member_recharge">VIP会员（¥ 49元）</string>
     <string name="daoli_balance">稻粒余额：</string>
     <string name="daoli_recharge_ammount">充值金额</string>

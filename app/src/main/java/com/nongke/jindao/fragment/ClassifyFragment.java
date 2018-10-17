@@ -3,6 +3,8 @@ package com.nongke.jindao.fragment;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.nongke.jindao.R;
 import com.nongke.jindao.adapter.RechargeTabAdapter;
@@ -26,10 +28,12 @@ public class ClassifyFragment extends BaseMvpFragment {
     TabLayout tabLayout;
     @BindView(R.id.viewPager)
     CustomViewPager viewPager;
+
+    boolean isPriceAscend = true;
     private ArrayList<Fragment> mFragments;
 
     @Override
-    public void initData( Bundle bundle) {
+    public void initData(Bundle bundle) {
 
     }
 
@@ -51,6 +55,7 @@ public class ClassifyFragment extends BaseMvpFragment {
         tabLayout.setupWithViewPager(viewPager);
         initTab();
     }
+
     /**
      * 设置添加Tab
      */
@@ -60,7 +65,20 @@ public class ClassifyFragment extends BaseMvpFragment {
         tabLayout.getTabAt(1).setCustomView(R.layout.tab_classify_sales);
         tabLayout.getTabAt(2).setCustomView(R.layout.tab_classify_price);
 //        tabLayout.getTabAt(3).setCustomView(R.layout.tab_classify_popularity);
-
+        tabLayout.getTabAt(2).getCustomView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isPriceAscend) {
+                  ImageView imageView=  (ImageView)tabLayout.getTabAt(2).getCustomView().findViewById(R.id.iv_price);
+                  imageView.setImageResource(R.drawable.icon_price_descend);
+                    isPriceAscend = false;
+                } else {
+                    ImageView imageView=  (ImageView)tabLayout.getTabAt(2).getCustomView().findViewById(R.id.iv_price);
+                    imageView.setImageResource(R.drawable.icon_price_ascend);
+                    isPriceAscend = true;
+                }
+            }
+        });
 
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -68,6 +86,10 @@ public class ClassifyFragment extends BaseMvpFragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
 //                title.setText(titles.get(tab.getPosition()));
+                int position = tab.getPosition();
+                if (position == 2) {
+
+                }
             }
 
             //标签没选中
@@ -84,6 +106,7 @@ public class ClassifyFragment extends BaseMvpFragment {
         //默认选中的Tab
         tabLayout.getTabAt(0).getCustomView().setSelected(true);
     }
+
     @Override
     public int setContentLayout() {
         return R.layout.fragment_classify;

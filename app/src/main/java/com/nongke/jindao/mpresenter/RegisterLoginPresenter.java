@@ -13,6 +13,10 @@ import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.mcontract.RegisterLoginContract;
 import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
 
+import org.json.JSONObject;
+
+import java.util.HashMap;
+
 import io.reactivex.Observable;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -23,7 +27,15 @@ public class RegisterLoginPresenter extends BasePresenter<RegisterLoginContract.
 
     @Override
     public void getRegisterData(String phone, String password, String confirmPassword, String code) {
-        Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).getRegisterData(phone, password, confirmPassword, code);
+        HashMap hashMap = new HashMap();
+        hashMap.put("phone", phone);
+        hashMap.put("password", password);
+        hashMap.put("confirmPassword", confirmPassword);
+        hashMap.put("code", code);
+        String jsonString = new JSONObject(hashMap).toString();
+        LogUtil.d2("jsonString------------" + jsonString);
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonString);
+        Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).getRegisterData(body);
         addSubscribe(observable, new BaseObserver<RegisterResData>(false) {
             @Override
             public void onNext(RegisterResData registerResData) {
@@ -34,7 +46,14 @@ public class RegisterLoginPresenter extends BasePresenter<RegisterLoginContract.
 
     @Override
     public void getLoginData(String phone, String password) {
-        Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).getLoginData(phone, password);
+        HashMap hashMap = new HashMap();
+        hashMap.put("phone", phone);
+        hashMap.put("password", password);
+        String jsonString = new JSONObject(hashMap).toString();
+        LogUtil.d2("jsonString------------" + jsonString);
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonString);
+
+        Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).getLoginData(body);
         addSubscribe(observable, new BaseObserver<LoginResData>(false) {
             @Override
             public void onNext(LoginResData loginResData) {
@@ -45,11 +64,12 @@ public class RegisterLoginPresenter extends BasePresenter<RegisterLoginContract.
 
     @Override
     public void getMessageCode(String phone, int type) {
-        MsgCodeReqData info = new MsgCodeReqData(phone, type);
-        Gson gson = new Gson();
-        String toJson = gson.toJson(info);
-        LogUtil.d2("toJson------------" + toJson);
-        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), toJson);
+        HashMap hashMap = new HashMap();
+        hashMap.put("phone", phone);
+        hashMap.put("type", type);
+        String jsonString = new JSONObject(hashMap).toString();
+        LogUtil.d2("jsonString------------" + jsonString);
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonString);
 
         Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).getMessageCode(body);
         addSubscribe(observable, new BaseObserver<MsgCodeResData>(false) {
