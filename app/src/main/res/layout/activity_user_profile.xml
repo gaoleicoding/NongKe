@@ -27,7 +27,7 @@
                 style="@style/code_edit_layout_style">
 
                 <TextView
-                    style="@style/common_txt_16dp"
+                    style="@style/common_txt_16sp"
                     android:text="@string/bank_name" />
 
                 <LinearLayout
@@ -41,7 +41,7 @@
 
                     <TextView
                         android:id="@+id/tv_select_bank"
-                        style="@style/common_txt_16dp"
+                        style="@style/common_txt_16sp"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -58,7 +58,7 @@
             <LinearLayout style="@style/code_edit_layout_style">
 
                 <TextView
-                    style="@style/common_txt_16dp"
+                    style="@style/common_txt_16sp"
                     android:text="@string/bank_card_num" />
 
                 <EditText
@@ -69,7 +69,7 @@
             <LinearLayout style="@style/code_edit_layout_style">
 
                 <TextView
-                    style="@style/common_txt_16dp"
+                    style="@style/common_txt_16sp"
                     android:text="@string/bank_card_owener_name" />
 
                 <EditText
@@ -80,7 +80,7 @@
             <LinearLayout style="@style/code_edit_layout_style">
 
                 <TextView
-                    style="@style/common_txt_16dp"
+                    style="@style/common_txt_16sp"
                     android:text="@string/bank_branch_address" />
 
                 <EditText
@@ -91,7 +91,7 @@
             <LinearLayout style="@style/code_edit_layout_style">
 
                 <TextView
-                    style="@style/common_txt_16dp"
+                    style="@style/common_txt_16sp"
                     android:text="@string/contact_phone_num" />
 
                 <EditText
@@ -108,7 +108,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/common_txt_16dp"
+                    style="@style/common_txt_16sp"
                     android:text="@string/veirfy_code_user_profile" />
 
                 <EditText
@@ -128,7 +128,7 @@
                 style="@style/btn_selector_match_style"
                 android:text="@string/save_modify"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                />
         </LinearLayout>
     </LinearLayout>
 

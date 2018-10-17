@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/common_txt_16dp_marginLeft"
+            style="@style/common_txt_16sp_marginLeft20"
             android:layout_margin="10dp"
             android:text="@string/please_select_bank" />
 

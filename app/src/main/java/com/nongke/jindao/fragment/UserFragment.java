@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.nongke.jindao.R;
 import com.nongke.jindao.activity.AddressActivity;
 import com.nongke.jindao.activity.DaoLiTransferActivity;
+import com.nongke.jindao.activity.DaoliRechargeActivity;
 import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.activity.UserProfileActivity;
 import com.nongke.jindao.activity.VipRechargeActivity;
@@ -96,7 +97,7 @@ public class UserFragment extends BaseMvpFragment {
                 VipRechargeActivity.startActivity(getActivity());
             break;
             case R.id.my_daoli_recharge_layout:
-                if (!UserUtils.isLogined()) RegisterLoginActivity.startActivity(getActivity());
+                DaoliRechargeActivity.startActivity(getActivity());
                 break;
             case R.id.my_daoli_transfer_layout:
                 DaoLiTransferActivity.startActivity(getActivity());

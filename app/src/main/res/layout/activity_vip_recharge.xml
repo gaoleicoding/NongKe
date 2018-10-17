@@ -15,19 +15,22 @@
             android:layout_height="182dp"
             android:scaleType="fitXY"
             android:src="@drawable/img_vip_banner" />
+
         <LinearLayout
             android:id="@+id/recharge_phone_num_layout"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:orientation="horizontal">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="20dp"
                 android:src="@drawable/icon_crown" />
+
             <TextView
-                style="@style/user_info_txt"
+                style="@style/common_txt_16sp"
                 android:layout_marginLeft="5dp"
                 android:text="@string/vip_member_recharge"
                 android:textColor="@color/app_color" />
@@ -55,8 +58,13 @@
                 android:paddingTop="20dp"
                 android:text="@string/vip_member_recharge_instruction"
                 android:textColor="@color/color_676767"
-                android:textSize="13sp" />
+                android:textSize="14sp" />
         </LinearLayout>
+
+        <View
+            style="@style/horizontal_divider"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp" />
 
         <TextView
             style="@style/user_info_txt"
@@ -85,7 +93,7 @@
                 android:src="@drawable/icon_alipay" />
 
             <TextView
-                style="@style/user_info_txt"
+                style="@style/common_txt_14sp_marginLeft20"
                 android:text="@string/pay_alipay" />
         </LinearLayout>
 
@@ -111,7 +119,7 @@
                 android:src="@drawable/icon_wechat" />
 
             <TextView
-                style="@style/user_info_txt"
+                style="@style/common_txt_14sp_marginLeft20"
                 android:text="@string/pay_wechat" />
         </LinearLayout>
 
@@ -124,20 +132,11 @@
              style="@style/user_info_txt"
              android:layout_marginTop="20dp"
              android:text="@string/recharge_pay_indeed" />-->
-
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/selector_btn_bg"
-            android:clickable="true"
-            android:gravity="center"
-            android:padding="10dp"
+            android:id="@+id/tv_withdraw_immediate"
+            style="@style/btn_selector_match_style"
             android:text="@string/upgrade_to_vip"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textColor="@color/white" />
 
         <TextView
             style="@style/user_info_txt"

@@ -38,6 +38,7 @@
         <activity android:name=".activity.UserProfileActivity"></activity>
         <activity android:name=".activity.AddressActivity"></activity>
         <activity android:name=".activity.VipRechargeActivity"></activity>
+        <activity android:name=".activity.DaoliRechargeActivity"></activity>
         <!--value的值填写你在友盟后台申请的应用Appkey-->
         <meta-data
             android:name="UMENG_APPKEY"
