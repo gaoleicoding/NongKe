@@ -45,7 +45,8 @@ public class LogoutResData {
         return "LogoutResData{" +
                 "retCode='" + retCode + '\'' +
                 ", retDesc='" + retDesc + '\'' +
-                ", rspBody='" + rspBody + '\'' +
+                (rspBody == null ? "" :
+                ", rspBody=" + rspBody.toString())+
                 '}';
     }
 }

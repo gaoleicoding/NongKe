@@ -12,7 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33991523-bb9a-48df-a13c-e2274cce3382" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/mmodel/LogoutResData.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_cardview_v7_26_1_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_daoli_recharge.xml" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" />
@@ -24,40 +25,239 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/MainActivity.java" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/RegisterLoginActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/RegisterLoginActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/UserProfileActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/UserProfileActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/WithdrawActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/WithdrawActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/adapter/ArticleListAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/adapter/ArticleListAdapter.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/adapter/ProjectListAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/adapter/ProjectListAdapter.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/HomeFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/HomeFragment.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/RechargeFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/RechargeFragment.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/UserFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/UserFragment.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/mcontract/HomeContract.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/mcontract/ProjectContract.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/mcontract/RegisterLoginContract.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/mcontract/RegisterLoginContract.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/mpresenter/HomePresenter.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/mpresenter/ProjectPresenter.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/mpresenter/RegisterLoginPresenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/mpresenter/RegisterLoginPresenter.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/utils/Constants.java" afterPath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/utils/Constants.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/utils/UserUtils.java" afterPath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/utils/UserUtils.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_daoli_recharge.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_daoli_recharge.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login_register.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login_register.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_user.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_user.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change beforePath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/activity/BaseActivity.java" afterPath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/activity/BaseActivity.java" />
-      <change beforePath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/api/ApiService.java" afterPath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/api/ApiService.java" />
-      <change beforePath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/mmodel/ArticleListData.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/mmodel/BannerListData.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/basemodule/basemodule.iml" afterPath="$PROJECT_DIR$/basemodule/basemodule.iml" />
+      <change beforePath="$PROJECT_DIR$/basemodule/build.gradle" afterPath="$PROJECT_DIR$/basemodule/build.gradle" />
       <change beforePath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/mmodel/LoginResData.java" afterPath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/mmodel/LoginResData.java" />
-      <change beforePath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/mmodel/ProjectListData.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/thirdframe/retrofit/BaseRetrofit.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/thirdframe/retrofit/interceptor/DefaultHeaderInterceptor.java" afterPath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/thirdframe/retrofit/interceptor/DefaultHeaderInterceptor.java" />
-      <change beforePath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/utils/LogUtil.java" afterPath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/utils/LogUtil.java" />
-      <change beforePath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/utils/SharedPreferencesUtils.java" afterPath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/utils/SharedPreferencesUtils.java" />
-      <change beforePath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/utils/Utils.java" afterPath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/utils/Utils.java" />
+      <change beforePath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/mmodel/LogoutResData.java" afterPath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/mmodel/LogoutResData.java" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-11-49-07-995.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-11-49-07-995.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-11-49-57-989.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-11-49-57-989.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-11-53-53-065.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-11-53-53-065.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-13-33-08-432.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-13-33-08-432.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-13-34-28-228.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-13-34-28-228.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-13-37-40-748.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-13-37-40-748.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-13-38-59-400.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-13-38-59-400.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-13-39-25-795.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-13-39-25-795.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-14-33-07-459.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-14-33-07-459.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-14-34-38-536.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-14-34-38-536.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-14-35-35-587.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-14-35-35-587.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-14-37-44-574.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-14-37-44-574.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-15-02-50-043.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-15-02-50-043.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-15-05-54-444.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-15-05-54-444.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-15-08-45-846.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-15-08-45-846.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-15-13-07-468.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-15-13-07-468.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-15-14-03-959.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-15-14-03-959.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-16-39-05-622.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-16-39-05-622.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-16-59-00-967.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-16-59-00-967.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-17-14-03-707.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-17-14-03-707.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-17-28-21-578.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-17-28-21-578.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-17-32-38-293.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-17-32-38-293.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-17-39-35-463.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-17-39-35-463.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-18-06-07-071.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-18-06-07-071.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-18-08-19-707.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-18-08-19-707.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-18-45-21-296.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-18-45-21-296.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-19-19-29-599.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-19-19-29-599.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-19-21-41-906.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-19-21-41-906.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-19-24-01-458.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-19-24-01-458.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-19-25-04-998.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-19-25-04-998.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-20-00-37-362.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-20-00-37-362.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-20-05-11-024.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-20-05-11-024.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-20-38-34-557.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-20-38-34-557.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-20-42-49-421.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-20-42-49-421.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-20-43-56-629.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-20-43-56-629.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-20-45-41-727.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-20-45-41-727.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-20-45-55-509.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-20-45-55-509.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-20-49-35-462.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-16-20-49-35-462.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-00-37-24-879.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-00-37-24-879.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-09-44-22-875.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-09-44-22-875.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-12-18-15-505.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-12-18-15-505.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-12-19-37-883.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-12-19-37-883.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-12-58-00-635.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-12-58-00-635.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-13-07-06-924.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-13-07-06-924.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-13-24-42-124.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-13-24-42-124.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-14-04-23-817.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-14-04-23-817.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-14-12-18-196.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-14-12-18-196.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-14-26-31-593.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-14-26-31-593.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-14-54-46-193.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-14-54-46-193.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-02-07-150.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-02-07-150.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-02-50-445.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-02-50-445.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-05-17-647.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-05-17-647.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-10-38-455.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-10-38-455.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-11-44-513.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-11-44-513.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-17-46-477.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-17-46-477.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-30-14-046.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-30-14-046.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-32-03-236.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-32-03-236.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-37-09-022.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-37-09-022.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-40-09-812.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-40-09-812.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-52-52-478.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-52-52-478.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-54-50-813.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-54-50-813.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-56-30-503.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-56-30-503.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-57-06-886.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-57-06-886.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-57-54-523.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-57-54-523.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-58-32-044.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-58-32-044.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-59-16-972.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-15-59-16-972.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-16-00-02-236.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-16-00-02-236.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-16-00-36-334.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-16-00-36-334.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-16-01-05-146.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-16-01-05-146.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-16-01-34-443.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-16-01-34-443.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-16-02-25-633.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-16-02-25-633.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-16-21-50-581.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-16-21-50-581.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-16-25-22-247.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-16-25-22-247.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-16-25-47-299.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-16-25-47-299.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-16-34-36-149.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-16-34-36-149.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-16-46-47-346.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-16-46-47-346.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-16-51-52-478.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-16-51-52-478.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-17-08-08-912.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-17-08-08-912.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-17-17-09-717.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-17-17-09-717.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-17-17-49-998.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-17-17-49-998.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-17-34-57-078.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-17-34-57-078.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-19-40-50-775.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-19-40-50-775.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-19-47-27-531.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-19-47-27-531.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-20-51-30-528.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-20-51-30-528.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-20-54-41-433.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-20-54-41-433.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-20-59-09-838.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-20-59-09-838.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-21-04-50-983.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-21-04-50-983.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-21-07-21-323.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-21-07-21-323.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-21-12-42-744.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-21-12-42-744.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-22-54-04-916.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-17-22-54-04-916.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-10-20-01-048.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-10-20-01-048.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-14-52-58-794.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-14-52-58-794.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-18-25-29-114.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-18-25-29-114.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-18-43-51-606.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-18-43-51-606.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-18-49-19-540.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-18-49-19-540.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-18-50-41-204.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-18-50-41-204.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-20-33-13-181.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-20-33-13-181.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-20-40-42-279.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-20-40-42-279.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-20-57-02-786.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-20-57-02-786.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-20-58-21-496.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-20-58-21-496.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-21-00-03-604.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-21-00-03-604.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-21-00-30-214.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-21-00-30-214.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-21-06-39-822.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-21-06-39-822.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-23-48-33-614.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-23-48-33-614.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-23-54-57-776.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-23-54-57-776.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-23-59-06-670.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-18-23-59-06-670.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-19-00-03-55-575.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-19-00-03-55-575.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-19-00-25-19-861.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-19-00-25-19-861.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-19-00-27-31-715.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-19-00-27-31-715.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-19-00-29-55-748.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-19-00-29-55-748.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-19-00-32-15-402.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-10-19-00-32-15-402.rawproto" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/config.gradle" afterPath="$PROJECT_DIR$/config.gradle" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -111,43 +311,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="RegisterLoginActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/RegisterLoginActivity.java">
+      <file leaf-file-name="activity_daoli_recharge.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_daoli_recharge.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="197" column="36" lean-forward="false" selection-start-line="197" selection-start-column="36" selection-end-line="197" selection-end-column="36" />
-              <folding>
-                <element signature="e#7363#7410#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegisterLoginPresenter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/mpresenter/RegisterLoginPresenter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="39" column="101" lean-forward="true" selection-start-line="39" selection-start-column="101" selection-end-line="39" selection-end-column="101" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ApiService.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/api/ApiService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="30" column="4" lean-forward="false" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_login_register.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login_register.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-43">
-              <caret line="180" column="52" lean-forward="false" selection-start-line="180" selection-start-column="29" selection-end-line="180" selection-end-column="52" />
+            <state relative-caret-position="229">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -156,64 +324,100 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RetrofitProvider.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/thirdframe/retrofit/RetrofitProvider.java">
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/basemodule/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="56" column="9" lean-forward="false" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="9" />
+            <state relative-caret-position="309">
+              <caret line="47" column="52" lean-forward="false" selection-start-line="47" selection-start-column="52" selection-end-line="47" selection-end-column="52" />
               <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="254">
+              <caret line="21" column="85" lean-forward="false" selection-start-line="21" selection-start-column="85" selection-end-line="21" selection-end-column="85" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layout_daoli_recharge.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout_daoli_recharge.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="40" lean-forward="false" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="UserFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/UserFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="160" column="13" lean-forward="true" selection-start-line="160" selection-start-column="13" selection-end-line="160" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Utils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/utils/Utils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SharedPreferencesUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/utils/SharedPreferencesUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="84" column="31" lean-forward="false" selection-start-line="84" selection-start-column="31" selection-end-line="84" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/utils/UserUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="17" column="31" lean-forward="false" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+            <state relative-caret-position="521">
+              <caret line="99" column="9" lean-forward="false" selection-start-line="99" selection-start-column="9" selection-end-line="99" selection-end-column="9" />
               <folding>
-                <element signature="e#415#416#0" expanded="true" />
-                <element signature="e#446#447#0" expanded="true" />
+                <element signature="e#2768#2769#0" expanded="true" />
+                <element signature="e#2801#2802#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LogUtil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/utils/LogUtil.java">
+      <file leaf-file-name="fragment_user.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_user.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="14" column="43" lean-forward="false" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
+            <state relative-caret-position="185">
+              <caret line="17" column="44" lean-forward="false" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="179">
+              <caret line="173" column="34" lean-forward="false" selection-start-line="173" selection-start-column="34" selection-end-line="173" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginResData.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/mmodel/LoginResData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="386">
+              <caret line="73" column="50" lean-forward="false" selection-start-line="73" selection-start-column="50" selection-end-line="73" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LogoutResData.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/mmodel/LogoutResData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="401">
+              <caret line="47" column="17" lean-forward="false" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -231,9 +435,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>发送请求</find>
-      <find>multi-</find>
-      <find>addconv</find>
       <find>vip_member</find>
       <find>tv_vip_recharge</find>
       <find>recharge_ammount</find>
@@ -261,6 +462,9 @@
       <find>digis</find>
       <find>tv_submit</find>
       <find>layout_forget_password</find>
+      <find>getMessageCode</find>
+      <find>tv_forget_pwd_get_verify_code</find>
+      <find>rspBody</find>
     </findStrings>
     <replaceStrings>
       <replace>com.nongke</replace>
@@ -14810,9 +15014,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/utils/Constants.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/WithdrawActivity.java" />
-        <option value="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/thirdframe/retrofit/UrlConfig.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/UserProfileActivity.java" />
         <option value="$PROJECT_DIR$/basemodule/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/BecomeVipActivity.java" />
@@ -14836,14 +15037,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/ClassifyFragment.java" />
         <option value="$PROJECT_DIR$/app/.gitignore" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/utils/UserUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_user.xml" />
-        <option value="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/mmodel/LoginResData.java" />
-        <option value="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/mmodel/LogoutResData.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/mcontract/RegisterLoginContract.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/mpresenter/RegisterLoginPresenter.java" />
         <option value="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/activity/BaseActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_daoli_recharge.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/adapter/ProjectListAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/adapter/ArticleListAdapter.java" />
@@ -14856,11 +15050,21 @@
         <option value="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/utils/LogUtil.java" />
         <option value="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/thirdframe/retrofit/RetrofitProvider.java" />
         <option value="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/utils/SharedPreferencesUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/UserFragment.java" />
         <option value="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/utils/Utils.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login_register.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/RegisterLoginActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/mcontract/RegisterLoginContract.java" />
         <option value="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/api/ApiService.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/mpresenter/RegisterLoginPresenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/RegisterLoginActivity.java" />
+        <option value="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/mmodel/LoginResData.java" />
+        <option value="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/mmodel/LogoutResData.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_user.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/UserFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_daoli_recharge.xml" />
+        <option value="$PROJECT_DIR$/basemodule/build.gradle" />
+        <option value="$PROJECT_DIR$/config.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_daoli_recharge.xml" />
       </list>
     </option>
   </component>
@@ -14942,6 +15146,26 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="jindao" type="462c0819:PsiDirectoryNode" />
+              <item name="activity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NongKe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NongKe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="jindao" type="462c0819:PsiDirectoryNode" />
+              <item name="fragment" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NongKe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NongKe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="jindao" type="462c0819:PsiDirectoryNode" />
               <item name="mcontract" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -14961,6 +15185,15 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="res" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NongKe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NongKe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="layout" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NongKe" type="b2602c69:ProjectViewProjectNode" />
@@ -15005,6 +15238,16 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="base" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NongKe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NongKe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="basemodule" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="mmodel" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NongKe" type="b2602c69:ProjectViewProjectNode" />
@@ -15064,7 +15307,7 @@
     <property name="ExportApk.SignV2" value="true" />
     <property name="android.project.structure.last.selected" value="basemodule" />
     <property name="android.project.structure.proportion" value="0.15" />
-    <property name="DEBUGGABLE_DEVICE" value="samsung-sm_g9350-f0fac9fa" />
+    <property name="DEBUGGABLE_DEVICE" value="samsung-sm_a7000-5b3ddafd" />
     <property name="DEBUGGABLE_PROCESS" value="com.nongke.jindao" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="DEBUGGER_ID" value="Auto" />
@@ -15074,8 +15317,8 @@
       <recent name="com.nongke.jindao.activity" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi" />
       <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi" />
       <recent name="$PROJECT_DIR$/app/src/main/res/values" />
       <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi" />
@@ -15335,7 +15578,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="23" width="1440" height="877" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -15347,19 +15589,19 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08291032" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18530351" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.04347826" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18445323" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1884058" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26609442" sideWeight="0.794948" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25955203" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3855508" sideWeight="0.794948" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Build" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25823453" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38232163" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12193823" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938075" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -15421,25 +15663,25 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/mpresenter/RegisterLoginPresenter.java</url>
-          <line>100</line>
+          <line>119</line>
           <properties />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/mpresenter/RegisterLoginPresenter.java</url>
-          <line>96</line>
+          <line>115</line>
           <properties />
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/RegisterLoginActivity.java</url>
-          <line>245</line>
+          <line>257</line>
           <properties />
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/RegisterLoginActivity.java</url>
-          <line>261</line>
+          <line>275</line>
           <properties />
           <option name="timeStamp" value="21" />
         </line-breakpoint>
@@ -15469,89 +15711,31 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/RegisterLoginActivity.java</url>
-          <line>229</line>
+          <line>223</line>
           <properties />
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/RegisterLoginActivity.java</url>
-          <line>139</line>
+          <line>127</line>
           <properties />
           <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/RegisterLoginActivity.java</url>
+          <line>156</line>
+          <properties />
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="32" />
+      <option name="time" value="33" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_withdraw.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="27" column="62" lean-forward="true" selection-start-line="25" selection-start-column="14" selection-end-line="27" selection-end-column="62" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_daoli_transfer.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="15" column="53" lean-forward="false" selection-start-line="15" selection-start-column="53" selection-end-line="15" selection-end-column="53" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/basemodule/src/main/res/color/selector_tab_text.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="36" lean-forward="false" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/tab_classify_sales.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="41" lean-forward="false" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/color/selector_tab_text.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="32" lean-forward="false" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_classify.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-737">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/tab_classify_price.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="20" lean-forward="false" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/icon_price_ascend.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -15620,17 +15804,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_user.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="46" column="46" lean-forward="false" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-26/android/content/Intent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
@@ -15643,22 +15816,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="15" column="8" lean-forward="false" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/mmodel/LoginResData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="45" column="67" lean-forward="false" selection-start-line="45" selection-start-column="67" selection-end-line="45" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/mcontract/RegisterLoginContract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="14" column="21" lean-forward="false" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -15687,37 +15844,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="116" column="32" lean-forward="false" selection-start-line="116" selection-start-column="18" selection-end-line="116" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/activity/BaseActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="641">
           <caret line="80" column="30" lean-forward="true" selection-start-line="80" selection-start-column="30" selection-end-line="80" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_daoli_recharge.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="36" lean-forward="false" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/DaoliRechargeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="38" column="40" lean-forward="false" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -15784,14 +15914,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="173" column="17" lean-forward="false" selection-start-line="173" selection-start-column="17" selection-end-line="173" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/thirdframe/retrofit/interceptor/SignInterceptor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1232">
@@ -15811,14 +15933,6 @@
             <element signature="e#2668#2692#0" expanded="false" />
             <element signature="e#2714#2738#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/mmodel/LogoutResData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="26" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -15875,17 +15989,9 @@
         <state relative-caret-position="195">
           <caret line="17" column="31" lean-forward="false" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
           <folding>
-            <element signature="e#415#416#0" expanded="true" />
-            <element signature="e#446#447#0" expanded="true" />
+            <element signature="e#415#416#0" expanded="false" />
+            <element signature="e#446#447#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/UserFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="160" column="13" lean-forward="true" selection-start-line="160" selection-start-column="13" selection-end-line="160" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -15897,10 +16003,82 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/mcontract/RegisterLoginContract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="4" column="53" lean-forward="false" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/api/ApiService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="32" column="48" lean-forward="false" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/mpresenter/RegisterLoginPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="61" column="34" lean-forward="false" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="106" column="35" lean-forward="false" selection-start-line="106" selection-start-column="18" selection-end-line="106" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/DaoliRechargeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="38" column="31" lean-forward="false" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/mmodel/MsgCodeReqData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-49">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/mmodel/MsgCodeResData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/mmodel/RegisterResData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-19">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/RegisterLoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="93" column="37" lean-forward="false" selection-start-line="93" selection-start-column="37" selection-end-line="93" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login_register.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-43">
-          <caret line="180" column="52" lean-forward="false" selection-start-line="180" selection-start-column="29" selection-end-line="180" selection-end-column="52" />
+        <state relative-caret-position="209">
+          <caret line="37" column="40" lean-forward="false" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -15908,30 +16086,96 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/RegisterLoginActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="197" column="36" lean-forward="false" selection-start-line="197" selection-start-column="36" selection-end-line="197" selection-end-column="36" />
+        <state relative-caret-position="179">
+          <caret line="173" column="34" lean-forward="false" selection-start-line="173" selection-start-column="34" selection-end-line="173" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/mmodel/LoginResData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="73" column="50" lean-forward="false" selection-start-line="73" selection-start-column="50" selection-end-line="73" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/mmodel/LogoutResData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="47" column="17" lean-forward="false" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_user.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="17" column="44" lean-forward="false" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/UserFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="99" column="9" lean-forward="false" selection-start-line="99" selection-start-column="9" selection-end-line="99" selection-end-column="9" />
           <folding>
-            <element signature="e#7363#7410#0" expanded="true" />
+            <element signature="e#2768#2769#0" expanded="true" />
+            <element signature="e#2801#2802#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/mpresenter/RegisterLoginPresenter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout_daoli_recharge.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
-          <caret line="39" column="101" lean-forward="true" selection-start-line="39" selection-start-column="101" selection-end-line="39" selection-end-column="101" />
+          <caret line="19" column="40" lean-forward="false" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/api/ApiService.java">
+    <entry file="file://$PROJECT_DIR$/config.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="30" column="4" lean-forward="false" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+        <state relative-caret-position="254">
+          <caret line="21" column="85" lean-forward="false" selection-start-line="21" selection-start-column="85" selection-end-line="21" selection-end-column="85" />
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/basemodule/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="47" column="52" lean-forward="false" selection-start-line="47" selection-start-column="52" selection-end-line="47" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_daoli_recharge.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
   </component>

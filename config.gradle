@@ -19,7 +19,7 @@ ext {
 
 
     dependencies = [
-            appcompatV7                    : "com.android.support:appcompat-v7:26+",
+            appcompatV7                    : "com.android.support:appcompat-v7:26.1.0",
             design                         : "com.android.support:design:26+",
             "constraint-layout"            : "com.android.support.constraint:constraint-layout:1.1.0",
 

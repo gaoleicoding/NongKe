@@ -114,7 +114,7 @@
     <string name="get_msgcode_frequent">获取短信验证码太频繁，请稍后再试</string>
     <string name="register_msg_code_invalid">验证码无效</string>
     <string name="vip_member_recharge">VIP会员（¥ 49元）</string>
-    <string name="daoli_balance">稻粒余额：</string>
+    <string name="daoli_balance">稻粒余额</string>
     <string name="daoli_recharge_ammount">充值金额</string>
     <string name="user_not_login">用户尚未登录,请登录</string>
 

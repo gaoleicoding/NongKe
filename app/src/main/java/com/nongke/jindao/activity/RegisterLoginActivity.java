@@ -263,7 +263,9 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
             SharedPreferencesUtils.setParam(RegisterLoginActivity.this, "password", et_login_password.getText().toString());
             MainActivity.startActivity(RegisterLoginActivity.this);
 //            ExitAppUtils.getInstance().exit();
-        } else {
+        } else if (loginResData.retDesc.contains("密码错误") && "20000".equals(loginResData.retCode))
+            Utils.showToast("密码错误", true);
+        else {
             Utils.showToast(getString(R.string.login_failure), true);
         }
     }

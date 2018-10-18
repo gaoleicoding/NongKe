@@ -169,7 +169,7 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
                 ll_userinfo_profile_logined.setVisibility(View.GONE);
                 ll_userinfo_profile_not_login.setVisibility(View.VISIBLE);
                 SharedPreferencesUtils.clear(getActivity(),"phone_num");
-                SharedPreferencesUtils.clear(getActivity(),"password");
+                SharedPreferencesUtils.clear(getActivity(),"phone_num");
 //                mPresenter.getLogoutData(phoneNum);
                 RegisterLoginActivity.startActivity(getActivity());
                 break;
