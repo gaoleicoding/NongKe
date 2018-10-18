@@ -56,8 +56,7 @@
 
             <EditText
                 android:id="@+id/et_login_password"
-                style="@style/code_edit_style"
-                android:inputType="numberPassword" />
+                style="@style/code_edit_style" />
         </LinearLayout>
 
         <TextView
@@ -218,7 +217,7 @@
 
 
         <TextView
-            android:id="@+id/tv_submit"
+            android:id="@+id/tv_modify_pwd_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

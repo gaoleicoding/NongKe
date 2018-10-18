@@ -17,7 +17,7 @@ import com.nongke.jindao.base.activity.BaseMvpActivity;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.utils.SharedPreferencesUtils;
 import com.nongke.jindao.base.utils.Utils;
-import com.nongke.jindao.utils.Constants;
+import com.nongke.jindao.base.utils.Constants;
 import com.nongke.jindao.view.CountDownButton;
 
 import butterknife.BindView;

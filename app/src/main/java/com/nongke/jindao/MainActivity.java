@@ -1,6 +1,8 @@
 package com.nongke.jindao;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -12,13 +14,14 @@ import android.widget.Toast;
 import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.adapter.MainTabAdapter;
 import com.nongke.jindao.base.activity.BaseActivity;
+import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.PermissionUtil;
 import com.nongke.jindao.fragment.HomeFragment;
 import com.nongke.jindao.fragment.ClassifyFragment;
 import com.nongke.jindao.fragment.CartFragment;
 import com.nongke.jindao.fragment.RechargeFragment;
 import com.nongke.jindao.fragment.UserFragment;
-import com.nongke.jindao.utils.UserUtils;
+import com.nongke.jindao.base.utils.UserUtils;
 import com.nongke.jindao.view.CustomViewPager;
 
 import java.util.ArrayList;
@@ -39,6 +42,12 @@ public class MainActivity extends BaseActivity {
     TextView title;
     HomeFragment homeFragment;
     RechargeFragment projectFragment;
+    UserFragment userFragment;
+
+    public static void startActivity(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        context.startActivity(intent);
+    }
 
     @Override
     protected int getLayoutId() {
@@ -60,11 +69,12 @@ public class MainActivity extends BaseActivity {
         mFragments = new ArrayList<Fragment>();
         homeFragment = new HomeFragment();
         projectFragment = new RechargeFragment();
+        userFragment = new UserFragment();
         mFragments.add(homeFragment);
         mFragments.add(projectFragment);
         mFragments.add(new ClassifyFragment());
         mFragments.add(new CartFragment());
-        mFragments.add(new UserFragment());
+        mFragments.add(userFragment);
 
         titles = new ArrayList<String>();
         titles.add(getString(R.string.home));
@@ -150,6 +160,12 @@ public class MainActivity extends BaseActivity {
         super.onRestart();
         //跳转到设置界面后返回，重新检查权限
         requestPermission();
+    }
+
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        LogUtil.d("MainActivity------------------onNewIntent");
+        userFragment.refreshUserInfo();
     }
 
     // 用来计算返回键的点击间隔时间

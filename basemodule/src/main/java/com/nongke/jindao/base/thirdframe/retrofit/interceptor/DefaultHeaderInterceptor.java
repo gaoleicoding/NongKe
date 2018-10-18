@@ -1,5 +1,7 @@
 package com.nongke.jindao.base.thirdframe.retrofit.interceptor;
 
+import com.nongke.jindao.base.utils.UserUtils;
+
 import java.io.IOException;
 
 import okhttp3.Headers;
@@ -14,6 +16,7 @@ public class DefaultHeaderInterceptor implements Interceptor {
         Request request = chain.request()
                 .newBuilder()
                 .addHeader("Content-Type", "application/json;charset=UTF-8")
+                .addHeader("token", UserUtils.getUserInfo().rspBody.token)
 //                .addHeader("header2", "123456")
 //                .addHeader("header3", "123456")
 //                .addHeader("header4", "123456")

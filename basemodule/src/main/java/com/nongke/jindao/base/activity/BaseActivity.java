@@ -54,6 +54,7 @@ public abstract class BaseActivity extends com.nongke.jindao.base.activity.BaseP
             bundle = savedInstanceState;
         }
         initData(bundle);
+        ExitAppUtils.getInstance().addActivity(this);
 
     }
 
@@ -85,7 +86,7 @@ public abstract class BaseActivity extends com.nongke.jindao.base.activity.BaseP
         super.onDestroy();
         context=null;
         ExitAppUtils.getInstance().delActivity(this);
-
+        ExitAppUtils.getInstance().delActivity(this);
     }
 
 

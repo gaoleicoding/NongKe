@@ -11,8 +11,8 @@ import com.gaolei.basemodule.BuildConfig;
 public class LogUtil {
 
     private static boolean isDebug = BuildConfig.DEBUG;
-    private static final String TAG = "zmy";
-    private static final String TAG2 = "gaolei";
+    private static final String TAG = "gaolei";
+    private static final String TAG2 = "zmy";
 
     public static void init(boolean isPrintable) {
         isDebug = isPrintable;

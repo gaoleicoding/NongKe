@@ -1,15 +1,17 @@
 package com.nongke.jindao.mpresenter;
 
 
-import com.google.gson.Gson;
+import com.nongke.jindao.R;
 import com.nongke.jindao.base.api.ApiService;
+import com.nongke.jindao.base.application.CustomApplication;
 import com.nongke.jindao.base.mmodel.LoginResData;
-import com.nongke.jindao.base.mmodel.MsgCodeReqData;
+import com.nongke.jindao.base.mmodel.LogoutResData;
 import com.nongke.jindao.base.mmodel.MsgCodeResData;
 import com.nongke.jindao.base.mmodel.RegisterResData;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.thirdframe.retrofit.RetrofitProvider;
 import com.nongke.jindao.base.utils.LogUtil;
+import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.mcontract.RegisterLoginContract;
 import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
 
@@ -45,6 +47,25 @@ public class RegisterLoginPresenter extends BasePresenter<RegisterLoginContract.
     }
 
     @Override
+    public void getResetPasswordData(String phone, String password, String confirmPassword, String code) {
+        HashMap hashMap = new HashMap();
+        hashMap.put("phone", phone);
+        hashMap.put("password", password);
+        hashMap.put("confirmPassword", confirmPassword);
+        hashMap.put("code", code);
+        String jsonString = new JSONObject(hashMap).toString();
+        LogUtil.d2("jsonString------------" + jsonString);
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonString);
+        Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).getResetPassword(body);
+        addSubscribe(observable, new BaseObserver<RegisterResData>(false) {
+            @Override
+            public void onNext(RegisterResData registerResData) {
+                mView.showResetPasswordData(registerResData);
+            }
+        });
+    }
+
+    @Override
     public void getLoginData(String phone, String password) {
         HashMap hashMap = new HashMap();
         hashMap.put("phone", phone);
@@ -58,6 +79,27 @@ public class RegisterLoginPresenter extends BasePresenter<RegisterLoginContract.
             @Override
             public void onNext(LoginResData loginResData) {
                 mView.showLoginResData(loginResData);
+            }
+        });
+    }
+
+    @Override
+    public void getLogoutData(String phone) {
+        HashMap hashMap = new HashMap();
+        hashMap.put("phone", phone);
+        String jsonString = new JSONObject(hashMap).toString();
+        LogUtil.d2("jsonString------------" + jsonString);
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonString);
+
+        Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).getLogoutData(body);
+        addSubscribe(observable, new BaseObserver<LogoutResData>(false) {
+            @Override
+            public void onNext(LogoutResData logoutResData) {
+                LogUtil.d2("logoutResData------------ :" + logoutResData.toString());
+//                mView.showLogoutResData(loginResData);
+                if (logoutResData.retDesc.contains("未登录"))
+                    Utils.showToast(CustomApplication.context.getString(R.string.user_not_login), true);
+
             }
         });
     }

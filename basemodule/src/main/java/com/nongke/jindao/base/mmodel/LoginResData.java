@@ -44,7 +44,7 @@ public class LoginResData {
 
     public class RspBody {
         public String code, img, imgUrl, inviterPhone, inviterUid, phone, token, uid;
-        public int commission, id, isManager, isVip, money, status;
+        public int cardMoney,commission, money, id, isManager, isVip, status;
 
         @Override
         public String toString() {
@@ -75,4 +75,5 @@ public class LoginResData {
                 ", rspBody=" + rspBody.toString() +
                 '}';
     }
+
 }

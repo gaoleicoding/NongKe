@@ -5,6 +5,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.os.Looper;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.widget.Toast;
 
 import com.nongke.jindao.base.application.CustomApplication;
@@ -108,7 +109,9 @@ public class Utils {
 
     public static void showToast(String content, boolean isShort) {
         try {
-            Toast.makeText(CustomApplication.context, content, isShort ? Toast.LENGTH_SHORT : Toast.LENGTH_LONG).show();
+            Toast toast = Toast.makeText(CustomApplication.context, content, isShort ? Toast.LENGTH_SHORT : Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
         } catch (Exception e) {
             //解决在子线程中调用Toast的异常情况处理
             Looper.prepare();

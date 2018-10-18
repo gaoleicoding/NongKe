@@ -1,45 +1,19 @@
 package com.nongke.jindao.fragment;
 
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Debug;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.bumptech.glide.Glide;
 import com.nongke.jindao.MainActivity;
 import com.nongke.jindao.R;
-import com.nongke.jindao.activity.ArticleDetailActivity;
-import com.nongke.jindao.activity.UserProfileActivity;
 import com.nongke.jindao.activity.VipRechargeActivity;
-import com.nongke.jindao.adapter.DividerItemDecoration;
-import com.nongke.jindao.adapter.ArticleListAdapter;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
-import com.nongke.jindao.base.mmodel.BannerListData;
-import com.nongke.jindao.base.mmodel.ArticleListData;
-import com.nongke.jindao.base.mmodel.ArticleListData.FeedArticleData;
-import com.nongke.jindao.base.utils.SharedPreferencesUtils;
-import com.nongke.jindao.base.utils.Utils;
-import com.nongke.jindao.mcontract.HomeContract;
-import com.nongke.jindao.mpresenter.HomePresenter;
-import com.nongke.jindao.utils.Constants;
+import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.youth.banner.Banner;
-import com.youth.banner.BannerConfig;
-import com.youth.banner.Transformer;
-import com.youth.banner.listener.OnBannerListener;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -50,7 +24,7 @@ import butterknife.OnClick;
  * @date 2018/2/11
  */
 
-public class HomeFragment extends BaseMvpFragment<HomePresenter> implements HomeContract.View {
+public class HomeFragment extends BaseMvpFragment {
 
     @BindView(R.id.project_recyclerview)
     RecyclerView project_recyclerview;
@@ -69,8 +43,8 @@ public class HomeFragment extends BaseMvpFragment<HomePresenter> implements Home
     LinearLayout home_download_layout;
     @BindView(R.id.home_custom_layout)
     LinearLayout home_custom_layout;
-    private List<FeedArticleData> articleDataList;
-    private ArticleListAdapter feedArticleAdapter;
+//    private List<FeedArticleData> articleDataList;
+//    private ArticleListAdapter feedArticleAdapter;
 
     @Override
     public void initData(Bundle bundle) {
@@ -83,7 +57,7 @@ public class HomeFragment extends BaseMvpFragment<HomePresenter> implements Home
     @Override
     public void initView() {
         initSmartRefreshLayout();
-        initRecyclerView();
+//        initRecyclerView();
     }
 
     @Override
@@ -93,24 +67,24 @@ public class HomeFragment extends BaseMvpFragment<HomePresenter> implements Home
 
     @Override
     public void reload() {
-        mPresenter.getBannerInfo();
+//        mPresenter.getBannerInfo();
 //        mPresenter.getFeedArticleList(0);
     }
 
     @Override
-    public HomePresenter initPresenter() {
-        return new HomePresenter();
+    public BasePresenter initPresenter() {
+        return null;
     }
 
     @Override
     protected void loadData() {
-        mPresenter.getBannerInfo();
+//        mPresenter.getBannerInfo();
 //        mPresenter.getFeedArticleList(0);
 
     }
 
 
-    @Override
+  /*  @Override
     public void showArticleList(ArticleListData listData, boolean isRefresh) {
         final List<FeedArticleData> newDataList = listData.data.getDatas();
         if (isRefresh) {
@@ -190,13 +164,13 @@ public class HomeFragment extends BaseMvpFragment<HomePresenter> implements Home
     }
 
     private void initRecyclerView() {
-        articleDataList = new ArrayList<>();
+//        articleDataList = new ArrayList<>();
         feedArticleAdapter = new ArticleListAdapter(getActivity(), articleDataList);
         project_recyclerview.addItemDecoration(new DividerItemDecoration(getActivity(),
                 DividerItemDecoration.VERTICAL_LIST));
         project_recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
         project_recyclerview.setAdapter(feedArticleAdapter);
-    }
+    }*/
 
     //初始化下拉刷新控件
     private void initSmartRefreshLayout() {

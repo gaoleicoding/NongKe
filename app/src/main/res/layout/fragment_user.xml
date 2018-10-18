@@ -44,6 +44,7 @@
             android:padding="20dp">
 
             <ImageView
+                android:id="@+id/iv_user_photo"
                 android:layout_width="81dp"
                 android:layout_height="81dp"
                 android:src="@drawable/user_photo" />
@@ -55,6 +56,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_user_phone_num"
                     style="@style/user_account_txt"
                     android:layout_marginTop="0dp"
                     android:text="156****9705" />
@@ -69,6 +71,7 @@
                         android:text="我的邀请人：" />
 
                     <TextView
+                        android:id="@+id/tv_user_inviter_phone_num"
                         style="@style/user_account_txt"
                         android:text="186****1435" />
                 </LinearLayout>
@@ -83,6 +86,7 @@
                         android:text="余额：" />
 
                     <TextView
+                        android:id="@+id/tv_user_balance"
                         style="@style/user_account_txt"
                         android:text="0.00元" />
                 </LinearLayout>
@@ -97,6 +101,7 @@
                         android:text="佣金：" />
 
                     <TextView
+                        android:id="@+id/tv_user_commission"
                         style="@style/user_account_txt"
                         android:text="0.00元" />
                 </LinearLayout>
@@ -111,6 +116,7 @@
                         android:text="点卡：" />
 
                     <TextView
+                        android:id="@+id/tv_user_daoli_balance"
                         style="@style/user_account_txt"
                         android:text="0.00元" />
                 </LinearLayout>

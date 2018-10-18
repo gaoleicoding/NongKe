@@ -1,26 +1,14 @@
 package com.nongke.jindao.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import com.nongke.jindao.R;
-import com.nongke.jindao.activity.ArticleDetailActivity;
-import com.nongke.jindao.adapter.DividerItemDecoration;
-import com.nongke.jindao.adapter.ProjectListAdapter;
 import com.nongke.jindao.adapter.RechargeTabAdapter;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
-import com.nongke.jindao.base.mmodel.ProjectListData;
-import com.nongke.jindao.mcontract.ProjectContract;
-import com.nongke.jindao.mpresenter.ProjectPresenter;
+import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.view.CustomViewPager;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,15 +21,14 @@ import butterknife.BindView;
  * @date 2018/2/11
  */
 
-public class RechargeFragment extends BaseMvpFragment<ProjectPresenter> implements ProjectContract.View {
+public class RechargeFragment extends BaseMvpFragment {
 
 
     @BindView(R.id.tabLayout)
     TabLayout tabLayout;
     @BindView(R.id.viewPager)
     CustomViewPager viewPager;
-    ProjectListAdapter projectAdapter;
-    private List<ProjectListData.ProjectData> projectDataList;
+
     private ArrayList<Fragment> mFragments;
 
     @Override
@@ -80,8 +67,8 @@ public class RechargeFragment extends BaseMvpFragment<ProjectPresenter> implemen
     }
 
     @Override
-    public ProjectPresenter initPresenter() {
-        return new ProjectPresenter();
+    public BasePresenter initPresenter() {
+        return null;
     }
 
     @Override
@@ -90,10 +77,7 @@ public class RechargeFragment extends BaseMvpFragment<ProjectPresenter> implemen
     }
 
 
-    @Override
-    public void showProjectList(ProjectListData listData, boolean isRefresh) {
 
-    }
 
 
     /**
