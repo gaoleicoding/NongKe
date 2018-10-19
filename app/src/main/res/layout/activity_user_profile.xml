@@ -34,10 +34,10 @@
                     android:id="@+id/ll_select_bank"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/code_edit_bg"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="10dp">
 
                     <TextView
                         android:id="@+id/tv_select_bank"
@@ -113,8 +113,7 @@
 
                 <EditText
                     android:id="@+id/et_modify_profile_verify_code"
-                    style="@style/code_edit_style"
-                    android:hint="@string/veirfy_code" />
+                    style="@style/code_edit_style" />
 
                 <com.nongke.jindao.view.CountDownButton
                     android:id="@+id/tv_modify_profile_get_verify_code"
@@ -127,8 +126,7 @@
                 android:id="@+id/tv_save_modify"
                 style="@style/btn_selector_match_style"
                 android:text="@string/save_modify"
-                android:textColor="@color/white"
-                />
+                android:textColor="@color/white" />
         </LinearLayout>
     </LinearLayout>
 

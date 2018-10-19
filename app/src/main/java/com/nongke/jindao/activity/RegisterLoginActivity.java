@@ -82,7 +82,7 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
     CountDownButton tv_forget_pwd_get_verify_code;
 
     boolean isInRegister = false, isInForgetPwd = false;
-    String registerFlag ;
+    String registerFlag;
 
     public static void startActivity(Context context) {
         Intent intent = new Intent(context, RegisterLoginActivity.class);
@@ -117,7 +117,7 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
     }
 
     @OnClick({R.id.iv_back, R.id.tv_login, R.id.tv_register_free, R.id.tv_register_get_verify_code, R.id.tv_register, R.id.tv_forget_password,
-            R.id.layout_forget_password, R.id.tv_modify_pwd_submit,R.id.tv_forget_pwd_get_verify_code})
+            R.id.layout_forget_password, R.id.tv_modify_pwd_submit, R.id.tv_forget_pwd_get_verify_code})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
@@ -165,7 +165,7 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
 
                 break;
             case R.id.tv_register:
-                registerFlag="tv_register";
+                registerFlag = "tv_register";
 
                 phoneNum = et_register_phone_num.getText().toString();
                 password = et_register_password.getText().toString();
@@ -177,7 +177,7 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
                 break;
 
             case R.id.tv_modify_pwd_submit:
-                registerFlag="tv_modify_pwd_submit";
+                registerFlag = "tv_modify_pwd_submit";
                 phoneNum = et_forget_pwd_phone_num.getText().toString();
                 password = et_forget_pwd_password.getText().toString();
                 if (password.length() < 6)
@@ -203,7 +203,8 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
 
         return super.onKeyDown(keyCode, event);
     }
-    private void back(){
+
+    private void back() {
         if (!isInRegister && !isInForgetPwd) {
             finish();
         }
@@ -229,7 +230,7 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
                 layout_register.setVisibility(View.GONE);
                 isInRegister = false;
             }
-        } else if (registerResData.retDesc.contains("验证码已失效") && "20000".equals(registerResData.retCode))
+        } else if (registerResData.retDesc != null && registerResData.retDesc.contains("验证码已失效") && "20000".equals(registerResData.retCode))
             Utils.showToast(getString(R.string.register_msg_code_invalid), true);
         else {
             Utils.showToast(getString(R.string.register_failure), true);
@@ -246,7 +247,7 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
                 layout_forget_password.setVisibility(View.GONE);
                 isInForgetPwd = false;
             }
-        } else if (registerResData.retDesc.contains("验证码已失效") && "20000".equals(registerResData.retCode))
+        } else if (registerResData.retDesc != null && registerResData.retDesc.contains("验证码已失效") && "20000".equals(registerResData.retCode))
             Utils.showToast(getString(R.string.register_msg_code_invalid), true);
         else {
             Utils.showToast(getString(R.string.reset_pwd_failure), true);
@@ -263,9 +264,9 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
             SharedPreferencesUtils.setParam(RegisterLoginActivity.this, "password", et_login_password.getText().toString());
             MainActivity.startActivity(RegisterLoginActivity.this);
 //            ExitAppUtils.getInstance().exit();
-        } else if (loginResData.retDesc.contains("密码错误") && "20000".equals(loginResData.retCode))
+        } else if (loginResData.retDesc != null && loginResData.retDesc.contains("密码错误") && "20000".equals(loginResData.retCode))
             Utils.showToast("密码错误", true);
-        else if (loginResData.retDesc.contains("当前账户不存在") && "20000".equals(loginResData.retCode))
+        else if (loginResData.retDesc != null && loginResData.retDesc.contains("当前账户不存在") && "20000".equals(loginResData.retCode))
             Utils.showToast("当前账户不存在", true);
         else {
             Utils.showToast(getString(R.string.login_failure), true);
@@ -277,7 +278,7 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
         LogUtil.d("msgCodeResData.toString():" + msgCodeResData.toString());
         if ("10000".equals(msgCodeResData.retCode)) {
             Utils.showToast(getString(R.string.get_msgcode_success), true);
-        } else if (msgCodeResData.retDesc.contains("isv.BUSINESS_LIMIT_CONTROL") && "20000".equals(msgCodeResData.retCode))
+        } else if (msgCodeResData.retDesc != null && msgCodeResData.retDesc.contains("isv.BUSINESS_LIMIT_CONTROL") && "20000".equals(msgCodeResData.retCode))
             Utils.showToast(getString(R.string.get_msgcode_frequent), true);
         else Utils.showToast(getString(R.string.get_msgcode_failure), true);
     }
