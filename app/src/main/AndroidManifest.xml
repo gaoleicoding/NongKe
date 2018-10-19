@@ -34,12 +34,13 @@
         </activity>
         <activity android:name=".activity.ArticleDetailActivity"></activity>
         <activity android:name=".activity.RegisterLoginActivity"></activity>
+        <activity android:name=".activity.DaoliRechargeActivity"></activity>
         <activity android:name=".activity.DaoLiTransferActivity"></activity>
         <activity android:name=".activity.WithdrawActivity"></activity>
         <activity android:name=".activity.UserProfileActivity"></activity>
         <activity android:name=".activity.AddressActivity"></activity>
         <activity android:name=".activity.VipRechargeActivity"></activity>
-        <activity android:name=".activity.DaoliRechargeActivity"></activity>
+
         <!--value的值填写你在友盟后台申请的应用Appkey-->
         <meta-data
             android:name="UMENG_APPKEY"

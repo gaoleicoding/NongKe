@@ -165,13 +165,14 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
                     Utils.showToast(getString(R.string.user_not_login), true);
                     return;
                 }
-                UserUtils.setUserInfo(null);
+
                 ll_userinfo_profile_logined.setVisibility(View.GONE);
                 ll_userinfo_profile_not_login.setVisibility(View.VISIBLE);
                 SharedPreferencesUtils.clear(getActivity(),"phone_num");
                 SharedPreferencesUtils.clear(getActivity(),"phone_num");
-//                mPresenter.getLogoutData(phoneNum);
+                mPresenter.getLogoutData();
                 RegisterLoginActivity.startActivity(getActivity());
+                UserUtils.setUserInfo(null);
                 break;
             case R.id.iv_user_default:
                 RegisterLoginActivity.startActivity(getActivity());

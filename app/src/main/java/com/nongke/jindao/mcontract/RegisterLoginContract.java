@@ -16,7 +16,7 @@ public class RegisterLoginContract {
         void getResetPasswordData(String phone, String password, String confirmPassword, String code);
 
         void getLoginData(String phone, String password);
-        void getLogoutData(String phone);
+        void getLogoutData();
 
         void getMessageCode(String phone, int type);
 

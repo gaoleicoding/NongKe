@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseActivity;
@@ -20,7 +21,10 @@ import butterknife.OnClick;
  */
 
 public class DaoliRechargeActivity extends BaseActivity {
-
+    @BindView(R.id.iv_back)
+    ImageView iv_back;
+    @BindView(R.id.title)
+    TextView title;
     @BindView(R.id.ll_pay_alipay)
     LinearLayout ll_pay_alipay;
     @BindView(R.id.ll_pay_wechat)
@@ -41,7 +45,8 @@ public class DaoliRechargeActivity extends BaseActivity {
 
     @Override
     protected void initData(Bundle bundle) {
-
+        title.setText(getString(R.string.my_daoli_recharge));
+        iv_back.setVisibility(View.VISIBLE);
     }
 
 

@@ -23,7 +23,7 @@ public interface ApiService {
     Observable<LoginResData> getLoginData(@Body RequestBody requestBody);
     //登出
     @POST("user/loginOut")
-    Observable<LogoutResData> getLogoutData(@Body RequestBody requestBody);
+    Observable<LogoutResData> getLogoutData();
 
     //注册
     @POST("user/register")

@@ -84,14 +84,14 @@ public class RegisterLoginPresenter extends BasePresenter<RegisterLoginContract.
     }
 
     @Override
-    public void getLogoutData(String phone) {
-        HashMap hashMap = new HashMap();
-        hashMap.put("phone", phone);
-        String jsonString = new JSONObject(hashMap).toString();
-        LogUtil.d2("jsonString------------" + jsonString);
-        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonString);
+    public void getLogoutData() {
+//        HashMap hashMap = new HashMap();
+//        hashMap.put("phone", phone);
+//        String jsonString = new JSONObject(hashMap).toString();
+//        LogUtil.d2("jsonString------------" + jsonString);
+//        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonString);
 
-        Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).getLogoutData(body);
+        Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).getLogoutData();
         addSubscribe(observable, new BaseObserver<LogoutResData>(false) {
             @Override
             public void onNext(LogoutResData logoutResData) {

@@ -265,6 +265,8 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
 //            ExitAppUtils.getInstance().exit();
         } else if (loginResData.retDesc.contains("密码错误") && "20000".equals(loginResData.retCode))
             Utils.showToast("密码错误", true);
+        else if (loginResData.retDesc.contains("当前账户不存在") && "20000".equals(loginResData.retCode))
+            Utils.showToast("当前账户不存在", true);
         else {
             Utils.showToast(getString(R.string.login_failure), true);
         }
