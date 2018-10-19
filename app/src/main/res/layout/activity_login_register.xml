@@ -210,7 +210,7 @@
         <EditText
             android:id="@+id/et_forget_pwd_password"
             style="@style/edit_match_style"
-            android:hint="@string/password" />
+            android:hint="@string/password_new" />
 
         <EditText
             android:id="@+id/et_forget_pwd_confirm_password"

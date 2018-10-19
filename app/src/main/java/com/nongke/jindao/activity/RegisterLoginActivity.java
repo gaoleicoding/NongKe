@@ -230,8 +230,8 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
                 layout_register.setVisibility(View.GONE);
                 isInRegister = false;
             }
-        } else if (registerResData.retDesc != null && registerResData.retDesc.contains("验证码已失效") && "20000".equals(registerResData.retCode))
-            Utils.showToast(getString(R.string.register_msg_code_invalid), true);
+        } else if (registerResData.retDesc != null && "20000".equals(registerResData.retCode))
+            Utils.showToast(registerResData.retDesc, true);
         else {
             Utils.showToast(getString(R.string.register_failure), true);
         }
@@ -247,8 +247,8 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
                 layout_forget_password.setVisibility(View.GONE);
                 isInForgetPwd = false;
             }
-        } else if (registerResData.retDesc != null && registerResData.retDesc.contains("验证码已失效") && "20000".equals(registerResData.retCode))
-            Utils.showToast(getString(R.string.register_msg_code_invalid), true);
+        } else if (registerResData.retDesc != null && "20000".equals(registerResData.retCode))
+            Utils.showToast(registerResData.retDesc, true);
         else {
             Utils.showToast(getString(R.string.reset_pwd_failure), true);
         }
@@ -264,10 +264,8 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
             SharedPreferencesUtils.setParam(RegisterLoginActivity.this, "password", et_login_password.getText().toString());
             MainActivity.startActivity(RegisterLoginActivity.this);
 //            ExitAppUtils.getInstance().exit();
-        } else if (loginResData.retDesc != null && loginResData.retDesc.contains("密码错误") && "20000".equals(loginResData.retCode))
-            Utils.showToast("密码错误", true);
-        else if (loginResData.retDesc != null && loginResData.retDesc.contains("当前账户不存在") && "20000".equals(loginResData.retCode))
-            Utils.showToast("当前账户不存在", true);
+        } else if (loginResData.retDesc != null && "20000".equals(loginResData.retCode))
+            Utils.showToast(loginResData.retDesc, true);
         else {
             Utils.showToast(getString(R.string.login_failure), true);
         }
@@ -280,6 +278,8 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
             Utils.showToast(getString(R.string.get_msgcode_success), true);
         } else if (msgCodeResData.retDesc != null && msgCodeResData.retDesc.contains("isv.BUSINESS_LIMIT_CONTROL") && "20000".equals(msgCodeResData.retCode))
             Utils.showToast(getString(R.string.get_msgcode_frequent), true);
+        else if (msgCodeResData.retDesc != null && "20000".equals(msgCodeResData.retCode))
+            Utils.showToast(msgCodeResData.retDesc, true);
         else Utils.showToast(getString(R.string.get_msgcode_failure), true);
     }
 }

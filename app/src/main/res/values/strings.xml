@@ -55,6 +55,7 @@
     <string name="phone_num_input">请输入手机号</string>
     <!--<string name="password_colon">密码：</string>-->
     <string name="password">密码&#160;&#160;&#160;&#160;</string>
+    <string name="password_new">新密码</string>
     <string name="password_input">请输入密码</string>
     <string name="login">登录</string>
     <string name="register">注册</string>
