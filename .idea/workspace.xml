@@ -12,8 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33991523-bb9a-48df-a13c-e2274cce3382" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/RegisterLoginActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/RegisterLoginActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_user_profile.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_user_profile.xml" />
+      <change beforePath="$PROJECT_DIR$/金稻商城－debug-V2.0.1(201)_Baidu-百度.apk" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/金稻商城－release-V2.0.1(201)_Baidu-百度.apk" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -81,7 +81,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_user_profile.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="194">
-              <caret line="109" column="25" lean-forward="true" selection-start-line="109" selection-start-column="25" selection-end-line="109" selection-end-column="25" />
+              <caret line="109" column="25" lean-forward="false" selection-start-line="109" selection-start-column="25" selection-end-line="109" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -94,8 +94,28 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/RegisterLoginActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="231">
-              <caret line="231" column="13" lean-forward="true" selection-start-line="231" selection-start-column="13" selection-end-line="231" selection-end-column="13" />
-              <folding />
+              <caret line="231" column="13" lean-forward="false" selection-start-line="231" selection-start-column="13" selection-end-line="231" selection-end-column="13" />
+              <folding>
+                <element signature="e#3311#3336#0" expanded="true" />
+                <element signature="e#4709#4737#0" expanded="true" />
+                <element signature="e#4940#4975#0" expanded="true" />
+                <element signature="e#6276#6323#0" expanded="true" />
+                <element signature="e#6934#6981#0" expanded="true" />
+                <element signature="e#7833#7858#0" expanded="true" />
+                <element signature="e#8021#8046#0" expanded="true" />
+                <element signature="e#8348#8384#0" expanded="true" />
+                <element signature="e#8419#8444#0" expanded="true" />
+                <element signature="e#8758#8803#0" expanded="true" />
+                <element signature="e#8855#8891#0" expanded="true" />
+                <element signature="e#9172#9209#0" expanded="true" />
+                <element signature="e#9244#9269#0" expanded="true" />
+                <element signature="e#9592#9637#0" expanded="true" />
+                <element signature="e#9689#9726#0" expanded="true" />
+                <element signature="e#10836#10869#0" expanded="true" />
+                <element signature="e#11136#11175#0" expanded="true" />
+                <element signature="e#11370#11410#0" expanded="true" />
+                <element signature="e#11448#11487#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -14878,7 +14898,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Android App.app">
+  <component name="RunManager" selected="Gradle.NongKe [assembleBaidu]">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -15127,7 +15147,7 @@
   <component name="ToolWindowManager">
     <frame x="1280" y="-27" width="1920" height="1057" extended-state="0" />
     <layout>
-      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -15135,14 +15155,14 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290735" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3290735" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08291032" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24600638" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24600638" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3599574" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19542067" sideWeight="0.794948" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19542067" sideWeight="0.794948" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25823453" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12193823" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -15676,7 +15696,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_user_profile.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
-          <caret line="109" column="25" lean-forward="true" selection-start-line="109" selection-start-column="25" selection-end-line="109" selection-end-column="25" />
+          <caret line="109" column="25" lean-forward="false" selection-start-line="109" selection-start-column="25" selection-end-line="109" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -15687,8 +15707,28 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/RegisterLoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
-          <caret line="231" column="13" lean-forward="true" selection-start-line="231" selection-start-column="13" selection-end-line="231" selection-end-column="13" />
-          <folding />
+          <caret line="231" column="13" lean-forward="false" selection-start-line="231" selection-start-column="13" selection-end-line="231" selection-end-column="13" />
+          <folding>
+            <element signature="e#3311#3336#0" expanded="true" />
+            <element signature="e#4709#4737#0" expanded="true" />
+            <element signature="e#4940#4975#0" expanded="true" />
+            <element signature="e#6276#6323#0" expanded="true" />
+            <element signature="e#6934#6981#0" expanded="true" />
+            <element signature="e#7833#7858#0" expanded="true" />
+            <element signature="e#8021#8046#0" expanded="true" />
+            <element signature="e#8348#8384#0" expanded="true" />
+            <element signature="e#8419#8444#0" expanded="true" />
+            <element signature="e#8758#8803#0" expanded="true" />
+            <element signature="e#8855#8891#0" expanded="true" />
+            <element signature="e#9172#9209#0" expanded="true" />
+            <element signature="e#9244#9269#0" expanded="true" />
+            <element signature="e#9592#9637#0" expanded="true" />
+            <element signature="e#9689#9726#0" expanded="true" />
+            <element signature="e#10836#10869#0" expanded="true" />
+            <element signature="e#11136#11175#0" expanded="true" />
+            <element signature="e#11370#11410#0" expanded="true" />
+            <element signature="e#11448#11487#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
