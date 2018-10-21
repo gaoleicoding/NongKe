@@ -145,7 +145,7 @@
 
                     <ImageView
                         style="@style/home_item_icon"
-                        android:src="@drawable/icon_custom4" />
+                        android:src="@drawable/icon_custom2" />
 
                     <TextView
                         style="@style/home_item_txt"

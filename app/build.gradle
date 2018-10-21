@@ -44,6 +44,7 @@ android {
         abortOnError false
         disable 'MissingTranslation'
     }
+    aaptOptions {         cruncherEnabled = false     }
     buildTypes {
         debug {
             minifyEnabled false //是否启用Proguard
