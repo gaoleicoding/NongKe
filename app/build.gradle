@@ -53,9 +53,9 @@ android {
         }
 
         release {
-            minifyEnabled true //是否启用Proguard
-            shrinkResources true //是否清理无用资源,依赖于minifyEnabled
-            zipAlignEnabled true //是否启用zipAlign压缩
+            minifyEnabled false //是否启用Proguard
+            shrinkResources false //是否清理无用资源,依赖于minifyEnabled
+            zipAlignEnabled false //是否启用zipAlign压缩
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
             //def date = new Date().format('yy-MM-dd-HH');
@@ -143,4 +143,5 @@ dependencies {
     //    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
     api project(':basemodule')
+    implementation files('libs/zxing.jar')
 }

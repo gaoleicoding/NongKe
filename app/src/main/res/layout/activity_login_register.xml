@@ -35,7 +35,7 @@
 
             <EditText
                 android:id="@+id/et_login_phone_num"
-                style="@style/code_edit_style"
+                style="@style/code_edit_num_style"
                 android:inputType="number"/>
         </LinearLayout>
 
@@ -57,25 +57,15 @@
 
             <EditText
                 android:id="@+id/et_login_password"
-                style="@style/code_edit_style"
+                style="@style/code_edit_num_letter_style"
                 android:inputType="textPassword"/>
         </LinearLayout>
 
         <TextView
             android:id="@+id/tv_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/selector_btn_bg"
-            android:clickable="true"
-            android:gravity="center"
-            android:padding="10dp"
+            style="@style/btn_selector_match_style"
             android:text="@string/login"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
+           />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -141,7 +131,7 @@
 
             <EditText
                 android:id="@+id/et_register_verify_code"
-                style="@style/code_edit_style"
+                style="@style/code_edit_num_style"
                 android:layout_marginLeft="0dp"
                 android:hint="@string/veirfy_code"
                 android:inputType="number" />
@@ -155,19 +145,9 @@
 
         <TextView
             android:id="@+id/tv_register"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/selector_btn_bg"
-            android:clickable="true"
-            android:gravity="center"
-            android:padding="10dp"
+            style="@style/btn_selector_match_style"
             android:text="@string/register"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -195,7 +175,7 @@
 
             <EditText
                 android:id="@+id/et_forget_pwd_verify_code"
-                style="@style/code_edit_style"
+                style="@style/code_edit_num_style"
                 android:layout_marginLeft="0dp"
                 android:hint="@string/veirfy_code"
                 android:inputType="number" />
@@ -220,18 +200,8 @@
 
         <TextView
             android:id="@+id/tv_modify_pwd_submit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/selector_btn_bg"
-            android:clickable="true"
-            android:gravity="center"
-            android:padding="10dp"
+            style="@style/btn_selector_match_style"
             android:text="@string/submit"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
+            />
     </LinearLayout>
 </RelativeLayout>

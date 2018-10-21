@@ -41,8 +41,8 @@
     </style>
 
     <style name="home_item_icon">
-        <item name="android:layout_width">40dp</item>
-        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
         <item name="android:layout_gravity">center_horizontal</item>
     </style>
 
@@ -50,10 +50,10 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center_horizontal</item>
-        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginTop">14dp</item>
         <item name="android:gravity">center</item>
-        <item name="android:textColor">@color/color_black</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/color_313131</item>
+        <item name="android:textSize">13sp</item>
     </style>
 
     <style name="user_info_layout">
@@ -171,7 +171,7 @@
         <item name="android:orientation">horizontal</item>
     </style>
 
-    <style name="code_edit_style">
+    <style name="code_edit_num_letter_style">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
@@ -180,6 +180,32 @@
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:singleLine">true</item>
         <item name="android:digits">0123456789abcdefghijklmnopqrstuvwxyz</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:background">@drawable/code_edit_bg</item>
+    </style>
+    <style name="code_edit_num_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:inputType">number</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:background">@drawable/code_edit_bg</item>
+    </style>
+    <style name="code_edit_text_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:inputType">text</item>
         <item name="android:maxLines">1</item>
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:background">@drawable/code_edit_bg</item>

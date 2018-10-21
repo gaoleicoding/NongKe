@@ -10,50 +10,35 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
         <LinearLayout
-            android:id="@+id/ll_userinfo_profile_not_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/app_color"
             android:orientation="horizontal"
-            android:padding="20dp">
-
-            <ImageView
-                android:id="@+id/iv_user_default"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/user_default_photo" />
-
-            <TextView
-                style="@style/user_info_txt"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:text="@string/login_register"
-                android:textColor="@color/white" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_userinfo_profile_logined"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/app_color"
-            android:orientation="horizontal"
-            android:visibility="gone"
             android:padding="20dp">
 
             <ImageView
                 android:id="@+id/iv_user_photo"
-                android:layout_width="81dp"
-                android:layout_height="81dp"
-                android:src="@drawable/user_photo" />
+                android:layout_width="72dp"
+                android:layout_height="72dp" />
+
+            <TextView
+                android:id="@+id/tv_user_profile_not_login"
+                style="@style/user_info_txt"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:text="@string/login_register"
+                android:textColor="@color/white"
+                android:visibility="gone" />
 
             <LinearLayout
+                android:id="@+id/ll_userinfo_profile_logined"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tv_user_phone_num"

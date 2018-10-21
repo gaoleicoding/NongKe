@@ -63,7 +63,8 @@
 
                 <EditText
                     android:id="@+id/et_bank_card"
-                    style="@style/code_edit_style" />
+                    style="@style/code_edit_text_style"
+                    android:inputType="number"/>
             </LinearLayout>
 
             <LinearLayout style="@style/code_edit_layout_style">
@@ -74,29 +75,34 @@
 
                 <EditText
                     android:id="@+id/et_bank_card_owner"
-                    style="@style/code_edit_style" />
+                    style="@style/code_edit_text_style"
+                    android:inputType="text"/>
             </LinearLayout>
 
             <LinearLayout style="@style/code_edit_layout_style">
 
                 <TextView
                     style="@style/common_txt_16sp"
-                    android:text="@string/bank_branch_address" />
+                    android:text="@string/bank_branch_address"
+                    android:inputType="text"/>
 
                 <EditText
                     android:id="@+id/et_bank_branch_address"
-                    style="@style/code_edit_style" />
+                    style="@style/code_edit_text_style"
+                    android:inputType="text"/>
             </LinearLayout>
 
             <LinearLayout style="@style/code_edit_layout_style">
 
                 <TextView
                     style="@style/common_txt_16sp"
-                    android:text="@string/contact_phone_num" />
+                    android:text="@string/contact_phone_num"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/et_contact_phone_num"
-                    style="@style/code_edit_style" />
+                    style="@style/code_edit_num_style"
+                    android:inputType="number"/>
             </LinearLayout>
 
             <LinearLayout
@@ -113,12 +119,14 @@
 
                 <EditText
                     android:id="@+id/et_modify_profile_verify_code"
-                    style="@style/code_edit_style" />
+                    style="@style/code_edit_num_style"
+                    android:inputType="number"/>
 
                 <com.nongke.jindao.view.CountDownButton
                     android:id="@+id/tv_modify_profile_get_verify_code"
                     style="@style/btn_selector_wrap_style"
-                    android:text="@string/get_veirfy_code" />
+                    android:text="@string/get_veirfy_code"
+                    />
 
             </LinearLayout>
 

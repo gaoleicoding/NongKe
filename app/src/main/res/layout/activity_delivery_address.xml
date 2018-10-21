@@ -30,7 +30,8 @@
 
                 <EditText
                     android:id="@+id/et_delivery_name"
-                    style="@style/code_edit_style" />
+                    style="@style/code_edit_text_style"
+                   />
             </LinearLayout>
 
             <LinearLayout style="@style/code_edit_layout_style">
@@ -41,7 +42,8 @@
 
                 <EditText
                     android:id="@+id/et_delivery_phone_num"
-                    style="@style/code_edit_style" />
+                    style="@style/code_edit_num_style"
+                   />
             </LinearLayout>
 
             <LinearLayout style="@style/code_edit_layout_style">
@@ -52,7 +54,8 @@
 
                 <EditText
                     android:id="@+id/et_delivery_address"
-                    style="@style/code_edit_style" />
+                    style="@style/code_edit_text_style"
+                   />
             </LinearLayout>
 
 

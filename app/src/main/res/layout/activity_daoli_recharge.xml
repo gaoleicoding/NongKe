@@ -76,8 +76,9 @@
 
                         <EditText
                             android:id="@+id/et_transfer_amount"
-                            style="@style/code_edit_style"
-                            android:hint="@string/input_with_amount_hint" />
+                            style="@style/code_edit_num_style"
+                            android:hint="@string/input_with_amount_hint"
+                            android:inputType="number"/>
                     </LinearLayout>
                 </LinearLayout>
             </android.support.v7.widget.CardView>

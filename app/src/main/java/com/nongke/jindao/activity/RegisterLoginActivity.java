@@ -223,6 +223,7 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
     @Override
     public void showRegisterResData(RegisterResData registerResData) {
         LogUtil.d("registerResData.toString():" + registerResData.toString());
+//        Utils.showToast("registerResData.toString():"+registerResData.toString(),false);
         if ("10000".equals(registerResData.retCode)) {
             Utils.showToast(getString(R.string.register_success), true);
             title.setText(getString(R.string.login));
@@ -256,6 +257,8 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
 
     @Override
     public void showLoginResData(LoginResData loginResData) {
+//        Utils.showToast("loginResData.toString():"+loginResData.toString(),false);
+
         LogUtil.d("loginResData.toString():" + loginResData.toString());
         if ("10000".equals(loginResData.retCode)) {
 //            Utils.showToast(getString(R.string.login_success), true);
@@ -273,6 +276,7 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
 
     @Override
     public void showMsgCodeResData(MsgCodeResData msgCodeResData) {
+//        Utils.showToast("msgCodeResData.toString():"+msgCodeResData.toString(),false);
         LogUtil.d("msgCodeResData.toString():" + msgCodeResData.toString());
         if ("10000".equals(msgCodeResData.retCode)) {
             Utils.showToast(getString(R.string.get_msgcode_success), true);

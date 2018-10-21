@@ -23,7 +23,7 @@
             <com.youth.banner.Banner
                 android:id="@+id/banner"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="160dp"
                 app:image_scale_type="fit_xy"
                 app:indicator_drawable_selected="@drawable/banner_selected_radius"
                 app:indicator_drawable_unselected="@drawable/unselected_radius"
@@ -36,7 +36,10 @@
                 android:layout_height="wrap_content"
                 android:background="@color/color_white"
                 android:orientation="vertical"
-                android:padding="10dp">
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp">
 
                 <TextView
                     android:id="@+id/notice"
@@ -104,7 +107,7 @@
 
                     <ImageView
                         style="@style/home_item_icon"
-                        android:src="@drawable/icon_recharge" />
+                        android:src="@drawable/icon_recharge2" />
 
                     <TextView
                         style="@style/home_item_txt"
@@ -117,7 +120,7 @@
 
                     <ImageView
                         style="@style/home_item_icon"
-                        android:src="@drawable/icon_vip" />
+                        android:src="@drawable/icon_vip2" />
 
                     <TextView
                         style="@style/home_item_txt"
@@ -136,7 +139,18 @@
                         style="@style/home_item_txt"
                         android:text="@string/company_introduction" />
                 </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/home_custom_layout"
+                    style="@style/home_item_layout">
 
+                    <ImageView
+                        style="@style/home_item_icon"
+                        android:src="@drawable/icon_custom4" />
+
+                    <TextView
+                        style="@style/home_item_txt"
+                        android:text="@string/custom_center" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/home_download_layout"
@@ -144,25 +158,14 @@
 
                     <ImageView
                         style="@style/home_item_icon"
-                        android:src="@drawable/icon_download" />
+                        android:src="@drawable/icon_download2" />
 
                     <TextView
                         style="@style/home_item_txt"
                         android:text="@string/app_download" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/home_custom_layout"
-                    style="@style/home_item_layout">
 
-                    <ImageView
-                        style="@style/home_item_icon"
-                        android:src="@drawable/icon_custom" />
-
-                    <TextView
-                        style="@style/home_item_txt"
-                        android:text="@string/custom_center" />
-                </LinearLayout>
             </LinearLayout>
 
             <TextView

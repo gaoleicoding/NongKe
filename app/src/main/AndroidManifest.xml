@@ -8,7 +8,6 @@
 
     <!--Dangerous Permissions-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
@@ -40,6 +39,7 @@
         <activity android:name=".activity.UserProfileActivity"></activity>
         <activity android:name=".activity.AddressActivity"></activity>
         <activity android:name=".activity.VipRechargeActivity"></activity>
+        <activity android:name=".activity.PromotionActivity"></activity>
 
         <!--value的值填写你在友盟后台申请的应用Appkey-->
         <meta-data

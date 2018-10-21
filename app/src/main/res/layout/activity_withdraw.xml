@@ -82,7 +82,7 @@
 
                     <EditText
                         android:id="@+id/et_transfer_amount"
-                        style="@style/code_edit_style"
+                        style="@style/code_edit_num_style"
                         android:hint="@string/input_with_amount_hint" />
                 </LinearLayout>
 
@@ -158,7 +158,7 @@
 
                     <EditText
                         android:id="@+id/et_bank_card"
-                        style="@style/code_edit_style"
+                        style="@style/code_edit_num_style"
                         android:inputType="number"
                         />
                 </LinearLayout>
@@ -171,7 +171,8 @@
 
                     <EditText
                         android:id="@+id/et_bank_card_owner"
-                        style="@style/code_edit_style" />
+                        style="@style/code_edit_text_style"
+                        android:inputType="text"/>
                 </LinearLayout>
 
                 <LinearLayout style="@style/code_edit_layout_style">
@@ -182,7 +183,8 @@
 
                     <EditText
                         android:id="@+id/et_bank_branch_address"
-                        style="@style/code_edit_style" />
+                        style="@style/code_edit_text_style"
+                        android:inputType="text"/>
                 </LinearLayout>
 
                 <LinearLayout style="@style/code_edit_layout_style">
@@ -195,7 +197,8 @@
 
                     <EditText
                         android:id="@+id/et_contact_phone_num"
-                        style="@style/code_edit_style" />
+                        style="@style/code_edit_num_style"
+                        android:inputType="number"/>
                 </LinearLayout>
 
 
@@ -253,7 +256,8 @@
 
                 <EditText
                     android:id="@+id/et_commission_convert_amount"
-                    style="@style/code_edit_style" />
+                    style="@style/code_edit_num_style"
+                    android:inputType="number"/>
             </LinearLayout>
 
             <TextView

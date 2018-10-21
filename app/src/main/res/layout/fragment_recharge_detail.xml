@@ -156,8 +156,7 @@
         <TextView
             android:id="@+id/tv_withdraw_immediate"
             style="@style/btn_selector_match_style"
-            android:text="@string/recharge_immedate"
-            android:textColor="@color/white" />
+            android:text="@string/recharge_immedate"/>
 
         <TextView
             style="@style/user_info_txt"

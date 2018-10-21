@@ -1,6 +1,9 @@
 package com.nongke.jindao.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -11,6 +14,7 @@ import com.nongke.jindao.R;
 import com.nongke.jindao.activity.AddressActivity;
 import com.nongke.jindao.activity.DaoLiTransferActivity;
 import com.nongke.jindao.activity.DaoliRechargeActivity;
+import com.nongke.jindao.activity.PromotionActivity;
 import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.activity.UserProfileActivity;
 import com.nongke.jindao.activity.VipRechargeActivity;
@@ -56,10 +60,8 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
     LinearLayout my_logout_layout;
     @BindView(R.id.ll_userinfo_profile_logined)
     LinearLayout ll_userinfo_profile_logined;
-    @BindView(R.id.ll_userinfo_profile_not_login)
-    LinearLayout ll_userinfo_profile_not_login;
-    @BindView(R.id.iv_user_default)
-    ImageView iv_user_default;
+
+
     @BindView(R.id.iv_user_photo)
     ImageView iv_user_photo;
     @BindView(R.id.tv_vip_recharge)
@@ -74,6 +76,8 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
     TextView tv_user_commission;
     @BindView(R.id.tv_user_daoli_balance)
     TextView tv_user_daoli_balance;
+    @BindView(R.id.tv_user_profile_not_login)
+    TextView tv_user_profile_not_login;
 
     @Override
     public void initData(Bundle bundle) {
@@ -85,10 +89,30 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
 
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
+
+    /**
+     * 系统创建 Fragment 的时候回调，介于 onAttach() 和 onCreateView() 之间
+     * 一般用于初始化一些数据
+     * 值得注意的是，此时 Activity 还在创建中，因此不能在执行一些跟 Activity UI 相关的操作
+     * 否则，会出现一些难以预料的问题，比如：NullPointException
+     * 如果要对 Activity 上的 UI 进行操作，建议在 onActivityCreated() 中操作
+     *
+     * @param savedInstanceState
+     */
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
     public void refreshUserInfo() {
         if (UserUtils.isLogined()) {
             ll_userinfo_profile_logined.setVisibility(View.VISIBLE);
-            ll_userinfo_profile_not_login.setVisibility(View.GONE);
+            tv_user_profile_not_login.setVisibility(View.GONE);
             tv_user_phone_num.setText(UserUtils.getUserInfo().rspBody.phone);
             tv_user_inviter_phone_num.setText(UserUtils.getUserInfo().rspBody.inviterPhone);
             tv_user_balance.setText(UserUtils.getUserInfo().rspBody.money + "");
@@ -97,7 +121,12 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
             String photoUrl = UserUtils.getUserInfo().rspBody.img;
             if (photoUrl != null)
                 Glide.with(getActivity()).load(photoUrl).into(iv_user_photo);
+            else iv_user_photo.setImageResource(R.drawable.user_photo);
+        } else {
+            tv_user_profile_not_login.setVisibility(View.VISIBLE);
+            iv_user_photo.setImageResource(R.drawable.user_default_photo);
         }
+
     }
 
     @Override
@@ -120,10 +149,15 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
     }
 
 
-    @OnClick({R.id.my_daoli_recharge_layout, R.id.my_daoli_transfer_layout, R.id.my_recharge_layout, R.id.my_commission_layout, R.id.my_withdraw_layout,
+    @OnClick({R.id.iv_user_photo, R.id.my_daoli_recharge_layout, R.id.my_daoli_transfer_layout, R.id.my_recharge_layout, R.id.my_commission_layout, R.id.my_withdraw_layout,
             R.id.my_withdraw_record_layout, R.id.my_profile_layout, R.id.my_promotion_layout, R.id.my_location_layout, R.id.my_order_layout, R.id.my_logout_layout,
-            R.id.iv_user_default, R.id.tv_vip_recharge})
+            R.id.tv_vip_recharge})
     public void click(View view) {
+        if (UserUtils.getUserInfo() == null) {
+            RegisterLoginActivity.startActivity(getActivity());
+            Utils.showToast(getString(R.string.user_not_login),true);
+            return;
+        }
         switch (view.getId()) {
             case R.id.tv_vip_recharge:
                 VipRechargeActivity.startActivity(getActivity());
@@ -151,7 +185,7 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
                 UserProfileActivity.startActivity(getActivity());
                 break;
             case R.id.my_promotion_layout:
-
+                PromotionActivity.startActivity(getActivity());
                 break;
             case R.id.my_location_layout:
                 AddressActivity.startActivity(getActivity());
@@ -161,21 +195,23 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
                 break;
             case R.id.my_logout_layout:
 
-                if ( UserUtils.getUserInfo()==null) {
+                if (UserUtils.getUserInfo() == null) {
                     Utils.showToast(getString(R.string.user_not_login), true);
                     return;
                 }
 
                 ll_userinfo_profile_logined.setVisibility(View.GONE);
-                ll_userinfo_profile_not_login.setVisibility(View.VISIBLE);
-                SharedPreferencesUtils.clear(getActivity(),"phone_num");
-                SharedPreferencesUtils.clear(getActivity(),"phone_num");
+                tv_user_profile_not_login.setVisibility(View.VISIBLE);
+                iv_user_photo.setImageResource(R.drawable.user_default_photo);
+                SharedPreferencesUtils.clear(getActivity(), "phone_num");
+                SharedPreferencesUtils.clear(getActivity(), "phone_num");
                 mPresenter.getLogoutData();
                 RegisterLoginActivity.startActivity(getActivity());
                 UserUtils.setUserInfo(null);
                 break;
-            case R.id.iv_user_default:
-                RegisterLoginActivity.startActivity(getActivity());
+            case R.id.iv_user_photo:
+                if (!UserUtils.isLogined())
+                    RegisterLoginActivity.startActivity(getActivity());
                 break;
             default:
                 break;

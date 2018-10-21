@@ -14,7 +14,7 @@
     <string name="refresh">刷新</string>
     <string name="article_detail">文章详情</string>
     <string name="author">作者：</string>
-    <string name="notice">通知</string>
+    <string name="notice">公告</string>
     <string name="phone_fee_recharge">话费充值</string>
     <string name="vip_member">VIP会员</string>
     <string name="app_download">APP下载</string>
@@ -87,7 +87,7 @@
     <string name="input_with_amount_hint">请输入整百金额</string>
     <string name="bank_name">银行名称</string>
     <string name="bank_card_num">银行卡号</string>
-    <string name="bank_card_owener_name">户主名字</string>
+    <string name="bank_card_owener_name">户主姓名</string>
     <string name="bank_branch_address">支行地址</string>
     <string name="contact_phone_num">联系电话</string>
     <string name="withdraw_immediate">立即提现</string>
