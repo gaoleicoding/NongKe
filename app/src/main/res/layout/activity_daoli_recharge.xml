@@ -8,7 +8,7 @@
     <com.nongke.jindao.base.view.TitleView
         android:id="@+id/layout_title"
         android:layout_width="match_parent"
-        android:layout_height="45dp" />
+        android:layout_height="wrap_content" />
 
     <ScrollView
         android:layout_width="match_parent"

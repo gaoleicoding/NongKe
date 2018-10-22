@@ -31,13 +31,12 @@
             android:launchMode="singleTask">
 
         </activity>
-        <activity android:name=".activity.ArticleDetailActivity"></activity>
         <activity android:name=".activity.RegisterLoginActivity"></activity>
         <activity android:name=".activity.DaoliRechargeActivity"></activity>
         <activity android:name=".activity.DaoLiTransferActivity"></activity>
         <activity android:name=".activity.WithdrawActivity"></activity>
         <activity android:name=".activity.UserProfileActivity"></activity>
-        <activity android:name=".activity.AddressActivity"></activity>
+        <activity android:name=".activity.UserAddressActivity"></activity>
         <activity android:name=".activity.VipRechargeActivity"></activity>
         <activity android:name=".activity.PromotionActivity"></activity>
 

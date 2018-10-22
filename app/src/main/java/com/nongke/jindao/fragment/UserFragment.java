@@ -3,7 +3,6 @@ package com.nongke.jindao.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -11,7 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.nongke.jindao.R;
-import com.nongke.jindao.activity.AddressActivity;
+import com.nongke.jindao.activity.UserAddressActivity;
 import com.nongke.jindao.activity.DaoLiTransferActivity;
 import com.nongke.jindao.activity.DaoliRechargeActivity;
 import com.nongke.jindao.activity.PromotionActivity;
@@ -155,7 +154,7 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
     public void click(View view) {
         if (UserUtils.getUserInfo() == null) {
             RegisterLoginActivity.startActivity(getActivity());
-            Utils.showToast(getString(R.string.user_not_login),true);
+            Utils.showToast(getString(R.string.user_not_login), true);
             return;
         }
         switch (view.getId()) {
@@ -188,7 +187,7 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
                 PromotionActivity.startActivity(getActivity());
                 break;
             case R.id.my_location_layout:
-                AddressActivity.startActivity(getActivity());
+                UserAddressActivity.startActivity(getActivity());
                 break;
             case R.id.my_order_layout:
 

@@ -13,7 +13,7 @@
         <com.nongke.jindao.base.view.TitleView
             android:id="@+id/layout_title"
             android:layout_width="match_parent"
-            android:layout_height="45dp" />
+            />
 
         <LinearLayout
             android:id="@+id/ll_withdraw_amount"

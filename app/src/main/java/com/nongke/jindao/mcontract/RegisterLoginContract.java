@@ -13,9 +13,11 @@ public class RegisterLoginContract {
     public interface Presenter {
 
         void getRegisterData(String phone, String password, String confirmPassword, String code);
+
         void getResetPasswordData(String phone, String password, String confirmPassword, String code);
 
         void getLoginData(String phone, String password);
+
         void getLogoutData();
 
         void getMessageCode(String phone, int type);
@@ -25,6 +27,7 @@ public class RegisterLoginContract {
     public interface View {
 
         void showRegisterResData(RegisterResData registerResData);
+
         void showResetPasswordData(RegisterResData registerResData);
 
         void showLoginResData(LoginResData loginResData);

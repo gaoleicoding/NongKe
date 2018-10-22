@@ -1,20 +1,10 @@
 package com.nongke.jindao.base.activity;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.ContextCompat;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.gaolei.basemodule.R;
@@ -26,18 +16,21 @@ import com.umeng.analytics.MobclickAgent;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static com.nongke.jindao.base.utils.PermissionUtil.PERMISSION_CODE;
+import butterknife.OnClick;
 
 
 /**
  * Created by gaolei on 2018/4/26.
  */
 
-public abstract class BaseActivity extends com.nongke.jindao.base.activity.BasePermisssionActivity  {
+public abstract class BaseActivity extends com.nongke.jindao.base.activity.BasePermisssionActivity {
     private PermissionUtil.RequestPermissionCallBack mRequestPermissionCallBack;
 
     public static Activity context;
+//    @BindView(R2.id.iv_back)
+//    public ImageView iv_back;
+//    @BindView(R2.id.title)
+//    public TextView title;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +39,7 @@ public abstract class BaseActivity extends com.nongke.jindao.base.activity.BaseP
 
         ExitAppUtils.getInstance().addActivity(this);
 
-        context=this;
+        context = this;
         setStatusBarColor(R.color.app_color);
 
         Bundle bundle = getIntent().getExtras();
@@ -63,7 +56,17 @@ public abstract class BaseActivity extends com.nongke.jindao.base.activity.BaseP
 
     protected abstract void initData(Bundle bundle);
 
-
+//    @OnClick({R2.id.iv_back})
+//    public void click(View view) {
+//        switch (view.getId()) {
+//            case R2.id.iv_back:
+//
+//                finish();
+//
+//                break;
+//
+//        }
+//    }
 
     /**
      * 设置状态栏颜色
@@ -82,9 +85,10 @@ public abstract class BaseActivity extends com.nongke.jindao.base.activity.BaseP
         super.onPause();
         MobclickAgent.onPause(this);
     }
+
     protected void onDestroy() {
         super.onDestroy();
-        context=null;
+        context = null;
         ExitAppUtils.getInstance().delActivity(this);
         ExitAppUtils.getInstance().delActivity(this);
     }
