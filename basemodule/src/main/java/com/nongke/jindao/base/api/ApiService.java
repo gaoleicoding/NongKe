@@ -6,7 +6,9 @@ import com.nongke.jindao.base.mmodel.LogoutResData;
 import com.nongke.jindao.base.mmodel.MsgCodeResData;
 import com.nongke.jindao.base.mmodel.RegisterResData;
 import com.nongke.jindao.base.mmodel.UpdateAddressResData;
+import com.nongke.jindao.base.mmodel.UpdateProfileResData;
 import com.nongke.jindao.base.mmodel.UserAddressResData;
+import com.nongke.jindao.base.mmodel.UserProfileResData;
 
 import io.reactivex.Observable;
 import okhttp3.RequestBody;
@@ -42,5 +44,14 @@ public interface ApiService {
 
     @POST("user/getUserAddress")
     Observable<UserAddressResData> getUserAddress();
+
+    @POST("user/saveOrUpdateUserAddress")
+    Observable<UpdateProfileResData> saveOrUpdateUserBank(@Body RequestBody requestBody);
+
+    @POST("user/getUserBank")
+    Observable<UserProfileResData> getUserBank();
+
+    @POST("user/getMessageCodeForUpdate")
+    Observable<MsgCodeResData> getMessageCodeForUpdate();
 
 }

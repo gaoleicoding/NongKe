@@ -62,7 +62,7 @@
                     android:text="@string/bank_card_num" />
 
                 <EditText
-                    android:id="@+id/et_bank_card"
+                    android:id="@+id/et_bank_card_num"
                     style="@style/code_edit_text_style"
                     android:inputType="number"/>
             </LinearLayout>

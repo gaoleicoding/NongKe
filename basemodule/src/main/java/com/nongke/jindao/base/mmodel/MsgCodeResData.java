@@ -1,6 +1,6 @@
 package com.nongke.jindao.base.mmodel;
 
-public class MsgCodeResData {
+public class MsgCodeResData extends BaseResData{
 
 /*    {
         "extra": {},
@@ -10,7 +10,6 @@ public class MsgCodeResData {
             "timestamp": "string"
     }*/
 
-    public String retCode, retDesc, timestamp;
     public boolean rspBody;
 
     @Override

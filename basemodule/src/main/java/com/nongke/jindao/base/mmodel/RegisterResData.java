@@ -7,7 +7,7 @@ import java.util.List;
  * @date 2018/2/26
  */
 
-public class RegisterResData {
+public class RegisterResData extends BaseResData{
     /*   {
            "extra": {},
            "retCode": "string",
@@ -15,7 +15,6 @@ public class RegisterResData {
                "rspBody": true,
                "timestamp": "string"
        }*/
-    public String retCode, retDesc, timestamp;
     public boolean rspBody;
 
     @Override

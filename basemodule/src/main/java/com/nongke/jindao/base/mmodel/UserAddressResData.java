@@ -1,7 +1,7 @@
 package com.nongke.jindao.base.mmodel;
 
-public class UserAddressResData {
-    public String retCode, retDesc, timestamp;
+public class UserAddressResData extends BaseResData{
+
     public RspBody rspBody;
 
     public class RspBody {

@@ -135,7 +135,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/tv_select_bank"
+                            android:id="@+id/tv_select_withdraw_bank"
                             style="@style/common_txt_16sp"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -157,7 +157,7 @@
                         android:text="@string/bank_card_num" />
 
                     <EditText
-                        android:id="@+id/et_bank_card"
+                        android:id="@+id/et_withdraw_bank_card"
                         style="@style/code_edit_num_style"
                         android:inputType="number"
                         />
@@ -170,7 +170,7 @@
                         android:text="@string/bank_card_owener_name" />
 
                     <EditText
-                        android:id="@+id/et_bank_card_owner"
+                        android:id="@+id/et_withdraw_bank_card_owner"
                         style="@style/code_edit_text_style"
                         android:inputType="text"/>
                 </LinearLayout>
@@ -182,7 +182,7 @@
                         android:text="@string/bank_branch_address" />
 
                     <EditText
-                        android:id="@+id/et_bank_branch_address"
+                        android:id="@+id/et_withdraw_bank_branch_address"
                         style="@style/code_edit_text_style"
                         android:inputType="text"/>
                 </LinearLayout>
@@ -196,7 +196,7 @@
                         />
 
                     <EditText
-                        android:id="@+id/et_contact_phone_num"
+                        android:id="@+id/et_withdraw_contact_phone_num"
                         style="@style/code_edit_num_style"
                         android:inputType="number"/>
                 </LinearLayout>

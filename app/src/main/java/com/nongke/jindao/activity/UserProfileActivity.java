@@ -14,10 +14,15 @@ import android.widget.TextView;
 
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
+import com.nongke.jindao.base.mmodel.UserProfileResData;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.utils.SharedPreferencesUtils;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.base.utils.Constants;
+import com.nongke.jindao.mcontract.UserAddressContract;
+import com.nongke.jindao.mcontract.UserProfileContract;
+import com.nongke.jindao.mpresenter.UserAddressPresenter;
+import com.nongke.jindao.mpresenter.UserProfilePresenter;
 import com.nongke.jindao.view.CountDownButton;
 
 import butterknife.BindView;
@@ -28,7 +33,7 @@ import butterknife.OnClick;
  * author: zlm
  * date: 2017/3/17 16:01
  */
-public class UserProfileActivity extends BaseMvpActivity {
+public class UserProfileActivity extends BaseMvpActivity<UserProfilePresenter> implements UserProfileContract.View {
     @BindView(R.id.iv_back)
     ImageView iv_back;
     @BindView(R.id.title)
@@ -36,8 +41,8 @@ public class UserProfileActivity extends BaseMvpActivity {
 
     @BindView(R.id.tv_select_bank)
     TextView tv_select_bank;
-    @BindView(R.id.et_bank_card)
-    EditText et_bank_card;
+    @BindView(R.id.et_bank_card_num)
+    EditText et_bank_card_num;
     @BindView(R.id.et_bank_card_owner)
     EditText et_bank_card_owner;
     @BindView(R.id.et_bank_branch_address)
@@ -74,23 +79,19 @@ public class UserProfileActivity extends BaseMvpActivity {
     }
 
     @Override
-    public BasePresenter initPresenter() {
-        return null;
+    public UserProfilePresenter initPresenter() {
+        return new UserProfilePresenter();
     }
 
     @Override
     protected void loadData() {
-
+        mPresenter.getUserProfile();
     }
 
     @OnClick({R.id.iv_back, R.id.ll_select_bank, R.id.tv_save_modify, R.id.tv_modify_profile_get_verify_code})
     public void click(View view) {
         switch (view.getId()) {
-            case R.id.iv_back:
 
-                finish();
-
-                break;
             case R.id.ll_select_bank:
                 Integer storedWhich = (Integer) SharedPreferencesUtils.getParam(UserProfileActivity.this, "which_bank", new Integer(-1));
                 Dialog myDialog = new AlertDialog.Builder(this)
@@ -116,12 +117,19 @@ public class UserProfileActivity extends BaseMvpActivity {
                         //发送验证码请求成功后调用
                         tv_modify_profile_get_verify_code.start();
                     }
-//                    mPresenter.getMessageCode(phoneNum, 1);
+                    mPresenter.getMessageCodeForUpdate();
                 }
 
                 break;
             case R.id.tv_save_modify:
+                String bankName = tv_select_bank.getText().toString();
+                String bankAddress = et_bank_branch_address.getText().toString();
+                String bankNum = et_bank_card_num.getText().toString();
+                String userName = et_bank_card_owner.getText().toString();
+                String phone = et_contact_phone_num.getText().toString();
+                String code = et_modify_profile_verify_code.getText().toString();
 
+                mPresenter.saveOrUpdateUserProfile(bankName, bankAddress, bankNum, userName, phone, code);
                 break;
 
             default:
@@ -130,4 +138,13 @@ public class UserProfileActivity extends BaseMvpActivity {
 
     }
 
+    @Override
+    public void showUserProfileResData(UserProfileResData userProfileResData) {
+        if (userProfileResData == null || userProfileResData.rspBody == null) return;
+        tv_select_bank.setText(userProfileResData.rspBody.bankName);
+        et_bank_branch_address.setText(userProfileResData.rspBody.bankAdress);
+        et_bank_card_num.setText(userProfileResData.rspBody.bankNum);
+        et_bank_card_owner.setText(userProfileResData.rspBody.userName);
+        et_contact_phone_num.setText(userProfileResData.rspBody.phone);
+    }
 }

@@ -7,7 +7,7 @@ import java.util.List;
  * @date 2018/2/26
  */
 
-public class LoginResData {
+public class LoginResData extends BaseResData{
 
     /*{
         "extra": {},
@@ -38,7 +38,6 @@ public class LoginResData {
         "timestamp": "string"
     }*/
 
-    public String retCode, retDesc;
 
     public RspBody rspBody;
 

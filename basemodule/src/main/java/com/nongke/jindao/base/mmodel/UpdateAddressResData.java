@@ -1,7 +1,7 @@
 package com.nongke.jindao.base.mmodel;
 
-public class UpdateAddressResData {
-    public String retCode, retDesc, timestamp;
+public class UpdateAddressResData extends BaseResData{
+
     public boolean rspBody;
 
     @Override

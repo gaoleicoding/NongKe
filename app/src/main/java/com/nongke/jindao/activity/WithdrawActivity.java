@@ -34,14 +34,14 @@ public class WithdrawActivity extends BaseMvpActivity {
     TextView title;
     @BindView(R.id.et_transfer_amount)
     EditText et_transfer_amount;
-    @BindView(R.id.et_contact_phone_num)
-    EditText et_contact_phone_num;
-    @BindView(R.id.et_bank_card)
-    EditText et_bank_card;
-    @BindView(R.id.et_bank_card_owner)
-    EditText et_bank_card_owner;
-    @BindView(R.id.et_bank_branch_address)
-    EditText et_bank_branch_address;
+    @BindView(R.id.et_withdraw_contact_phone_num)
+    EditText et_contact_withdraw_phone_num;
+    @BindView(R.id.et_withdraw_bank_card)
+    EditText et_withdraw_bank_card;
+    @BindView(R.id.et_withdraw_bank_card_owner)
+    EditText et_withdraw_bank_card_owner;
+    @BindView(R.id.et_withdraw_bank_branch_address)
+    EditText et_withdraw_bank_branch_address;
     @BindView(R.id.et_commission_convert_amount)
     EditText et_commission_convert_amount;
 
