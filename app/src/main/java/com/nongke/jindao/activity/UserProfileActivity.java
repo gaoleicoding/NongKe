@@ -129,7 +129,7 @@ public class UserProfileActivity extends BaseMvpActivity<UserProfilePresenter> i
                 String phone = et_contact_phone_num.getText().toString();
                 String code = et_modify_profile_verify_code.getText().toString();
 
-                mPresenter.saveOrUpdateUserProfile(bankName, bankAddress, bankNum, userName, phone, code);
+                mPresenter.saveOrUpdateUserProfile(bankName,  bankNum, userName, bankAddress,phone, code);
                 break;
 
             default:

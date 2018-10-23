@@ -1,6 +1,7 @@
 package com.nongke.jindao.base.api;
 
 
+import com.nongke.jindao.base.mmodel.BaseResData;
 import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.mmodel.LogoutResData;
 import com.nongke.jindao.base.mmodel.MsgCodeResData;
@@ -45,7 +46,7 @@ public interface ApiService {
     @POST("user/getUserAddress")
     Observable<UserAddressResData> getUserAddress();
 
-    @POST("user/saveOrUpdateUserAddress")
+    @POST("user/saveOrUpdateUserBank")
     Observable<UpdateProfileResData> saveOrUpdateUserBank(@Body RequestBody requestBody);
 
     @POST("user/getUserBank")
@@ -53,5 +54,8 @@ public interface ApiService {
 
     @POST("user/getMessageCodeForUpdate")
     Observable<MsgCodeResData> getMessageCodeForUpdate();
+
+    @POST("user/uploadImg")
+    Observable<BaseResData> uploadImg();
 
 }

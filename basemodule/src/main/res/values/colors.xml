@@ -25,5 +25,6 @@
     <color name="color_black">#000000</color>
     <color name="color_white">#ffffff</color>
     <color name="color_fff3eb">#fff3eb</color>
+    <color name="color_66000000">#66000000</color>
 
 </resources>

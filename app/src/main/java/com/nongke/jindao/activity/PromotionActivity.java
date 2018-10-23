@@ -26,6 +26,7 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseActivity;
 import com.nongke.jindao.base.qrcode.LogoConfig;
+import com.nongke.jindao.base.utils.FileProvider7;
 import com.nongke.jindao.base.utils.UserUtils;
 
 import java.io.File;
@@ -42,7 +43,10 @@ import butterknife.OnClick;
  */
 
 public class PromotionActivity extends BaseActivity {
-
+    @BindView(R.id.iv_back)
+    ImageView iv_back;
+    @BindView(R.id.title)
+    TextView title;
     @BindView(R.id.iv_qrcode)
     ImageView iv_qrcode;
     @BindView(R.id.tv_copy_link)
@@ -87,6 +91,8 @@ public class PromotionActivity extends BaseActivity {
 
     @Override
     protected void initData(Bundle bundle) {
+        title.setText(getString(R.string.my_promotion));
+        iv_back.setVisibility(View.VISIBLE);
         generateCode();
     }
 
@@ -204,7 +210,7 @@ public class PromotionActivity extends BaseActivity {
         //获取与应用相关联的路径
         String imageFilePath = getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath();
         File imageFile = new File(imageFilePath,"/" + bitName);// 通过路径创建保存文件
-        imageFileUri = Uri.fromFile(imageFile);
+        imageFileUri = FileProvider7.getUriForFile(PromotionActivity.this,imageFile);
         if (imageFile.exists()) {
             imageFile.delete();
         }

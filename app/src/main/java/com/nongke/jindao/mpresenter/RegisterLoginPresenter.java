@@ -4,6 +4,7 @@ package com.nongke.jindao.mpresenter;
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.api.ApiService;
 import com.nongke.jindao.base.application.CustomApplication;
+import com.nongke.jindao.base.mmodel.BaseResData;
 import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.mmodel.LogoutResData;
 import com.nongke.jindao.base.mmodel.MsgCodeResData;
@@ -17,6 +18,7 @@ import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
 
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.HashMap;
 
 import io.reactivex.Observable;
@@ -85,21 +87,28 @@ public class RegisterLoginPresenter extends BasePresenter<RegisterLoginContract.
 
     @Override
     public void getLogoutData() {
-//        HashMap hashMap = new HashMap();
-//        hashMap.put("phone", phone);
-//        String jsonString = new JSONObject(hashMap).toString();
-//        LogUtil.d2("jsonString------------" + jsonString);
-//        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonString);
 
         Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).getLogoutData();
         addSubscribe(observable, new BaseObserver<LogoutResData>(false) {
             @Override
             public void onNext(LogoutResData logoutResData) {
                 LogUtil.d2("logoutResData------------ :" + logoutResData.toString());
-//                mView.showLogoutResData(loginResData);
                 if (logoutResData.retDesc.contains("未登录"))
                     Utils.showToast(CustomApplication.context.getString(R.string.user_not_login), true);
 
+            }
+        });
+    }
+
+    @Override
+    public void uploadImg() {
+//        final File file = new File(filename);
+//        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).uploadImg();
+        addSubscribe(observable, new BaseObserver<BaseResData>(false) {
+            @Override
+            public void onNext(BaseResData baseResData) {
+                LogUtil.d2("baseResData------------ :" + baseResData.toString());
             }
         });
     }

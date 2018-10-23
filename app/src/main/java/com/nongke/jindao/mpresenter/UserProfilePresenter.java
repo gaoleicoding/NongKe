@@ -31,10 +31,10 @@ public class UserProfilePresenter extends BasePresenter<UserProfileContract.View
 
 
     @Override
-    public void saveOrUpdateUserProfile(String bankName, String bankAddress, String bankNum, String userName, String phone, String code) {
+    public void saveOrUpdateUserProfile(String bankName, String bankNum, String userName, String bankAddress, String phone, String code) {
         HashMap hashMap = new HashMap();
         hashMap.put("bankName", bankName);
-        hashMap.put("bankAddress", bankAddress);
+        hashMap.put("bankAdress", bankAddress);
         hashMap.put("bankNum", bankNum);
         hashMap.put("userName", userName);
         hashMap.put("phone", phone);

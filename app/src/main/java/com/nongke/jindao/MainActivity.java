@@ -3,9 +3,12 @@ package com.nongke.jindao;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.TextView;
@@ -14,16 +17,20 @@ import android.widget.Toast;
 import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.adapter.MainTabAdapter;
 import com.nongke.jindao.base.activity.BaseActivity;
+import com.nongke.jindao.base.photopicker.ImageUtils;
+import com.nongke.jindao.base.photopicker.UriUtils;
+import com.nongke.jindao.base.utils.FileProvider7;
 import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.PermissionUtil;
-import com.nongke.jindao.fragment.HomeFragment;
-import com.nongke.jindao.fragment.ClassifyFragment;
+import com.nongke.jindao.base.utils.UserUtils;
 import com.nongke.jindao.fragment.CartFragment;
+import com.nongke.jindao.fragment.ClassifyFragment;
+import com.nongke.jindao.fragment.HomeFragment;
 import com.nongke.jindao.fragment.RechargeFragment;
 import com.nongke.jindao.fragment.UserFragment;
-import com.nongke.jindao.base.utils.UserUtils;
 import com.nongke.jindao.view.CustomViewPager;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -44,6 +51,14 @@ public class MainActivity extends BaseActivity {
     RechargeFragment projectFragment;
     UserFragment userFragment;
 
+    private static final int REQUEST_OPEN_CAMERA = 0x011;
+    private static final int REQUEST_OPEN_GALLERY = 0x022;
+    private static final int REQUEST_CROP_PHOTO = 0x033;
+    private static final int REQUEST_PERMISSIONS = 0x044;
+    ImageUtils imageUtils;
+    private static final String TAG = "photopicker";
+
+
     public static void startActivity(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
         context.startActivity(intent);
@@ -62,7 +77,7 @@ public class MainActivity extends BaseActivity {
         String filesDir = getFilesDir().getPath();
         Log.d("gaolei", "cacheDir---------" + cacheDir);
         Log.d("gaolei", "filesDir---------" + filesDir);
-
+//        loadGlideImage();
     }
 
     protected void initView() {
@@ -91,6 +106,7 @@ public class MainActivity extends BaseActivity {
         //将TabLayout和ViewPager关联起来
         tabLayout.setupWithViewPager(viewPager);
         initTab();
+//        new PhotoPickerUtil(this);
     }
 
 
@@ -164,7 +180,7 @@ public class MainActivity extends BaseActivity {
 
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        LogUtil.d("MainActivity------------------onNewIntent");
+        LogUtil.d("PhotoPickerUtil------------------onNewIntent");
         userFragment.refreshUserInfo();
     }
 
@@ -187,4 +203,48 @@ public class MainActivity extends BaseActivity {
 
         return super.onKeyDown(keyCode, event);
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        imageUtils=userFragment.imageUtils;
+        if (resultCode != RESULT_OK) {
+            return;
+        }
+        //data的返回值根据
+        switch (requestCode) {
+            case REQUEST_OPEN_CAMERA:
+                imageUtils.addPicToGallery(imageUtils.imgPathOri);
+                imageUtils.cropPhoto(imageUtils.imgUriOri);
+                Log.i(TAG, "openCameraResult_imgPathOri:" + imageUtils.imgPathOri);
+                Log.i(TAG, "openCameraResult_imgUriOri:" + imageUtils.imgUriOri.toString());
+                break;
+            case REQUEST_OPEN_GALLERY:
+                if (data != null) {
+                    Uri imgUriSel = data.getData();
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                        //打开相册会返回一个经过图像选择器安全化的Uri，直接放入裁剪程序会不识别，抛出[暂不支持此类型：华为7.0]
+                        //formatUri会返回根据Uri解析出的真实路径
+                        String imgPathSel = UriUtils.formatUri(this, imgUriSel);
+                        //根据真实路径转成File,然后通过应用程序重新安全化，再放入裁剪程序中才可以识别
+                        imageUtils.cropPhoto(FileProvider7.getUriForFile(this,  new File(imgPathSel)));
+                        Log.i(TAG, "Kit_sel_path:" + imgPathSel);
+                        Log.i(TAG, "Kit_sel_uri:" + Uri.fromFile(new File(imgPathSel)));
+                    } else {
+                        imageUtils.cropPhoto(imgUriSel);
+                    }
+                    Log.i(TAG, "openGalleryResult_imgUriSel:" + imgUriSel);
+                }
+                break;
+            case REQUEST_CROP_PHOTO:
+                imageUtils.addPicToGallery(imageUtils.imgPathCrop);
+                ImageUtils.imageViewSetPic(userFragment.iv_user_photo, imageUtils.imgPathCrop);
+                revokeUriPermission(imageUtils.imgUriCrop, Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                Log.i(TAG, "cropPhotoResult_imgPathCrop:" + imageUtils.imgPathCrop);
+                Log.i(TAG, "cropPhotoResult_imgUriCrop:" + imageUtils.imgUriCrop.toString());
+                break;
+        }
+    }
+
 }

@@ -144,5 +144,5 @@ dependencies {
     //    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
     api project(':basemodule')
-    implementation files('libs/zxing.jar')
+    api files('libs/zxing.jar')
 }

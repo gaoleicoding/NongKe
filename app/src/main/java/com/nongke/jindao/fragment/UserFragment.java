@@ -1,14 +1,17 @@
 package com.nongke.jindao.fragment;
 
+import android.Manifest;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.nongke.jindao.MainActivity;
 import com.nongke.jindao.R;
 import com.nongke.jindao.activity.UserAddressActivity;
 import com.nongke.jindao.activity.DaoLiTransferActivity;
@@ -18,7 +21,10 @@ import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.activity.UserProfileActivity;
 import com.nongke.jindao.activity.VipRechargeActivity;
 import com.nongke.jindao.activity.WithdrawActivity;
+import com.nongke.jindao.base.activity.BaseActivity;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
+import com.nongke.jindao.base.photopicker.ImageUtils;
+import com.nongke.jindao.base.utils.PermissionUtil;
 import com.nongke.jindao.base.utils.SharedPreferencesUtils;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.mpresenter.RegisterLoginPresenter;
@@ -62,7 +68,7 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
 
 
     @BindView(R.id.iv_user_photo)
-    ImageView iv_user_photo;
+    public ImageView iv_user_photo;
     @BindView(R.id.tv_vip_recharge)
     TextView tv_vip_recharge;
     @BindView(R.id.tv_user_phone_num)
@@ -77,6 +83,8 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
     TextView tv_user_daoli_balance;
     @BindView(R.id.tv_user_profile_not_login)
     TextView tv_user_profile_not_login;
+    public static int PICK_PHOTO=0;
+    public   ImageUtils imageUtils;
 
     @Override
     public void initData(Bundle bundle) {
@@ -211,10 +219,44 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
             case R.id.iv_user_photo:
                 if (!UserUtils.isLogined())
                     RegisterLoginActivity.startActivity(getActivity());
+                else {
+                    requestCameraPermission();
+
+//                    ivImage.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            imageUtils.popWinChoose.showAtLocation(subFragmentView, Gravity.BOTTOM, 0, 0); // 在底部显示
+//                setWindowAlpha(0.5f); //Window设置为全透明
+//                        }
+//                    });
+                }
                 break;
             default:
                 break;
         }
 
     }
+    public void requestCameraPermission(){
+        BaseActivity baseActivity=(BaseActivity)getActivity();
+        baseActivity.requestPermission(baseActivity,new PermissionUtil.RequestPermissionCallBack() {
+            @Override
+            public void granted() {
+                imageUtils=new ImageUtils(getActivity());
+                imageUtils.initChoosePop();
+                imageUtils.popWinChoose.showAtLocation(subFragmentView, Gravity.BOTTOM, 0, 0); // 在底部显示
+//                mMenuDialog.dismiss();
+            }
+
+            @Override
+            public void denied() {
+            }
+        }, new String[]{Manifest.permission.CAMERA});
+    }
+//    private void chooseImg(){
+//        Intent intent = new Intent(getActivity(), PhotoPickerActivity.class);
+//        intent.putExtra(PhotoPickerActivity.EXTRA_SHOW_CAMERA, true); //是否使用拍照功能
+//        intent.putExtra(PhotoPickerActivity.EXTRA_SELECT_MODE, 1);//选择图片的样式
+//        intent.putExtra(PhotoPickerActivity.EXTRA_MAX_MUN, 1);//最大可以选择图片的数量
+//        startActivityForResult(intent, PICK_PHOTO); //requestCode
+//    }
 }

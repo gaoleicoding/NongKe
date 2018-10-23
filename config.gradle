@@ -4,7 +4,7 @@ ext {
             compileSdkVersion: 26,
             buildToolsVersion: "26.0.2",
             minSdkVersion    : 14,
-            targetSdkVersion : 22,
+            targetSdkVersion : 26,
             versionCode      : 201,
             versionName      : "2.0.1"
     ]
@@ -15,8 +15,6 @@ ext {
             glideSdkVersion         : "4.0.0",
             butterknifeSdkVersion   : "8.4.0",
     ]
-
-
 
     dependencies = [
             appcompatV7                    : "com.android.support:appcompat-v7:26.1.0",

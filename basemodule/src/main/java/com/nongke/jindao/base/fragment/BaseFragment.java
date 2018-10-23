@@ -22,7 +22,7 @@ import butterknife.Unbinder;
 
 public abstract class BaseFragment extends Fragment implements View.OnClickListener {
     private FrameLayout mLlContent;
-    View subFragmentView;
+    public View subFragmentView;
     private RelativeLayout mLlLoading;
     private Button bt_error_refresh;
     public LinearLayout mErrorPageView;

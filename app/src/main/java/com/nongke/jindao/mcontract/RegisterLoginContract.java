@@ -21,6 +21,7 @@ public class RegisterLoginContract {
         void getLogoutData();
 
         void getMessageCode(String phone, int type);
+        void uploadImg();
 
     }
 

@@ -24,7 +24,6 @@ import butterknife.OnClick;
  */
 
 public abstract class BaseActivity extends com.nongke.jindao.base.activity.BasePermisssionActivity {
-    private PermissionUtil.RequestPermissionCallBack mRequestPermissionCallBack;
 
     public static Activity context;
 //    @BindView(R2.id.iv_back)
