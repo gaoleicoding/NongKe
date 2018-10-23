@@ -17,6 +17,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import com.gaolei.basemodule.R;
 import com.nongke.jindao.base.utils.FileProvider7;
@@ -246,9 +247,9 @@ public class ImageUtils {
                 setWindowAlpha(1); //Window设置为全透明
             }
         });
-        Button btnFirst = (Button) view.findViewById(R.id.btn_first);
-        Button btnSecond = (Button) view.findViewById(R.id.btn_second);
-        Button btnThird = (Button) view.findViewById(R.id.btn_third);
+        TextView btnFirst = view.findViewById(R.id.btn_first);
+        TextView btnSecond = view.findViewById(R.id.btn_second);
+        TextView btnThird = view.findViewById(R.id.btn_third);
         btnFirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
