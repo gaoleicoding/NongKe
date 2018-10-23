@@ -241,6 +241,7 @@ public class MainActivity extends BaseActivity {
                 imageUtils.addPicToGallery(imageUtils.imgPathCrop);
                 ImageUtils.imageViewSetPic(userFragment.iv_user_photo, imageUtils.imgPathCrop);
                 revokeUriPermission(imageUtils.imgUriCrop, Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                userFragment.uploadPhoto(imageUtils.imgPathCrop);
                 Log.i(TAG, "cropPhotoResult_imgPathCrop:" + imageUtils.imgPathCrop);
                 Log.i(TAG, "cropPhotoResult_imgUriCrop:" + imageUtils.imgUriCrop.toString());
                 break;

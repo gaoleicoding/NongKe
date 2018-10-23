@@ -109,11 +109,7 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
 
     @Override
     protected void loadData() {
-        String phone_num = (String) SharedPreferencesUtils.getParam(RegisterLoginActivity.this, "phone_num", "");
-        String password = (String) SharedPreferencesUtils.getParam(RegisterLoginActivity.this, "password", "");
-        if (phone_num.length() > 0 && password.length() > 0) {
-            mPresenter.getLoginData(phone_num, password);
-        }
+
     }
 
     @OnClick({R.id.iv_back, R.id.tv_login, R.id.tv_register_free, R.id.tv_register_get_verify_code, R.id.tv_register, R.id.tv_forget_password,
@@ -266,6 +262,7 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
             SharedPreferencesUtils.setParam(RegisterLoginActivity.this, "phone_num", et_login_phone_num.getText().toString());
             SharedPreferencesUtils.setParam(RegisterLoginActivity.this, "password", et_login_password.getText().toString());
             MainActivity.startActivity(RegisterLoginActivity.this);
+            finish();
 //            ExitAppUtils.getInstance().exit();
         } else if (loginResData.retDesc != null && "20000".equals(loginResData.retCode))
             Utils.showToast(loginResData.retDesc, true);

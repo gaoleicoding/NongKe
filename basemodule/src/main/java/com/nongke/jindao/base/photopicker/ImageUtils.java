@@ -239,6 +239,7 @@ public class ImageUtils {
         View view = LayoutInflater.from(activity).inflate(R.layout.popwin_sel, null);
         popWinChoose = new PopupWindow(view, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         popWinChoose.setFocusable(true); // 设置popWindow弹出窗体可点击
+        popWinChoose.setOutsideTouchable(true);
         popWinChoose.setBackgroundDrawable(new ColorDrawable(activity.getResources().getColor(R.color.color_66000000)));
 //        popWinChoose.setAnimationStyle(R.style.storeImageChooseStyle);
         popWinChoose.setOnDismissListener(new PopupWindow.OnDismissListener() {
@@ -254,6 +255,7 @@ public class ImageUtils {
             @Override
             public void onClick(View v) {
                 openCamera();
+                popWinChoose.dismiss();
             }
 
         });
@@ -261,6 +263,7 @@ public class ImageUtils {
             @Override
             public void onClick(View v) {
                 openGallery();
+                popWinChoose.dismiss();
             }
 
         });

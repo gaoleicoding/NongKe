@@ -12,9 +12,12 @@ import com.nongke.jindao.base.mmodel.UserAddressResData;
 import com.nongke.jindao.base.mmodel.UserProfileResData;
 
 import io.reactivex.Observable;
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 
 public interface ApiService {
@@ -55,7 +58,8 @@ public interface ApiService {
     @POST("user/getMessageCodeForUpdate")
     Observable<MsgCodeResData> getMessageCodeForUpdate();
 
+    @Multipart
     @POST("user/uploadImg")
-    Observable<BaseResData> uploadImg();
+    Observable<BaseResData> uploadImg(@Part MultipartBody.Part photo);
 
 }

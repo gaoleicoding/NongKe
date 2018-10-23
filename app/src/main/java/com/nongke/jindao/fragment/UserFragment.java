@@ -2,6 +2,7 @@ package com.nongke.jindao.fragment;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Gravity;
@@ -211,10 +212,11 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
                 tv_user_profile_not_login.setVisibility(View.VISIBLE);
                 iv_user_photo.setImageResource(R.drawable.user_default_photo);
                 SharedPreferencesUtils.clear(getActivity(), "phone_num");
-                SharedPreferencesUtils.clear(getActivity(), "phone_num");
+                SharedPreferencesUtils.clear(getActivity(), "password");
                 mPresenter.getLogoutData();
                 RegisterLoginActivity.startActivity(getActivity());
                 UserUtils.setUserInfo(null);
+                UserUtils.setLogined(false);
                 break;
             case R.id.iv_user_photo:
                 if (!UserUtils.isLogined())
@@ -222,13 +224,6 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
                 else {
                     requestCameraPermission();
 
-//                    ivImage.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//                            imageUtils.popWinChoose.showAtLocation(subFragmentView, Gravity.BOTTOM, 0, 0); // 在底部显示
-//                setWindowAlpha(0.5f); //Window设置为全透明
-//                        }
-//                    });
                 }
                 break;
             default:
@@ -244,7 +239,6 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
                 imageUtils=new ImageUtils(getActivity());
                 imageUtils.initChoosePop();
                 imageUtils.popWinChoose.showAtLocation(subFragmentView, Gravity.BOTTOM, 0, 0); // 在底部显示
-//                mMenuDialog.dismiss();
             }
 
             @Override
@@ -252,11 +246,7 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
             }
         }, new String[]{Manifest.permission.CAMERA});
     }
-//    private void chooseImg(){
-//        Intent intent = new Intent(getActivity(), PhotoPickerActivity.class);
-//        intent.putExtra(PhotoPickerActivity.EXTRA_SHOW_CAMERA, true); //是否使用拍照功能
-//        intent.putExtra(PhotoPickerActivity.EXTRA_SELECT_MODE, 1);//选择图片的样式
-//        intent.putExtra(PhotoPickerActivity.EXTRA_MAX_MUN, 1);//最大可以选择图片的数量
-//        startActivityForResult(intent, PICK_PHOTO); //requestCode
-//    }
+    public void uploadPhoto(String path){
+        mPresenter.uploadImg(path);
+    }
 }

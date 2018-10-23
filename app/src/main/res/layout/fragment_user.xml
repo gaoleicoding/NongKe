@@ -18,7 +18,7 @@
             android:orientation="horizontal"
             android:padding="20dp">
 
-            <ImageView
+            <com.nongke.jindao.base.view.CircleImageView
                 android:id="@+id/iv_user_photo"
                 android:layout_width="72dp"
                 android:layout_height="72dp" />

@@ -23,6 +23,7 @@ import java.util.HashMap;
 
 import io.reactivex.Observable;
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
 
@@ -101,14 +102,16 @@ public class RegisterLoginPresenter extends BasePresenter<RegisterLoginContract.
     }
 
     @Override
-    public void uploadImg() {
-//        final File file = new File(filename);
-//        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-        Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).uploadImg();
+    public void uploadImg(String path) {
+        final File file = new File(path);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        MultipartBody.Part photo = MultipartBody.Part.createFormData("photo", file.getName(), requestBody);
+
+        Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).uploadImg(photo);
         addSubscribe(observable, new BaseObserver<BaseResData>(false) {
             @Override
             public void onNext(BaseResData baseResData) {
-                LogUtil.d2("baseResData------------ :" + baseResData.toString());
+                LogUtil.d2("uploadImg------------ :" + baseResData.toString());
             }
         });
     }

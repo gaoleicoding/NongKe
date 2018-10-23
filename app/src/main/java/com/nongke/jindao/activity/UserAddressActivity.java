@@ -26,7 +26,7 @@ import butterknife.OnClick;
  * author: zlm
  * date: 2017/3/17 16:01
  */
-public class UserAddressActivity extends BaseMvpActivity<UserAddressPresenter> implements UserAddressContract.View  {
+public class UserAddressActivity extends BaseMvpActivity<UserAddressPresenter> implements UserAddressContract.View {
 
     @BindView(R.id.iv_back)
     ImageView iv_back;
@@ -70,13 +70,13 @@ public class UserAddressActivity extends BaseMvpActivity<UserAddressPresenter> i
         mPresenter.getUserAddress();
     }
 
-    @OnClick({R.id.iv_back,  R.id.tv_save_modify})
+    @OnClick({R.id.iv_back, R.id.tv_save_modify})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.tv_save_modify:
-                String userName=et_user_name.getText().toString();
-                String userPhone=et_user_phone_num.getText().toString();
-                String userAddress=et_user_address.getText().toString();
+                String userName = et_user_name.getText().toString();
+                String userPhone = et_user_phone_num.getText().toString();
+                String userAddress = et_user_address.getText().toString();
 
                 mPresenter.saveOrUpdateUserAddress(userName, userPhone, userAddress);
                 break;
@@ -90,6 +90,7 @@ public class UserAddressActivity extends BaseMvpActivity<UserAddressPresenter> i
 
     @Override
     public void showUserAddressResData(UserAddressResData userAddressResData) {
+        if (userAddressResData == null || userAddressResData.rspBody == null) return;
         et_user_name.setText(userAddressResData.rspBody.userName);
         et_user_phone_num.setText(userAddressResData.rspBody.phone);
         et_user_address.setText(userAddressResData.rspBody.address);
