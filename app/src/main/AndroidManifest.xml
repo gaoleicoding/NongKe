@@ -37,10 +37,11 @@
         <activity android:name=".activity.DaoliRechargeActivity"></activity>
         <activity android:name=".activity.DaoLiTransferActivity"></activity>
         <activity android:name=".activity.WithdrawActivity"></activity>
-        <activity android:name=".activity.UserProfileActivity"></activity>
-        <activity android:name=".activity.UserAddressActivity"></activity>
+        <activity android:name=".activity.MyProfileActivity"></activity>
+        <activity android:name=".activity.MyAddressActivity"></activity>
         <activity android:name=".activity.VipRechargeActivity"></activity>
         <activity android:name=".activity.PromotionActivity"></activity>
+        <activity android:name=".activity.MyInviterActivity"></activity>
 
         <!--value的值填写你在友盟后台申请的应用Appkey-->
         <meta-data

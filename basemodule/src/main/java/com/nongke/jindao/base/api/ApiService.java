@@ -8,8 +8,9 @@ import com.nongke.jindao.base.mmodel.MsgCodeResData;
 import com.nongke.jindao.base.mmodel.RegisterResData;
 import com.nongke.jindao.base.mmodel.UpdateAddressResData;
 import com.nongke.jindao.base.mmodel.UpdateProfileResData;
-import com.nongke.jindao.base.mmodel.UserAddressResData;
-import com.nongke.jindao.base.mmodel.UserProfileResData;
+import com.nongke.jindao.base.mmodel.MyAddressResData;
+import com.nongke.jindao.base.mmodel.MyInviterResData;
+import com.nongke.jindao.base.mmodel.MyProfileResData;
 
 import io.reactivex.Observable;
 import okhttp3.MultipartBody;
@@ -47,13 +48,13 @@ public interface ApiService {
     Observable<UpdateAddressResData> saveOrUpdateUserAddress(@Body RequestBody requestBody);
 
     @POST("user/getUserAddress")
-    Observable<UserAddressResData> getUserAddress();
+    Observable<MyAddressResData> getUserAddress();
 
     @POST("user/saveOrUpdateUserBank")
     Observable<UpdateProfileResData> saveOrUpdateUserBank(@Body RequestBody requestBody);
 
     @POST("user/getUserBank")
-    Observable<UserProfileResData> getUserBank();
+    Observable<MyProfileResData> getUserBank();
 
     @POST("user/getMessageCodeForUpdate")
     Observable<MsgCodeResData> getMessageCodeForUpdate();
@@ -61,5 +62,8 @@ public interface ApiService {
     @Multipart
     @POST("user/uploadImg")
     Observable<BaseResData> uploadImg(@Part MultipartBody.Part photo);
+
+    @POST("user/listUserInviter")
+    Observable<MyInviterResData> listUserInviter(@Body RequestBody requestBody);
 
 }

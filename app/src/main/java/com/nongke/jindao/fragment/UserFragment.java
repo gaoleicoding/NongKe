@@ -2,7 +2,6 @@ package com.nongke.jindao.fragment;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Gravity;
@@ -12,14 +11,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.nongke.jindao.MainActivity;
 import com.nongke.jindao.R;
-import com.nongke.jindao.activity.UserAddressActivity;
+import com.nongke.jindao.activity.MyAddressActivity;
 import com.nongke.jindao.activity.DaoLiTransferActivity;
 import com.nongke.jindao.activity.DaoliRechargeActivity;
+import com.nongke.jindao.activity.MyInviterActivity;
+import com.nongke.jindao.activity.MyProfileActivity;
 import com.nongke.jindao.activity.PromotionActivity;
 import com.nongke.jindao.activity.RegisterLoginActivity;
-import com.nongke.jindao.activity.UserProfileActivity;
 import com.nongke.jindao.activity.VipRechargeActivity;
 import com.nongke.jindao.activity.WithdrawActivity;
 import com.nongke.jindao.base.activity.BaseActivity;
@@ -50,6 +49,8 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
     LinearLayout my_recharge_layout;
     @BindView(R.id.my_commission_layout)
     LinearLayout my_commission_layout;
+    @BindView(R.id.my_inviter_layout)
+    LinearLayout my_contact_layout;
     @BindView(R.id.my_withdraw_layout)
     LinearLayout my_withdraw_layout;
     @BindView(R.id.my_withdraw_record_layout)
@@ -84,8 +85,8 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
     TextView tv_user_daoli_balance;
     @BindView(R.id.tv_user_profile_not_login)
     TextView tv_user_profile_not_login;
-    public static int PICK_PHOTO=0;
-    public   ImageUtils imageUtils;
+    public static int PICK_PHOTO = 0;
+    public ImageUtils imageUtils;
 
     @Override
     public void initData(Bundle bundle) {
@@ -159,7 +160,7 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
 
     @OnClick({R.id.iv_user_photo, R.id.my_daoli_recharge_layout, R.id.my_daoli_transfer_layout, R.id.my_recharge_layout, R.id.my_commission_layout, R.id.my_withdraw_layout,
             R.id.my_withdraw_record_layout, R.id.my_profile_layout, R.id.my_promotion_layout, R.id.my_location_layout, R.id.my_order_layout, R.id.my_logout_layout,
-            R.id.tv_vip_recharge})
+            R.id.tv_vip_recharge, R.id.my_inviter_layout})
     public void click(View view) {
         if (UserUtils.getUserInfo() == null) {
             RegisterLoginActivity.startActivity(getActivity());
@@ -182,6 +183,9 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
             case R.id.my_commission_layout:
 
                 break;
+            case R.id.my_inviter_layout:
+                MyInviterActivity.startActivity(getActivity());
+                break;
             case R.id.my_withdraw_layout:
                 WithdrawActivity.startActivity(getActivity());
 
@@ -190,13 +194,13 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
 
                 break;
             case R.id.my_profile_layout:
-                UserProfileActivity.startActivity(getActivity());
+                MyProfileActivity.startActivity(getActivity());
                 break;
             case R.id.my_promotion_layout:
                 PromotionActivity.startActivity(getActivity());
                 break;
             case R.id.my_location_layout:
-                UserAddressActivity.startActivity(getActivity());
+                MyAddressActivity.startActivity(getActivity());
                 break;
             case R.id.my_order_layout:
 
@@ -231,12 +235,13 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
         }
 
     }
-    public void requestCameraPermission(){
-        BaseActivity baseActivity=(BaseActivity)getActivity();
-        baseActivity.requestPermission(baseActivity,new PermissionUtil.RequestPermissionCallBack() {
+
+    public void requestCameraPermission() {
+        BaseActivity baseActivity = (BaseActivity) getActivity();
+        baseActivity.requestPermission(baseActivity, new PermissionUtil.RequestPermissionCallBack() {
             @Override
             public void granted() {
-                imageUtils=new ImageUtils(getActivity());
+                imageUtils = new ImageUtils(getActivity());
                 imageUtils.initChoosePop();
                 imageUtils.popWinChoose.showAtLocation(subFragmentView, Gravity.BOTTOM, 0, 0); // 在底部显示
             }
@@ -246,7 +251,8 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
             }
         }, new String[]{Manifest.permission.CAMERA});
     }
-    public void uploadPhoto(String path){
+
+    public void uploadPhoto(String path) {
         mPresenter.uploadImg(path);
     }
 }

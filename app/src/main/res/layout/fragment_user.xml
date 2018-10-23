@@ -178,6 +178,19 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/my_inviter_layout"
+            style="@style/user_info_layout">
+
+            <ImageView
+                style="@style/user_info_icon"
+                android:src="@drawable/icon_my_contact" />
+
+            <TextView
+                style="@style/user_info_txt"
+                android:text="@string/my_contact" />
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/my_withdraw_layout"
             style="@style/user_info_layout">
 
