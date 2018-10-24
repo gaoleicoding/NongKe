@@ -15,9 +15,11 @@ import android.widget.TextView;
 
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
-import com.nongke.jindao.base.mpresenter.BasePresenter;
-import com.nongke.jindao.base.utils.SharedPreferencesUtils;
+import com.nongke.jindao.base.mmodel.MyProfileResData;
 import com.nongke.jindao.base.utils.Constants;
+import com.nongke.jindao.base.utils.SharedPreferencesUtils;
+import com.nongke.jindao.mcontract.MyProfileContract;
+import com.nongke.jindao.mpresenter.MyProfilePresenter;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -27,7 +29,7 @@ import butterknife.OnClick;
  * author: zlm
  * date: 2017/3/17 16:01
  */
-public class WithdrawActivity extends BaseMvpActivity {
+public class WithdrawActivity extends BaseMvpActivity<MyProfilePresenter> implements MyProfileContract.View {
     @BindView(R.id.iv_back)
     ImageView iv_back;
     @BindView(R.id.title)
@@ -35,13 +37,13 @@ public class WithdrawActivity extends BaseMvpActivity {
     @BindView(R.id.et_transfer_amount)
     EditText et_transfer_amount;
     @BindView(R.id.et_withdraw_contact_phone_num)
-    EditText et_contact_withdraw_phone_num;
+    EditText et_contact_phone_num;
     @BindView(R.id.et_withdraw_bank_card)
-    EditText et_withdraw_bank_card;
+    EditText et_bank_card_num;
     @BindView(R.id.et_withdraw_bank_card_owner)
-    EditText et_withdraw_bank_card_owner;
+    EditText et_bank_card_owner;
     @BindView(R.id.et_withdraw_bank_branch_address)
-    EditText et_withdraw_bank_branch_address;
+    EditText et_bank_branch_address;
     @BindView(R.id.et_commission_convert_amount)
     EditText et_commission_convert_amount;
 
@@ -55,7 +57,7 @@ public class WithdrawActivity extends BaseMvpActivity {
     LinearLayout ll_commission_convert_amount;
     @BindView(R.id.ll_select_bank)
     LinearLayout ll_select_bank;
-    @BindView(R.id.tv_select_bank)
+    @BindView(R.id.tv_withdraw_select_bank)
     TextView tv_select_bank;
 
     boolean isInCommission = false;
@@ -77,13 +79,13 @@ public class WithdrawActivity extends BaseMvpActivity {
     }
 
     @Override
-    public BasePresenter initPresenter() {
-        return null;
+    public MyProfilePresenter initPresenter() {
+        return new MyProfilePresenter();
     }
 
     @Override
     protected void loadData() {
-
+        mPresenter.getUserProfile();
     }
 
     @OnClick({R.id.iv_back, R.id.tv_commission_convert_to_balance, R.id.ll_select_bank,R.id.tv_withdraw_immediate})
@@ -150,5 +152,15 @@ public class WithdrawActivity extends BaseMvpActivity {
         }
 
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void showUserProfileResData(MyProfileResData userProfileResData) {
+        if (userProfileResData == null || userProfileResData.rspBody == null) return;
+        tv_select_bank.setText(userProfileResData.rspBody.bankName);
+        et_bank_branch_address.setText(userProfileResData.rspBody.bankAdress);
+        et_bank_card_num.setText(userProfileResData.rspBody.bankNum);
+        et_bank_card_owner.setText(userProfileResData.rspBody.userName);
+        et_contact_phone_num.setText(userProfileResData.rspBody.phone);
     }
 }

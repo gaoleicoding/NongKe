@@ -16,6 +16,13 @@
         <item name="android:windowBackground">@android:color/transparent</item><!--背景透明-->
         <item name="android:backgroundDimEnabled">false</item><!--模糊-->
     </style>
-
+    <style name="photo_txt_14sp">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/color_313131</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:padding">12sp</item>
+    </style>
 
 </resources>

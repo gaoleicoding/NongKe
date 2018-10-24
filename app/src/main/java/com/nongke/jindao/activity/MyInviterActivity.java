@@ -7,6 +7,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.nongke.jindao.MainActivity;
 import com.nongke.jindao.R;
@@ -23,13 +25,18 @@ import com.nongke.jindao.mcontract.RegisterLoginContract;
 import com.nongke.jindao.mpresenter.MyInviterPresenter;
 import com.nongke.jindao.mpresenter.RegisterLoginPresenter;
 
+import butterknife.BindView;
+
 /**
  * description: test
  * author: zlm
  * date: 2017/3/17 16:01
  */
 public class MyInviterActivity extends BaseMvpActivity<MyInviterPresenter> implements MyInviterContract.View {
-
+    @BindView(R.id.iv_back)
+    ImageView iv_back;
+    @BindView(R.id.title)
+    TextView title;
 
     public static void startActivity(Context context) {
         Intent intent = new Intent(context, MyInviterActivity.class);
@@ -48,7 +55,8 @@ public class MyInviterActivity extends BaseMvpActivity<MyInviterPresenter> imple
 
     @Override
     protected void initData(Bundle bundle) {
-
+        title.setText(getString(R.string.my_contact));
+        iv_back.setVisibility(View.VISIBLE);
     }
 
     @Override
