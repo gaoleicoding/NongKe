@@ -1,0 +1,261 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>高磊的网站</title>
+    <meta name="author" content="高磊"/>
+    <meta name="keywords" content="it,android,培训,智行科技，智行教育，科技，教育"/>
+    <meta name="description" content="it培训网站"/>
+    <style>
+        body, div, ul, li, a, img {
+            margin: 0;
+            padding: 0;
+        }
+
+        .slider {
+            width: 900px;
+            margin: 1px auto;
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .slider li {
+            list-style: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .slider img {
+            border: none;
+            height: 300px;
+            width: 900px;
+        }
+
+        .slider .slider_btn {
+            position: absolute;
+            height: 25px;
+            width: 100%;
+            bottom: 0;
+            text-align: right;
+        }
+
+        .slider .slider_btn span {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            margin-right: 5px;
+            cursor: pointer;
+            background: #999;
+            color: #FFFFEF;
+            border-radius: 15px;
+            font-size: 12px
+        }
+
+        .slider .slider_btn .cur {
+            background: #E4393C;
+        }
+    </style>
+    <!--JS代码网顶部CSS-->
+    <link rel="shortcut icon" href="images/ic_launcher.png"/>
+    <link rel="stylesheet" type="text/css" href="css/gdt-style.css">
+    <!--JS代码网顶部CSS-->
+</head>
+<body>
+<!--&lt;!&ndash;JS代码网头部&ndash;&gt;-->
+<!--<div class="back" style="margin-bottom:20px;">-->
+<!--<div class="pl10">-->
+<!--<ul class="ulcls">-->
+<!--<li class="logowidth">-->
+<!--<a href="http://www.js-css.cn" title="JS代码网"><img src="http://www.js-css.cn/images/toplogo.png" border="0"/></a>-->
+<!--</li>-->
+<!--<li style="width:800px;">-->
+<!--<div class="menupos">-->
+<!--<ul style="list-style:none;">-->
+<!--<li class="firstli"><a href="http://www.js-css.cn" class="lia">首页</a></li>-->
+<!--<li class="sencli"><a href="http://www.js-css.cn/a/jscode/" class="lia">JS代码大全</a></li>-->
+<!--<li class="threeli"><a href="http://www.js-css.cn/a/css/" class="lia">CSS样式</a></li>-->
+<!--<li class="threeli"><a href="http://www.js-css.cn/a/html5/" class="lia">HTML5</a></li>-->
+<!--<li class="threeli"><a href="http://www.js-css.cn/a/openframe/" class="lia">开源项目</a></li>-->
+<!--<li class="threeli"><a href="http://www.js-css.cn/a/tools/" class="lia">资源工具</a></li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--<div class="textpos">整理：<a href="http://www.js-css.cn" class="texta">JS代码网</a><br>来源：<a href="#" class="texta">互联网</a> <br>本站QQ交流学习群：<a href="#" class="texta">281362453</a> <br> 赞助网店：<a href="http://wuhaodian.taobao.com" class="texta">http://wuhaodian.taobao.com</a></div>-->
+<!--</div>-->
+<!--JS代码网头部-->
+
+<div class='slider'>
+    <ul class='slider_pic'>
+        <li><a href="http://www.js-css.cn" title=""><img src='images/banner_1.jpg'/></a></li>
+        <li><a href="http://www.js-css.cn" title=""><img src='images/banner_2.jpg'/></a></li>
+        <li><a href="http://www.js-css.cn" title=""><img src='images/banner_3.jpg'/></a></li>
+        <li><a href="http://www.js-css.cn" title=""><img src='images/banner_4.jpg'/></a></li>
+    </ul>
+    <div class='slider_btn'>
+        <span class='cur'>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+    </div>
+</div>
+
+<script>
+
+    function slider(s) {
+        this.init.apply(this, arguments)
+    }
+    slider.prototype = {
+        init: function (s) {
+            this.o = this.getByClass(s)[0];
+            this.l = this.getByClass('slider_pic', this.o)[0].getElementsByTagName('li');
+            this.b = this.getByClass('slider_btn', this.o)[0];
+            this.bSpan = this.b.getElementsByTagName('span');
+            this.len = this.l.length;
+            this.iNum = 1;
+            this.status();//初始化状态
+            this.autoPlay();//自动播放
+            this.clickPlay();//点击按钮播放
+            this.suspensionPause();//鼠标悬浮暂停
+        },
+        clickPlay: function () {
+            var This = this;
+            for (var i = 0; i < this.len; i++) {
+                this.bSpan[i].index = i;
+                this.bSpan[i].onclick = function () {
+                    clearInterval(This.timer);
+                    var index = this.index;
+                    This.iNum = (index + 1) == This.len ? 0 : (index + 1);
+                    var o = This.l[index];
+                    This.setLayout(this, o);
+                    This.autoPlay();
+                }
+            }
+        },
+        suspensionPause: function () {
+            var This = this;
+            for (var i = 0; i < this.len; i++) {
+                this.l[i].onmouseover = function () {
+                    clearInterval(This.timer);
+                }
+                this.l[i].onmouseout = function () {
+                    This.autoPlay();
+                }
+            }
+        },
+        setLayout: function (o1, o2) {
+            for (var j = 0; j < this.len; j++) {
+                if (this.bSpan[j] != o1) {
+                    this.bSpan[j].className = '';
+                    this.l[j].style.zIndex = j;
+                }
+            }
+            o2.style.zIndex = this.len;
+            o2.style.left = '600px';
+            this.doMove(o2, 0);
+            o1.className = 'cur';
+        },
+        status: function () {
+            for (var i = this.len; i--; i > 0) {
+                this.l[i].style.zIndex = i;
+                this.bSpan[i].className = '';
+            }
+            this.l[0].style.zIndex = this.len;
+            this.bSpan[0].className = 'cur';
+            this.b.style.zIndex = (this.len + 1);
+        },
+        autoPlay: function () {
+            this.timer = null;
+            var This = this;
+            this.timer = setInterval(function () {
+                This.setLayout(This.bSpan[This.iNum], This.l[This.iNum])
+                This.iNum++;
+                if (This.iNum == This.len) {
+                    This.iNum = 0;
+                }
+            }, 4500)
+        },
+        getByClass: function (s, p) {
+            var reg = new RegExp('(\\b)' + s + '(\\b)');
+            var aResult = [];
+            var aElement = (p || document).getElementsByTagName('*');
+            for (var i = 0; i < aElement.length; i++) {
+                reg.test(aElement[i].className) && aResult.push(aElement[i])
+            }
+            return aResult;
+        },
+        doMove: function (o, t) {
+            clearInterval(o.timer);
+            o.timer = setInterval(function () {
+                var iS = (t - o.offsetLeft) / 8;
+                iS = iS > 0 ? Math.ceil(iS) : Math.floor(iS);
+
+                if (o.offsetLeft == t) {
+                    clearInterval(o.timer);
+                }
+                else {
+                    o.style.left = o.offsetLeft + iS + "px";
+                }
+
+            }, 30)
+        }
+
+    }
+    var slide = new slider('slider');
+</script>
+<center>
+<img src="images/home.jpg">
+</center>
+<center>
+    <font size="7" color="#363636">ANDROID</font>
+</center>
+<center>
+    <font size="3" color="#363636">学Android —— 做最有钱景的工程师</font>
+</center>
+<center>
+<p>这是为了增加高度</p>
+<p>这是为了增加高度</p>
+<p>这是为了增加高度</p>
+<p>这是为了增加高度</p>
+<p>这是为了增加高度</p>
+<p>这是为了增加高度</p><p>这是为了增加高度</p>
+<p>这是为了增加高度</p>
+<p>这是为了增加高度</p>
+<p>这是为了增加高度</p>
+<p>这是为了增加高度</p>
+<p>这是为了增加高度</p><p>这是为了增加高度</p>
+<p>这是为了增加高度</p>
+<p>这是为了增加高度</p>
+<p>这是为了增加高度</p>
+<p>这是为了增加高度</p>
+<p>这是为了增加高度</p>
+</center>
+<!--<下面这行不能删，是一个固定区域，以后可能有用-->
+<!--<div style="position:fixed;top:0;width:100px;height:100px;background:red;"></div>-->
+<img src="images/ad_left1.png" alt="" style="position:fixed;width:130px;height:500px;top:50%;margin-top:-250px;;margin-left:15px;">
+<div style="color:#F00;height: 100px; text-align: center; line-height: 100px">
+    text联系我们
+</div>
+<div style="height:1000px;"></div>
+
+<div class="side-bar">
+    <!--<a href="#" class="icon-qq">QQ</a>-->
+    <div style="color:#F00">我颜色为红色</div>
+    <div style="position:fixed;top:0;width:100px;height:100px;background:red;">我颜色为红色</div>
+    <!--<div align="center" style="position:fixed;top:200px;width:100px;height:100px;background:red;">联系我们</div>-->
+    <a href="" class="icon-qq">QQ<div class="qq-tips"><i></i><img style="width:138px;height:138px;" src="images/qq_contact1.png" alt="qq"></div></a>
+
+    <a href="" class="icon-chat">微信<div class="chat-tips"><i></i><img style="width:138px;height:138px;" src="images/wechat_contact.png" alt="wechat"></div></a>
+    <a href="" class="icon-phone">电话<div class="phone-tips"><i></i><img style="width:138px;height:138px;" src="images/phone_contact3.png" alt="phone"></div></a>
+    <!--<a target="_blank" href="" class="icon-blog">电话</a>-->
+    <a href="mailto:756985063@qq.com" class="icon-mail">邮件</a>
+</div>
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+</div>
+</body>
+</html>
