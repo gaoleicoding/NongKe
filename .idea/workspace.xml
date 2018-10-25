@@ -17,7 +17,7 @@
       <change beforePath="$PROJECT_DIR$/NongKe.iml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change beforePath="$PROJECT_DIR$/app/.gitignore" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="" />
       <change beforePath="$PROJECT_DIR$/app/jindao.jks" afterPath="" />
       <change beforePath="$PROJECT_DIR$/app/libs/zxing.jar" afterPath="" />
@@ -211,7 +211,7 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/file_paths.xml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/app/src/test/java/com/gaolei/mvpmodel/ExampleUnitTest.java" afterPath="" />
       <change beforePath="$PROJECT_DIR$/basemodule/.gitignore" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/basemodule/basemodule.iml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/basemodule/basemodule.iml" afterPath="$PROJECT_DIR$/basemodule/basemodule.iml" />
       <change beforePath="$PROJECT_DIR$/basemodule/build.gradle" afterPath="" />
       <change beforePath="$PROJECT_DIR$/basemodule/proguard-rules.pro" afterPath="" />
       <change beforePath="$PROJECT_DIR$/basemodule/src/androidTest/java/com/gaolei/basemodule/ExampleInstrumentedTest.java" afterPath="" />
