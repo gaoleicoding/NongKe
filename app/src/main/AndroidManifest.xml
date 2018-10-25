@@ -42,6 +42,7 @@
         <activity android:name=".activity.VipRechargeActivity"></activity>
         <activity android:name=".activity.PromotionActivity"></activity>
         <activity android:name=".activity.MyInviterActivity"></activity>
+        <activity android:name=".activity.WebViewActivity"></activity>
 
         <!--value的值填写你在友盟后台申请的应用Appkey-->
         <meta-data

@@ -41,7 +41,7 @@ public abstract class BaseActivity extends com.nongke.jindao.base.activity.BaseP
         context = this;
         setStatusBarColor(R.color.app_color);
 
-        Bundle bundle = getIntent().getExtras();
+        Bundle bundle = getIntent().getBundleExtra("params");
         if (bundle == null) {
             bundle = savedInstanceState;
         }

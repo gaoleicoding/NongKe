@@ -12,23 +12,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33991523-bb9a-48df-a13c-e2274cce3382" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/WebViewActivity.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/view/CustomWebview.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_webview.xml" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/jarAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/jarAnalysis.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskJars.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskJars.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/VipRechargeActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/VipRechargeActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/ClassifyFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/ClassifyFragment.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_delivery_address.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_delivery_address.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/HomeFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/HomeFragment.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_inviter.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_inviter.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_promotion.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_promotion.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_vip_recharge.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_vip_recharge.xml" />
-      <change beforePath="$PROJECT_DIR$/basemodule/src/main/res/layout/title_view.xml" afterPath="$PROJECT_DIR$/basemodule/src/main/res/layout/title_view.xml" />
+      <change beforePath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/activity/BaseActivity.java" afterPath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/activity/BaseActivity.java" />
+      <change beforePath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/utils/Constants.java" afterPath="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/utils/Constants.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -82,11 +85,98 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ClassifyFragment.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/ClassifyFragment.java">
+      <file leaf-file-name="activity_inviter.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_inviter.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+            <state relative-caret-position="15">
+              <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CustomWebview.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/view/CustomWebview.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="43" column="15" lean-forward="false" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomeFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/HomeFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="212" column="41" lean-forward="false" selection-start-line="212" selection-start-column="41" selection-end-line="212" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WebViewActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/WebViewActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="212">
+              <caret line="44" column="24" lean-forward="false" selection-start-line="44" selection-start-column="24" selection-end-line="44" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1909#1941#0" expanded="true" />
+                <element signature="e#2138#2139#0" expanded="true" />
+                <element signature="e#2185#2186#0" expanded="true" />
+                <element signature="e#2529#2716#0" expanded="true" />
+                <element signature="e#2715#2716#0" expanded="true" />
+                <element signature="e#2753#2980#0" expanded="true" />
+                <element signature="e#2979#2980#0" expanded="true" />
+                <element signature="e#3016#3217#0" expanded="true" />
+                <element signature="e#3216#3217#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseMvpActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/activity/BaseMvpActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="8" column="75" lean-forward="false" selection-start-line="8" selection-start-column="75" selection-end-line="8" selection-end-column="75" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/activity/BaseActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="394">
+              <caret line="43" column="51" lean-forward="false" selection-start-line="43" selection-start-column="51" selection-end-line="43" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_webview.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_webview.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="41" lean-forward="false" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyInviterActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/MyInviterActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="52" column="32" lean-forward="false" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -14638,12 +14728,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/basemodule/build.gradle" />
-        <option value="$PROJECT_DIR$/photopicker/src/main/java/com/moos/selector/MainActivity.java" />
-        <option value="$PROJECT_DIR$/photopicker/src/main/java/com/moos/selector/PhotoPickerUtil.java" />
-        <option value="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/PhotoPickerUtil.java" />
-        <option value="$PROJECT_DIR$/photopicker/build.gradle" />
-        <option value="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/activity/BasePermisssionActivity.java" />
         <option value="$PROJECT_DIR$/photopicker/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/photopicker/src/main/java/com/moos/selector/Util/PhotoPickerUtil.java" />
         <option value="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/utils/FileProvider7.java" />
@@ -14654,7 +14738,6 @@
         <option value="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/photopicker/UriUtils.java" />
         <option value="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/fragment/BaseFragment.java" />
         <option value="$PROJECT_DIR$/config.gradle" />
-        <option value="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/activity/BaseActivity.java" />
         <option value="$PROJECT_DIR$/basemodule/src/main/res/layout/popwin_sel.xml" />
         <option value="$PROJECT_DIR$/basemodule/src/main/res/drawable/shape_corner_white.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/mcontract/RegisterLoginContract.java" />
@@ -14670,7 +14753,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/UserContactActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/MyContactActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/mcontract/MyContactContract.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/SplashActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_user.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/UserFragment.java" />
@@ -14684,11 +14766,19 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/MyInviterActivity.java" />
         <option value="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/mmodel/MyInviterResData.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_promotion.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_inviter.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/VipRechargeActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_vip_recharge.xml" />
         <option value="$PROJECT_DIR$/basemodule/src/main/res/layout/title_view.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/ClassifyFragment.java" />
+        <option value="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/utils/Constants.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/HomeFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_inviter.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/view/Html5Webview.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/view/CustomWebview.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_webview.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/WebViewActivity.java" />
+        <option value="$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/activity/BaseActivity.java" />
       </list>
     </option>
   </component>
@@ -14779,6 +14869,24 @@
               <item name="jindao" type="462c0819:PsiDirectoryNode" />
               <item name="fragment" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="NongKe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NongKe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="jindao" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NongKe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NongKe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -14794,7 +14902,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="show.do.not.ask.upgrade.gradle.plugin" value="3.0.1" />
     <property name="device.picker.selection" value="c8fdc26f" />
-    <property name="SearchEverywhereHistoryKey" value="api&#9;FILE&#9;file:///Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/basemodule/src/main/java/com/nongke/jindao/base/api/ApiService.java&#10;circ&#9;FILE&#9;file:///Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/basemodule/src/main/java/com/nongke/jindao/base/view/CircleImageView.java&#10;userU&#9;PSI&#9;JAVA://com.nongke.jindao.base.utils.UserUtils&#10;file&#9;PSI&#9;JAVA://com.nongke.jindao.base.utils.FileProvider7&#10;baseac&#9;FILE&#9;file:///Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/basemodule/src/main/java/com/nongke/jindao/base/activity/BaseActivity.java&#10;titlev&#9;PSI&#9;JAVA://com.nongke.jindao.base.view.TitleView&#10;Utils&#9;PSI&#9;JAVA://com.nongke.jindao.base.utils.Utils&#10;apis&#9;PSI&#9;JAVA://com.nongke.jindao.base.api.ApiService&#10;url&#9;PSI&#9;JAVA://com.nongke.jindao.base.thirdframe.retrofit.UrlConfig&#10;basep&#9;FILE&#9;file:///Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/basemodule/src/main/java/com/nongke/jindao/base/mpresenter/BasePresenter.java&#10;defa&#9;FILE&#9;file:///Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/basemodule/src/main/java/com/nongke/jindao/base/thirdframe/retrofit/interceptor/DefaultHeaderInterceptor.java&#10;head&#9;FILE&#9;file:///Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/basemodule/src/main/java/com/nongke/jindao/base/thirdframe/retrofit/interceptor/DefaultHeaderInterceptor.java&#10;utils&#9;PSI&#9;JAVA://com.nongke.jindao.base.utils.Utils&#10;user&#9;FILE&#9;file:///Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/app/src/main/java/com/nongke/jindao/fragment/UserFragment.java&#10;main&#9;FILE&#9;file:///Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/app/src/main/java/com/nongke/jindao/MainActivity.java&#10;retro&#9;PSI&#9;JAVA://com.nongke.jindao.base.thirdframe.retrofit.RetrofitProvider&#10;base&#9;FILE&#9;file:///Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/basemodule/src/main/java/com/nongke/jindao/base/thirdframe/retrofit/BaseRetrofit.java&#10;regi&#9;FILE&#9;file:///Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/app/src/main/java/com/nongke/jindao/mpresenter/RegisterLoginPresenter.java&#10;regis&#9;PSI&#9;JAVA://com.nongke.jindao.mpresenter.RegisterLoginPresenter&#10;gson&#9;PSI&#9;JAVA://retrofit2.converter.gson.GsonConverterFactory&#10;Url&#9;FILE&#9;file:///Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/basemodule/src/main/java/com/nongke/jindao/base/thirdframe/retrofit/UrlConfig.java&#10;homef&#9;PSI&#9;JAVA://com.nongke.jindao.fragment.HomeFragment&#10;customactivityoncrash_error_image&#9;PSI&#9;JAVA://com.gaolei.basemodule.R.drawable#customactivityoncrash_error_image" />
+    <property name="SearchEverywhereHistoryKey" value="cons&#9;PSI&#9;JAVA://com.nongke.jindao.base.utils.Constants&#10;api&#9;FILE&#9;file:///Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/basemodule/src/main/java/com/nongke/jindao/base/api/ApiService.java&#10;circ&#9;FILE&#9;file:///Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/basemodule/src/main/java/com/nongke/jindao/base/view/CircleImageView.java&#10;userU&#9;PSI&#9;JAVA://com.nongke.jindao.base.utils.UserUtils&#10;file&#9;PSI&#9;JAVA://com.nongke.jindao.base.utils.FileProvider7&#10;baseac&#9;FILE&#9;file:///Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/basemodule/src/main/java/com/nongke/jindao/base/activity/BaseActivity.java&#10;titlev&#9;PSI&#9;JAVA://com.nongke.jindao.base.view.TitleView&#10;Utils&#9;PSI&#9;JAVA://com.nongke.jindao.base.utils.Utils&#10;apis&#9;PSI&#9;JAVA://com.nongke.jindao.base.api.ApiService&#10;url&#9;PSI&#9;JAVA://com.nongke.jindao.base.thirdframe.retrofit.UrlConfig&#10;basep&#9;FILE&#9;file:///Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/basemodule/src/main/java/com/nongke/jindao/base/mpresenter/BasePresenter.java&#10;defa&#9;FILE&#9;file:///Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/basemodule/src/main/java/com/nongke/jindao/base/thirdframe/retrofit/interceptor/DefaultHeaderInterceptor.java&#10;head&#9;FILE&#9;file:///Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/basemodule/src/main/java/com/nongke/jindao/base/thirdframe/retrofit/interceptor/DefaultHeaderInterceptor.java&#10;utils&#9;PSI&#9;JAVA://com.nongke.jindao.base.utils.Utils&#10;user&#9;FILE&#9;file:///Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/app/src/main/java/com/nongke/jindao/fragment/UserFragment.java&#10;main&#9;FILE&#9;file:///Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/app/src/main/java/com/nongke/jindao/MainActivity.java&#10;retro&#9;PSI&#9;JAVA://com.nongke.jindao.base.thirdframe.retrofit.RetrofitProvider&#10;base&#9;FILE&#9;file:///Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/basemodule/src/main/java/com/nongke/jindao/base/thirdframe/retrofit/BaseRetrofit.java&#10;regi&#9;FILE&#9;file:///Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/app/src/main/java/com/nongke/jindao/mpresenter/RegisterLoginPresenter.java&#10;regis&#9;PSI&#9;JAVA://com.nongke.jindao.mpresenter.RegisterLoginPresenter&#10;gson&#9;PSI&#9;JAVA://retrofit2.converter.gson.GsonConverterFactory&#10;Url&#9;FILE&#9;file:///Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/basemodule/src/main/java/com/nongke/jindao/base/thirdframe/retrofit/UrlConfig.java&#10;homef&#9;PSI&#9;JAVA://com.nongke.jindao.fragment.HomeFragment&#10;customactivityoncrash_error_image&#9;PSI&#9;JAVA://com.gaolei.basemodule.R.drawable#customactivityoncrash_error_image" />
     <property name="ExportApk.ApkPath" value="$PROJECT_DIR$/app" />
     <property name="ExportApk.Flavors" value="Anzhi" />
     <property name="ExportApk.BuildType" value="release" />
@@ -14808,22 +14916,8 @@
     <property name="DEBUGGER_ID" value="Auto" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/app" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi" />
-      <recent name="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.nongke.jindao.activity" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.nongke.jindao.mpresenter" />
-      <recent name="com.nongke.jindao.mcontract" />
-      <recent name="com.nongke.jindao.activity" />
-      <recent name="com.nongke.jindao.base.mmodel" />
-      <recent name="com.nongke.jindao.base.utils" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
@@ -14831,6 +14925,20 @@
       <recent name="$PROJECT_DIR$/app/src/main/res" />
       <recent name="$PROJECT_DIR$/basemodule/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/basemodule/src/main/res/layout" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.nongke.jindao.view" />
+      <recent name="com.nongke.jindao.activity" />
+      <recent name="com.nongke.jindao.mpresenter" />
+      <recent name="com.nongke.jindao.mcontract" />
+      <recent name="com.nongke.jindao.base.mmodel" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -15105,8 +15213,8 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34504792" sideWeight="0.48569384" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08291032" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.031948883" sideWeight="0.485623" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36421725" sideWeight="0.8109691" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23535676" sideWeight="0.485623" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36421725" sideWeight="0.8109691" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -15294,41 +15402,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/photopicker/UriUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-100">
-          <caret line="25" column="25" lean-forward="false" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/mcontract/RegisterLoginContract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="23" column="34" lean-forward="false" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/fragment/BaseMvpFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/mcontract/MyProfileContract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="22" column="29" lean-forward="false" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/mpresenter/MyAddressPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="60" column="47" lean-forward="false" selection-start-line="60" selection-start-column="47" selection-end-line="60" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-26/java/io/FileSystem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="164">
@@ -15340,21 +15413,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
           <caret line="453" column="46" lean-forward="false" selection-start-line="453" selection-start-column="46" selection-end-line="453" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/activity/BaseActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4">
-          <caret line="25" column="22" lean-forward="false" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/activity/BaseMvpActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="8" column="74" lean-forward="false" selection-start-line="8" selection-start-column="74" selection-end-line="8" selection-end-column="74" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -15383,6 +15441,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="591">
           <caret line="125" column="60" lean-forward="false" selection-start-line="125" selection-start-column="15" selection-end-line="125" selection-end-column="60" />
+          <folding>
+            <element signature="e#3311#3336#0" expanded="false" />
+            <element signature="e#4353#4381#0" expanded="false" />
+            <element signature="e#4584#4619#0" expanded="false" />
+            <element signature="e#5920#5967#0" expanded="false" />
+            <element signature="e#6578#6625#0" expanded="false" />
+            <element signature="e#7477#7502#0" expanded="false" />
+            <element signature="e#7665#7690#0" expanded="false" />
+            <element signature="e#8083#8119#0" expanded="false" />
+            <element signature="e#8154#8179#0" expanded="false" />
+            <element signature="e#8522#8558#0" expanded="false" />
+            <element signature="e#8839#8876#0" expanded="false" />
+            <element signature="e#8911#8936#0" expanded="false" />
+            <element signature="e#9288#9325#0" expanded="false" />
+            <element signature="e#10339#10372#0" expanded="false" />
+            <element signature="e#10728#10767#0" expanded="false" />
+            <element signature="e#10962#11002#0" expanded="false" />
+            <element signature="e#11190#11229#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -15406,17 +15483,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="43" column="59" lean-forward="false" selection-start-line="43" selection-start-column="59" selection-end-line="43" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/mmodel/MyProfileResData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -15435,13 +15501,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" column="33" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/SplashActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -15482,6 +15542,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="163">
           <caret line="42" column="15" lean-forward="false" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -15529,6 +15590,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
           <caret line="142" column="31" lean-forward="false" selection-start-line="142" selection-start-column="31" selection-end-line="142" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -15543,6 +15605,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-54">
           <caret line="40" column="41" lean-forward="false" selection-start-line="40" selection-start-column="41" selection-end-line="40" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#2729#2730#0" expanded="false" />
+            <element signature="e#2772#2773#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -15597,25 +15664,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_inviter.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="12" column="10" lean-forward="true" selection-start-line="8" selection-start-column="2" selection-end-line="12" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/MyProfileActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="68" column="30" lean-forward="false" selection-start-line="68" selection-start-column="30" selection-end-line="68" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_user_profile.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -15625,30 +15673,6 @@
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/PromotionActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="94" column="44" lean-forward="false" selection-start-line="93" selection-start-column="7" selection-end-line="94" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="18" column="28" lean-forward="false" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/MyInviterActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8">
-          <caret line="38" column="19" lean-forward="false" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/VipRechargeActivity.java">
@@ -15691,8 +15715,147 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/ClassifyFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+        <state relative-caret-position="258">
+          <caret line="73" column="13" lean-forward="false" selection-start-line="73" selection-start-column="13" selection-end-line="73" selection-end-column="13" />
+          <folding>
+            <element signature="e#3576#4495#0" expanded="false" />
+            <element signature="e#4494#4495#0" expanded="false" />
+            <element signature="e#4547#4548#0" expanded="false" />
+            <element signature="e#4596#4597#0" expanded="false" />
+            <element signature="e#4702#4703#0" expanded="false" />
+            <element signature="e#4729#4730#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/SplashActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/PromotionActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="94" column="44" lean-forward="false" selection-start-line="93" selection-start-column="7" selection-end-line="94" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/MyProfileActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="68" column="30" lean-forward="false" selection-start-line="68" selection-start-column="30" selection-end-line="68" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="19" column="18" lean-forward="false" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/utils/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="31" lean-forward="false" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="44" column="57" lean-forward="false" selection-start-line="44" selection-start-column="57" selection-end-line="44" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/MyInviterActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="52" column="32" lean-forward="false" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_inviter.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_webview.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="41" lean-forward="false" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/activity/BaseMvpActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="8" column="75" lean-forward="false" selection-start-line="8" selection-start-column="75" selection-end-line="8" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/view/CustomWebview.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="43" column="15" lean-forward="false" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/HomeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="212" column="41" lean-forward="false" selection-start-line="212" selection-start-column="41" selection-end-line="212" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/WebViewActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="44" column="24" lean-forward="false" selection-start-line="44" selection-start-column="24" selection-end-line="44" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1909#1941#0" expanded="true" />
+            <element signature="e#2138#2139#0" expanded="true" />
+            <element signature="e#2185#2186#0" expanded="true" />
+            <element signature="e#2529#2716#0" expanded="true" />
+            <element signature="e#2715#2716#0" expanded="true" />
+            <element signature="e#2753#2980#0" expanded="true" />
+            <element signature="e#2979#2980#0" expanded="true" />
+            <element signature="e#3016#3217#0" expanded="true" />
+            <element signature="e#3216#3217#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/basemodule/src/main/java/com/nongke/jindao/base/activity/BaseActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="43" column="51" lean-forward="false" selection-start-line="43" selection-start-column="51" selection-end-line="43" selection-end-column="51" />
           <folding />
         </state>
       </provider>

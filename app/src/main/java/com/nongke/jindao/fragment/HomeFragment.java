@@ -8,8 +8,10 @@ import android.widget.LinearLayout;
 import com.nongke.jindao.MainActivity;
 import com.nongke.jindao.R;
 import com.nongke.jindao.activity.VipRechargeActivity;
+import com.nongke.jindao.activity.WebViewActivity;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
+import com.nongke.jindao.base.utils.Constants;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
@@ -206,7 +208,9 @@ public class HomeFragment extends BaseMvpFragment {
 
                 break;
             case R.id.home_download_layout:
-
+                Bundle bundle=new Bundle();
+                bundle.putString("fromWhere", Constants.FROM_DOWNLOAD);
+                WebViewActivity.startActivity(getActivity(),bundle);
                 break;
             case R.id.home_custom_layout:
 
