@@ -5,6 +5,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.nongke.jindao.R;
 import com.nongke.jindao.adapter.RechargeTabAdapter;
@@ -28,7 +29,7 @@ public class ClassifyFragment extends BaseMvpFragment {
     TabLayout tabLayout;
     @BindView(R.id.viewPager)
     CustomViewPager viewPager;
-
+    RechargeTabAdapter pagerAdapter;
     boolean isPriceAscend = true;
     private ArrayList<Fragment> mFragments;
 
@@ -45,10 +46,10 @@ public class ClassifyFragment extends BaseMvpFragment {
         mFragments.add(new CommodityFragment());
         mFragments.add(new CommodityFragment());
 //        mFragments.add(new CommodityFragment());
-        RechargeTabAdapter adapter = new RechargeTabAdapter(getChildFragmentManager(), mFragments);
+        pagerAdapter = new RechargeTabAdapter(getChildFragmentManager(), mFragments);
         viewPager.setCanScroll(false);
         viewPager.setOffscreenPageLimit(mFragments.size());
-        viewPager.setAdapter(adapter);
+        viewPager.setAdapter(pagerAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
         //将TabLayout和ViewPager关联起来
@@ -65,20 +66,23 @@ public class ClassifyFragment extends BaseMvpFragment {
         tabLayout.getTabAt(1).setCustomView(R.layout.tab_classify_sales);
         tabLayout.getTabAt(2).setCustomView(R.layout.tab_classify_price);
 //        tabLayout.getTabAt(3).setCustomView(R.layout.tab_classify_popularity);
-        tabLayout.getTabAt(2).getCustomView().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isPriceAscend) {
-                  ImageView imageView=  (ImageView)tabLayout.getTabAt(2).getCustomView().findViewById(R.id.iv_price);
-                  imageView.setImageResource(R.drawable.icon_price_descend);
-                    isPriceAscend = false;
-                } else {
-                    ImageView imageView=  (ImageView)tabLayout.getTabAt(2).getCustomView().findViewById(R.id.iv_price);
-                    imageView.setImageResource(R.drawable.icon_price_ascend);
-                    isPriceAscend = true;
+//        tabLayout.getTabAt(2).getCustomView().setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
+
+        for (int i = 0; i < tabLayout.getTabCount(); i++) {
+            TabLayout.Tab tab = tabLayout.getTabAt(i);
+            if (tab != null) {
+                if (tab.getCustomView() != null) {
+                    View tabView = (View) tab.getCustomView().getParent();
+                    tabView.setTag(i);
+                    tabView.setOnClickListener(mTabOnClickListener);
                 }
             }
-        });
+        }
 
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -106,6 +110,29 @@ public class ClassifyFragment extends BaseMvpFragment {
         //默认选中的Tab
         tabLayout.getTabAt(0).getCustomView().setSelected(true);
     }
+    private View.OnClickListener mTabOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            int pos = (int) view.getTag();
+            if (pos == 2) {
+                if (isPriceAscend) {
+                    ImageView imageView=  (ImageView)tabLayout.getTabAt(2).getCustomView().findViewById(R.id.iv_price);
+                    imageView.setImageResource(R.drawable.icon_price_descend);
+                    isPriceAscend = false;
+                } else {
+                    ImageView imageView=  (ImageView)tabLayout.getTabAt(2).getCustomView().findViewById(R.id.iv_price);
+                    imageView.setImageResource(R.drawable.icon_price_ascend);
+                    isPriceAscend = true;
+                }
+            } else {
+                TabLayout.Tab tab = tabLayout.getTabAt(pos);
+                if (tab != null) {
+                    tab.select();
+                }
+            }
+        }
+    };
+
 
     @Override
     public int setContentLayout() {

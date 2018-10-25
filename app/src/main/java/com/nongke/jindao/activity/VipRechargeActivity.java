@@ -23,7 +23,10 @@ import butterknife.OnClick;
  */
 
 public class VipRechargeActivity extends BaseActivity {
-
+    @BindView(R.id.iv_back)
+    ImageView iv_back;
+    @BindView(R.id.title)
+    TextView title;
     @BindView(R.id.ll_pay_alipay)
     LinearLayout ll_pay_alipay;
     @BindView(R.id.ll_pay_wechat)
@@ -44,7 +47,8 @@ public class VipRechargeActivity extends BaseActivity {
 
     @Override
     protected void initData(Bundle bundle) {
-
+        title.setText(getString(R.string.vip_member));
+        iv_back.setVisibility(View.VISIBLE);
     }
 
 

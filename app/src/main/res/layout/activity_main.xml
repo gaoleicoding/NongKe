@@ -7,7 +7,7 @@
 
     <com.nongke.jindao.base.view.TitleView
         android:layout_width="match_parent"
-        android:layout_height="42dp" />
+        android:layout_height="wrap_content" />
 
     <com.nongke.jindao.view.CustomViewPager
         android:id="@+id/viewPager"
