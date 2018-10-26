@@ -43,6 +43,7 @@
         <activity android:name=".activity.PromotionActivity"></activity>
         <activity android:name=".activity.MyInviterActivity"></activity>
         <activity android:name=".activity.WebViewActivity"></activity>
+        <activity android:name=".activity.ProductDetailActivity"></activity>
 
         <!--value的值填写你在友盟后台申请的应用Appkey-->
         <meta-data

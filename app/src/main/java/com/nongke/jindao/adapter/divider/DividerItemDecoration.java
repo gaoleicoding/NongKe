@@ -1,4 +1,4 @@
-package com.nongke.jindao.adapter;
+package com.nongke.jindao.adapter.divider;
 
 import android.content.Context;
 import android.content.res.TypedArray;

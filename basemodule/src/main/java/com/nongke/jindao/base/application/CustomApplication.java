@@ -14,6 +14,7 @@ import com.nongke.jindao.base.utils.CrashHandler;
 import com.github.moduth.blockcanary.BlockCanary;
 import com.github.moduth.blockcanary.BlockCanaryContext;
 import com.github.moduth.blockcanary.BuildConfig;
+import com.nongke.jindao.base.utils.ScreenUtils;
 import com.squareup.leakcanary.LeakCanary;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
@@ -22,13 +23,15 @@ import com.umeng.commonsdk.UMConfigure;
 public class CustomApplication extends Application {
     public static ConnectivityManager connectivityManager;
     public static Context context;
+    public static int screenWidth,screenHeight;
     @Override
     public void onCreate() {
         super.onCreate();
         connectivityManager= (ConnectivityManager) getApplicationContext()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         context=this;
-
+        screenWidth= ScreenUtils.getScreenWidth(this);
+        screenWidth= ScreenUtils.getScreenHeight(this);
         LeakCanary.install(this);
         BlockCanary.install(this, new AppContext()).start();
 

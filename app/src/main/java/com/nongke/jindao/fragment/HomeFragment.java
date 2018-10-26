@@ -1,21 +1,43 @@
 package com.nongke.jindao.fragment;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.bumptech.glide.Glide;
 import com.nongke.jindao.MainActivity;
 import com.nongke.jindao.R;
+import com.nongke.jindao.activity.ProductDetailActivity;
 import com.nongke.jindao.activity.VipRechargeActivity;
 import com.nongke.jindao.activity.WebViewActivity;
+import com.nongke.jindao.adapter.ProductAdapter;
+import com.nongke.jindao.adapter.divider.DividerItemDecoration;
+import com.nongke.jindao.adapter.divider.SpacesItemDecoration;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
-import com.nongke.jindao.base.mpresenter.BasePresenter;
+import com.nongke.jindao.base.mmodel.BannerResData;
+import com.nongke.jindao.base.mmodel.ProductResData;
 import com.nongke.jindao.base.utils.Constants;
+import com.nongke.jindao.base.utils.LogUtil;
+import com.nongke.jindao.base.utils.ScreenUtils;
+import com.nongke.jindao.mcontract.ProductContract;
+import com.nongke.jindao.mpresenter.ProductPresenter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.youth.banner.Banner;
+import com.nongke.jindao.base.mmodel.ProductResData.Product;
+import com.nongke.jindao.base.mmodel.BannerResData.BannerProduct;
+import com.youth.banner.BannerConfig;
+import com.youth.banner.Transformer;
+import com.youth.banner.listener.OnBannerListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -26,7 +48,7 @@ import butterknife.OnClick;
  * @date 2018/2/11
  */
 
-public class HomeFragment extends BaseMvpFragment {
+public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements ProductContract.View {
 
     @BindView(R.id.project_recyclerview)
     RecyclerView project_recyclerview;
@@ -45,8 +67,9 @@ public class HomeFragment extends BaseMvpFragment {
     LinearLayout home_download_layout;
     @BindView(R.id.home_custom_layout)
     LinearLayout home_custom_layout;
-//    private List<FeedArticleData> articleDataList;
-//    private ArticleListAdapter feedArticleAdapter;
+    private List<ProductResData.Product> articleDataList;
+    private ProductAdapter feedArticleAdapter;
+    boolean hasNextPage = true;
 
     @Override
     public void initData(Bundle bundle) {
@@ -59,7 +82,7 @@ public class HomeFragment extends BaseMvpFragment {
     @Override
     public void initView() {
         initSmartRefreshLayout();
-//        initRecyclerView();
+        initRecyclerView();
     }
 
     @Override
@@ -74,23 +97,29 @@ public class HomeFragment extends BaseMvpFragment {
     }
 
     @Override
-    public BasePresenter initPresenter() {
-        return null;
+    public ProductPresenter initPresenter() {
+        return new ProductPresenter();
     }
 
     @Override
     protected void loadData() {
-//        mPresenter.getBannerInfo();
-//        mPresenter.getFeedArticleList(0);
+        mPresenter.getBannerProduct();
+
+        mPresenter.pageProduct(6, "DESC", "create_time");
 
     }
 
 
-  /*  @Override
-    public void showArticleList(ArticleListData listData, boolean isRefresh) {
-        final List<FeedArticleData> newDataList = listData.data.getDatas();
-        if (isRefresh) {
-//            mAdapter.replaceData(feedArticleListData.getDatas());
+    @Override
+    public void showProduct(ProductResData productResData, boolean isRefresh) {
+        final List<Product> newDataList = productResData.rspBody.list;
+        hasNextPage = productResData.rspBody.hasNextPage;
+        if (productResData.rspBody.list.size() == 0) {
+            smartRefreshLayout.finishLoadMore();
+            return;
+        }
+        if (!isRefresh) {
+//            mAdapter.replaceData(feedProductResData.getDatas());
             smartRefreshLayout.finishRefresh(true);
         } else {
             articleDataList.addAll(newDataList);
@@ -99,30 +128,33 @@ public class HomeFragment extends BaseMvpFragment {
             smartRefreshLayout.finishLoadMore();
         }
 
-        feedArticleAdapter.setOnItemClickListener(new ArticleListAdapter.OnItemClickListener() {
+        feedArticleAdapter.setOnItemClickListener(new ProductAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                Intent intent = new Intent(getActivity(), ArticleDetailActivity.class);
+                Intent intent = new Intent(getActivity(), ProductDetailActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("url", articleDataList.get(position).getLink());
+//                bundle.putString("url", articleDataList.get(position).getLink());
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
     }
 
-    @Override
-    public void showBannerList(BannerListData itemBeans) {
 
-        final List<String> linkList = new ArrayList<String>();
+    @Override
+    public void showBannerList(BannerResData productResData) {
+
+        List<BannerProduct> bannerList = productResData.rspBody;
+        LogUtil.d("bannerList.size():"+bannerList.size());
         List imageList = new ArrayList();
         List titleList = new ArrayList();
-        int size = itemBeans.data.size();
+        final List orderList = new ArrayList();
+        int size = bannerList.size();
 
         for (int i = 0; i < size; i++) {
-            imageList.add(itemBeans.data.get(i).getImagePath());
-            titleList.add(itemBeans.data.get(i).getTitle());
-            linkList.add(itemBeans.data.get(i).getUrl());
+            imageList.add(bannerList.get(i).img);
+            titleList.add(bannerList.get(i).productName);
+            orderList.add(bannerList.get(i).productId);
         }
         banner.setImageLoader(new com.youth.banner.loader.ImageLoader() {
             @Override
@@ -139,11 +171,11 @@ public class HomeFragment extends BaseMvpFragment {
         //4. Banner.CIRCLE_INDICATOR_TITLE  显示圆形指示器和标题
         banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);//设置圆形指示器与标题
         //设置banner动画效果
-//        Tansformer.CubeIn
-//        Transformer.CubeOut
-//        Transformer.DepthPage
-//        Transformer.FlipHorizontal
-//        Transformer.FlipVertical
+        //        Tansformer.CubeIn
+        //        Transformer.CubeOut
+        //        Transformer.DepthPage
+        //        Transformer.FlipHorizontal
+        //        Transformer.FlipVertical
         banner.setBannerAnimation(Transformer.FlipHorizontal);
         banner.setIndicatorGravity(BannerConfig.CENTER);//设置指示器位置
         banner.setDelayTime(3000);//设置轮播时间
@@ -156,34 +188,38 @@ public class HomeFragment extends BaseMvpFragment {
         banner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int position) {
-                Intent intent = new Intent(getActivity(), ArticleDetailActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("url", linkList.get(position));
-                intent.putExtras(bundle);
-                startActivity(intent);
+                bundle.putInt("productId", (Integer) orderList.get(position));
+                ProductDetailActivity.startActivity(getActivity());
             }
         });
     }
 
     private void initRecyclerView() {
-//        articleDataList = new ArrayList<>();
-        feedArticleAdapter = new ArticleListAdapter(getActivity(), articleDataList);
-        project_recyclerview.addItemDecoration(new DividerItemDecoration(getActivity(),
-                DividerItemDecoration.VERTICAL_LIST));
-        project_recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+        articleDataList = new ArrayList<>();
+        feedArticleAdapter = new ProductAdapter(getActivity(), articleDataList);
+        project_recyclerview.addItemDecoration(new SpacesItemDecoration(2, ScreenUtils.dp2px(getActivity(), 10), false));
+
+        project_recyclerview.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         project_recyclerview.setAdapter(feedArticleAdapter);
-    }*/
+    }
 
     //初始化下拉刷新控件
     private void initSmartRefreshLayout() {
 //        smartRefreshLayout.setRefreshHeader(new MaterialHeader(getActivity()).setShowBezierWave(true));
 //        smartRefreshLayout.setRefreshFooter(new BallPulseFooter(getActivity()).setSpinnerStyle(SpinnerStyle.Scale));
+        smartRefreshLayout.setEnableLoadMore(true);
+        smartRefreshLayout.setEnableRefresh(false);
         smartRefreshLayout.setEnableScrollContentWhenLoaded(true);//是否在加载完成时滚动列表显示新的内容
         smartRefreshLayout.setEnableFooterFollowWhenLoadFinished(true);
         smartRefreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(RefreshLayout refreshLayout) {
-//                mPresenter.onLoadMore();
+                LogUtil.d("hasNextPage----------------" + hasNextPage);
+                if (hasNextPage)
+                    mPresenter.onLoadMore(6, "DESC", "create_time");
+                else
+                    smartRefreshLayout.finishLoadMore();
             }
 
             @Override
@@ -198,7 +234,7 @@ public class HomeFragment extends BaseMvpFragment {
     public void click(View view) {
         switch (view.getId()) {
             case R.id.home_recharge_layout:
-                MainActivity mainActivity=(MainActivity) getActivity();
+                MainActivity mainActivity = (MainActivity) getActivity();
                 mainActivity.viewPager.setCurrentItem(1);
                 break;
             case R.id.home_vip_layout:
@@ -208,9 +244,9 @@ public class HomeFragment extends BaseMvpFragment {
 
                 break;
             case R.id.home_download_layout:
-                Bundle bundle=new Bundle();
+                Bundle bundle = new Bundle();
                 bundle.putString("fromWhere", Constants.FROM_DOWNLOAD);
-                WebViewActivity.startActivity(getActivity(),bundle);
+                WebViewActivity.startActivity(getActivity(), bundle);
                 break;
             case R.id.home_custom_layout:
 

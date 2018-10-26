@@ -1,10 +1,12 @@
 package com.nongke.jindao.base.api;
 
 
+import com.nongke.jindao.base.mmodel.BannerResData;
 import com.nongke.jindao.base.mmodel.BaseResData;
 import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.mmodel.LogoutResData;
 import com.nongke.jindao.base.mmodel.MsgCodeResData;
+import com.nongke.jindao.base.mmodel.ProductResData;
 import com.nongke.jindao.base.mmodel.RegisterResData;
 import com.nongke.jindao.base.mmodel.UpdateAddressResData;
 import com.nongke.jindao.base.mmodel.UpdateProfileResData;
@@ -65,5 +67,11 @@ public interface ApiService {
 
     @POST("user/listUserInviter")
     Observable<MyInviterResData> listUserInviter(@Body RequestBody requestBody);
+
+    @POST("product/pageProduct")
+    Observable<ProductResData> pageProduct(@Body RequestBody requestBody);
+
+    @POST("product/getBannerProduct")
+    Observable<BannerResData> getBannerProduct();
 
 }

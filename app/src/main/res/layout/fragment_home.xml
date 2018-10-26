@@ -3,191 +3,205 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_f2f2f2"
     android:orientation="vertical">
+
     <!--下拉刷新组件-->
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/smartRefreshLayout_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <com.scwang.smartrefresh.layout.header.ClassicsHeader
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <com.youth.banner.Banner
-                android:id="@+id/banner"
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                app:image_scale_type="fit_xy"
-                app:indicator_drawable_selected="@drawable/banner_selected_radius"
-                app:indicator_drawable_unselected="@drawable/unselected_radius"
-                app:indicator_height="8dp"
-                app:indicator_margin="6dp"
-                app:indicator_width="8dp" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/color_white"
-                android:orientation="vertical"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:paddingRight="10dp"
-                android:paddingLeft="10dp">
-
-                <TextView
-                    android:id="@+id/notice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:gravity="center"
-                    android:text="@string/notice"
-                    android:textColor="@color/color_black"
-                    android:textSize="14sp" />
-
-                <View
-                    android:id="@+id/notice_divider"
-                    android:layout_width="1dp"
-                    android:layout_height="15dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@id/notice"
-                    android:background="@color/color_c5" />
-
-                <ImageView
-                    android:id="@+id/notice_icon"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@id/notice_divider"
-
-                    android:src="@drawable/icon_horn" />
-
-                <TextView
-                    android:id="@+id/notice_content"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_toRightOf="@id/notice_icon"
-                    android:gravity="center"
-                    android:text="国庆节放假七天"
-                    android:textColor="@color/color_black"
-                    android:textSize="14sp" />
-
-                <ImageView
-                    android:id="@+id/notice_more"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/icon_notice_more" />
-            </RelativeLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:background="@color/color_white"
-                android:orientation="horizontal"
-                android:padding="10dp">
-
-                <LinearLayout
-                    android:id="@+id/home_recharge_layout"
-                    style="@style/home_item_layout">
-
-                    <ImageView
-                        style="@style/home_item_icon"
-                        android:src="@drawable/icon_recharge2" />
-
-                    <TextView
-                        style="@style/home_item_txt"
-                        android:text="@string/phone_fee_recharge" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/home_vip_layout"
-                    style="@style/home_item_layout">
-
-                    <ImageView
-                        style="@style/home_item_icon"
-                        android:src="@drawable/icon_vip2" />
-
-                    <TextView
-                        style="@style/home_item_txt"
-                        android:text="@string/vip_member" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/home_company_layout"
-                    style="@style/home_item_layout">
-
-                    <ImageView
-                        style="@style/home_item_icon"
-                        android:src="@drawable/icon_company" />
-
-                    <TextView
-                        style="@style/home_item_txt"
-                        android:text="@string/company_introduction" />
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/home_custom_layout"
-                    style="@style/home_item_layout">
-
-                    <ImageView
-                        style="@style/home_item_icon"
-                        android:src="@drawable/icon_custom2" />
-
-                    <TextView
-                        style="@style/home_item_txt"
-                        android:text="@string/custom_center" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/home_download_layout"
-                    style="@style/home_item_layout">
-
-                    <ImageView
-                        style="@style/home_item_icon"
-                        android:src="@drawable/icon_download2" />
-
-                    <TextView
-                        style="@style/home_item_txt"
-                        android:text="@string/app_download" />
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@color/color_white"
-                android:gravity="center"
-                android:text="@string/hot_commodity"
-                android:textSize="14sp"
-                android:visibility="gone" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/project_recyclerview"
-                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:background="#ffffff" />
+                android:background="@color/color_f2f2f2"
+                android:orientation="vertical">
 
-            <com.scwang.smartrefresh.layout.footer.ClassicsFooter
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                <!--<com.scwang.smartrefresh.layout.header.ClassicsHeader-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content" />-->
+
+
+                    <com.youth.banner.Banner
+                        android:id="@+id/banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        app:image_scale_type="fit_xy"
+                        app:indicator_drawable_selected="@drawable/banner_selected_radius"
+                        app:indicator_drawable_unselected="@drawable/unselected_radius"
+                        app:indicator_height="8dp"
+                        app:indicator_margin="6dp"
+                        app:indicator_width="8dp" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_white"
+                        android:orientation="vertical"
+                        android:paddingBottom="6dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="6dp">
+
+                        <TextView
+                            android:id="@+id/notice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:gravity="center"
+                            android:text="@string/notice"
+                            android:textColor="@color/color_black"
+                            android:textSize="14sp" />
+
+                        <View
+                            android:id="@+id/notice_divider"
+                            android:layout_width="1dp"
+                            android:layout_height="15dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@id/notice"
+                            android:background="@color/color_c5" />
+
+                        <ImageView
+                            android:id="@+id/notice_icon"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@id/notice_divider"
+
+                            android:src="@drawable/icon_horn" />
+
+                        <TextView
+                            android:id="@+id/notice_content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_toRightOf="@id/notice_icon"
+                            android:gravity="center"
+                            android:text="国庆节放假七天"
+                            android:textColor="@color/color_black"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:id="@+id/notice_more"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/icon_notice_more" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/color_white"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <LinearLayout
+                            android:id="@+id/home_recharge_layout"
+                            style="@style/home_item_layout">
+
+                            <ImageView
+                                style="@style/home_item_icon"
+                                android:src="@drawable/icon_recharge2" />
+
+                            <TextView
+                                style="@style/home_item_txt"
+                                android:text="@string/phone_fee_recharge" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/home_vip_layout"
+                            style="@style/home_item_layout">
+
+                            <ImageView
+                                style="@style/home_item_icon"
+                                android:src="@drawable/icon_vip2" />
+
+                            <TextView
+                                style="@style/home_item_txt"
+                                android:text="@string/vip_member" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/home_company_layout"
+                            style="@style/home_item_layout">
+
+                            <ImageView
+                                style="@style/home_item_icon"
+                                android:src="@drawable/icon_company" />
+
+                            <TextView
+                                style="@style/home_item_txt"
+                                android:text="@string/company_introduction" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/home_custom_layout"
+                            style="@style/home_item_layout">
+
+                            <ImageView
+                                style="@style/home_item_icon"
+                                android:src="@drawable/icon_custom2" />
+
+                            <TextView
+                                style="@style/home_item_txt"
+                                android:text="@string/custom_center" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/home_download_layout"
+                            style="@style/home_item_layout">
+
+                            <ImageView
+                                style="@style/home_item_icon"
+                                android:src="@drawable/icon_download2" />
+
+                            <TextView
+                                style="@style/home_item_txt"
+                                android:text="@string/app_download" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/color_white"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="@string/hot_commodity"
+                        android:textSize="14sp" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/project_recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp" />
+
+                    <!--<com.scwang.smartrefresh.layout.footer.ClassicsFooter-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content" />-->
+                </LinearLayout>
+        </ScrollView>
         </LinearLayout>
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </LinearLayout>

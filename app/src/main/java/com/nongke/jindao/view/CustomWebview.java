@@ -24,6 +24,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.nongke.jindao.base.utils.ScreenUtils;
 import com.nongke.jindao.base.view.ProgressView;
 
 public class CustomWebview extends WebView {
@@ -47,7 +48,7 @@ public class CustomWebview extends WebView {
     private void init() {
         //初始化进度条
         progressView = new ProgressView(context);
-        progressView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dp2px(context, 3)));
+        progressView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ScreenUtils.dp2px(context, 3)));
 //        progressView.setColor(Color.BLUE);
 //        progressView.setProgress(10);
         //把进度条加到Webview中
@@ -207,15 +208,5 @@ public class CustomWebview extends WebView {
         }
     }
 
-    /**
-     * dp转换成px
-     *
-     * @param context Context
-     * @param dp      dp
-     * @return px值
-     */
-    private int dp2px(Context context, float dp) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dp * scale + 0.5f);
-    }
+
 }
