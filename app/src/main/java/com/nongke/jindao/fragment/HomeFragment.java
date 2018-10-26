@@ -20,6 +20,7 @@ import com.nongke.jindao.adapter.divider.DividerItemDecoration;
 import com.nongke.jindao.adapter.divider.SpacesItemDecoration;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mmodel.BannerResData;
+import com.nongke.jindao.base.mmodel.Product;
 import com.nongke.jindao.base.mmodel.ProductResData;
 import com.nongke.jindao.base.utils.Constants;
 import com.nongke.jindao.base.utils.LogUtil;
@@ -30,8 +31,6 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.youth.banner.Banner;
-import com.nongke.jindao.base.mmodel.ProductResData.Product;
-import com.nongke.jindao.base.mmodel.BannerResData.BannerProduct;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 import com.youth.banner.listener.OnBannerListener;
@@ -67,7 +66,7 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
     LinearLayout home_download_layout;
     @BindView(R.id.home_custom_layout)
     LinearLayout home_custom_layout;
-    private List<ProductResData.Product> articleDataList;
+    private List<Product> articleDataList;
     private ProductAdapter feedArticleAdapter;
     boolean hasNextPage = true;
 
@@ -128,23 +127,20 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
             smartRefreshLayout.finishLoadMore();
         }
 
-        feedArticleAdapter.setOnItemClickListener(new ProductAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View v, int position) {
-                Intent intent = new Intent(getActivity(), ProductDetailActivity.class);
-                Bundle bundle = new Bundle();
-//                bundle.putString("url", articleDataList.get(position).getLink());
-                intent.putExtras(bundle);
-                startActivity(intent);
-            }
-        });
+//        feedArticleAdapter.setOnItemClickListener(new ProductAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(View v, int position) {
+//                Bundle bundle = new Bundle();
+//
+//            }
+//        });
     }
 
 
     @Override
     public void showBannerList(BannerResData productResData) {
 
-        List<BannerProduct> bannerList = productResData.rspBody;
+        final List<Product> bannerList = productResData.rspBody;
         LogUtil.d("bannerList.size():"+bannerList.size());
         List imageList = new ArrayList();
         List titleList = new ArrayList();
@@ -176,7 +172,7 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
         //        Transformer.DepthPage
         //        Transformer.FlipHorizontal
         //        Transformer.FlipVertical
-        banner.setBannerAnimation(Transformer.FlipHorizontal);
+        banner.setBannerAnimation(Transformer.Default);
         banner.setIndicatorGravity(BannerConfig.CENTER);//设置指示器位置
         banner.setDelayTime(3000);//设置轮播时间
         banner.setImages(imageList);//设置图片源
@@ -188,9 +184,11 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
         banner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int position) {
+
                 Bundle bundle = new Bundle();
-                bundle.putInt("productId", (Integer) orderList.get(position));
-                ProductDetailActivity.startActivity(getActivity());
+                bundle.putSerializable("product", bannerList.get(position));
+
+                ProductDetailActivity.startActivity(getActivity(),bundle);
             }
         });
     }

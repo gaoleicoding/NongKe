@@ -15,6 +15,6 @@
         android:layout_height="wrap_content"
         android:text="@string/recharge"
         android:textColor="@color/selector_tab_text"
-        android:textSize="14sp" />
+        android:textSize="12sp" />
 
 </LinearLayout>

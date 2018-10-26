@@ -1,22 +1,20 @@
 package com.nongke.jindao.adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.nongke.jindao.R;
+import com.nongke.jindao.activity.ProductDetailActivity;
 import com.nongke.jindao.base.application.CustomApplication;
-import com.nongke.jindao.base.mmodel.ProductResData.Product;
-
+import com.nongke.jindao.base.mmodel.Product;
 import com.nongke.jindao.base.thirdframe.glide.ImageLoader;
 import com.nongke.jindao.base.utils.ScreenUtils;
 
@@ -42,10 +40,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             @Override
             public void onClick(View view) {
 
-                int position = (int) view.getTag();
-                if (listener != null) {
-                    listener.onItemClick(view, position);
-                }
+//                int position = (int) view.getTag();
+//                if (listener != null) {
+//                    listener.onItemClick(view, position);
+//                }
             }
         });
         return holder;
@@ -53,11 +51,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
 
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.itemView.setTag(position);
+        setClick(holder.itemView,position);
         Product productInfo = list.get(position);
         setImageWidthHeight(holder.item_project_list_iv);
         holder.item_project_list_title_tv.setText(productInfo.productName);
         holder.item_project_list_content_tv.setText(productInfo.productPrice + "元");
         ImageLoader.getInstance().load(context, productInfo.img, holder.item_project_list_iv);
+
 
     }
 
@@ -87,6 +87,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
+    }
+
+    private void setClick(View itemView,final int position){
+        itemView.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("product", list.get(position));
+
+                ProductDetailActivity.startActivity(context,bundle);
+            }
+        });
     }
 
     private void setImageWidthHeight(ImageView imageView) {

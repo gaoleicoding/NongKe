@@ -23,7 +23,6 @@
         android:layout_margin="5dp"
         android:layout_weight="1"
         android:ellipsize="end"
-        android:gravity="center"
         android:maxLines="2"
         android:textColor="@color/color_5b5d5c"
         android:textSize="14sp"

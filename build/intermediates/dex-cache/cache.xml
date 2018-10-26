@@ -8,7 +8,7 @@
         min-sdk-version="14"
         optimize="true"
         revision="26.0.2"
-        sha1="35c8a1837c259b227bfe506d1011845898a9b70b">
+        sha1="3223d5ce0327d70c65be92d9ea5d4644d64b8459">
         <dex dex="/Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/app/build/intermediates/transforms/preDex/Baidu/release/48.jar" />
     </item>
 
