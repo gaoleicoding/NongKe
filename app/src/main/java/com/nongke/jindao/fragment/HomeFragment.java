@@ -1,7 +1,6 @@
 package com.nongke.jindao.fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,8 +15,7 @@ import com.nongke.jindao.activity.ProductDetailActivity;
 import com.nongke.jindao.activity.VipRechargeActivity;
 import com.nongke.jindao.activity.WebViewActivity;
 import com.nongke.jindao.adapter.ProductAdapter;
-import com.nongke.jindao.adapter.divider.DividerItemDecoration;
-import com.nongke.jindao.adapter.divider.SpacesItemDecoration;
+import com.nongke.jindao.adapter.divider.GridItemSpaceDecoration;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mmodel.BannerResData;
 import com.nongke.jindao.base.mmodel.Product;
@@ -192,13 +190,19 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
     private void initRecyclerView() {
         articleDataList = new ArrayList<>();
         feedArticleAdapter = new ProductAdapter(getActivity(), articleDataList,"HomeFragment");
-        project_recyclerview.addItemDecoration(new SpacesItemDecoration(2, ScreenUtils.dp2px(getActivity(), 10), false));
+        project_recyclerview.addItemDecoration(new GridItemSpaceDecoration(2, ScreenUtils.dp2px(getActivity(), 10), false));
 
-        project_recyclerview.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        project_recyclerview.setLayoutManager(new GridLayoutManager(getActivity(), 2){
+            public boolean canScrollVertically() {
+                //解决ScrollView里存在多个RecyclerView时滑动卡顿的问题
+                //如果你的RecyclerView是水平滑动的话可以重写canScrollHorizontally方法
+                return false;
+            }
+        });
         //解决数据加载不完的问题
-        project_recyclerview.setNestedScrollingEnabled(false);
-        project_recyclerview.setHasFixedSize(true);
-        //解决数据加载完成后, 没有停留在顶部的问题
+//        project_recyclerview.setNestedScrollingEnabled(false);
+//        project_recyclerview.setHasFixedSize(true);
+//        //解决数据加载完成后, 没有停留在顶部的问题
         project_recyclerview.setFocusable(false);
         project_recyclerview.setAdapter(feedArticleAdapter);
     }

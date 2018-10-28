@@ -1,36 +1,32 @@
 package com.nongke.jindao.fragment;
 
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.nongke.jindao.MainActivity;
 import com.nongke.jindao.R;
-import com.nongke.jindao.adapter.ProductAdapter;
+import com.nongke.jindao.adapter.CartAdapter;
+import com.nongke.jindao.adapter.divider.DividerItemDecoration;
 import com.nongke.jindao.adapter.divider.SpacesItemDecoration;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mmodel.Product;
 import com.nongke.jindao.base.mmodel.ProductResData;
-import com.nongke.jindao.base.mpresenter.BasePresenter;
-import com.nongke.jindao.base.utils.Constants;
-import com.nongke.jindao.base.utils.LogUtil;
-import com.nongke.jindao.base.utils.ScreenUtils;
 import com.nongke.jindao.mcontract.CartContract;
-import com.nongke.jindao.mcontract.ProductClassifyContract;
 import com.nongke.jindao.mpresenter.CartPresenter;
-import com.nongke.jindao.mpresenter.ProductClassifyPresenter;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+
+import static com.nongke.jindao.adapter.divider.DividerItemDecoration.HORIZONTAL_LIST;
+import static com.nongke.jindao.adapter.divider.DividerItemDecoration.VERTICAL_LIST;
 
 
 /**
@@ -47,8 +43,9 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
     @BindView(R.id.ll_cart_empty)
     LinearLayout ll_cart_empty;
 
+
     private List<Product> cartDataList;
-    private ProductAdapter cartAdapter;
+    private CartAdapter cartAdapter;
 
     @Override
     public void loadData() {
@@ -111,10 +108,10 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
 
     private void initRecyclerView() {
         cartDataList = new ArrayList<>();
-        cartAdapter = new ProductAdapter(getActivity(), cartDataList,"CartFragment");
-        cart_recyclerview.addItemDecoration(new SpacesItemDecoration(2, ScreenUtils.dp2px(getActivity(), 10), false));
+        cartAdapter = new CartAdapter(getActivity(), cartDataList, "CartFragment");
+        cart_recyclerview.addItemDecoration(new SpacesItemDecoration(10));
 
-        cart_recyclerview.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        cart_recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
         //解决数据加载不完的问题
         cart_recyclerview.setNestedScrollingEnabled(false);
         cart_recyclerview.setHasFixedSize(true);

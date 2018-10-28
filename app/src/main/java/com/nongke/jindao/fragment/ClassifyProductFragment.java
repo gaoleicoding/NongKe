@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.nongke.jindao.R;
 import com.nongke.jindao.adapter.ProductAdapter;
-import com.nongke.jindao.adapter.divider.SpacesItemDecoration;
+import com.nongke.jindao.adapter.divider.GridItemSpaceDecoration;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mmodel.Product;
 import com.nongke.jindao.base.mmodel.ProductResData;
@@ -128,7 +128,7 @@ public class ClassifyProductFragment extends BaseMvpFragment<ProductClassifyPres
     private void initRecyclerView() {
         articleDataList = new ArrayList<>();
         feedArticleAdapter = new ProductAdapter(getActivity(), articleDataList,"ClassifyProductFragment");
-        product_recyclerview.addItemDecoration(new SpacesItemDecoration(2, ScreenUtils.dp2px(getActivity(), 10), false));
+        product_recyclerview.addItemDecoration(new GridItemSpaceDecoration(2, ScreenUtils.dp2px(getActivity(), 10), false));
 
         product_recyclerview.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         product_recyclerview.setAdapter(feedArticleAdapter);

@@ -186,7 +186,7 @@ public class ProductDetailActivity extends BaseMvpActivity<ProductDetailPresente
 
     private void initRecyclerView(String detailImgs) {
         ProductDetailImgAdapter feedArticleAdapter = new ProductDetailImgAdapter(this, detailImgs.split(","));
-//        recyclerview_detail_img.addItemDecoration(new SpacesItemDecoration(2, ScreenUtils.dp2px(getActivity(), 10), false));
+//        recyclerview_detail_img.addItemDecoration(new GridItemSpaceDecoration(2, ScreenUtils.dp2px(getActivity(), 10), false));
 
         recyclerview_detail_img.setLayoutManager(new LinearLayoutManager(this) {
                                                      @Override

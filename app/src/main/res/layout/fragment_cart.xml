@@ -5,46 +5,117 @@
     android:layout_height="match_parent">
     <!--下拉刷新组件-->
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/cart_recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="5dp" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/cart_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:paddingBottom="50dp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_to_pay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white">
+
+        <View
+            android:id="@+id/divider"
+            style="@style/horizontal_divider"
+            android:background="@color/color_e9e9e9" />
+
+        <ImageView
+            android:id="@+id/iv_product_select_all"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/icon_product_unselect" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_product_select_all"
+            android:layout_centerVertical="true"
+            android:text="全选"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/divider"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_product_add_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                android:text="合计:"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_product_buy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/app_color"
+                android:clickable="true"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                android:text="结算"
+                android:textColor="#fffdf0"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
     <LinearLayout
         android:id="@+id/ll_cart_empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:visibility="gone"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_cart_empty"
             android:layout_gravity="center_horizontal"
-            />
+            android:src="@drawable/icon_cart_empty" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:layout_marginTop="30dp"
             android:text="@string/cart_empty"
             android:textColor="@color/color_bfbfbf"
-            android:layout_marginTop="30dp"
             android:textSize="16sp" />
+
         <TextView
             android:id="@+id/tv_to_shop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/shape_recharge_ammount_bg_select"
-            android:gravity="center"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shape_recharge_ammount_bg_select"
+            android:gravity="center"
             android:padding="10dp"
             android:text="@string/goto_shop"
             android:textColor="@color/white"
