@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/basemodule/build/intermediates/intermediate-jars/release/classes.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="1574819f4f34f7d3224e9887cf71e96da8909854">
+        <dex dex="/Users/GaoLei/gaolei/Android/OutSource/NongKe/NongKe/app/build/intermediates/transforms/preDex/Baidu/release/48.jar" />
+    </item>
+
+</items>
