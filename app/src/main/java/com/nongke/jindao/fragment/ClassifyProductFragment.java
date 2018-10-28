@@ -127,7 +127,7 @@ public class ClassifyProductFragment extends BaseMvpFragment<ProductClassifyPres
 
     private void initRecyclerView() {
         articleDataList = new ArrayList<>();
-        feedArticleAdapter = new ProductAdapter(getActivity(), articleDataList);
+        feedArticleAdapter = new ProductAdapter(getActivity(), articleDataList,"ClassifyProductFragment");
         product_recyclerview.addItemDecoration(new SpacesItemDecoration(2, ScreenUtils.dp2px(getActivity(), 10), false));
 
         product_recyclerview.setLayoutManager(new GridLayoutManager(getActivity(), 2));

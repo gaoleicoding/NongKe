@@ -10,6 +10,7 @@ public class ProductResData extends BaseResData {
 
     public class RspBody {
         public int pageNum, pageSize, size, startRow, endRow, total, pages;
+        public String uid,totalPrice;
         public boolean hasNextPage;
         public List<Product> list;
 

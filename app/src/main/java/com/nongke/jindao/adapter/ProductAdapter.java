@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.nongke.jindao.R;
 import com.nongke.jindao.activity.ProductDetailActivity;
 import com.nongke.jindao.base.application.CustomApplication;
@@ -27,9 +28,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
     int selectPosition = 0;
     OnItemClickListener listener;
     List<Product> list;
+    String fromWhere;
 
-    public ProductAdapter(Context context, List<Product> list) {
+    public ProductAdapter(Context context, List<Product> list, String fromWhere) {
         this.context = context;
+        this.list = list;
+        this.fromWhere = fromWhere;
+    }
+
+    public void setDataList(List<Product> list) {
         this.list = list;
     }
 
@@ -51,7 +58,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
 
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.itemView.setTag(position);
-        setClick(holder.itemView,position);
+        if (!"CartFragment".equals(fromWhere))
+            setClick(holder.itemView, position);
         Product productInfo = list.get(position);
         setImageWidthHeight(holder.item_project_list_iv);
         holder.item_project_list_title_tv.setText(productInfo.productName);
@@ -89,15 +97,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         this.listener = listener;
     }
 
-    private void setClick(View itemView,final int position){
-        itemView.setOnClickListener(new View.OnClickListener(){
+    private void setClick(View itemView, final int position) {
+        itemView.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("product", list.get(position));
 
-                ProductDetailActivity.startActivity(context,bundle);
+                ProductDetailActivity.startActivity(context, bundle);
             }
         });
     }

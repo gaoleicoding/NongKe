@@ -8,7 +8,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.TextView;
@@ -89,9 +88,9 @@ public class MainActivity extends BaseActivity {
         userFragment = new UserFragment();
         mFragments.add(homeFragment);
         mFragments.add(projectFragment);
-        classifyFragment=new ClassifyFragment();
+        classifyFragment = new ClassifyFragment();
         mFragments.add(classifyFragment);
-        cartFragment=new CartFragment();
+        cartFragment = new CartFragment();
         mFragments.add(cartFragment);
         mFragments.add(userFragment);
 
@@ -120,9 +119,9 @@ public class MainActivity extends BaseActivity {
     private void initTab() {
 
         tabLayout.getTabAt(0).setCustomView(R.layout.tab_home);
-        tabLayout.getTabAt(1).setCustomView(R.layout.tab_project);
-        tabLayout.getTabAt(2).setCustomView(R.layout.tab_knowledge);
-        tabLayout.getTabAt(3).setCustomView(R.layout.tab_navigation);
+        tabLayout.getTabAt(1).setCustomView(R.layout.tab_recharge);
+        tabLayout.getTabAt(2).setCustomView(R.layout.tab_classify);
+        tabLayout.getTabAt(3).setCustomView(R.layout.tab_cart);
         tabLayout.getTabAt(4).setCustomView(R.layout.tab_mine);
 
 
@@ -132,9 +131,12 @@ public class MainActivity extends BaseActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
                 title.setText(titles.get(position));
+                if (position == 3)
+                    cartFragment.loadData();
                 if (position == 4 && !UserUtils.isLogined()) {
                     RegisterLoginActivity.startActivity(MainActivity.this);
                 }
+
 
             }
 
@@ -195,7 +197,7 @@ public class MainActivity extends BaseActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK
                 && event.getAction() == KeyEvent.ACTION_DOWN) {
-            if(classifyFragment.defaultFragment.isSearching||classifyFragment.salesFragment.isSearching||classifyFragment.priceFragment.isSearching) {
+            if (classifyFragment.defaultFragment.isSearching || classifyFragment.salesFragment.isSearching || classifyFragment.priceFragment.isSearching) {
                 classifyFragment.backFromSearch();
                 return false;
             }
@@ -217,7 +219,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        imageUtils=userFragment.imageUtils;
+        imageUtils = userFragment.imageUtils;
         if (resultCode != RESULT_OK) {
             return;
         }
@@ -237,7 +239,7 @@ public class MainActivity extends BaseActivity {
                         //formatUri会返回根据Uri解析出的真实路径
                         String imgPathSel = UriUtils.formatUri(this, imgUriSel);
                         //根据真实路径转成File,然后通过应用程序重新安全化，再放入裁剪程序中才可以识别
-                        imageUtils.cropPhoto(FileProvider7.getUriForFile(this,  new File(imgPathSel)));
+                        imageUtils.cropPhoto(FileProvider7.getUriForFile(this, new File(imgPathSel)));
                         Log.i(TAG, "Kit_sel_path:" + imgPathSel);
                         Log.i(TAG, "Kit_sel_uri:" + Uri.fromFile(new File(imgPathSel)));
                     } else {

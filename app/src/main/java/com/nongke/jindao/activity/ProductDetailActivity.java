@@ -4,33 +4,23 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.nongke.jindao.R;
-import com.nongke.jindao.adapter.ProductAdapter;
 import com.nongke.jindao.adapter.ProductDetailImgAdapter;
-import com.nongke.jindao.adapter.ProjectListAdapter;
-import com.nongke.jindao.adapter.divider.SpacesItemDecoration;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
-import com.nongke.jindao.base.mmodel.BannerResData;
-import com.nongke.jindao.base.mmodel.MyInviterResData;
 import com.nongke.jindao.base.mmodel.Product;
-import com.nongke.jindao.base.utils.LogUtil;
-import com.nongke.jindao.base.utils.ScreenUtils;
-import com.nongke.jindao.mcontract.MyInviterContract;
-import com.nongke.jindao.mpresenter.MyInviterPresenter;
+import com.nongke.jindao.mpresenter.ProductDetailPresenter;
+import com.nongke.jindao.mpresenter.RegisterLoginPresenter;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
-import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +33,7 @@ import butterknife.OnClick;
  * author: zlm
  * date: 2017/3/17 16:01
  */
-public class ProductDetailActivity extends BaseMvpActivity {
+public class ProductDetailActivity extends BaseMvpActivity<ProductDetailPresenter> {
     @BindView(R.id.iv_back)
     ImageView iv_back;
     @BindView(R.id.title)
@@ -62,6 +52,10 @@ public class ProductDetailActivity extends BaseMvpActivity {
     TextView tv_product_stock;
     @BindView(R.id.tv_product_desc)
     TextView tv_product_desc;
+    @BindView(R.id.tv_product_buy)
+    TextView tv_product_buy;
+    @BindView(R.id.tv_product_add_cart)
+    TextView tv_product_add_cart;
     @BindView(R.id.iv_product_add)
     ImageView iv_product_add;
     @BindView(R.id.iv_product_reduce)
@@ -70,7 +64,7 @@ public class ProductDetailActivity extends BaseMvpActivity {
     RecyclerView recyclerview_detail_img;
     //    @BindView(R.id.layout_scroll)
 //    ScrollView layout_scroll;
-    int ammount = 1;
+    int ammount = 1, productId;
     String TAG = "ProductDetailActivity";
 
     public static void startActivity(Context context, Bundle bundle) {
@@ -97,8 +91,8 @@ public class ProductDetailActivity extends BaseMvpActivity {
     }
 
     @Override
-    public MyInviterPresenter initPresenter() {
-        return new MyInviterPresenter();
+    public ProductDetailPresenter initPresenter() {
+        return new ProductDetailPresenter();
     }
 
     @Override
@@ -107,7 +101,7 @@ public class ProductDetailActivity extends BaseMvpActivity {
 
     }
 
-    @OnClick({R.id.iv_product_add, R.id.iv_product_reduce})
+    @OnClick({R.id.iv_product_add, R.id.iv_product_reduce, R.id.tv_product_add_cart, R.id.tv_product_buy})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.iv_product_add:
@@ -115,10 +109,17 @@ public class ProductDetailActivity extends BaseMvpActivity {
                 tv_product_ammount.setText(ammount + "");
                 break;
             case R.id.iv_product_reduce:
-                if (ammount > 0) {
+                if (ammount > 1) {
                     ammount = ammount - 1;
                     tv_product_ammount.setText(ammount + "");
                 }
+                break;
+            case R.id.tv_product_add_cart:
+
+                mPresenter.saveCart(ammount, productId);
+                break;
+            case R.id.tv_product_buy:
+
                 break;
         }
     }
@@ -128,12 +129,12 @@ public class ProductDetailActivity extends BaseMvpActivity {
         Log.d(TAG, "product.coverImg：" + product.coverImg);
         Log.d(TAG, "product.detailImgs：" + product.detailImgs);
 
-
+        productId = product.productId;
         tv_product_name.setText(product.productName);
-        tv_product_price.setText(product.productPrice + "元");
+        tv_product_price.setText(product.productPrice + " 元");
         tv_product_ammount.setText(ammount + "");
-        tv_product_sales.setText("销量" + product.salesAmount);
-        tv_product_stock.setText("库存" + product.stockAmount + "");
+        tv_product_sales.setText("销量：" + product.salesAmount);
+        tv_product_stock.setText("库存：" + product.stockAmount + "");
         tv_product_desc.setText(product.detail);
         showBannerList(product.coverImg);
         initRecyclerView(product.detailImgs);
@@ -204,4 +205,6 @@ public class ProductDetailActivity extends BaseMvpActivity {
 
         recyclerview_detail_img.setAdapter(feedArticleAdapter);
     }
+
+
 }

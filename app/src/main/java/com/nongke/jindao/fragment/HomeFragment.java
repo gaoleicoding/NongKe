@@ -191,7 +191,7 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
 
     private void initRecyclerView() {
         articleDataList = new ArrayList<>();
-        feedArticleAdapter = new ProductAdapter(getActivity(), articleDataList);
+        feedArticleAdapter = new ProductAdapter(getActivity(), articleDataList,"HomeFragment");
         project_recyclerview.addItemDecoration(new SpacesItemDecoration(2, ScreenUtils.dp2px(getActivity(), 10), false));
 
         project_recyclerview.setLayoutManager(new GridLayoutManager(getActivity(), 2));

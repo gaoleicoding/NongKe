@@ -74,4 +74,11 @@ public interface ApiService {
     @POST("product/getBannerProduct")
     Observable<BannerResData> getBannerProduct();
 
+    @POST("cart/saveCart")
+    Observable<BaseResData> saveCart(@Body RequestBody requestBody);
+
+
+    @POST("cart/getCartProduct")
+    Observable<ProductResData> getCartProduct();
+
 }
