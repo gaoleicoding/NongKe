@@ -49,6 +49,8 @@ public class MainActivity extends BaseActivity {
     TextView title;
     HomeFragment homeFragment;
     RechargeFragment projectFragment;
+    ClassifyFragment classifyFragment;
+    CartFragment cartFragment;
     UserFragment userFragment;
 
     private static final int REQUEST_OPEN_CAMERA = 0x011;
@@ -87,8 +89,10 @@ public class MainActivity extends BaseActivity {
         userFragment = new UserFragment();
         mFragments.add(homeFragment);
         mFragments.add(projectFragment);
-        mFragments.add(new ClassifyFragment());
-        mFragments.add(new CartFragment());
+        classifyFragment=new ClassifyFragment();
+        mFragments.add(classifyFragment);
+        cartFragment=new CartFragment();
+        mFragments.add(cartFragment);
         mFragments.add(userFragment);
 
         titles = new ArrayList<String>();
@@ -191,6 +195,11 @@ public class MainActivity extends BaseActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK
                 && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if(classifyFragment.defaultFragment.isSearching||classifyFragment.salesFragment.isSearching||classifyFragment.priceFragment.isSearching) {
+                classifyFragment.backFromSearch();
+                return false;
+            }
+
             if ((System.currentTimeMillis() - exitTime) > 2000) {
                 //弹出提示，可以有多种方式
                 Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();

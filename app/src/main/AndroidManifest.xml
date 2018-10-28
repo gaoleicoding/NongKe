@@ -30,6 +30,7 @@
         </activity>
         <activity android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"
             android:launchMode="singleTask">
 
         </activity>

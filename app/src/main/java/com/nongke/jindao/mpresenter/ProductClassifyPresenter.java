@@ -7,6 +7,7 @@ import com.nongke.jindao.base.mmodel.ProductResData;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.thirdframe.retrofit.RetrofitProvider;
 import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
+import com.nongke.jindao.base.utils.Constants;
 import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.mcontract.ProductClassifyContract;
 import com.nongke.jindao.mcontract.ProductContract;
@@ -24,23 +25,33 @@ public class ProductClassifyPresenter extends BasePresenter<ProductClassifyContr
     public int pageNum = 1;
 
     @Override
-    public void pageProduct( int pageSize, String orderType, String orderBy) {
-        getPageProduct( pageSize, orderType, orderBy);
+    public void pageProduct(String productName, String orderType, String orderBy) {
+        LogUtil.d("pageProduct----------------pageNum:"+pageNum);
+        LogUtil.d("pageProduct----------------productName:"+productName);
+        LogUtil.d("pageProduct----------------orderType:"+orderType);
+        LogUtil.d("pageProduct----------------orderBy:"+orderBy);
+        getPageProduct( productName, orderType, orderBy);
     }
 
 
 
     @Override
-    public void onLoadMore( int pageSize, String orderType, String orderBy) {
-        LogUtil.d("mCurrentPage----------------"+pageNum);
-        ++pageNum;
-        getPageProduct(pageSize, orderType, orderBy);
+    public void onLoadMore( String productName, String orderType, String orderBy) {
+        pageNum=pageNum+1;
+        LogUtil.d("onLoadMore----------------pageNum:"+pageNum);
+        LogUtil.d("onLoadMore----------------productName:"+productName);
+        LogUtil.d("onLoadMore----------------orderType:"+orderType);
+        LogUtil.d("onLoadMore----------------orderBy:"+orderBy);
+
+        getPageProduct(productName, orderType, orderBy);
+
     }
 
-    private void getPageProduct( int pageSize, String orderType, String orderBy) {
+    private void getPageProduct( String productName, String orderType, String orderBy) {
         HashMap hashMap = new HashMap();
         hashMap.put("pageNum", pageNum);
-        hashMap.put("pageSize", pageSize);
+        hashMap.put("pageSize", Constants.pageSize);
+        hashMap.put("productName", productName);
         hashMap.put("orderType", orderType);
         hashMap.put("orderBy", orderBy);
 

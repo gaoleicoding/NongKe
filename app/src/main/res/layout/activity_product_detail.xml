@@ -170,7 +170,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/white"
-        android:paddingTop="10dp">
+        >
 
         <View
             android:id="@+id/divider"
@@ -195,7 +195,7 @@
                    android:ellipsize="end"
                    android:maxLines="1"
                    android:text="加入购物车"
-                   android:textColor="@color/white"
+                   android:textColor="@drawable/text_selector"
                    android:textSize="14sp" />
 
                <View
@@ -211,7 +211,7 @@
                    android:layout_marginRight="10dp"
                    android:maxLines="1"
                    android:text="立即购买"
-                   android:textColor="@color/white"
+                   android:textColor="@drawable/text_selector"
                    android:textSize="14sp" />
            </LinearLayout>
 

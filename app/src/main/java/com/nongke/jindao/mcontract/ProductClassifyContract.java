@@ -12,10 +12,10 @@ public class ProductClassifyContract {
     public interface Presenter {
 
 
-        void pageProduct(int pageSize, String orderType, String orderBy);
+        void pageProduct(String productName, String orderType, String orderBy);
 
 
-        void onLoadMore(int pageSize, String orderType, String orderBy);
+        void onLoadMore(String productName, String orderType, String orderBy);
     }
 
     public interface View {

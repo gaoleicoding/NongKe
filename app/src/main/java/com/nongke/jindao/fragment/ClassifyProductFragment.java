@@ -1,26 +1,20 @@
 package com.nongke.jindao.fragment;
 
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.nongke.jindao.R;
 import com.nongke.jindao.adapter.ProductAdapter;
-import com.nongke.jindao.adapter.RechargeTabAdapter;
 import com.nongke.jindao.adapter.divider.SpacesItemDecoration;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mmodel.Product;
 import com.nongke.jindao.base.mmodel.ProductResData;
-import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.utils.Constants;
 import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.ScreenUtils;
 import com.nongke.jindao.mcontract.ProductClassifyContract;
-import com.nongke.jindao.mcontract.ProductContract;
 import com.nongke.jindao.mpresenter.ProductClassifyPresenter;
-import com.nongke.jindao.mpresenter.ProductPresenter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
@@ -36,20 +30,22 @@ import butterknife.BindView;
  * @date 2018/2/11
  */
 
-public class CommodityFragment extends BaseMvpFragment<ProductClassifyPresenter> implements ProductClassifyContract.View {
+public class ClassifyProductFragment extends BaseMvpFragment<ProductClassifyPresenter> implements ProductClassifyContract.View {
 
     @BindView(R.id.product_recyclerview)
     RecyclerView product_recyclerview;
     @BindView(R.id.smartRefreshLayout_home)
     SmartRefreshLayout smartRefreshLayout;
-    String orderType, orderBy;
+    String productName,orderType, orderBy;
     boolean hasNextPage = true;
     private List<Product> articleDataList;
     private ProductAdapter feedArticleAdapter;
+    public boolean isSearching=false;
 
-    public static CommodityFragment newInstance(String orderType, String orderBy) {
-        CommodityFragment fragment = new CommodityFragment();
+    public static ClassifyProductFragment newInstance(String productName, String orderType, String orderBy) {
+        ClassifyProductFragment fragment = new ClassifyProductFragment();
         Bundle args = new Bundle();
+        args.putString("productName", productName);
         args.putString("orderType", orderType);
         args.putString("orderBy", orderBy);
         fragment.setArguments(args);
@@ -58,6 +54,7 @@ public class CommodityFragment extends BaseMvpFragment<ProductClassifyPresenter>
 
     @Override
     public void initData(Bundle bundle) {
+        productName = bundle.getString("productName", "");
         orderType = bundle.getString("orderType", "");
         orderBy = bundle.getString("orderBy", "");
     }
@@ -68,12 +65,12 @@ public class CommodityFragment extends BaseMvpFragment<ProductClassifyPresenter>
         initSmartRefreshLayout();
     }
 
-    public void changeOrderBy(String orderType, String orderBy) {
-        if (articleDataList != null) articleDataList.clear();
-        mPresenter.pageNum = 1;
-        product_recyclerview.scrollToPosition(0);
-        mPresenter.pageProduct(Constants.pageSize, orderType, orderBy);
-    }
+//    public void searchProduct(String orderType, String orderBy) {
+//        if (articleDataList != null) articleDataList.clear();
+//        mPresenter.pageNum = 1;
+//        product_recyclerview.scrollToPosition(0);
+//        mPresenter.pageProduct(Constants.pageSize, orderType, orderBy);
+//    }
 
     @Override
     public int setContentLayout() {
@@ -91,9 +88,20 @@ public class CommodityFragment extends BaseMvpFragment<ProductClassifyPresenter>
 
     @Override
     protected void loadData() {
-        mPresenter.pageProduct(Constants.pageSize, orderType, orderBy);
+        if(!Constants.orderBy_product_price.equals(orderBy)&&!isSearching)
+        mPresenter.pageProduct("", Constants.orderType_DESC, Constants.orderBy_create_time);
     }
 
+    public void changeOrderBy(String productName,String orderType, String orderBy) {
+        this.productName=productName;
+        this.orderType=orderType;
+        this.orderBy=orderBy;
+        if (articleDataList != null) articleDataList.clear();
+        mPresenter.pageNum = 1;
+        product_recyclerview.scrollToPosition(0);
+        mPresenter.pageProduct(productName, orderType, orderBy);
+        isSearching=true;
+    }
     @Override
     public void showProduct(ProductResData productResData, boolean isRefresh) {
         final List<Product> newDataList = productResData.rspBody.list;
@@ -136,7 +144,7 @@ public class CommodityFragment extends BaseMvpFragment<ProductClassifyPresenter>
             public void onLoadMore(RefreshLayout refreshLayout) {
                 LogUtil.d("hasNextPage----------------" + hasNextPage);
                 if (hasNextPage)
-                    mPresenter.onLoadMore(Constants.pageSize, orderType, orderBy);
+                    mPresenter.onLoadMore(productName, orderType, orderBy);
                 else
                     smartRefreshLayout.finishLoadMore();
             }

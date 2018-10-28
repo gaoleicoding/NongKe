@@ -4,19 +4,22 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.nongke.jindao.R;
 import com.nongke.jindao.adapter.RechargeTabAdapter;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.utils.Constants;
+import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.view.CustomViewPager;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 
 /**
@@ -30,10 +33,20 @@ public class ClassifyFragment extends BaseMvpFragment {
     TabLayout tabLayout;
     @BindView(R.id.viewPager)
     CustomViewPager viewPager;
+    @BindView(R.id.et_product_search)
+    EditText et_product_search;
+    @BindView(R.id.tv_search)
+    TextView tv_search;
+    @BindView(R.id.iv_back)
+    ImageView iv_back;
     RechargeTabAdapter pagerAdapter;
     boolean isPriceAscend = true;
     private ArrayList<Fragment> mFragments;
-    CommodityFragment priceFragment;
+    public ClassifyProductFragment defaultFragment, salesFragment, priceFragment;
+    String lastSearchName = "";
+    String searchName = "";
+    int tabPosition = 0;
+
 
     @Override
     public void initData(Bundle bundle) {
@@ -41,14 +54,22 @@ public class ClassifyFragment extends BaseMvpFragment {
     }
 
     @Override
+    public int setContentLayout() {
+        return R.layout.fragment_classify;
+    }
+
+    @Override
     public void initView() {
         mFragments = new ArrayList<Fragment>();
-        CommodityFragment commodityFragment = new CommodityFragment();
-        mFragments.add(CommodityFragment.newInstance(Constants.orderType_DESC, Constants.orderBy_create_time));
-        mFragments.add(CommodityFragment.newInstance(Constants.orderType_DESC, Constants.orderBy_sales_amount));
-        priceFragment=CommodityFragment.newInstance(Constants.orderType_ASC, Constants.orderBy_product_price);
+        ClassifyProductFragment commodityFragment = new ClassifyProductFragment();
+
+        defaultFragment = ClassifyProductFragment.newInstance("", Constants.orderType_DESC, Constants.orderBy_create_time);
+        salesFragment = ClassifyProductFragment.newInstance("", Constants.orderType_DESC, Constants.orderBy_sales_amount);
+        priceFragment = ClassifyProductFragment.newInstance("", Constants.orderType_ASC, Constants.orderBy_product_price);
+        mFragments.add(defaultFragment);
+        mFragments.add(salesFragment);
         mFragments.add(priceFragment);
-//        mFragments.add(new CommodityFragment());
+//        mFragments.add(new ClassifyProductFragment());
         pagerAdapter = new RechargeTabAdapter(getChildFragmentManager(), mFragments);
         viewPager.setCanScroll(false);
         viewPager.setOffscreenPageLimit(mFragments.size());
@@ -68,13 +89,6 @@ public class ClassifyFragment extends BaseMvpFragment {
         tabLayout.getTabAt(0).setCustomView(R.layout.tab_classify_default);
         tabLayout.getTabAt(1).setCustomView(R.layout.tab_classify_sales);
         tabLayout.getTabAt(2).setCustomView(R.layout.tab_classify_price);
-//        tabLayout.getTabAt(3).setCustomView(R.layout.tab_classify_popularity);
-//        tabLayout.getTabAt(2).getCustomView().setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
 
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
             TabLayout.Tab tab = tabLayout.getTabAt(i);
@@ -117,33 +131,77 @@ public class ClassifyFragment extends BaseMvpFragment {
     private View.OnClickListener mTabOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            int pos = (int) view.getTag();
-            if (pos == 2) {
+
+//            if (searchName.equals(et_product_search.getText().toString()))
+//                return;
+
+            tabPosition = (int) view.getTag();
+            if (!searchName.equals(et_product_search.getText().toString() && tabPosition == 0) {
+                defaultFragment.changeOrderBy(searchName, Constants.orderType_DESC, Constants.orderBy_create_time);
+            } else if (!searchName.equals(et_product_search.getText().toString()) && tabPosition == 1) {
+                salesFragment.changeOrderBy(searchName, Constants.orderType_DESC, Constants.orderBy_sales_amount);
+            } else if (tabPosition == 2) {
                 if (isPriceAscend) {
                     ImageView imageView = (ImageView) tabLayout.getTabAt(2).getCustomView().findViewById(R.id.iv_price);
                     imageView.setImageResource(R.drawable.icon_price_descend);
                     isPriceAscend = false;
-                    priceFragment.changeOrderBy(Constants.orderType_DESC, Constants.orderBy_product_price);
+                    priceFragment.changeOrderBy(searchName, Constants.orderType_DESC, Constants.orderBy_product_price);
                 } else {
                     ImageView imageView = (ImageView) tabLayout.getTabAt(2).getCustomView().findViewById(R.id.iv_price);
                     imageView.setImageResource(R.drawable.icon_price_ascend);
                     isPriceAscend = true;
-                    priceFragment.changeOrderBy(Constants.orderType_ASC, Constants.orderBy_product_price);
+                    priceFragment.changeOrderBy(searchName, Constants.orderType_ASC, Constants.orderBy_product_price);
 
                 }
             } else {
-                TabLayout.Tab tab = tabLayout.getTabAt(pos);
+                TabLayout.Tab tab = tabLayout.getTabAt(tabPosition);
                 if (tab != null) {
                     tab.select();
                 }
             }
+            lastSearchName = et_product_search.getText().toString();
         }
     };
 
+    @OnClick({R.id.tv_search, R.id.iv_back})
+    public void click(View view) {
+        switch (view.getId()) {
+            case R.id.tv_search:
+                searchName = et_product_search.getText().toString();
+                if (searchName.length() == 0) {
+                    Utils.showToast("请输入搜索内容", false);
+                    return;
+                }
+                iv_back.setVisibility(View.VISIBLE);
+                tabPosition = 0;
+                TabLayout.Tab tab = tabLayout.getTabAt(tabPosition);
+                if (tab != null) {
+                    tab.select();
+                }
 
-    @Override
-    public int setContentLayout() {
-        return R.layout.fragment_classify;
+                defaultFragment.changeOrderBy(searchName, Constants.orderType_DESC, Constants.orderBy_create_time);
+                break;
+            case R.id.iv_back:
+                backFromSearch();
+                break;
+
+        }
+    }
+
+    public void backFromSearch() {
+        iv_back.setVisibility(View.GONE);
+
+        defaultFragment.isSearching = false;
+        salesFragment.isSearching = false;
+        priceFragment.isSearching = false;
+        et_product_search.setText("");
+        searchName = "";
+        tabPosition = 0;
+        TabLayout.Tab tab = tabLayout.getTabAt(tabPosition);
+        if (tab != null) {
+            tab.select();
+        }
+        defaultFragment.changeOrderBy("", Constants.orderType_DESC, Constants.orderBy_create_time);
     }
 
     @Override
