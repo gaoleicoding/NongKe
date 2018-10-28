@@ -36,11 +36,11 @@ public class ClassifyProductFragment extends BaseMvpFragment<ProductClassifyPres
     RecyclerView product_recyclerview;
     @BindView(R.id.smartRefreshLayout_home)
     SmartRefreshLayout smartRefreshLayout;
-    String productName,orderType, orderBy;
+    String productName, orderType, orderBy;
     boolean hasNextPage = true;
     private List<Product> articleDataList;
     private ProductAdapter feedArticleAdapter;
-    public boolean isSearching=false;
+    public boolean isSearching = false;
 
     public static ClassifyProductFragment newInstance(String productName, String orderType, String orderBy) {
         ClassifyProductFragment fragment = new ClassifyProductFragment();
@@ -88,20 +88,23 @@ public class ClassifyProductFragment extends BaseMvpFragment<ProductClassifyPres
 
     @Override
     protected void loadData() {
-        if(!Constants.orderBy_product_price.equals(orderBy)&&!isSearching)
-        mPresenter.pageProduct("", Constants.orderType_DESC, Constants.orderBy_create_time);
+        if (orderBy==null&& !isSearching)
+            mPresenter.pageProduct("", Constants.orderType_DESC, Constants.orderBy_create_time);
+        if (Constants.orderBy_sales_amount.equals(orderBy) && !isSearching)
+            mPresenter.pageProduct("", Constants.orderType_DESC, Constants.orderBy_sales_amount);
     }
 
-    public void changeOrderBy(String productName,String orderType, String orderBy) {
-        this.productName=productName;
-        this.orderType=orderType;
-        this.orderBy=orderBy;
+    public void changeOrderBy(String productName, String orderType, String orderBy) {
+        this.productName = productName;
+        this.orderType = orderType;
+        this.orderBy = orderBy;
         if (articleDataList != null) articleDataList.clear();
         mPresenter.pageNum = 1;
         product_recyclerview.scrollToPosition(0);
         mPresenter.pageProduct(productName, orderType, orderBy);
-        isSearching=true;
+        isSearching = true;
     }
+
     @Override
     public void showProduct(ProductResData productResData, boolean isRefresh) {
         final List<Product> newDataList = productResData.rspBody.list;

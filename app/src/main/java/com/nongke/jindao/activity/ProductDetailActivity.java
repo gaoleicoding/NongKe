@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -67,8 +68,10 @@ public class ProductDetailActivity extends BaseMvpActivity {
     ImageView iv_product_reduce;
     @BindView(R.id.recyclerview_detail_img)
     RecyclerView recyclerview_detail_img;
+    //    @BindView(R.id.layout_scroll)
+//    ScrollView layout_scroll;
     int ammount = 1;
-    String  TAG = "ProductDetailActivity";
+    String TAG = "ProductDetailActivity";
 
     public static void startActivity(Context context, Bundle bundle) {
         Intent intent = new Intent(context, ProductDetailActivity.class);
@@ -78,7 +81,6 @@ public class ProductDetailActivity extends BaseMvpActivity {
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -101,6 +103,7 @@ public class ProductDetailActivity extends BaseMvpActivity {
 
     @Override
     protected void loadData() {
+//        layout_scroll.scrollTo(0,0);
 
     }
 
@@ -108,12 +111,12 @@ public class ProductDetailActivity extends BaseMvpActivity {
     public void click(View view) {
         switch (view.getId()) {
             case R.id.iv_product_add:
-                ammount = ammount+1;
+                ammount = ammount + 1;
                 tv_product_ammount.setText(ammount + "");
                 break;
             case R.id.iv_product_reduce:
                 if (ammount > 0) {
-                    ammount = ammount-1;
+                    ammount = ammount - 1;
                     tv_product_ammount.setText(ammount + "");
                 }
                 break;
@@ -122,8 +125,8 @@ public class ProductDetailActivity extends BaseMvpActivity {
 
     private void initData(Product product) {
 
-        Log.d(TAG,"product.coverImg："+product.coverImg);
-        Log.d(TAG,"product.detailImgs："+product.detailImgs);
+        Log.d(TAG, "product.coverImg：" + product.coverImg);
+        Log.d(TAG, "product.detailImgs：" + product.detailImgs);
 
 
         tv_product_name.setText(product.productName);
@@ -184,7 +187,21 @@ public class ProductDetailActivity extends BaseMvpActivity {
         ProductDetailImgAdapter feedArticleAdapter = new ProductDetailImgAdapter(this, detailImgs.split(","));
 //        recyclerview_detail_img.addItemDecoration(new SpacesItemDecoration(2, ScreenUtils.dp2px(getActivity(), 10), false));
 
-        recyclerview_detail_img.setLayoutManager(new LinearLayoutManager(this));
+        recyclerview_detail_img.setLayoutManager(new LinearLayoutManager(this) {
+                                                     @Override
+                                                     public boolean canScrollVertically() {
+                                                         //解决ScrollView里存在多个RecyclerView时滑动卡顿的问题
+                                                         //如果你的RecyclerView是水平滑动的话可以重写canScrollHorizontally方法
+                                                         return false;
+                                                     }
+                                                 }
+        );
+        //解决数据加载不完的问题
+        recyclerview_detail_img.setNestedScrollingEnabled(false);
+        recyclerview_detail_img.setHasFixedSize(true);
+        //解决数据加载完成后, 没有停留在顶部的问题
+        recyclerview_detail_img.setFocusable(false);
+
         recyclerview_detail_img.setAdapter(feedArticleAdapter);
     }
 }

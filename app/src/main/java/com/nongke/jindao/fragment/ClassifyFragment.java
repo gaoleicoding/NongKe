@@ -136,9 +136,9 @@ public class ClassifyFragment extends BaseMvpFragment {
 //                return;
 
             tabPosition = (int) view.getTag();
-            if (!searchName.equals(et_product_search.getText().toString() && tabPosition == 0) {
+            if (!lastSearchName.equals(et_product_search.getText().toString())&& tabPosition == 0) {
                 defaultFragment.changeOrderBy(searchName, Constants.orderType_DESC, Constants.orderBy_create_time);
-            } else if (!searchName.equals(et_product_search.getText().toString()) && tabPosition == 1) {
+            } else if (!lastSearchName.equals(et_product_search.getText().toString()) && tabPosition == 1) {
                 salesFragment.changeOrderBy(searchName, Constants.orderType_DESC, Constants.orderBy_sales_amount);
             } else if (tabPosition == 2) {
                 if (isPriceAscend) {
@@ -191,9 +191,7 @@ public class ClassifyFragment extends BaseMvpFragment {
     public void backFromSearch() {
         iv_back.setVisibility(View.GONE);
 
-        defaultFragment.isSearching = false;
-        salesFragment.isSearching = false;
-        priceFragment.isSearching = false;
+
         et_product_search.setText("");
         searchName = "";
         tabPosition = 0;
@@ -202,6 +200,9 @@ public class ClassifyFragment extends BaseMvpFragment {
             tab.select();
         }
         defaultFragment.changeOrderBy("", Constants.orderType_DESC, Constants.orderBy_create_time);
+        defaultFragment.isSearching = false;
+        salesFragment.isSearching = false;
+        priceFragment.isSearching = false;
     }
 
     @Override

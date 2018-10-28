@@ -195,6 +195,11 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
         project_recyclerview.addItemDecoration(new SpacesItemDecoration(2, ScreenUtils.dp2px(getActivity(), 10), false));
 
         project_recyclerview.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        //解决数据加载不完的问题
+        project_recyclerview.setNestedScrollingEnabled(false);
+        project_recyclerview.setHasFixedSize(true);
+        //解决数据加载完成后, 没有停留在顶部的问题
+        project_recyclerview.setFocusable(false);
         project_recyclerview.setAdapter(feedArticleAdapter);
     }
 
