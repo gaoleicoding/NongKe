@@ -29,7 +29,7 @@
         <TextView
             android:id="@+id/btn_first"
             style="@style/photo_txt_14sp"
-            android:text="相机"
+            android:text="照相机"
              />
 
         <View

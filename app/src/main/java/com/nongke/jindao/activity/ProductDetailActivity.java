@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.nongke.jindao.R;
 import com.nongke.jindao.adapter.ProductAdapter;
 import com.nongke.jindao.adapter.ProductDetailImgAdapter;
+import com.nongke.jindao.adapter.ProjectListAdapter;
 import com.nongke.jindao.adapter.divider.SpacesItemDecoration;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
 import com.nongke.jindao.base.mmodel.BannerResData;

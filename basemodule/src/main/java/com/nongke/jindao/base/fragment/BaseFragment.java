@@ -33,7 +33,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         View mParentView = inflater.inflate(R.layout.fragment_base, container, false);
         initBaseView(mParentView);
         addContentView(inflater);
-        Bundle bundle = getActivity().getIntent().getExtras();
+        Bundle bundle = getArguments();
         if (bundle == null) {
             bundle = savedInstanceState;
         }

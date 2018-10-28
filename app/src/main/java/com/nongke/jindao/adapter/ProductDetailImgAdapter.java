@@ -1,6 +1,9 @@
 package com.nongke.jindao.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -8,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -15,9 +19,13 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
+import com.bumptech.glide.request.transition.Transition;
+import com.nongke.jindao.MainActivity;
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.application.CustomApplication;
 import com.nongke.jindao.base.thirdframe.glide.ImageLoader;
@@ -30,7 +38,8 @@ public class ProductDetailImgAdapter extends RecyclerView.Adapter<ProductDetailI
     int selectPosition = 0;
     OnItemClickListener listener;
     String[] imgArray;
-    String  TAG = "ProductDetailActivity";
+    String TAG = "ProductDetailActivity";
+
     public ProductDetailImgAdapter(Context context, String[] imgArray) {
         this.context = context;
         this.imgArray = imgArray;
@@ -52,43 +61,54 @@ public class ProductDetailImgAdapter extends RecyclerView.Adapter<ProductDetailI
         return holder;
     }
 
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-//        holder.itemView.setTag(position);
-        String url = imgArray[position];
-        Log.d(TAG,"img---------------"+url);
+    public void onBindViewHolder(final MyViewHolder holder, int position) {
+        holder.itemView.setTag(position);
+        final String url = imgArray[position];
+        Log.d(TAG, "img---------------" + url);
 //        setImageWidthHeight(holder.item_project_list_iv);
-//        holder.item_project_list_title_tv.setText(productInfo.productName);
         holder.item_tv_detail.setText(url);
         ImageLoader.getInstance().load(context, url, holder.item_iv_detail);
-        //        Glide.with(context).load(url)
-//                .listener(mRequestListener)
-//                .into(holder.item_iv_detail);
-//        Glide.with(context).load(url)
-////                .error(R.drawable.ic_launcher)
-//                .placeholder(R.drawable.ic_launcher)
-//                .into(new SimpleTarget<GlideDrawable>() {
-//                    @Override
-//                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-//                        imageView.setImageDrawable(resource);
-//                    }
-//                });
+//        ViewTreeObserver vto = holder.item_tv_detail.getViewTreeObserver();
+//        vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+//            @Override
+//            public boolean onPreDraw() {
+//
+//                ImageLoader.getInstance().asBitmap().load(context,url,holder.item_iv_detail);
+//                return true;
+//            }
+//
+//        });
 
+//        holder.item_iv_detail.postDelayed(new Runnable() {
+//
+//            @Override
+//            public void run() {
+//                ImageLoader.getInstance().load(context,url,holder.item_iv_detail);
+//
+//            }
+//        },100);
+
+
+//        Glide.with(context).load(url).into(new SimpleTarget<Drawable>() {
+//            @Override
+//            public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+//                holder.item_iv_detail.setBackgroundDrawable(resource);
+//                ImageLoader.getInstance().load(context,url,holder.item_iv_detail);
+
+//                if (imageView.getScaleType() != ImageView.ScaleType.FIT_XY) {
+//                holder.item_iv_detail.setScaleType(ImageView.ScaleType.FIT_XY);
+////                }
+//                ViewGroup.LayoutParams params = holder.item_iv_detail.getLayoutParams();
+//                int vw = holder.item_iv_detail.getWidth() - holder.item_iv_detail.getPaddingLeft() - holder.item_iv_detail.getPaddingRight();
+//                float scale = (float) vw / (float) resource.getIntrinsicWidth();
+//                int vh = Math.round(resource.getIntrinsicHeight() * scale);
+//                params.height = vh + holder.item_iv_detail.getPaddingTop() + holder.item_iv_detail.getPaddingBottom();
+//                holder.item_iv_detail.setLayoutParams(params);
+//            }
+//        });
 
     }
-    RequestListener mRequestListener = new RequestListener() {
-        @Override
-        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target target, boolean isFirstResource) {
-            Log.d(TAG, "onException: " + e.toString()+"  model:"+model+" isFirstResource: "+isFirstResource);
-//            imageView.setImageResource(R.mipmap.ic_launcher);
-            return false;
-        }
 
-        @Override
-        public boolean onResourceReady(Object resource, Object model, Target target, DataSource dataSource, boolean isFirstResource) {
-            Log.e(TAG,  "model:"+model+" isFirstResource: "+isFirstResource);
-            return false;
-        }
-    };
 
     @Override
     public int getItemCount() {
@@ -104,10 +124,7 @@ public class ProductDetailImgAdapter extends RecyclerView.Adapter<ProductDetailI
             super(view);
             item_iv_detail = view.findViewById(R.id.item_iv_detail);
             item_tv_detail = view.findViewById(R.id.item_tv_detail);
-//            item_project_list_title_tv = view.findViewById(R.id.item_project_list_title_tv);
-//            item_project_list_content_tv = view.findViewById(R.id.item_project_list_content_tv);
-//            item_project_list_author_tv = view.findViewById(R.id.item_project_list_author_tv);
-//            item_project_list_time_tv = view.findViewById(R.id.item_project_list_time_tv);
+
 
         }
     }
@@ -141,4 +158,6 @@ public class ProductDetailImgAdapter extends RecyclerView.Adapter<ProductDetailI
         int imageWidth = (int) (width - 20 * density) / 2;
         return imageWidth;
     }
+
+
 }

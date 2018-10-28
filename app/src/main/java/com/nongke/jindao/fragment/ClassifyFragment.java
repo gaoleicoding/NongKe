@@ -11,6 +11,7 @@ import com.nongke.jindao.R;
 import com.nongke.jindao.adapter.RechargeTabAdapter;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
+import com.nongke.jindao.base.utils.Constants;
 import com.nongke.jindao.view.CustomViewPager;
 
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class ClassifyFragment extends BaseMvpFragment {
     RechargeTabAdapter pagerAdapter;
     boolean isPriceAscend = true;
     private ArrayList<Fragment> mFragments;
+    CommodityFragment priceFragment;
 
     @Override
     public void initData(Bundle bundle) {
@@ -42,9 +44,10 @@ public class ClassifyFragment extends BaseMvpFragment {
     public void initView() {
         mFragments = new ArrayList<Fragment>();
         CommodityFragment commodityFragment = new CommodityFragment();
-        mFragments.add(new CommodityFragment());
-        mFragments.add(new CommodityFragment());
-        mFragments.add(new CommodityFragment());
+        mFragments.add(CommodityFragment.newInstance(Constants.orderType_DESC, Constants.orderBy_create_time));
+        mFragments.add(CommodityFragment.newInstance(Constants.orderType_DESC, Constants.orderBy_sales_amount));
+        priceFragment=CommodityFragment.newInstance(Constants.orderType_ASC, Constants.orderBy_product_price);
+        mFragments.add(priceFragment);
 //        mFragments.add(new CommodityFragment());
         pagerAdapter = new RechargeTabAdapter(getChildFragmentManager(), mFragments);
         viewPager.setCanScroll(false);
@@ -110,19 +113,23 @@ public class ClassifyFragment extends BaseMvpFragment {
         //默认选中的Tab
         tabLayout.getTabAt(0).getCustomView().setSelected(true);
     }
+
     private View.OnClickListener mTabOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             int pos = (int) view.getTag();
             if (pos == 2) {
                 if (isPriceAscend) {
-                    ImageView imageView=  (ImageView)tabLayout.getTabAt(2).getCustomView().findViewById(R.id.iv_price);
+                    ImageView imageView = (ImageView) tabLayout.getTabAt(2).getCustomView().findViewById(R.id.iv_price);
                     imageView.setImageResource(R.drawable.icon_price_descend);
                     isPriceAscend = false;
+                    priceFragment.changeOrderBy(Constants.orderType_DESC, Constants.orderBy_product_price);
                 } else {
-                    ImageView imageView=  (ImageView)tabLayout.getTabAt(2).getCustomView().findViewById(R.id.iv_price);
+                    ImageView imageView = (ImageView) tabLayout.getTabAt(2).getCustomView().findViewById(R.id.iv_price);
                     imageView.setImageResource(R.drawable.icon_price_ascend);
                     isPriceAscend = true;
+                    priceFragment.changeOrderBy(Constants.orderType_ASC, Constants.orderBy_product_price);
+
                 }
             } else {
                 TabLayout.Tab tab = tabLayout.getTabAt(pos);

@@ -70,6 +70,9 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
     private ProductAdapter feedArticleAdapter;
     boolean hasNextPage = true;
 
+//    int pageSize = 6;
+//    String orderType = "DESC", orderBy = "create_time";
+
     @Override
     public void initData(Bundle bundle) {
 
@@ -104,7 +107,7 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
     protected void loadData() {
         mPresenter.getBannerProduct();
 
-        mPresenter.pageProduct(6, "DESC", "create_time");
+        mPresenter.pageProduct(Constants.pageSize, Constants.orderType_DESC, Constants.orderBy_create_time);
 
     }
 
@@ -127,13 +130,6 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
             smartRefreshLayout.finishLoadMore();
         }
 
-//        feedArticleAdapter.setOnItemClickListener(new ProductAdapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(View v, int position) {
-//                Bundle bundle = new Bundle();
-//
-//            }
-//        });
     }
 
 
@@ -141,7 +137,7 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
     public void showBannerList(BannerResData productResData) {
 
         final List<Product> bannerList = productResData.rspBody;
-        LogUtil.d("bannerList.size():"+bannerList.size());
+        LogUtil.d("bannerList.size():" + bannerList.size());
         List imageList = new ArrayList();
         List titleList = new ArrayList();
         final List orderList = new ArrayList();
@@ -188,7 +184,7 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("product", bannerList.get(position));
 
-                ProductDetailActivity.startActivity(getActivity(),bundle);
+                ProductDetailActivity.startActivity(getActivity(), bundle);
             }
         });
     }
@@ -215,7 +211,7 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
             public void onLoadMore(RefreshLayout refreshLayout) {
                 LogUtil.d("hasNextPage----------------" + hasNextPage);
                 if (hasNextPage)
-                    mPresenter.onLoadMore(6, "DESC", "create_time");
+                    mPresenter.onLoadMore(Constants.pageSize, Constants.orderType_DESC, Constants.orderBy_create_time);
                 else
                     smartRefreshLayout.finishLoadMore();
             }
