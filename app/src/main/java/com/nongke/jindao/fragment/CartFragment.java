@@ -3,30 +3,35 @@ package com.nongke.jindao.fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.nongke.jindao.MainActivity;
 import com.nongke.jindao.R;
 import com.nongke.jindao.adapter.CartAdapter;
-import com.nongke.jindao.adapter.divider.DividerItemDecoration;
 import com.nongke.jindao.adapter.divider.SpacesItemDecoration;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mmodel.Product;
 import com.nongke.jindao.base.mmodel.ProductResData;
+import com.nongke.jindao.event.ProductAmountEvent;
+import com.nongke.jindao.event.ProductTotalPriceEvent;
 import com.nongke.jindao.mcontract.CartContract;
 import com.nongke.jindao.mpresenter.CartPresenter;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static com.nongke.jindao.adapter.divider.DividerItemDecoration.HORIZONTAL_LIST;
-import static com.nongke.jindao.adapter.divider.DividerItemDecoration.VERTICAL_LIST;
 
 
 /**
@@ -38,10 +43,21 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
 
     @BindView(R.id.tv_to_shop)
     TextView tv_to_shop;
+    @BindView(R.id.tv_edit)
+    TextView tv_edit;
+    @BindView(R.id.tv_product_total_price)
+    TextView tv_product_total_price;
+    @BindView(R.id.tv_product_buy)
+    TextView tv_product_buy;
     @BindView(R.id.cart_recyclerview)
     RecyclerView cart_recyclerview;
     @BindView(R.id.ll_cart_empty)
     LinearLayout ll_cart_empty;
+    @BindView(R.id.rl_to_pay)
+    RelativeLayout rl_to_pay;
+    @BindView(R.id.cb_product_select_all)
+    CheckBox cb_product_select_all;
+    boolean isEditingCart;
 
 
     private List<Product> cartDataList;
@@ -54,12 +70,23 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
 
     @Override
     public void initData(Bundle bundle) {
-
+        EventBus.getDefault().register(this);
     }
 
     @Override
     public void initView() {
         initRecyclerView();
+        cb_product_select_all.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+                if (b) {
+                    cartAdapter.selectAll(true, false);
+                } else {
+                    cartAdapter.selectAll(false, true);
+                }
+            }
+        });
     }
 
     @Override
@@ -76,13 +103,47 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
         return new CartPresenter();
     }
 
-    @OnClick({R.id.tv_to_shop})
+    @OnClick({R.id.tv_to_shop, R.id.tv_edit, R.id.tv_product_buy})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.tv_to_shop:
                 MainActivity mainActivity = (MainActivity) getActivity();
                 mainActivity.viewPager.setCurrentItem(2);
-            default:
+                break;
+            case R.id.tv_product_buy:
+                if (isEditingCart) {
+                    int selectListLength = cartAdapter.selectProductList.size();
+                    int listLength = cartAdapter.list.size();
+                    Log.d("CartAdapter", "selectListLength:" + selectListLength);
+                    Log.d("CartAdapter", "listLength:" + listLength);
+                    if (selectListLength == cartAdapter.list.size()) {
+                        mPresenter.clearCart();
+                        cart_recyclerview.setVisibility(View.GONE);
+                        ll_cart_empty.setVisibility(View.VISIBLE);
+                        rl_to_pay.setVisibility(View.GONE);
+                        return;
+                    }
+                    for (int i = 0; i < selectListLength; i++) {
+                        Product product = cartAdapter.selectProductList.get(i);
+                        cartAdapter.list.remove(product);
+                        mPresenter.deleteProduct(0, product.productId);
+                    }
+                    cartAdapter.notifyDataSetChanged();
+                }
+                break;
+            case R.id.tv_edit:
+                if (!isEditingCart) {
+                    tv_edit.setText(getString(R.string.complete));
+                    tv_product_buy.setText(getString(R.string.delete));
+                    tv_product_total_price.setVisibility(View.GONE);
+
+                    isEditingCart = true;
+                } else {
+                    tv_edit.setText(getString(R.string.edit));
+                    tv_product_buy.setText(getString(R.string.balance));
+                    tv_product_total_price.setVisibility(View.VISIBLE);
+                    isEditingCart = false;
+                }
                 break;
         }
 
@@ -99,9 +160,10 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
         if (newDataList.size() == 0) {
             cart_recyclerview.setVisibility(View.GONE);
             ll_cart_empty.setVisibility(View.VISIBLE);
+
             return;
         }
-
+        rl_to_pay.setVisibility(View.VISIBLE);
         cartAdapter.setDataList(newDataList);
         cartAdapter.notifyDataSetChanged();
     }
@@ -120,5 +182,18 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
         cart_recyclerview.setAdapter(cartAdapter);
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(ProductAmountEvent amountEvent) {
+        mPresenter.updateProductAmount(amountEvent.amout, amountEvent.productId);
+    }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(ProductTotalPriceEvent priceEvent) {
+        tv_product_total_price.setText("合计：" + priceEvent.totalPrice + "元");
+    }
+
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
 }

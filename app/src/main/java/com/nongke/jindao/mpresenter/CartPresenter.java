@@ -4,6 +4,7 @@ package com.nongke.jindao.mpresenter;
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.api.ApiService;
 import com.nongke.jindao.base.application.CustomApplication;
+import com.nongke.jindao.base.mmodel.BaseResData;
 import com.nongke.jindao.base.mmodel.ProductResData;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.thirdframe.retrofit.RetrofitProvider;
@@ -40,8 +41,52 @@ public class CartPresenter extends BasePresenter<CartContract.View> implements C
             @Override
             public void onNext(ProductResData productResData) {
                 mView.showProduct(productResData);
-                LogUtil.d2("getCartProduct.rspBody.list.size()------------ :" + productResData.rspBody.list.size());
-                LogUtil.d2("getCartProduct------------ :" + productResData.toString());
+//                LogUtil.d2("getCartProduct.rspBody.list.size()------------ :" + productResData.rspBody.list.size());
+//                LogUtil.d2("getCartProduct------------ :" + productResData.toString());
+            }
+        });
+    }
+
+    @Override
+    public void updateProductAmount(int amount, int productId) {
+
+        HashMap hashMap = new HashMap();
+        hashMap.put("amount", amount);
+        hashMap.put("productId", productId);
+        String jsonString = new JSONObject(hashMap).toString();
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonString);
+        Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).updateProductAmount(requestBody);
+        addSubscribe(observable, new BaseObserver<BaseResData>(false) {
+            @Override
+            public void onNext(BaseResData baseResData) {
+                LogUtil.d2("updateProductAmount------------ :" + baseResData.toString());
+            }
+        });
+    }
+
+    @Override
+    public void deleteProduct(int amount, int productId) {
+        HashMap hashMap = new HashMap();
+        hashMap.put("amount", amount);
+        hashMap.put("productId", productId);
+        String jsonString = new JSONObject(hashMap).toString();
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonString);
+        Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).deleteProduct(requestBody);
+        addSubscribe(observable, new BaseObserver<BaseResData>(false) {
+            @Override
+            public void onNext(BaseResData baseResData) {
+                LogUtil.d2("deleteProduct------------ :" + baseResData.toString());
+            }
+        });
+    }
+
+    @Override
+    public void clearCart() {
+        Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).clearCart();
+        addSubscribe(observable, new BaseObserver<BaseResData>(false) {
+            @Override
+            public void onNext(BaseResData baseResData) {
+                LogUtil.d2("clearCart------------ :" + baseResData.toString());
             }
         });
     }

@@ -68,6 +68,7 @@ public class ProductDetailImgAdapter extends RecyclerView.Adapter<ProductDetailI
 //        setImageWidthHeight(holder.item_project_list_iv);
         holder.item_tv_detail.setText(url);
         ImageLoader.getInstance().load(context, url, holder.item_iv_detail);
+//        holder.item_tv_detail.setVisibility(View.GONE);
 //        ViewTreeObserver vto = holder.item_tv_detail.getViewTreeObserver();
 //        vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
 //            @Override

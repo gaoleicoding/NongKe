@@ -6,10 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical">
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
     <ImageView
         android:id="@+id/item_iv_detail"
         android:layout_width="match_parent"
@@ -19,10 +15,11 @@
     <TextView
         android:id="@+id/item_tv_detail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0.1dp"
+        android:maxLines="1"
+        android:textSize="12sp"
         android:contentDescription="@null"
         android:textColor="@color/white"
        />
     </LinearLayout>
 
-</LinearLayout>

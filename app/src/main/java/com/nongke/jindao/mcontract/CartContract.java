@@ -12,6 +12,10 @@ public class CartContract {
     public interface Presenter {
 
         void getCartProduct();
+
+        void updateProductAmount(int amount, int productId);
+        void deleteProduct(int amount, int productId);
+        void clearCart();
     }
 
     public interface View {

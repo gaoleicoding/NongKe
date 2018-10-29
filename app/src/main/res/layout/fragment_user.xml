@@ -98,7 +98,7 @@
 
                     <TextView
                         style="@style/user_account_txt"
-                        android:text="点卡：" />
+                        android:text="稻粒：" />
 
                     <TextView
                         android:id="@+id/tv_user_daoli_balance"
