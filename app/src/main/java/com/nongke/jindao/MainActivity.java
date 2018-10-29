@@ -118,12 +118,6 @@ public class MainActivity extends BaseActivity {
      */
     private void initTab() {
 
-        tabLayout.getTabAt(0).setCustomView(R.layout.tab_home);
-        tabLayout.getTabAt(1).setCustomView(R.layout.tab_recharge);
-        tabLayout.getTabAt(2).setCustomView(R.layout.tab_classify);
-        tabLayout.getTabAt(3).setCustomView(R.layout.tab_cart);
-        tabLayout.getTabAt(4).setCustomView(R.layout.tab_mine);
-
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             //标签选中之后执行的方法
@@ -148,11 +142,17 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
+                int position = tab.getPosition();
 
             }
         });
+        tabLayout.getTabAt(0).setCustomView(R.layout.tab_home);
+        tabLayout.getTabAt(1).setCustomView(R.layout.tab_recharge);
+        tabLayout.getTabAt(2).setCustomView(R.layout.tab_classify);
+        tabLayout.getTabAt(3).setCustomView(R.layout.tab_cart);
+        tabLayout.getTabAt(4).setCustomView(R.layout.tab_mine);
         //默认选中的Tab
-        tabLayout.getTabAt(0).getCustomView().setSelected(true);
+//        tabLayout.getTabAt(0).getCustomView().setSelected(true);
     }
 
     @OnClick({R.id.title})

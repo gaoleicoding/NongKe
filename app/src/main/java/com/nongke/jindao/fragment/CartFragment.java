@@ -18,8 +18,10 @@ import com.nongke.jindao.adapter.divider.SpacesItemDecoration;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mmodel.Product;
 import com.nongke.jindao.base.mmodel.ProductResData;
+import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.event.ProductAmountEvent;
 import com.nongke.jindao.event.ProductTotalPriceEvent;
+import com.nongke.jindao.event.UpdateCartEvent;
 import com.nongke.jindao.mcontract.CartContract;
 import com.nongke.jindao.mpresenter.CartPresenter;
 
@@ -65,6 +67,7 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
 
     @Override
     public void loadData() {
+
         mPresenter.getCartProduct();
     }
 
@@ -113,22 +116,31 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
             case R.id.tv_product_buy:
                 if (isEditingCart) {
                     int selectListLength = cartAdapter.selectProductList.size();
-                    int listLength = cartAdapter.list.size();
+                    if (selectListLength == 0) {
+                        Utils.showToast("您还没选择要删除的商品", false);
+                        return;
+                    }
+
                     Log.d("CartAdapter", "selectListLength:" + selectListLength);
-                    Log.d("CartAdapter", "listLength:" + listLength);
-                    if (selectListLength == cartAdapter.list.size()) {
+                    if (cartAdapter.isAllSelected()) {
                         mPresenter.clearCart();
+                        cartAdapter.list.clear();
+                        cartAdapter.selectProductList.clear();
                         cart_recyclerview.setVisibility(View.GONE);
                         ll_cart_empty.setVisibility(View.VISIBLE);
                         rl_to_pay.setVisibility(View.GONE);
-                        return;
-                    }
-                    for (int i = 0; i < selectListLength; i++) {
-                        Product product = cartAdapter.selectProductList.get(i);
-                        cartAdapter.list.remove(product);
-                        mPresenter.deleteProduct(0, product.productId);
+                        tv_edit.setVisibility(View.GONE);
+                    } else {
+                        for (int i = 0; i < selectListLength; i++) {
+                            Product product = cartAdapter.selectProductList.get(i);
+                            cartAdapter.list.remove(product);
+                            mPresenter.deleteProduct(0, product.productId);
+                        }
+                        cartAdapter.selectProductList.clear();
                     }
                     cartAdapter.notifyDataSetChanged();
+                    backFromManageCart();
+
                 }
                 break;
             case R.id.tv_edit:
@@ -139,14 +151,21 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
 
                     isEditingCart = true;
                 } else {
-                    tv_edit.setText(getString(R.string.edit));
-                    tv_product_buy.setText(getString(R.string.balance));
-                    tv_product_total_price.setVisibility(View.VISIBLE);
-                    isEditingCart = false;
+                    backFromManageCart();
                 }
                 break;
         }
 
+    }
+
+    public void backFromManageCart() {
+        tv_edit.setText(getString(R.string.edit));
+        tv_product_buy.setText(getString(R.string.balance));
+        tv_product_total_price.setVisibility(View.VISIBLE);
+        cb_product_select_all.setChecked(false);
+        cartAdapter.selectAll(false, false);
+        tv_product_total_price.setText("合计：0元");
+        isEditingCart = false;
     }
 
     @Override
@@ -154,16 +173,23 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
         if (productResData == null || productResData.rspBody == null) {
             cart_recyclerview.setVisibility(View.GONE);
             ll_cart_empty.setVisibility(View.VISIBLE);
+            tv_edit.setVisibility(View.GONE);
             return;
         }
         final List<Product> newDataList = productResData.rspBody.list;
         if (newDataList.size() == 0) {
             cart_recyclerview.setVisibility(View.GONE);
             ll_cart_empty.setVisibility(View.VISIBLE);
-
+            tv_edit.setVisibility(View.GONE);
             return;
+        } else {
+            cart_recyclerview.setVisibility(View.VISIBLE);
+            ll_cart_empty.setVisibility(View.GONE);
+            tv_edit.setVisibility(View.VISIBLE);
         }
         rl_to_pay.setVisibility(View.VISIBLE);
+        cartAdapter.totalPrice=0;
+        cartAdapter.selectAll(false,true);
         cartAdapter.setDataList(newDataList);
         cartAdapter.notifyDataSetChanged();
     }
@@ -190,6 +216,11 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(ProductTotalPriceEvent priceEvent) {
         tv_product_total_price.setText("合计：" + priceEvent.totalPrice + "元");
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(UpdateCartEvent updateCartEvent) {
+        mPresenter.getCartProduct();
     }
 
     public void onDestroy() {

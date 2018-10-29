@@ -16,11 +16,15 @@ import com.nongke.jindao.R;
 import com.nongke.jindao.adapter.ProductDetailImgAdapter;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
 import com.nongke.jindao.base.mmodel.Product;
+import com.nongke.jindao.event.ProductAmountEvent;
+import com.nongke.jindao.event.UpdateCartEvent;
 import com.nongke.jindao.mpresenter.ProductDetailPresenter;
 import com.nongke.jindao.mpresenter.RegisterLoginPresenter;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -117,6 +121,8 @@ public class ProductDetailActivity extends BaseMvpActivity<ProductDetailPresente
             case R.id.tv_product_add_cart:
 
                 mPresenter.saveCart(ammount, productId);
+//                UpdateCartEvent updateCartEvent = new UpdateCartEvent();
+//                EventBus.getDefault().post(updateCartEvent);
                 break;
             case R.id.tv_product_buy:
 

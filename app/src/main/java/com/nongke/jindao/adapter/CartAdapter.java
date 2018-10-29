@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,13 +42,13 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
     String TAG = "CartAdapter";
     boolean isAllSelect;
     boolean isAllCancel;
-    float totalPrice;
+    public float totalPrice;
 
     public CartAdapter(Context context, List<Product> list, String fromWhere) {
         this.context = context;
         this.list = list;
         this.fromWhere = fromWhere;
-        selectProductList=new ArrayList<Product>() ;
+        selectProductList = new ArrayList<Product>();
     }
 
     public void setDataList(List<Product> list) {
@@ -59,6 +60,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         this.isAllCancel = isAllCancel;
         totalPrice = 0;
         notifyDataSetChanged();
+//        this.isAllSelect=false;
+//        this.isAllCancel=false;
+
     }
 
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -87,8 +91,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         holder.tv_product_price.setText(productInfo.productPrice + "元");
         holder.tv_product_ammount.setText(productInfo.amount + "");
         ImageLoader.getInstance().load(context, productInfo.img, holder.iv_product);
-        if (isAllSelect) holder.cb_product_select.setChecked(true);
-        if (isAllCancel) holder.cb_product_select.setChecked(false);
+        Log.d(TAG,"isAllSelect:"+isAllSelect);
+        Log.d(TAG,"position:"+holder.cb_product_select.isChecked());
+        if (isAllSelect) {
+            holder.cb_product_select.setChecked(true);
+
+        }
+        if (isAllCancel) {
+            holder.cb_product_select.setChecked(false);
+        }
         if (holder.cb_product_select.isChecked()) {
             totalPrice = totalPrice + productInfo.productPrice * productInfo.amount;
             selectProductList.add(productInfo);
@@ -107,8 +118,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
                     @Override
                     public void run() {
                         totalPrice = 0;
-                        isAllSelect=false;
-                        isAllCancel=false;
+                        isAllSelect = false;
+                        isAllCancel = false;
                         notifyDataSetChanged();
                     }
                 });
@@ -227,5 +238,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         //130是在xml文件中那一排recyclerview之间的间距加上recyclerview和父控件的间距的和
         int imageWidth = (int) (width - 20 * density) / 2;
         return imageWidth;
+    }
+
+    public boolean isAllSelected() {
+        if (list == null) return false;
+        int count = list.size();
+        for (int i = 0; i < count; i++) {
+            if (!list.get(i).isChecked)
+                return false;
+        }
+        return true;
     }
 }
