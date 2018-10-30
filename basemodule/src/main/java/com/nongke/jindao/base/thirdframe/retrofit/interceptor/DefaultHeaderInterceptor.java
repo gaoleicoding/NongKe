@@ -2,11 +2,10 @@ package com.nongke.jindao.base.thirdframe.retrofit.interceptor;
 
 import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.utils.LogUtil;
-import com.nongke.jindao.base.utils.UserUtils;
+import com.nongke.jindao.base.utils.UserUtil;
 
 import java.io.IOException;
 
-import okhttp3.Headers;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -16,9 +15,9 @@ public class DefaultHeaderInterceptor implements Interceptor {
 
     @Override
     public Response intercept(Chain chain) throws IOException {
-        LoginResData  loginResData=UserUtils.getUserInfo();
+        LoginResData  loginResData= UserUtil.getUserInfo();
         if(loginResData!=null)
-        LogUtil.d("token-------------"+UserUtils.getUserInfo().rspBody.token);
+        LogUtil.d("token-------------"+ UserUtil.getUserInfo().rspBody.token);
         Request request = chain.request()
                 .newBuilder()
                 .addHeader("Content-Type", "application/json;charset=UTF-8")

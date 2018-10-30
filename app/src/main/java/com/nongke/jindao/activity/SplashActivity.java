@@ -1,6 +1,5 @@
 package com.nongke.jindao.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,8 +15,7 @@ import com.nongke.jindao.base.mmodel.MsgCodeResData;
 import com.nongke.jindao.base.mmodel.RegisterResData;
 import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.SharedPreferencesUtils;
-import com.nongke.jindao.base.utils.UserUtils;
-import com.nongke.jindao.base.utils.Utils;
+import com.nongke.jindao.base.utils.UserUtil;
 import com.nongke.jindao.mcontract.RegisterLoginContract;
 import com.nongke.jindao.mpresenter.RegisterLoginPresenter;
 
@@ -86,7 +84,7 @@ public class SplashActivity extends BaseMvpActivity<RegisterLoginPresenter> impl
     @Override
     public void showLoginResData(LoginResData loginResData) {
         LogUtil.d("loginResData.toString():" + loginResData.toString());
-        UserUtils.setUserInfo(loginResData);
+        UserUtil.setUserInfo(loginResData);
 //        if ("10000".equals(loginResData.retCode)) {
 //            MainActivity.startActivity(this);
 //        }

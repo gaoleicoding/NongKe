@@ -11,7 +11,7 @@ import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.thirdframe.retrofit.RetrofitProvider;
 import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
 import com.nongke.jindao.base.utils.LogUtil;
-import com.nongke.jindao.base.utils.ResponseStatusUtils;
+import com.nongke.jindao.base.utils.ResponseStatusUtil;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.mcontract.MyProfileContract;
 
@@ -44,7 +44,7 @@ public class MyProfilePresenter extends BasePresenter<MyProfileContract.View> im
             @Override
             public void onNext(UpdateProfileResData updateProfileResData) {
 
-                ResponseStatusUtils.handleResponseStatus(updateProfileResData);
+                ResponseStatusUtil.handleResponseStatus(updateProfileResData);
                 LogUtil.d2("updateAddressResData------------" + updateProfileResData.toString());
             }
         });

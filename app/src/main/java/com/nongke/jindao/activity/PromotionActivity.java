@@ -11,8 +11,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,7 +25,7 @@ import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseActivity;
 import com.nongke.jindao.base.qrcode.LogoConfig;
 import com.nongke.jindao.base.utils.FileProvider7;
-import com.nongke.jindao.base.utils.UserUtils;
+import com.nongke.jindao.base.utils.UserUtil;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -112,9 +110,9 @@ public class PromotionActivity extends BaseActivity {
 
     }
     private void generateCode(){
-        if(UserUtils.getUserInfo()!=null) {
+        if(UserUtil.getUserInfo()!=null) {
 
-            shareContent = UserUtils.getUserInfo().rspBody.imgUrl.trim();
+            shareContent = UserUtil.getUserInfo().rspBody.imgUrl.trim();
             try {
                 if (!TextUtils.isEmpty(shareContent)) {
                     LogoConfig logoConfig = new LogoConfig();

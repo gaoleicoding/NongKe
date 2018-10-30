@@ -7,7 +7,7 @@ import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.thirdframe.retrofit.RetrofitProvider;
 import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
 import com.nongke.jindao.base.utils.LogUtil;
-import com.nongke.jindao.base.utils.UserUtils;
+import com.nongke.jindao.base.utils.UserUtil;
 import com.nongke.jindao.mcontract.MyInviterContract;
 
 import org.json.JSONObject;
@@ -24,7 +24,7 @@ public class MyInviterPresenter extends BasePresenter<MyInviterContract.View> im
     @Override
     public void listUserInviter() {
         HashMap hashMap = new HashMap();
-        hashMap.put("uid", UserUtils.getUserInfo().rspBody.uid);
+        hashMap.put("uid", UserUtil.getUserInfo().rspBody.uid);
 
         String jsonString = new JSONObject(hashMap).toString();
 

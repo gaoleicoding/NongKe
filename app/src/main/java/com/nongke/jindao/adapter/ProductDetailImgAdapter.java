@@ -21,6 +21,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
@@ -29,6 +30,7 @@ import com.nongke.jindao.MainActivity;
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.application.CustomApplication;
 import com.nongke.jindao.base.thirdframe.glide.ImageLoader;
+import com.nongke.jindao.base.thirdframe.glide.TransformationUtils;
 import com.nongke.jindao.base.utils.ScreenUtils;
 
 
@@ -65,40 +67,17 @@ public class ProductDetailImgAdapter extends RecyclerView.Adapter<ProductDetailI
         holder.itemView.setTag(position);
         final String url = imgArray[position];
         Log.d(TAG, "img---------------" + url);
-//        setImageWidthHeight(holder.item_project_list_iv);
         holder.item_tv_detail.setText(url);
+
+
         ImageLoader.getInstance().load(context, url, holder.item_iv_detail);
-//        holder.item_tv_detail.setVisibility(View.GONE);
-//        ViewTreeObserver vto = holder.item_tv_detail.getViewTreeObserver();
-//        vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-//            @Override
-//            public boolean onPreDraw() {
-//
-//                ImageLoader.getInstance().asBitmap().load(context,url,holder.item_iv_detail);
-//                return true;
-//            }
-//
-//        });
 
-//        holder.item_iv_detail.postDelayed(new Runnable() {
-//
-//            @Override
-//            public void run() {
-//                ImageLoader.getInstance().load(context,url,holder.item_iv_detail);
-//
-//            }
-//        },100);
-
-
-//        Glide.with(context).load(url).into(new SimpleTarget<Drawable>() {
+        //        Glide.with(context).load(url).into(new SimpleTarget<Drawable>() {
 //            @Override
 //            public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
 //                holder.item_iv_detail.setBackgroundDrawable(resource);
 //                ImageLoader.getInstance().load(context,url,holder.item_iv_detail);
-
-//                if (imageView.getScaleType() != ImageView.ScaleType.FIT_XY) {
-//                holder.item_iv_detail.setScaleType(ImageView.ScaleType.FIT_XY);
-////                }
+//
 //                ViewGroup.LayoutParams params = holder.item_iv_detail.getLayoutParams();
 //                int vw = holder.item_iv_detail.getWidth() - holder.item_iv_detail.getPaddingLeft() - holder.item_iv_detail.getPaddingRight();
 //                float scale = (float) vw / (float) resource.getIntrinsicWidth();
@@ -108,7 +87,13 @@ public class ProductDetailImgAdapter extends RecyclerView.Adapter<ProductDetailI
 //            }
 //        });
 
+//    }
     }
+
+
+
+
+
 
 
     @Override

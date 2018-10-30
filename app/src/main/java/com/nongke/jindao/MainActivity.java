@@ -15,18 +15,21 @@ import android.widget.Toast;
 
 import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.adapter.MainTabAdapter;
-import com.nongke.jindao.base.activity.BaseActivity;
+import com.nongke.jindao.base.activity.BaseMvpActivity;
+import com.nongke.jindao.base.mmodel.OnlineParamResData;
 import com.nongke.jindao.base.photopicker.ImageUtils;
 import com.nongke.jindao.base.photopicker.UriUtils;
 import com.nongke.jindao.base.utils.FileProvider7;
 import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.PermissionUtil;
-import com.nongke.jindao.base.utils.UserUtils;
+import com.nongke.jindao.base.utils.UserUtil;
 import com.nongke.jindao.fragment.CartFragment;
 import com.nongke.jindao.fragment.ClassifyFragment;
 import com.nongke.jindao.fragment.HomeFragment;
 import com.nongke.jindao.fragment.RechargeFragment;
 import com.nongke.jindao.fragment.UserFragment;
+import com.nongke.jindao.mcontract.OnlineParameContract;
+import com.nongke.jindao.mpresenter.OnlineParamePresenter;
 import com.nongke.jindao.view.CustomViewPager;
 
 import java.io.File;
@@ -35,7 +38,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> implements OnlineParameContract.View {
 
     private ArrayList<Fragment> mFragments;
     private ArrayList<String> titles;
@@ -127,7 +130,7 @@ public class MainActivity extends BaseActivity {
                 title.setText(titles.get(position));
                 if (position == 3)
                     cartFragment.loadData();
-                if (position == 4 && !UserUtils.isLogined()) {
+                if (position == 4 && !UserUtil.isLogined()) {
                     RegisterLoginActivity.startActivity(MainActivity.this);
                 }
 
@@ -259,4 +262,18 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    @Override
+    public OnlineParamePresenter initPresenter() {
+        return new OnlineParamePresenter();
+    }
+
+    @Override
+    protected void loadData() {
+        mPresenter.getOnlineParame();
+    }
+
+    @Override
+    public void showOnlineParame(OnlineParamResData onlineParamResData) {
+
+    }
 }

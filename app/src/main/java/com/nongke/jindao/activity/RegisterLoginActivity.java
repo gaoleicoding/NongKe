@@ -21,7 +21,7 @@ import com.nongke.jindao.base.utils.SharedPreferencesUtils;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.mcontract.RegisterLoginContract;
 import com.nongke.jindao.mpresenter.RegisterLoginPresenter;
-import com.nongke.jindao.base.utils.UserUtils;
+import com.nongke.jindao.base.utils.UserUtil;
 import com.nongke.jindao.view.CountDownButton;
 
 import butterknife.BindView;
@@ -258,7 +258,7 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
         LogUtil.d("loginResData.toString():" + loginResData.toString());
         if ("10000".equals(loginResData.retCode)) {
 //            Utils.showToast(getString(R.string.login_success), true);
-            UserUtils.setUserInfo(loginResData);
+            UserUtil.setUserInfo(loginResData);
             SharedPreferencesUtils.setParam(RegisterLoginActivity.this, "phone_num", et_login_phone_num.getText().toString());
             SharedPreferencesUtils.setParam(RegisterLoginActivity.this, "password", et_login_password.getText().toString());
             MainActivity.startActivity(RegisterLoginActivity.this);

@@ -3,14 +3,11 @@ package com.nongke.jindao.mpresenter;
 
 import com.nongke.jindao.base.api.ApiService;
 import com.nongke.jindao.base.mmodel.BannerResData;
-import com.nongke.jindao.base.mmodel.MyInviterResData;
 import com.nongke.jindao.base.mmodel.ProductResData;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.thirdframe.retrofit.RetrofitProvider;
 import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
 import com.nongke.jindao.base.utils.LogUtil;
-import com.nongke.jindao.base.utils.UserUtils;
-import com.nongke.jindao.mcontract.MyInviterContract;
 import com.nongke.jindao.mcontract.ProductContract;
 
 import org.json.JSONObject;

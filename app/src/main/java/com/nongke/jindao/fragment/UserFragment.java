@@ -28,7 +28,7 @@ import com.nongke.jindao.base.utils.PermissionUtil;
 import com.nongke.jindao.base.utils.SharedPreferencesUtils;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.mpresenter.RegisterLoginPresenter;
-import com.nongke.jindao.base.utils.UserUtils;
+import com.nongke.jindao.base.utils.UserUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -119,15 +119,15 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
     }
 
     public void refreshUserInfo() {
-        if (UserUtils.isLogined()) {
+        if (UserUtil.isLogined()) {
             ll_userinfo_profile_logined.setVisibility(View.VISIBLE);
             tv_user_profile_not_login.setVisibility(View.GONE);
-            tv_user_phone_num.setText(UserUtils.getUserInfo().rspBody.phone);
-            tv_user_inviter_phone_num.setText(UserUtils.getUserInfo().rspBody.inviterPhone);
-            tv_user_balance.setText(UserUtils.getUserInfo().rspBody.money + "");
-            tv_user_commission.setText(UserUtils.getUserInfo().rspBody.commission + "");
-            tv_user_daoli_balance.setText(UserUtils.getUserInfo().rspBody.cardMoney + "");
-            String photoUrl = UserUtils.getUserInfo().rspBody.img;
+            tv_user_phone_num.setText(UserUtil.getUserInfo().rspBody.phone);
+            tv_user_inviter_phone_num.setText(UserUtil.getUserInfo().rspBody.inviterPhone);
+            tv_user_balance.setText(UserUtil.getUserInfo().rspBody.money + "");
+            tv_user_commission.setText(UserUtil.getUserInfo().rspBody.commission + "");
+            tv_user_daoli_balance.setText(UserUtil.getUserInfo().rspBody.cardMoney + "");
+            String photoUrl = UserUtil.getUserInfo().rspBody.img;
             if (photoUrl != null)
                 Glide.with(getActivity()).load(photoUrl).into(iv_user_photo);
             else iv_user_photo.setImageResource(R.drawable.user_photo);
@@ -162,7 +162,7 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
             R.id.my_withdraw_record_layout, R.id.my_profile_layout, R.id.my_promotion_layout, R.id.my_location_layout, R.id.my_order_layout, R.id.my_logout_layout,
             R.id.tv_vip_recharge, R.id.my_inviter_layout})
     public void click(View view) {
-        if (UserUtils.getUserInfo() == null) {
+        if (UserUtil.getUserInfo() == null) {
             RegisterLoginActivity.startActivity(getActivity());
             Utils.showToast(getString(R.string.user_not_login), true);
             return;
@@ -207,7 +207,7 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
                 break;
             case R.id.my_logout_layout:
 
-                if (UserUtils.getUserInfo() == null) {
+                if (UserUtil.getUserInfo() == null) {
                     Utils.showToast(getString(R.string.user_not_login), true);
                     return;
                 }
@@ -219,11 +219,11 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
                 SharedPreferencesUtils.clear(getActivity(), "password");
                 mPresenter.getLogoutData();
                 RegisterLoginActivity.startActivity(getActivity());
-                UserUtils.setUserInfo(null);
-                UserUtils.setLogined(false);
+                UserUtil.setUserInfo(null);
+                UserUtil.setLogined(false);
                 break;
             case R.id.iv_user_photo:
-                if (!UserUtils.isLogined())
+                if (!UserUtil.isLogined())
                     RegisterLoginActivity.startActivity(getActivity());
                 else {
                     requestCameraPermission();
