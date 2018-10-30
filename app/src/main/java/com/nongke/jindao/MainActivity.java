@@ -128,8 +128,8 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
                 title.setText(titles.get(position));
-                if (position == 3)
-                    cartFragment.loadData();
+//                if (position == 3)
+//                    cartFragment.loadData();
                 if (position == 4 && !UserUtil.isLogined()) {
                     RegisterLoginActivity.startActivity(MainActivity.this);
                 }

@@ -85,7 +85,7 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
 
                 if (b) {
                     cartAdapter.selectAll(true, false);
-                } else {
+                } else if (!b && !cartAdapter.clickAdapterCB) {
                     cartAdapter.selectAll(false, true);
                 }
             }
@@ -163,7 +163,7 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
         tv_product_buy.setText(getString(R.string.balance));
         tv_product_total_price.setVisibility(View.VISIBLE);
         cb_product_select_all.setChecked(false);
-        cartAdapter.selectAll(false, false);
+        cartAdapter.selectAll(false, true);
         tv_product_total_price.setText("合计：0元");
         isEditingCart = false;
     }
@@ -188,15 +188,18 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
             tv_edit.setVisibility(View.VISIBLE);
         }
         rl_to_pay.setVisibility(View.VISIBLE);
-        cartAdapter.totalPrice=0;
-        cartAdapter.selectAll(false,true);
+        cartAdapter.totalPrice = 0;
+//        cartAdapter.selectAll(false,true);
+
         cartAdapter.setDataList(newDataList);
-        cartAdapter.notifyDataSetChanged();
+        if (!cartAdapter.isAllSelected()) {
+            cb_product_select_all.setChecked(false);
+        } else cb_product_select_all.setChecked(true);
     }
 
     private void initRecyclerView() {
         cartDataList = new ArrayList<>();
-        cartAdapter = new CartAdapter(getActivity(), cartDataList, "CartFragment");
+        cartAdapter = new CartAdapter(getActivity(), cartDataList, "CartFragment", cb_product_select_all);
         cart_recyclerview.addItemDecoration(new SpacesItemDecoration(10));
 
         cart_recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));

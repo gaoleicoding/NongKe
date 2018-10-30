@@ -10,9 +10,11 @@ import com.nongke.jindao.base.thirdframe.retrofit.RetrofitProvider;
 import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
 import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.Utils;
+import com.nongke.jindao.event.UpdateCartEvent;
 import com.nongke.jindao.mcontract.ProductContract;
 import com.nongke.jindao.mcontract.ProductDetailContract;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -39,7 +41,8 @@ public class ProductDetailPresenter extends BasePresenter<ProductDetailContract.
             public void onNext(BaseResData baseResData) {
                 Utils.showToast(baseResData.retDesc, true);
                 LogUtil.d2("saveCart------------ :" + baseResData.toString());
-
+                UpdateCartEvent updateCartEvent = new UpdateCartEvent();
+                EventBus.getDefault().post(updateCartEvent);
 
             }
         });

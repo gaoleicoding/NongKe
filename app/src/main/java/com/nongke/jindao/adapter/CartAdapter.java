@@ -38,21 +38,26 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
     public List<Product> list;
     public List<Product> selectProductList;
     String fromWhere;
-    //    int ammount = 1;
     String TAG = "CartAdapter";
     boolean isAllSelect;
     boolean isAllCancel;
     public float totalPrice;
+    CheckBox cb_product_select_all;
+    public boolean clickAdapterCB;
 
-    public CartAdapter(Context context, List<Product> list, String fromWhere) {
+    public CartAdapter(Context context, List<Product> list, String fromWhere, CheckBox cb_product_select_all) {
         this.context = context;
         this.list = list;
         this.fromWhere = fromWhere;
+        this.cb_product_select_all = cb_product_select_all;
         selectProductList = new ArrayList<Product>();
     }
 
     public void setDataList(List<Product> list) {
         this.list = list;
+
+        notifyDataSetChanged();
+
     }
 
     public void selectAll(boolean isAllSelect, boolean isAllCancel) {
@@ -91,28 +96,29 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         holder.tv_product_price.setText(productInfo.productPrice + "元");
         holder.tv_product_ammount.setText(productInfo.amount + "");
         ImageLoader.getInstance().load(context, productInfo.img, holder.iv_product);
-        Log.d(TAG,"isAllSelect:"+isAllSelect);
-        Log.d(TAG,"position:"+holder.cb_product_select.isChecked());
+        Log.d(TAG, "isAllSelect:" + isAllSelect);
+        Log.d(TAG, "position:" + holder.cb_product_select.isChecked());
         if (isAllSelect) {
             holder.cb_product_select.setChecked(true);
-
         }
         if (isAllCancel) {
             holder.cb_product_select.setChecked(false);
         }
         if (holder.cb_product_select.isChecked()) {
             totalPrice = totalPrice + productInfo.productPrice * productInfo.amount;
-            selectProductList.add(productInfo);
+
         }
         updateTotalPrice(totalPrice);
         holder.cb_product_select.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-
+                clickAdapterCB = true;
                 if (b) {
                     productInfo.isChecked = true;
+                    selectProductList.add(productInfo);
                 } else {
                     productInfo.isChecked = false;
+                    selectProductList.remove(productInfo);
                 }
                 holder.cb_product_select.post(new Runnable() {
                     @Override
@@ -121,6 +127,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
                         isAllSelect = false;
                         isAllCancel = false;
                         notifyDataSetChanged();
+                        if (isAllSelected()) cb_product_select_all.setChecked(true);
+                        else cb_product_select_all.setChecked(false);
+                        clickAdapterCB = false;
                     }
                 });
 
@@ -188,7 +197,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         amountEvent.amout = amount;
         amountEvent.productId = productId;
         EventBus.getDefault().post(amountEvent);
-//        notifyDataSetChanged();
+        totalPrice = 0;
+        notifyDataSetChanged();
     }
 
     private void updateTotalPrice(float totalPrice) {
