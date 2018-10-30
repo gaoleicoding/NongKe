@@ -81,7 +81,7 @@
                             android:src="@drawable/icon_horn" />
 
                         <TextView
-                            android:id="@+id/notice_content"
+                            android:id="@+id/tv_notice_content"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"

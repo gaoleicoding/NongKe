@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.nongke.jindao.MainActivity;
@@ -64,6 +65,8 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
     LinearLayout home_download_layout;
     @BindView(R.id.home_custom_layout)
     LinearLayout home_custom_layout;
+    @BindView(R.id.tv_notice_content)
+    public TextView tv_notice_content;
     private List<Product> articleDataList;
     private ProductAdapter feedArticleAdapter;
     boolean hasNextPage = true;
@@ -189,10 +192,10 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
 
     private void initRecyclerView() {
         articleDataList = new ArrayList<>();
-        feedArticleAdapter = new ProductAdapter(getActivity(), articleDataList,"HomeFragment");
+        feedArticleAdapter = new ProductAdapter(getActivity(), articleDataList, "HomeFragment");
         project_recyclerview.addItemDecoration(new GridItemSpaceDecoration(2, ScreenUtils.dp2px(getActivity(), 10), false));
 
-        project_recyclerview.setLayoutManager(new GridLayoutManager(getActivity(), 2){
+        project_recyclerview.setLayoutManager(new GridLayoutManager(getActivity(), 2) {
             public boolean canScrollVertically() {
                 //解决ScrollView里存在多个RecyclerView时滑动卡顿的问题
                 //如果你的RecyclerView是水平滑动的话可以重写canScrollHorizontally方法

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingBottom="20dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="20dp">
+
+    <com.nongke.jindao.base.view.CircleImageView
+        android:id="@+id/iv_user_photo"
+        android:layout_width="72dp"
+        android:layout_height="72dp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_message_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_toRightOf="@id/iv_user_photo">
+
+        <TextView
+            android:id="@+id/tv_inviter_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="title"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_inviter_vip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="普通会员"
+            android:textColor="@color/color_c3"
+            android:textSize="14sp" />
+
+
+        <TextView
+            android:id="@+id/tv_inviter_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_inviter_account"
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="5"
+            android:textColor="@color/color_c3"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_inviter_commission"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_inviter_account"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/color_c3"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+</RelativeLayout>

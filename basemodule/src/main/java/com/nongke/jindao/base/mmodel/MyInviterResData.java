@@ -2,12 +2,13 @@ package com.nongke.jindao.base.mmodel;
 
 import java.util.List;
 
+
 public class MyInviterResData extends BaseResData {
 
-    private List<Body> rspBody;
+    public List<InviterBody> rspBody;
 
-    public class Body {
-        public String isVip, phone, uid, img;
+    public class InviterBody {
+        public String isVip, phone, uid, img, createTime;
         public int commission, id;
     }
 

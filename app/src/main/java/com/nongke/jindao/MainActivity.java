@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.adapter.MainTabAdapter;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
+import com.nongke.jindao.base.mmodel.MessageResData;
 import com.nongke.jindao.base.mmodel.OnlineParamResData;
 import com.nongke.jindao.base.photopicker.ImageUtils;
 import com.nongke.jindao.base.photopicker.UriUtils;
@@ -270,10 +271,18 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
     @Override
     protected void loadData() {
         mPresenter.getOnlineParame();
+        mPresenter.listMessage();
     }
 
     @Override
     public void showOnlineParame(OnlineParamResData onlineParamResData) {
 
+    }
+
+    @Override
+    public void showMessageList(MessageResData messageResData) {
+        if (messageResData == null || messageResData.rspBody == null) return;
+        if (messageResData.rspBody.size() > 0)
+            homeFragment.tv_notice_content.setText(messageResData.rspBody.get(0).title);
     }
 }

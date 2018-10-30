@@ -9,18 +9,24 @@
     <com.nongke.jindao.base.view.TitleView
         android:id="@+id/layout_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content" />
+
     <TextView
-        android:id="@+id/request"
+        android:id="@+id/tv_inviter_amount"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:clickable="true"
         android:gravity="center"
         android:padding="10dp"
-        android:text="粉丝10人"
-        android:textColor="@color/color_313131"
-        android:textSize="16sp" />
+        android:textColor="@color/white"
+        android:background="@color/app_color"
+        android:textSize="14sp" />
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_inviter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:paddingBottom="45dp" />
 
 </LinearLayout>

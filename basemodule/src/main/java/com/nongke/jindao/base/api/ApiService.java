@@ -1,10 +1,13 @@
 package com.nongke.jindao.base.api;
 
 
+import android.os.Message;
+
 import com.nongke.jindao.base.mmodel.BannerResData;
 import com.nongke.jindao.base.mmodel.BaseResData;
 import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.mmodel.LogoutResData;
+import com.nongke.jindao.base.mmodel.MessageResData;
 import com.nongke.jindao.base.mmodel.MsgCodeResData;
 import com.nongke.jindao.base.mmodel.OnlineParamResData;
 import com.nongke.jindao.base.mmodel.ProductResData;
@@ -71,6 +74,9 @@ public interface ApiService {
 
     @POST("user/getOnlineParame")
     Observable<OnlineParamResData> getOnlineParame();
+
+    @POST("user/listMessage")
+    Observable<MessageResData> listMessage();
 
     @POST("product/pageProduct")
     Observable<ProductResData> pageProduct(@Body RequestBody requestBody);

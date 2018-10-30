@@ -1,5 +1,6 @@
 package com.nongke.jindao.mcontract;
 
+import com.nongke.jindao.base.mmodel.MessageResData;
 import com.nongke.jindao.base.mmodel.OnlineParamResData;
 
 /**
@@ -13,11 +14,14 @@ public class OnlineParameContract {
 
         void getOnlineParame();
 
+        void listMessage();
+
     }
 
     public interface View {
 
         void showOnlineParame(OnlineParamResData onlineParamResData);
 
+        void showMessageList(MessageResData messageResData);
     }
 }

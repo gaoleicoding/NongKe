@@ -130,7 +130,7 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
             String photoUrl = UserUtil.getUserInfo().rspBody.img;
             if (photoUrl != null)
                 Glide.with(getActivity()).load(photoUrl).into(iv_user_photo);
-            else iv_user_photo.setImageResource(R.drawable.user_photo);
+
         } else {
             tv_user_profile_not_login.setVisibility(View.VISIBLE);
             iv_user_photo.setImageResource(R.drawable.user_default_photo);
