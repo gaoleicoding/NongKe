@@ -1,18 +1,21 @@
 package com.nongke.jindao.fragment;
 
-import android.media.Image;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.nongke.jindao.R;
 import com.nongke.jindao.activity.VipRechargeActivity;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
+import com.nongke.jindao.base.utils.UserUtil;
+import com.nongke.jindao.base.event.LoginAccountEvent;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -42,7 +45,8 @@ public class RechageDetailFragment extends BaseMvpFragment {
 
     @Override
     public void initData(Bundle bundle) {
-
+        EventBus.getDefault().register(this);
+        judgeVip();
     }
 
     @Override
@@ -100,5 +104,29 @@ public class RechageDetailFragment extends BaseMvpFragment {
                 break;
         }
 
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(LoginAccountEvent accountEvent) {
+        judgeVip();
+    }
+
+    private void judgeVip(){
+        if (UserUtil.isLogined()) {
+            if(UserUtil.getUserInfo().rspBody.isVip==1){
+                tv_vip_recharge.setVisibility(View.GONE);
+                tv_recharge_50.setText(getResources().getString(R.string.recharge_50));
+                tv_recharge_100.setText(getResources().getString(R.string.recharge_100));
+                tv_recharge_50.setTextSize(16);
+                tv_recharge_100.setTextSize(16);
+            }else{
+                tv_vip_recharge.setVisibility(View.VISIBLE);
+                tv_recharge_50.setText("50元");
+                tv_recharge_100.setText("100元");
+                tv_recharge_50.setTextSize(18);
+                tv_recharge_100.setTextSize(18);
+            }
+        }
     }
 }

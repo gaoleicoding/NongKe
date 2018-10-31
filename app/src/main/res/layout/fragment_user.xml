@@ -110,6 +110,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/tv_member_type"
                         style="@style/user_account_txt"
                         android:text="普通会员" />
 

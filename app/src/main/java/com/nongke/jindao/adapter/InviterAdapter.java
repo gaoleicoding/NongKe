@@ -50,8 +50,8 @@ public class InviterAdapter extends RecyclerView.Adapter<InviterAdapter.MyViewHo
         holder.itemView.setTag(position);
         final InviterBody resData = list.get(position);
         holder.tv_inviter_account.setText("账号：" + resData.phone);
-        holder.tv_inviter_vip.setText(resData.isVip);
-        holder.tv_inviter_commission.setText("佣金：" + resData.commission);
+        holder.tv_inviter_vip.setText("（"+resData.isVip+"）");
+        holder.tv_inviter_commission.setText("佣金：" + resData.commission+"元");
         holder.tv_inviter_time.setText("注册时间：" + Utils.ms2Date(resData.createTime));
         if (resData.img != null) {
             RequestOptions options = new RequestOptions().placeholder(R.drawable.user_default_photo);

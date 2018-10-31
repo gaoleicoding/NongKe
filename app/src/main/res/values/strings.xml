@@ -26,7 +26,7 @@
     <string name="my_profile">个人资料</string>
     <string name="my_bill">我的账单</string>
     <string name="my_commission">佣金详情</string>
-    <string name="my_contact">我的联系人</string>
+    <string name="my_contact">我的推荐</string>
     <string name="my_withdraw">我要提现</string>
     <string name="my_withdraw_record">提现记录</string>
     <string name="my_address">收货地址</string>
@@ -36,8 +36,8 @@
     <string name="recharge_discount">充值优惠</string>
     <string name="phone_fee_recharge_record">充值记录</string>
     <string name="you_are_not_vip">（你不是VIP会员，立即升级）</string>
-    <string name="recharge_50">50元\n\nVIP会员88折优惠</string>
-    <string name="recharge_100">100元\n\nVIP会员88折优惠</string>
+    <string name="recharge_50">50元\nVIP会员88折优惠</string>
+    <string name="recharge_100">100元\nVIP会员88折优惠</string>
     <string name="pay_method">支付方式：</string>
     <string name="pay_alipay">支付宝</string>
     <string name="pay_wechat">微信</string>

@@ -28,8 +28,13 @@ import com.nongke.jindao.base.photopicker.ImageUtils;
 import com.nongke.jindao.base.utils.PermissionUtil;
 import com.nongke.jindao.base.utils.SharedPreferencesUtils;
 import com.nongke.jindao.base.utils.Utils;
+import com.nongke.jindao.base.event.LoginAccountEvent;
 import com.nongke.jindao.mpresenter.RegisterLoginPresenter;
 import com.nongke.jindao.base.utils.UserUtil;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -85,12 +90,16 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
     TextView tv_user_daoli_balance;
     @BindView(R.id.tv_user_profile_not_login)
     TextView tv_user_profile_not_login;
+    @BindView(R.id.tv_member_type)
+    TextView tv_member_type;
+
     public static int PICK_PHOTO = 0;
     public ImageUtils imageUtils;
 
     @Override
     public void initData(Bundle bundle) {
         refreshUserInfo();
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -133,6 +142,7 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
                 RequestOptions options = new RequestOptions().placeholder(R.drawable.user_default_photo);
                 Glide.with(getActivity()).load(photoUrl).apply(options).into(iv_user_photo);
             }
+            judgeVip();
 
         } else {
             tv_user_profile_not_login.setVisibility(View.VISIBLE);
@@ -186,9 +196,9 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
 
                 break;
             case R.id.my_inviter_layout:
-                Bundle bundle=new Bundle();
-                bundle.putString("uid",UserUtil.getUserInfo().rspBody.uid);
-                MyInviterActivity.startActivity(getActivity(),bundle);
+                Bundle bundle = new Bundle();
+                bundle.putString("uid", UserUtil.getUserInfo().rspBody.uid);
+                MyInviterActivity.startActivity(getActivity(), bundle);
                 break;
             case R.id.my_withdraw_layout:
                 WithdrawActivity.startActivity(getActivity());
@@ -201,6 +211,10 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
                 MyProfileActivity.startActivity(getActivity());
                 break;
             case R.id.my_promotion_layout:
+                if (UserUtil.getUserInfo().rspBody.isVip != 1) {
+                    Utils.showToast("你现在不是VIP会员，没有推广权限",false);
+                    return;
+                }
                 PromotionActivity.startActivity(getActivity());
                 break;
             case R.id.my_location_layout:
@@ -258,5 +272,20 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
 
     public void uploadPhoto(String path) {
         mPresenter.uploadImg(path);
+    }
+
+    private void judgeVip() {
+        if (UserUtil.getUserInfo().rspBody.isVip == 1) {
+            tv_member_type.setVisibility(View.GONE);
+            tv_vip_recharge.setText("VIP会员");
+        } else {
+            tv_member_type.setVisibility(View.VISIBLE);
+            tv_vip_recharge.setText(" 申请高级会员");
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(LoginAccountEvent accountEvent) {
+        judgeVip();
     }
 }

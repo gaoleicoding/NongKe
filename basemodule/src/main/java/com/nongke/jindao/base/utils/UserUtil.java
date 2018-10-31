@@ -1,6 +1,9 @@
 package com.nongke.jindao.base.utils;
 
+import com.nongke.jindao.base.event.LoginAccountEvent;
 import com.nongke.jindao.base.mmodel.LoginResData;
+
+import org.greenrobot.eventbus.EventBus;
 
 public class UserUtil {
 
@@ -22,5 +25,7 @@ public class UserUtil {
     public static void setUserInfo(LoginResData userInfo) {
         UserUtil.userInfo = userInfo;
         setLogined(true);
+        LoginAccountEvent accountEvent = new LoginAccountEvent();
+        EventBus.getDefault().post(accountEvent);
     }
 }
