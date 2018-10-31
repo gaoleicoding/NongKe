@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/GaoLei/gaolei/JinDaoMall/NongKe/NongKe/app/libs/zxing.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="6fe22c135f19470d05b0816d5996c442ef67da3f">
+        <dex dex="/Users/GaoLei/gaolei/JinDaoMall/NongKe/NongKe/app/build/intermediates/transforms/preDex/Baidu/release/1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/GaoLei/gaolei/JinDaoMall/NongKe/NongKe/basemodule/build/intermediates/intermediate-jars/release/classes.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="efeb3c6c2605960906b13907691010a55b751487">
+        <dex dex="/Users/GaoLei/gaolei/JinDaoMall/NongKe/NongKe/app/build/intermediates/transforms/preDex/Baidu/release/48.jar" />
+    </item>
+
+</items>
