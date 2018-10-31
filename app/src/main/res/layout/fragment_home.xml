@@ -41,6 +41,7 @@
                         app:indicator_width="8dp" />
 
                     <RelativeLayout
+                        android:id="@+id/rl_notice"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/color_white"
@@ -90,6 +91,12 @@
                             android:layout_toRightOf="@id/notice_icon"
                             android:gravity="center"
                             android:text="国庆节放假七天"
+                            android:ellipsize="marquee"
+                            android:focusable="true"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:focusableInTouchMode="true"
+                            android:scrollHorizontally="true"
+                            android:singleLine="true"
                             android:textColor="@color/color_black"
                             android:textSize="14sp" />
 

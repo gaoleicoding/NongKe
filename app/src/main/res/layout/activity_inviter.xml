@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/color_f2f2f2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -18,15 +18,16 @@
         android:clickable="true"
         android:gravity="center"
         android:padding="10dp"
-        android:textColor="@color/white"
-        android:background="@color/app_color"
+        android:textColor="@color/app_color_bb"
+        android:text="粉丝：0人"
         android:textSize="14sp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview_inviter"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:paddingBottom="45dp" />
+        android:background="@color/white"
+        android:layout_marginTop="1dp"
+        android:paddingBottom="15dp" />
 
 </LinearLayout>

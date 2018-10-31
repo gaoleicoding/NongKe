@@ -21,7 +21,8 @@
             <com.nongke.jindao.base.view.CircleImageView
                 android:id="@+id/iv_user_photo"
                 android:layout_width="72dp"
-                android:layout_height="72dp" />
+                android:layout_height="72dp"
+                android:src="@drawable/user_default_photo" />
 
             <TextView
                 android:id="@+id/tv_user_profile_not_login"
@@ -42,9 +43,7 @@
 
                 <TextView
                     android:id="@+id/tv_user_phone_num"
-                    style="@style/user_account_txt"
-                    android:layout_marginTop="0dp"
-                    android:text="156****9705" />
+                    style="@style/user_account_txt" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -57,8 +56,7 @@
 
                     <TextView
                         android:id="@+id/tv_user_inviter_phone_num"
-                        style="@style/user_account_txt"
-                        android:text="186****1435" />
+                        style="@style/user_account_txt" />
                 </LinearLayout>
 
                 <LinearLayout

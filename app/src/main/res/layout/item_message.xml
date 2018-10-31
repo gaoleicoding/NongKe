@@ -15,7 +15,6 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="title"
         android:textColor="@color/black"
         android:textSize="16sp" />
 
@@ -27,9 +26,7 @@
         android:layout_below="@id/tv_message_title"
         android:layout_marginTop="10dp"
         android:ellipsize="end"
-        android:gravity="center"
         android:maxLines="5"
-        android:text="123456789012345893467sdyuixcghjkcvbn"
         android:textColor="@color/color_c3"
         android:textSize="14sp" />
 
@@ -40,7 +37,6 @@
         android:layout_alignParentRight="true"
         android:layout_below="@id/tv_message_content"
         android:layout_marginTop="10dp"
-        android:text="123456789"
         android:textColor="@color/color_c3"
         android:textSize="14sp" />
 

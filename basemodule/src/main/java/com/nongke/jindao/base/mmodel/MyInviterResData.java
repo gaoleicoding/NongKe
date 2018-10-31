@@ -8,7 +8,8 @@ public class MyInviterResData extends BaseResData {
     public List<InviterBody> rspBody;
 
     public class InviterBody {
-        public String isVip, phone, uid, img, createTime;
+        public String isVip, phone, uid,invitedUid, img;
+        public long createTime;
         public int commission, id;
     }
 

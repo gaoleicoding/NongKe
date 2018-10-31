@@ -11,7 +11,7 @@ public class MyInviterContract {
     public interface Presenter {
 
 
-        void listUserInviter();
+        void listUserInviter(String uid);
 
     }
 

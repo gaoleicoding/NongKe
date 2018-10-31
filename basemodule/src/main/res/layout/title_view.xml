@@ -4,7 +4,6 @@
     android:id="@+id/header_layout"
     android:layout_width="match_parent"
     android:layout_height="42dp"
-    android:visibility="gone"
     android:background="@color/app_color">
 
     <ImageView

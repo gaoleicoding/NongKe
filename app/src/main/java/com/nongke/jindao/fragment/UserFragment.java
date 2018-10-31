@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.nongke.jindao.R;
 import com.nongke.jindao.activity.MyAddressActivity;
 import com.nongke.jindao.activity.DaoLiTransferActivity;
@@ -68,7 +69,6 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
     @BindView(R.id.ll_userinfo_profile_logined)
     LinearLayout ll_userinfo_profile_logined;
 
-
     @BindView(R.id.iv_user_photo)
     public ImageView iv_user_photo;
     @BindView(R.id.tv_vip_recharge)
@@ -122,18 +122,20 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
         if (UserUtil.isLogined()) {
             ll_userinfo_profile_logined.setVisibility(View.VISIBLE);
             tv_user_profile_not_login.setVisibility(View.GONE);
+            if (UserUtil.getUserInfo().rspBody == null) return;
             tv_user_phone_num.setText(UserUtil.getUserInfo().rspBody.phone);
             tv_user_inviter_phone_num.setText(UserUtil.getUserInfo().rspBody.inviterPhone);
             tv_user_balance.setText(UserUtil.getUserInfo().rspBody.money + "");
             tv_user_commission.setText(UserUtil.getUserInfo().rspBody.commission + "");
             tv_user_daoli_balance.setText(UserUtil.getUserInfo().rspBody.cardMoney + "");
             String photoUrl = UserUtil.getUserInfo().rspBody.img;
-            if (photoUrl != null)
-                Glide.with(getActivity()).load(photoUrl).into(iv_user_photo);
+            if (photoUrl != null) {
+                RequestOptions options = new RequestOptions().placeholder(R.drawable.user_default_photo);
+                Glide.with(getActivity()).load(photoUrl).apply(options).into(iv_user_photo);
+            }
 
         } else {
             tv_user_profile_not_login.setVisibility(View.VISIBLE);
-            iv_user_photo.setImageResource(R.drawable.user_default_photo);
         }
 
     }
@@ -162,7 +164,7 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
             R.id.my_withdraw_record_layout, R.id.my_profile_layout, R.id.my_promotion_layout, R.id.my_location_layout, R.id.my_order_layout, R.id.my_logout_layout,
             R.id.tv_vip_recharge, R.id.my_inviter_layout})
     public void click(View view) {
-        if (UserUtil.getUserInfo() == null) {
+        if (!UserUtil.isLogined()) {
             RegisterLoginActivity.startActivity(getActivity());
             Utils.showToast(getString(R.string.user_not_login), true);
             return;
@@ -184,7 +186,9 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
 
                 break;
             case R.id.my_inviter_layout:
-                MyInviterActivity.startActivity(getActivity());
+                Bundle bundle=new Bundle();
+                bundle.putString("uid",UserUtil.getUserInfo().rspBody.uid);
+                MyInviterActivity.startActivity(getActivity(),bundle);
                 break;
             case R.id.my_withdraw_layout:
                 WithdrawActivity.startActivity(getActivity());

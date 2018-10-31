@@ -13,11 +13,13 @@ import android.widget.TextView;
 
 import com.nongke.jindao.MainActivity;
 import com.nongke.jindao.R;
+import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.adapter.CartAdapter;
 import com.nongke.jindao.adapter.divider.SpacesItemDecoration;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mmodel.Product;
 import com.nongke.jindao.base.mmodel.ProductResData;
+import com.nongke.jindao.base.utils.UserUtil;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.event.ProductAmountEvent;
 import com.nongke.jindao.event.ProductTotalPriceEvent;
@@ -67,8 +69,13 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
 
     @Override
     public void loadData() {
-
-        mPresenter.getCartProduct();
+        if (UserUtil.isLogined()) {
+            mPresenter.getCartProduct();
+        } else {
+            RegisterLoginActivity.startActivity(getActivity());
+            Utils.showToast(getString(R.string.user_not_login), true);
+            return;
+        }
     }
 
     @Override
@@ -200,7 +207,7 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
     private void initRecyclerView() {
         cartDataList = new ArrayList<>();
         cartAdapter = new CartAdapter(getActivity(), cartDataList, "CartFragment", cb_product_select_all);
-        cart_recyclerview.addItemDecoration(new SpacesItemDecoration(10));
+        cart_recyclerview.addItemDecoration(new SpacesItemDecoration(getActivity(), 10));
 
         cart_recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
         //解决数据加载不完的问题

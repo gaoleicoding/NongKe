@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.mmodel.MessageResData.MessageBody;
+import com.nongke.jindao.base.utils.Utils;
 
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
         final MessageBody resData = list.get(position);
         holder.tv_message_title.setText(resData.title);
         holder.tv_message_content.setText(resData.content);
-        holder.tv_message_time.setText(resData.createTime);
+        holder.tv_message_time.setText(Utils.ms2Date(resData.createTime));
 
     }
 

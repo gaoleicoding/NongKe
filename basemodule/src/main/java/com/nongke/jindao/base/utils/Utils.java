@@ -11,6 +11,9 @@ import android.widget.Toast;
 import com.nongke.jindao.base.application.CustomApplication;
 
 import java.security.MessageDigest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by gaolei on 2018/6/15.
@@ -120,4 +123,12 @@ public class Utils {
         }
 
     }
+
+    public static String ms2Date(long _ms){
+        Date date = new Date(_ms);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
+        return format.format(date);
+    }
+
+
 }

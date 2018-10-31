@@ -7,7 +7,8 @@ public class MessageResData extends BaseResData {
     public List<MessageBody> rspBody;
 
     public class MessageBody {
-        public String title, content, createTime;
+        public String title, content ;
+        public long createTime;
         public int id;
     }
 

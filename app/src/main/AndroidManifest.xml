@@ -43,6 +43,7 @@
         <activity android:name=".activity.VipRechargeActivity"></activity>
         <activity android:name=".activity.PromotionActivity"></activity>
         <activity android:name=".activity.MyInviterActivity"></activity>
+        <activity android:name=".activity.MessageActivity"></activity>
         <activity android:name=".activity.WebViewActivity"></activity>
         <activity android:name=".activity.ProductDetailActivity"></activity>
 

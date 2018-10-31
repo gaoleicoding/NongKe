@@ -22,9 +22,9 @@ import okhttp3.RequestBody;
 public class MyInviterPresenter extends BasePresenter<MyInviterContract.View> implements MyInviterContract.Presenter {
 
     @Override
-    public void listUserInviter() {
+    public void listUserInviter(String uid) {
         HashMap hashMap = new HashMap();
-        hashMap.put("uid", UserUtil.getUserInfo().rspBody.uid);
+        hashMap.put("uid", uid);
 
         String jsonString = new JSONObject(hashMap).toString();
 

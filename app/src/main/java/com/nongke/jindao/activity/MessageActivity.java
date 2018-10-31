@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.nongke.jindao.R;
 import com.nongke.jindao.adapter.CartAdapter;
 import com.nongke.jindao.adapter.MessageAdapter;
+import com.nongke.jindao.adapter.divider.RecycleViewDivider;
 import com.nongke.jindao.adapter.divider.SpacesItemDecoration;
 import com.nongke.jindao.base.activity.BaseActivity;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
@@ -59,12 +60,12 @@ public class MessageActivity extends BaseActivity {
 
     @Override
     protected void initData(Bundle bundle) {
-        title.setText(getString(R.string.my_contact));
+        title.setText(getString(R.string.notice));
         iv_back.setVisibility(View.VISIBLE);
     }
     private void initRecyclerView() {
         messageAdapter = new MessageAdapter(this, OnlineParamUtil.getMessageResData().rspBody);
-        message_recyclerview.addItemDecoration(new SpacesItemDecoration(1));
+        message_recyclerview.addItemDecoration(new RecycleViewDivider(this,LinearLayoutManager.VERTICAL));
 
         message_recyclerview.setLayoutManager(new LinearLayoutManager(this));
         //解决数据加载不完的问题

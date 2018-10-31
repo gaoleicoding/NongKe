@@ -10,6 +10,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +46,8 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
     private ArrayList<Fragment> mFragments;
     private ArrayList<String> titles;
 
+    @BindView(R.id.header_layout)
+    RelativeLayout header_layout;
     @BindView(R.id.viewPager)
     public CustomViewPager viewPager;
     @BindView(R.id.tabLayout)
@@ -86,6 +90,7 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
     }
 
     protected void initView() {
+        header_layout.setVisibility(View.GONE);
         mFragments = new ArrayList<Fragment>();
         homeFragment = new HomeFragment();
         projectFragment = new RechargeFragment();
@@ -122,7 +127,11 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
      */
     private void initTab() {
 
-
+        tabLayout.getTabAt(0).setCustomView(R.layout.tab_home);
+        tabLayout.getTabAt(1).setCustomView(R.layout.tab_recharge);
+        tabLayout.getTabAt(2).setCustomView(R.layout.tab_classify);
+        tabLayout.getTabAt(3).setCustomView(R.layout.tab_cart);
+        tabLayout.getTabAt(4).setCustomView(R.layout.tab_mine);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             //标签选中之后执行的方法
             @Override
@@ -150,11 +159,7 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
 
             }
         });
-        tabLayout.getTabAt(0).setCustomView(R.layout.tab_home);
-        tabLayout.getTabAt(1).setCustomView(R.layout.tab_recharge);
-        tabLayout.getTabAt(2).setCustomView(R.layout.tab_classify);
-        tabLayout.getTabAt(3).setCustomView(R.layout.tab_cart);
-        tabLayout.getTabAt(4).setCustomView(R.layout.tab_mine);
+
         //默认选中的Tab
 //        tabLayout.getTabAt(0).getCustomView().setSelected(true);
     }
@@ -282,7 +287,9 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
     @Override
     public void showMessageList(MessageResData messageResData) {
         if (messageResData == null || messageResData.rspBody == null) return;
-        if (messageResData.rspBody.size() > 0)
-            homeFragment.tv_notice_content.setText(messageResData.rspBody.get(0).title);
+        if (messageResData.rspBody.size() > 0) {
+            String msgTitle=messageResData.rspBody.get(0).title;
+            homeFragment.tv_notice_content.setText(msgTitle);
+        }
     }
 }

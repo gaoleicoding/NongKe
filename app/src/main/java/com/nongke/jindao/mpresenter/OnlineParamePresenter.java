@@ -44,6 +44,7 @@ public class OnlineParamePresenter extends BasePresenter<OnlineParameContract.Vi
             @Override
             public void onNext(MessageResData messageResData) {
                 LogUtil.d2("listMessage------------ :" + messageResData.toString());
+                mView.showMessageList(messageResData);
                 OnlineParamUtil.setMessageResData(messageResData);
             }
         });

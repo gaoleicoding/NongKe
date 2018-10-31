@@ -1,15 +1,19 @@
 package com.nongke.jindao.adapter.divider;
 
+import android.content.Context;
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import com.nongke.jindao.base.utils.ScreenUtils;
+import com.nongke.jindao.base.utils.SystemUtil;
 
 public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
 
     private int space;
 
-    public SpacesItemDecoration(int space) {
-        this.space = space;
+    public SpacesItemDecoration(Context context,int space) {
+        this.space = ScreenUtils.dp2px(context,space);
     }
 
     @Override

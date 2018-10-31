@@ -33,7 +33,7 @@ public class LoginResData extends BaseResData{
                 "phone": "string",
                 "status": 0,
                 "token": "string",
-                "uid": "string"
+                "uid": "10212014"
     },
         "timestamp": "string"
     }*/

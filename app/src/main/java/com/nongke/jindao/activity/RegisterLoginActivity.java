@@ -165,8 +165,11 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
 
                 phoneNum = et_register_phone_num.getText().toString();
                 password = et_register_password.getText().toString();
-                if (password.length() < 6)
+                if (password.length() < 6){
                     Utils.showToast(getString(R.string.register_password_too_short), true);
+                    return;
+                }
+
                 String confirmPassword = et_register_confirm_password.getText().toString();
                 String code = et_register_verify_code.getText().toString();
                 mPresenter.getRegisterData(phoneNum, password, confirmPassword, code);
@@ -176,8 +179,10 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
                 registerFlag = "tv_modify_pwd_submit";
                 phoneNum = et_forget_pwd_phone_num.getText().toString();
                 password = et_forget_pwd_password.getText().toString();
-                if (password.length() < 6)
+                if (password.length() < 6) {
                     Utils.showToast(getString(R.string.register_password_too_short), true);
+                    return;
+                }
                 confirmPassword = et_forget_pwd_confirm_password.getText().toString();
                 code = et_forget_pwd_verify_code.getText().toString();
                 mPresenter.getResetPasswordData(phoneNum, password, confirmPassword, code);

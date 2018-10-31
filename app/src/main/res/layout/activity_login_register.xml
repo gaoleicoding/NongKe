@@ -114,12 +114,14 @@
         <EditText
             android:id="@+id/et_register_password"
             style="@style/edit_match_style"
-            android:hint="@string/password" />
+            android:hint="@string/password"
+            android:inputType="textPassword"/>
 
         <EditText
             android:id="@+id/et_register_confirm_password"
             style="@style/edit_match_style"
-            android:hint="@string/confirm_password" />
+            android:hint="@string/confirm_password"
+            android:inputType="textPassword"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -190,11 +192,13 @@
         <EditText
             android:id="@+id/et_forget_pwd_password"
             style="@style/edit_match_style"
+            android:inputType="textPassword"
             android:hint="@string/password_new" />
 
         <EditText
             android:id="@+id/et_forget_pwd_confirm_password"
             style="@style/edit_match_style"
+            android:inputType="textPassword"
             android:hint="@string/confirm_password" />
 
 

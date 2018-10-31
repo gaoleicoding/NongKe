@@ -7,11 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.nongke.jindao.MainActivity;
 import com.nongke.jindao.R;
+import com.nongke.jindao.activity.MessageActivity;
 import com.nongke.jindao.activity.ProductDetailActivity;
 import com.nongke.jindao.activity.VipRechargeActivity;
 import com.nongke.jindao.activity.WebViewActivity;
@@ -54,7 +56,6 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
     Banner banner;
     @BindView(R.id.smartRefreshLayout_home)
     SmartRefreshLayout smartRefreshLayout;
-
     @BindView(R.id.home_recharge_layout)
     LinearLayout home_recharge_layout;
     @BindView(R.id.home_vip_layout)
@@ -67,6 +68,8 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
     LinearLayout home_custom_layout;
     @BindView(R.id.tv_notice_content)
     public TextView tv_notice_content;
+    @BindView(R.id.rl_notice)
+    RelativeLayout rl_notice;
     private List<Product> articleDataList;
     private ProductAdapter feedArticleAdapter;
     boolean hasNextPage = true;
@@ -236,9 +239,12 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
     }
 
 
-    @OnClick({R.id.home_recharge_layout, R.id.home_vip_layout, R.id.home_company_layout, R.id.home_download_layout, R.id.home_custom_layout})
+    @OnClick({R.id.rl_notice,R.id.home_recharge_layout, R.id.home_vip_layout, R.id.home_company_layout, R.id.home_download_layout, R.id.home_custom_layout})
     public void click(View view) {
         switch (view.getId()) {
+            case R.id.rl_notice:
+                MessageActivity.startActivity(getActivity());
+                break;
             case R.id.home_recharge_layout:
                 MainActivity mainActivity = (MainActivity) getActivity();
                 mainActivity.viewPager.setCurrentItem(1);
