@@ -1,6 +1,5 @@
 package com.nongke.jindao.base.utils;
 
-import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.mmodel.MessageResData;
 import com.nongke.jindao.base.mmodel.OnlineParamResData;
 

@@ -134,9 +134,9 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
             if (UserUtil.getUserInfo().rspBody == null) return;
             tv_user_phone_num.setText(UserUtil.getUserInfo().rspBody.phone);
             tv_user_inviter_phone_num.setText(UserUtil.getUserInfo().rspBody.inviterPhone);
-            tv_user_balance.setText(UserUtil.getUserInfo().rspBody.money + "");
-            tv_user_commission.setText(UserUtil.getUserInfo().rspBody.commission + "");
-            tv_user_daoli_balance.setText(UserUtil.getUserInfo().rspBody.cardMoney + "");
+            tv_user_balance.setText(UserUtil.getUserInfo().rspBody.money + "元");
+            tv_user_commission.setText(UserUtil.getUserInfo().rspBody.commission + "元");
+            tv_user_daoli_balance.setText(UserUtil.getUserInfo().rspBody.cardMoney + "元");
             String photoUrl = UserUtil.getUserInfo().rspBody.img;
             if (photoUrl != null) {
                 RequestOptions options = new RequestOptions().placeholder(R.drawable.user_default_photo);
@@ -280,7 +280,7 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
             tv_vip_recharge.setText("VIP会员");
         } else {
             tv_member_type.setVisibility(View.VISIBLE);
-            tv_vip_recharge.setText(" 申请高级会员");
+            tv_vip_recharge.setText(" 申请高级会员>>");
         }
     }
 

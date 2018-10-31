@@ -16,6 +16,7 @@ import com.nongke.jindao.R;
 import com.nongke.jindao.adapter.ProductDetailImgAdapter;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
 import com.nongke.jindao.base.mmodel.Product;
+import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.event.UpdateCartEvent;
 import com.nongke.jindao.mpresenter.ProductDetailPresenter;
 import com.nongke.jindao.mpresenter.RegisterLoginPresenter;
@@ -69,6 +70,7 @@ public class ProductDetailActivity extends BaseMvpActivity<ProductDetailPresente
 //    ScrollView layout_scroll;
     int ammount = 1, productId;
     String TAG = "ProductDetailActivity";
+    Product product;
 
     public static void startActivity(Context context, Bundle bundle) {
         Intent intent = new Intent(context, ProductDetailActivity.class);
@@ -89,7 +91,7 @@ public class ProductDetailActivity extends BaseMvpActivity<ProductDetailPresente
     protected void initData(Bundle bundle) {
         title.setText(getString(R.string.product_detail));
         iv_back.setVisibility(View.VISIBLE);
-        Product product = (Product) bundle.getSerializable("product");
+        product = (Product) bundle.getSerializable("product");
         initData(product);
     }
 
@@ -118,6 +120,10 @@ public class ProductDetailActivity extends BaseMvpActivity<ProductDetailPresente
                 }
                 break;
             case R.id.tv_product_add_cart:
+                if (ammount > product.stockAmount) {
+                    Utils.showToast("你选择的数量大于库存，请重新选择", false);
+                    return;
+                }
                 mPresenter.saveCart(ammount, productId);
 
                 break;
@@ -141,6 +147,11 @@ public class ProductDetailActivity extends BaseMvpActivity<ProductDetailPresente
         tv_product_desc.setText(product.detail);
         showBannerList(product.coverImg);
         initRecyclerView(product.detailImgs);
+        if (product.stockAmount <= 0) {
+            tv_product_buy.setText(getString(R.string.product_sold_out));
+            tv_product_buy.setTextColor(getResources().getColor(R.color.color_9b9b9b));
+            tv_product_add_cart.setVisibility(View.GONE);
+        }
     }
 
     public void showBannerList(String coverImg) {

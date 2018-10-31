@@ -10,8 +10,10 @@ import com.nongke.jindao.R;
 import com.nongke.jindao.activity.VipRechargeActivity;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
+import com.nongke.jindao.base.utils.OnlineParamUtil;
 import com.nongke.jindao.base.utils.UserUtil;
 import com.nongke.jindao.base.event.LoginAccountEvent;
+import com.nongke.jindao.base.utils.Utils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -34,6 +36,8 @@ public class RechageDetailFragment extends BaseMvpFragment {
     TextView tv_recharge_100;
     @BindView(R.id.tv_vip_recharge)
     TextView tv_vip_recharge;
+    @BindView(R.id.tv_recharge_immediate)
+    TextView tv_recharge_immediate;
     @BindView(R.id.ll_pay_alipay)
     LinearLayout ll_pay_alipay;
     @BindView(R.id.ll_pay_wechat)
@@ -73,7 +77,7 @@ public class RechageDetailFragment extends BaseMvpFragment {
 
     }
 
-    @OnClick({ R.id.tv_vip_recharge,R.id.tv_recharge_50, R.id.tv_recharge_100,R.id.ll_pay_alipay, R.id.ll_pay_wechat})
+    @OnClick({R.id.tv_vip_recharge, R.id.tv_recharge_50, R.id.tv_recharge_100, R.id.ll_pay_alipay, R.id.ll_pay_wechat, R.id.tv_recharge_immediate})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.tv_vip_recharge:
@@ -100,6 +104,13 @@ public class RechageDetailFragment extends BaseMvpFragment {
                 img_pay_wechat.setImageResource(R.drawable.icon_pay_select);
                 img_pay_alipay.setImageResource(R.drawable.icon_pay_unselect);
                 break;
+            case R.id.tv_recharge_immediate:
+                String supportPhoneRecharge = OnlineParamUtil.paramResData.rspBody.support_phone_recharge.content;
+                if (supportPhoneRecharge.equals("false")) {
+                    Utils.showToast("抱歉，暂时不支持话费充值业务",false);
+                    return;
+                }
+                    break;
             default:
                 break;
         }
@@ -112,15 +123,24 @@ public class RechageDetailFragment extends BaseMvpFragment {
         judgeVip();
     }
 
-    private void judgeVip(){
+    private void judgeVip() {
         if (UserUtil.isLogined()) {
-            if(UserUtil.getUserInfo().rspBody.isVip==1){
+            if (OnlineParamUtil.paramResData == null || OnlineParamUtil.paramResData.rspBody == null)
+                return;
+            int phoneDiscount = Integer.parseInt(OnlineParamUtil.paramResData.rspBody.vip_phone_discount.content);
+
+            if (UserUtil.getUserInfo().rspBody.isVip == 1 && phoneDiscount < 100) {
                 tv_vip_recharge.setVisibility(View.GONE);
-                tv_recharge_50.setText(getResources().getString(R.string.recharge_50));
-                tv_recharge_100.setText(getResources().getString(R.string.recharge_100));
+                String recharge_50 = getResources().getString(R.string.recharge_50);
+                String recharge_50_format = String.format(recharge_50, phoneDiscount);
+                tv_recharge_50.setText(recharge_50_format);
+                String recharge_100 = getResources().getString(R.string.recharge_100);
+                String recharge_100_format = String.format(recharge_100, phoneDiscount);
+                tv_recharge_100.setText(recharge_100_format);
+
                 tv_recharge_50.setTextSize(16);
                 tv_recharge_100.setTextSize(16);
-            }else{
+            } else {
                 tv_vip_recharge.setVisibility(View.VISIBLE);
                 tv_recharge_50.setText("50元");
                 tv_recharge_100.setText("100元");

@@ -36,8 +36,8 @@
     <string name="recharge_discount">充值优惠</string>
     <string name="phone_fee_recharge_record">充值记录</string>
     <string name="you_are_not_vip">（你不是VIP会员，立即升级）</string>
-    <string name="recharge_50">50元\nVIP会员88折优惠</string>
-    <string name="recharge_100">100元\nVIP会员88折优惠</string>
+    <string name="recharge_50">50元\n\nvip会员%1$d折优惠</string>
+    <string name="recharge_100">100元\n\nvip会员%1$d折优惠</string>
     <string name="pay_method">支付方式：</string>
     <string name="pay_alipay">支付宝</string>
     <string name="pay_wechat">微信</string>
@@ -127,6 +127,7 @@
     <string name="complete">完成</string>
     <string name="edit">编辑</string>
     <string name="balance">结算</string>
+    <string name="product_sold_out">商品已售罄</string>
 
 
     <string name="vip_member_recharge_instruction">VIP会员权益说明：\n\n

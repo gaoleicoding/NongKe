@@ -66,7 +66,6 @@
                     android:gravity="center"
                     android:paddingBottom="20dp"
                     android:paddingTop="20dp"
-                    android:text="@string/recharge_50"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 
@@ -80,7 +79,6 @@
                     android:gravity="center"
                     android:paddingBottom="20dp"
                     android:paddingTop="20dp"
-                    android:text="@string/recharge_100"
                     android:textColor="@color/color_black"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -154,7 +152,7 @@
             android:text="@string/recharge_pay_indeed" />
 
         <TextView
-            android:id="@+id/tv_withdraw_immediate"
+            android:id="@+id/tv_recharge_immediate"
             style="@style/btn_selector_match_style"
             android:text="@string/recharge_immedate"/>
 
