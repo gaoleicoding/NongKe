@@ -74,7 +74,7 @@ public class RechargeFragment extends BaseMvpFragment {
 
     @Override
     protected void loadData() {
-        rechageDetailFragment. judgeVip();
+        rechageDetailFragment . judgeVip();
     }
 
 

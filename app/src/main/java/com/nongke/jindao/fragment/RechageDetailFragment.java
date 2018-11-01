@@ -141,7 +141,7 @@ public class RechageDetailFragment extends BaseMvpFragment {
         judgeVip();
     }
 
-    private void judgeVip() {
+    public void judgeVip() {
         if (UserUtil.isLogined()) {
             if (OnlineParamUtil.paramResData == null || OnlineParamUtil.paramResData.rspBody == null||UserUtil.getUserInfo().rspBody==null)
                 return;
@@ -176,7 +176,7 @@ public class RechageDetailFragment extends BaseMvpFragment {
         int phoneDiscount = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.vip_phone_discount.content);
         tv_money_recharge.setText("充值金额："+rechargeMoney+"元");
         if (UserUtil.getUserInfo().rspBody.isVip == 1) {
-            tv_money_pay.setText("实际支付："+rechargeMoney * phoneDiscount / 100);
+            tv_money_pay.setText("实际支付："+rechargeMoney * phoneDiscount / 100+"元");
         }
         else  tv_money_pay.setText("实际支付："+rechargeMoney+"元" );
 
