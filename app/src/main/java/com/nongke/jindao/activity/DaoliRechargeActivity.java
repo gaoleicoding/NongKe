@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseActivity;
+import com.nongke.jindao.base.utils.OnlineParamUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -33,6 +34,9 @@ public class DaoliRechargeActivity extends BaseActivity {
     ImageView img_pay_alipay;
     @BindView(R.id.img_pay_wechat)
     ImageView img_pay_wechat;
+    @BindView(R.id.tv_daoli_desc)
+    TextView tv_daoli_desc;
+
     public static void startActivity(Context context) {
         Intent intent = new Intent(context, DaoliRechargeActivity.class);
         context.startActivity(intent);
@@ -47,6 +51,9 @@ public class DaoliRechargeActivity extends BaseActivity {
     protected void initData(Bundle bundle) {
         title.setText(getString(R.string.my_daoli_recharge));
         iv_back.setVisibility(View.VISIBLE);
+        if (OnlineParamUtil.paramResData == null || OnlineParamUtil.paramResData.rspBody == null)
+            return;
+        tv_daoli_desc.setText(OnlineParamUtil.paramResData.rspBody.daoli_use_desc.content);
     }
 
 

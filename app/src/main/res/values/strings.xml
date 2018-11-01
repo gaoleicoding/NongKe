@@ -38,6 +38,8 @@
     <string name="you_are_not_vip">（你不是VIP会员，立即升级）</string>
     <string name="recharge_50">50元\n\nvip会员%1$d折优惠</string>
     <string name="recharge_100">100元\n\nvip会员%1$d折优惠</string>
+    <string name="pay">支付</string>
+    <string name="go_to_pay">去支付</string>
     <string name="pay_method">支付方式：</string>
     <string name="pay_alipay">支付宝</string>
     <string name="pay_wechat">微信</string>
@@ -115,19 +117,26 @@
     <string name="get_msgcode_failure">获取短信验证码失败</string>
     <string name="get_msgcode_frequent">获取短信验证码太频繁，请稍后再试</string>
     <string name="register_msg_code_invalid">验证码无效</string>
-    <string name="vip_member_recharge">VIP会员（¥ 49元）</string>
+    <string name="vip_recharge_price">VIP会员  %1$d元</string>
+    <string name="vip_recharge_price_to_user">（存到余额%1$d元）</string>
     <string name="daoli_balance">稻粒余额</string>
     <string name="daoli_recharge_ammount">充值金额</string>
     <string name="user_not_login">你还没有登录,请登录</string>
     <string name="address_save_success">地址保存成功</string>
     <string name="profile_save_success">个人资料保存成功</string>
     <string name="product_detail">商品详情</string>
+    <string name="order_detail">订单详情</string>
     <string name="delete">删除</string>
     <string name="cancel">取消</string>
     <string name="complete">完成</string>
     <string name="edit">编辑</string>
-    <string name="balance">结算</string>
+    <string name="balance">下单</string>
     <string name="product_sold_out">商品已售罄</string>
+    <string name="money_symbol">¥</string>
+    <string name="vip_contract_title">升级即同意</string>
+    <string name="vip_contract_desc">《金稻商城VIP升级协议》</string>
+    <string name="read_agree_contract">升级即同意《金稻商城VIP升级协议》</string>
+
 
 
     <string name="vip_member_recharge_instruction">VIP会员权益说明：\n\n

@@ -98,7 +98,7 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
 
     @Override
     public void initData(Bundle bundle) {
-        refreshUserInfo();
+
         EventBus.getDefault().register(this);
     }
 
@@ -166,7 +166,7 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
 
     @Override
     protected void loadData() {
-
+        refreshUserInfo();
     }
 
 
@@ -181,6 +181,7 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
         }
         switch (view.getId()) {
             case R.id.tv_vip_recharge:
+                if (UserUtil.getUserInfo().rspBody.isVip == 0)
                 VipRechargeActivity.startActivity(getActivity());
                 break;
             case R.id.my_daoli_recharge_layout:
@@ -239,6 +240,8 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
                 RegisterLoginActivity.startActivity(getActivity());
                 UserUtil.setUserInfo(null);
                 UserUtil.setLogined(false);
+                LoginAccountEvent accountEvent = new LoginAccountEvent();
+                EventBus.getDefault().post(accountEvent);
                 break;
             case R.id.iv_user_photo:
                 if (!UserUtil.isLogined())

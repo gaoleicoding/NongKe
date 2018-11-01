@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.nongke.jindao.R;
+import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.activity.VipRechargeActivity;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
@@ -36,8 +37,14 @@ public class RechageDetailFragment extends BaseMvpFragment {
     TextView tv_recharge_100;
     @BindView(R.id.tv_vip_recharge)
     TextView tv_vip_recharge;
+    @BindView(R.id.tv_recharge_phone_num)
+    TextView tv_recharge_phone_num;
     @BindView(R.id.tv_recharge_immediate)
     TextView tv_recharge_immediate;
+    @BindView(R.id.tv_money_recharge)
+    TextView tv_money_recharge;
+    @BindView(R.id.tv_money_pay)
+    TextView tv_money_pay;
     @BindView(R.id.ll_pay_alipay)
     LinearLayout ll_pay_alipay;
     @BindView(R.id.ll_pay_wechat)
@@ -50,7 +57,8 @@ public class RechageDetailFragment extends BaseMvpFragment {
     @Override
     public void initData(Bundle bundle) {
         EventBus.getDefault().register(this);
-        judgeVip();
+
+
     }
 
     @Override
@@ -73,14 +81,18 @@ public class RechageDetailFragment extends BaseMvpFragment {
     }
 
     @Override
-    protected void loadData() {
-
+    public void loadData() {
     }
 
     @OnClick({R.id.tv_vip_recharge, R.id.tv_recharge_50, R.id.tv_recharge_100, R.id.ll_pay_alipay, R.id.ll_pay_wechat, R.id.tv_recharge_immediate})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.tv_vip_recharge:
+                if (!UserUtil.isLogined()) {
+                    RegisterLoginActivity.startActivity(getActivity());
+                    Utils.showToast(getString(R.string.user_not_login), true);
+                    return;
+                }
                 VipRechargeActivity.startActivity(getActivity());
                 break;
             case R.id.tv_recharge_50:
@@ -88,13 +100,14 @@ public class RechageDetailFragment extends BaseMvpFragment {
                 tv_recharge_50.setTextColor(getResources().getColor(R.color.white));
                 tv_recharge_100.setBackgroundResource(R.drawable.shape_recharge_ammount_bg);
                 tv_recharge_100.setTextColor(getResources().getColor(R.color.color_black));
-//                throw new NullPointerException();
+                showRechargeMoney(50);
                 break;
             case R.id.tv_recharge_100:
                 tv_recharge_100.setBackgroundResource(R.drawable.shape_recharge_ammount_bg_select);
                 tv_recharge_100.setTextColor(getResources().getColor(R.color.white));
                 tv_recharge_50.setBackgroundResource(R.drawable.shape_recharge_ammount_bg);
                 tv_recharge_50.setTextColor(getResources().getColor(R.color.color_black));
+                showRechargeMoney(100);
                 break;
             case R.id.ll_pay_alipay:
                 img_pay_alipay.setImageResource(R.drawable.icon_pay_select);
@@ -105,12 +118,17 @@ public class RechageDetailFragment extends BaseMvpFragment {
                 img_pay_alipay.setImageResource(R.drawable.icon_pay_unselect);
                 break;
             case R.id.tv_recharge_immediate:
-                String supportPhoneRecharge = OnlineParamUtil.paramResData.rspBody.support_phone_recharge.content;
-                if (supportPhoneRecharge.equals("false")) {
-                    Utils.showToast("抱歉，暂时不支持话费充值业务",false);
+                if (!UserUtil.isLogined()) {
+                    RegisterLoginActivity.startActivity(getActivity());
+                    Utils.showToast(getString(R.string.user_not_login), true);
                     return;
                 }
-                    break;
+                String supportPhoneRecharge = OnlineParamUtil.paramResData.rspBody.support_phone_recharge.content;
+                if (supportPhoneRecharge.equals("false")) {
+                    Utils.showToast("抱歉，暂时不支持话费充值业务", false);
+                    return;
+                }
+                break;
             default:
                 break;
         }
@@ -125,10 +143,12 @@ public class RechageDetailFragment extends BaseMvpFragment {
 
     private void judgeVip() {
         if (UserUtil.isLogined()) {
-            if (OnlineParamUtil.paramResData == null || OnlineParamUtil.paramResData.rspBody == null)
+            if (OnlineParamUtil.paramResData == null || OnlineParamUtil.paramResData.rspBody == null||UserUtil.getUserInfo().rspBody==null)
                 return;
-            int phoneDiscount = Integer.parseInt(OnlineParamUtil.paramResData.rspBody.vip_phone_discount.content);
+            tv_recharge_phone_num.setText(UserUtil.getUserInfo().rspBody.phone);
 
+            showRechargeMoney(50);
+            int phoneDiscount = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.vip_phone_discount.content);
             if (UserUtil.getUserInfo().rspBody.isVip == 1 && phoneDiscount < 100) {
                 tv_vip_recharge.setVisibility(View.GONE);
                 String recharge_50 = getResources().getString(R.string.recharge_50);
@@ -140,13 +160,25 @@ public class RechageDetailFragment extends BaseMvpFragment {
 
                 tv_recharge_50.setTextSize(16);
                 tv_recharge_100.setTextSize(16);
+
             } else {
                 tv_vip_recharge.setVisibility(View.VISIBLE);
                 tv_recharge_50.setText("50元");
                 tv_recharge_100.setText("100元");
                 tv_recharge_50.setTextSize(18);
                 tv_recharge_100.setTextSize(18);
+
             }
         }
+    }
+
+    private void showRechargeMoney(int rechargeMoney) {
+        int phoneDiscount = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.vip_phone_discount.content);
+        tv_money_recharge.setText("充值金额："+rechargeMoney+"元");
+        if (UserUtil.getUserInfo().rspBody.isVip == 1) {
+            tv_money_pay.setText("实际支付："+rechargeMoney * phoneDiscount / 100);
+        }
+        else  tv_money_pay.setText("实际支付："+rechargeMoney+"元" );
+
     }
 }

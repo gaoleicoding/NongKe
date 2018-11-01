@@ -17,9 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
         android:maxLines="1"
-        android:textSize="12sp"
-        android:contentDescription="@null"
-        android:textColor="@color/white"
+        android:textColor="@android:color/transparent"
        />
     </LinearLayout>
 

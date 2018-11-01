@@ -78,7 +78,7 @@
                             android:id="@+id/et_transfer_amount"
                             style="@style/code_edit_num_style"
                             android:hint="@string/input_with_amount_hint"
-                            android:inputType="number"/>
+                            android:inputType="number" />
                     </LinearLayout>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
@@ -98,7 +98,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_recharge_50"
+                    android:id="@+id/tv_daoli_desc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="10dp"
@@ -173,12 +173,9 @@
                 android:id="@+id/tv_withdraw_immediate"
                 style="@style/btn_selector_match_style"
                 android:text="@string/recharge_immedate"
+                android:layout_marginBottom="20dp"
                 android:textColor="@color/white" />
 
-            <TextView
-                style="@style/user_info_txt"
-                android:layout_marginTop="20dp"
-                android:text="@string/custom_phone_num" />
         </LinearLayout>
 
     </ScrollView>

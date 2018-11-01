@@ -28,6 +28,7 @@ public class RechargeFragment extends BaseMvpFragment {
     TabLayout tabLayout;
     @BindView(R.id.viewPager)
     CustomViewPager viewPager;
+    RechageDetailFragment rechageDetailFragment;
 
     private ArrayList<Fragment> mFragments;
 
@@ -41,7 +42,7 @@ public class RechargeFragment extends BaseMvpFragment {
     public void initView() {
 
         mFragments = new ArrayList<Fragment>();
-        RechageDetailFragment rechageDetailFragment = new RechageDetailFragment();
+        rechageDetailFragment = new RechageDetailFragment();
         RechageRecordFragment rechageRecordFragment = new RechageRecordFragment();
         mFragments.add(rechageDetailFragment);
         mFragments.add(rechageRecordFragment);
@@ -73,7 +74,7 @@ public class RechargeFragment extends BaseMvpFragment {
 
     @Override
     protected void loadData() {
-//        mPresenter.getProjectInfo(1, 294);
+        rechageDetailFragment. judgeVip();
     }
 
 

@@ -203,7 +203,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/tv_product_buy"
+                android:id="@+id/tv_product_order"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@color/app_color"
@@ -215,7 +215,7 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:paddingTop="10dp"
-                android:text="立即购买"
+                android:text="立即下单"
                 android:textColor="#fffdf0"
                 android:textSize="14sp" />
         </LinearLayout>

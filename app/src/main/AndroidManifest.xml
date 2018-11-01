@@ -46,6 +46,7 @@
         <activity android:name=".activity.MessageActivity"></activity>
         <activity android:name=".activity.WebViewActivity"></activity>
         <activity android:name=".activity.ProductDetailActivity"></activity>
+        <activity android:name=".activity.OrderActivity"></activity>
 
         <!--value的值填写你在友盟后台申请的应用Appkey-->
         <meta-data

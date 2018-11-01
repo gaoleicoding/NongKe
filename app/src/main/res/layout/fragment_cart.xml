@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/header_layout"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:paddingBottom="45dp" />
 
     <RelativeLayout
@@ -103,7 +103,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/tv_product_buy"
+                android:id="@+id/tv_product_order"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@color/app_color"
@@ -121,84 +121,7 @@
         </LinearLayout>
 
     </RelativeLayout>
-    <!--<RelativeLayout-->
-        <!--android:id="@+id/rl_cart_manage"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="45dp"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:background="@color/white">-->
 
-        <!--<View-->
-            <!--android:id="@+id/divider2"-->
-            <!--style="@style/horizontal_divider"-->
-            <!--android:background="@color/color_e9e9e9" />-->
-
-
-        <!--<CheckBox-->
-            <!--android:id="@+id/cb_product_select_all"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_centerVertical="true"-->
-            <!--android:layout_marginLeft="20dp"-->
-            <!--android:layout_marginRight="10dp"-->
-            <!--android:background="@null"-->
-            <!--android:button="@null"-->
-            <!--android:drawableLeft="@drawable/checkbox_bg"-->
-            <!--android:minHeight="32dp"-->
-            <!--android:minWidth="24dp" />-->
-
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_centerVertical="true"-->
-            <!--android:layout_toRightOf="@id/cb_product_select_all"-->
-            <!--android:text="全选"-->
-            <!--android:textColor="@color/black"-->
-            <!--android:textSize="14sp" />-->
-
-        <!--<LinearLayout-->
-
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_alignParentRight="true"-->
-            <!--android:layout_below="@id/divider"-->
-            <!--android:orientation="horizontal">-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/tv_product_total_price"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:clickable="true"-->
-                <!--android:ellipsize="end"-->
-                <!--android:gravity="center"-->
-                <!--android:maxLines="1"-->
-                <!--android:paddingBottom="10dp"-->
-                <!--android:paddingLeft="20dp"-->
-                <!--android:paddingRight="20dp"-->
-                <!--android:paddingTop="10dp"-->
-                <!--android:text="合计：0元"-->
-                <!--android:textColor="@color/black"-->
-                <!--android:textSize="14sp" />-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/tv_product_buy"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:background="@color/app_color"-->
-                <!--android:clickable="true"-->
-                <!--android:ellipsize="end"-->
-                <!--android:gravity="center"-->
-                <!--android:maxLines="1"-->
-                <!--android:paddingBottom="10dp"-->
-                <!--android:paddingLeft="20dp"-->
-                <!--android:paddingRight="20dp"-->
-                <!--android:paddingTop="10dp"-->
-                <!--android:text="结算"-->
-                <!--android:textColor="#fffdf0"-->
-                <!--android:textSize="14sp" />-->
-        <!--</LinearLayout>-->
-
-    <!--</RelativeLayout>-->
     <LinearLayout
         android:id="@+id/ll_cart_empty"
         android:layout_width="wrap_content"

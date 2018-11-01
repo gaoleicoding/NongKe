@@ -19,10 +19,13 @@ import com.nongke.jindao.base.mmodel.RegisterResData;
 import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.SharedPreferencesUtils;
 import com.nongke.jindao.base.utils.Utils;
+import com.nongke.jindao.event.UpdateCartEvent;
 import com.nongke.jindao.mcontract.RegisterLoginContract;
 import com.nongke.jindao.mpresenter.RegisterLoginPresenter;
 import com.nongke.jindao.base.utils.UserUtil;
 import com.nongke.jindao.view.CountDownButton;
+
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -267,6 +270,8 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
             SharedPreferencesUtils.setParam(RegisterLoginActivity.this, "phone_num", et_login_phone_num.getText().toString());
             SharedPreferencesUtils.setParam(RegisterLoginActivity.this, "password", et_login_password.getText().toString());
             MainActivity.startActivity(RegisterLoginActivity.this);
+            UpdateCartEvent updateCartEvent = new UpdateCartEvent();
+            EventBus.getDefault().post(updateCartEvent);
             finish();
 //            ExitAppUtils.getInstance().exit();
         } else if (loginResData.retDesc != null && "20000".equals(loginResData.retCode))

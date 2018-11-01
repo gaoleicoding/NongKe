@@ -26,6 +26,7 @@ import com.youth.banner.Transformer;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,8 +57,8 @@ public class ProductDetailActivity extends BaseMvpActivity<ProductDetailPresente
     TextView tv_product_stock;
     @BindView(R.id.tv_product_desc)
     TextView tv_product_desc;
-    @BindView(R.id.tv_product_buy)
-    TextView tv_product_buy;
+    @BindView(R.id.tv_product_order)
+    TextView tv_product_order;
     @BindView(R.id.tv_product_add_cart)
     TextView tv_product_add_cart;
     @BindView(R.id.iv_product_add)
@@ -106,7 +107,7 @@ public class ProductDetailActivity extends BaseMvpActivity<ProductDetailPresente
 
     }
 
-    @OnClick({R.id.iv_product_add, R.id.iv_product_reduce, R.id.tv_product_add_cart, R.id.tv_product_buy})
+    @OnClick({R.id.iv_product_add, R.id.iv_product_reduce, R.id.tv_product_add_cart, R.id.tv_product_order})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.iv_product_add:
@@ -118,17 +119,23 @@ public class ProductDetailActivity extends BaseMvpActivity<ProductDetailPresente
                     ammount = ammount - 1;
                     tv_product_ammount.setText(ammount + "");
                 }
+                product.amount = ammount;
                 break;
             case R.id.tv_product_add_cart:
                 if (ammount > product.stockAmount) {
                     Utils.showToast("你选择的数量大于库存，请重新选择", false);
                     return;
                 }
+                product.amount = ammount;
                 mPresenter.saveCart(ammount, productId);
 
                 break;
-            case R.id.tv_product_buy:
-
+            case R.id.tv_product_order:
+                List<Product> list = new ArrayList<>();
+                list.add(product);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("product_list", (Serializable) list);
+                OrderActivity.startActivity(context, bundle);
                 break;
         }
     }
@@ -147,9 +154,10 @@ public class ProductDetailActivity extends BaseMvpActivity<ProductDetailPresente
         tv_product_desc.setText(product.detail);
         showBannerList(product.coverImg);
         initRecyclerView(product.detailImgs);
+        product.amount = 1;
         if (product.stockAmount <= 0) {
-            tv_product_buy.setText(getString(R.string.product_sold_out));
-            tv_product_buy.setTextColor(getResources().getColor(R.color.color_9b9b9b));
+            tv_product_order.setText(getString(R.string.product_sold_out));
+            tv_product_order.setTextColor(getResources().getColor(R.color.color_9b9b9b));
             tv_product_add_cart.setVisibility(View.GONE);
         }
     }

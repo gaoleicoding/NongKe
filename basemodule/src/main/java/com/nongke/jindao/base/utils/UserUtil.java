@@ -27,5 +27,6 @@ public class UserUtil {
         setLogined(true);
         LoginAccountEvent accountEvent = new LoginAccountEvent();
         EventBus.getDefault().post(accountEvent);
+
     }
 }

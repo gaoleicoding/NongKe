@@ -13,6 +13,7 @@ public class LogUtil {
     private static boolean isDebug = BuildConfig.DEBUG;
     private static final String TAG = "gaolei";
     private static final String TAG2 = "zmy";
+    private static final String TAG3 = "";
 
     public static void init(boolean isPrintable) {
         isDebug = isPrintable;

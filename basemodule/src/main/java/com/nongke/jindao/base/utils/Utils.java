@@ -124,10 +124,14 @@ public class Utils {
 
     }
 
-    public static String ms2Date(long _ms){
+    public static String ms2Date(long _ms) {
         Date date = new Date(_ms);
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
         return format.format(date);
+    }
+
+    public static int stringToInt(String value) {
+        return Integer.parseInt(value.trim());
     }
 
 

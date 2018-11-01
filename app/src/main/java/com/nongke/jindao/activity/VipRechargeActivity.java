@@ -3,7 +3,10 @@ package com.nongke.jindao.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -12,6 +15,9 @@ import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseActivity;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
+import com.nongke.jindao.base.utils.OnlineParamUtil;
+import com.nongke.jindao.base.utils.Utils;
+import com.nongke.jindao.base.view.TitleView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -27,6 +33,14 @@ public class VipRechargeActivity extends BaseActivity {
     ImageView iv_back;
     @BindView(R.id.title)
     TextView title;
+    @BindView(R.id.layout_title)
+    TitleView layout_title;
+    @BindView(R.id.tv_vip_right_desc)
+    TextView tv_vip_right_desc;
+    @BindView(R.id.tv_vip_price)
+    TextView tv_vip_price;
+    @BindView(R.id.tv_vip_price_to_user)
+    TextView tv_vip_price_to_user;
     @BindView(R.id.ll_pay_alipay)
     LinearLayout ll_pay_alipay;
     @BindView(R.id.ll_pay_wechat)
@@ -35,6 +49,14 @@ public class VipRechargeActivity extends BaseActivity {
     ImageView img_pay_alipay;
     @BindView(R.id.img_pay_wechat)
     ImageView img_pay_wechat;
+
+    @BindView(R.id.tv_vip_contract)
+    TextView tv_vip_contract;
+    @BindView(R.id.tv_vip_contract_content)
+    TextView tv_vip_contract_content;
+
+    boolean isInContract;
+
     public static void startActivity(Context context) {
         Intent intent = new Intent(context, VipRechargeActivity.class);
         context.startActivity(intent);
@@ -49,13 +71,37 @@ public class VipRechargeActivity extends BaseActivity {
     protected void initData(Bundle bundle) {
         title.setText(getString(R.string.vip_member));
         iv_back.setVisibility(View.VISIBLE);
+        if (OnlineParamUtil.paramResData == null || OnlineParamUtil.paramResData.rspBody == null)
+            return;
+        tv_vip_right_desc.setText(OnlineParamUtil.paramResData.rspBody.vip_right_desc.content);
+        if (OnlineParamUtil.paramResData != null && OnlineParamUtil.paramResData.rspBody != null) {
+            int vipPrice = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.vip_price.content);
+            int vipToUserMoney = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.vip_to_user_money.content);
+            String vip_recharge_price = getResources().getString(R.string.vip_recharge_price);
+            String vip_recharge_price_to_user = getResources().getString(R.string.vip_recharge_price_to_user);
+            String recharge_price = String.format(vip_recharge_price, vipPrice);
+            String recharge_price_to_user = String.format(vip_recharge_price_to_user, vipToUserMoney);
+            tv_vip_price.setText(recharge_price);
+            if (vipToUserMoney > 0) {
+                tv_vip_price_to_user.setVisibility(View.VISIBLE);
+                tv_vip_price_to_user.setText(recharge_price_to_user);
+            }
+        }
     }
 
 
-    @OnClick({R.id.ll_pay_alipay, R.id.ll_pay_wechat})
+    @OnClick({R.id.ll_pay_alipay, R.id.ll_pay_wechat, R.id.iv_back, R.id.tv_pay, R.id.tv_vip_contract, R.id.tv_vip_contract_content})
     public void click(View view) {
         switch (view.getId()) {
 
+            case R.id.iv_back:
+                if (isInContract) {
+                    isInContract = false;
+                    tv_vip_contract_content.setVisibility(View.GONE);
+                    title.setText(getResources().getString(R.string.vip_member));
+                    layout_title.setVisibility(View.VISIBLE);
+                } else finish();
+                break;
             case R.id.ll_pay_alipay:
                 img_pay_alipay.setImageResource(R.drawable.icon_pay_select);
                 img_pay_wechat.setImageResource(R.drawable.icon_pay_unselect);
@@ -64,9 +110,40 @@ public class VipRechargeActivity extends BaseActivity {
                 img_pay_wechat.setImageResource(R.drawable.icon_pay_select);
                 img_pay_alipay.setImageResource(R.drawable.icon_pay_unselect);
                 break;
+            case R.id.tv_pay:
+//                if (!cb_vip_contract.isChecked())
+//                    Utils.showToast(getResources().getString(R.string.read_agree_contract), false);
+                break;
+            case R.id.tv_vip_contract:
+                isInContract = true;
+                tv_vip_contract_content.setText(OnlineParamUtil.paramResData.rspBody.vip_contract.content);
+                tv_vip_contract_content.setVisibility(View.VISIBLE);
+                title.setText(getResources().getString(R.string.vip_contract_desc));
+                break;
+
             default:
                 break;
         }
+
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK
+                && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if (isInContract) {
+                isInContract = false;
+                tv_vip_contract_content.setVisibility(View.GONE);
+                title.setText(getResources().getString(R.string.vip_member));
+                layout_title.setVisibility(View.VISIBLE);
+            } else finish();
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
+
+    private void back() {
 
     }
 }
