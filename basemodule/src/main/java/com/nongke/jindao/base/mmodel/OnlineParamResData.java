@@ -22,13 +22,17 @@ public class OnlineParamResData extends BaseResData {
         public ParamContent support_phone_recharge;
         public ParamContent pay_product_bill_extract;
         public ParamContent vip_price;
+        public ParamContent vip_original_price;
         public ParamContent vip_to_user_money;
+        public ParamContent vip_recharge_gift;
+        public ParamContent vip_recharge_gift_boolean;
 
         public ParamContent vip_phone_recharge;
         public ParamContent vip_discount;
         public ParamContent vip_contract;
         public ParamContent vip_right_desc;
         public ParamContent daoli_use_desc;
+        public ParamContent phone_recharge_desc;
 
     }
 

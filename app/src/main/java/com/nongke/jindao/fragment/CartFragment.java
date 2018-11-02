@@ -17,6 +17,7 @@ import com.nongke.jindao.activity.OrderActivity;
 import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.adapter.CartAdapter;
 import com.nongke.jindao.adapter.divider.SpacesItemDecoration;
+import com.nongke.jindao.base.event.LoginAccountEvent;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mmodel.Product;
 import com.nongke.jindao.base.mmodel.ProductResData;
@@ -54,7 +55,8 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
     @BindView(R.id.tv_product_total_price)
     TextView tv_product_total_price;
     @BindView(R.id.tv_product_order)
-    TextView tv_product_order;
+    TextView tv_product_order; @BindView(R.id.tv_goto_login)
+    TextView tv_goto_login;
     @BindView(R.id.cart_recyclerview)
     RecyclerView cart_recyclerview;
     @BindView(R.id.ll_cart_empty)
@@ -71,13 +73,7 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
 
     @Override
     public void loadData() {
-        if (UserUtil.isLogined()) {
-            mPresenter.getCartProduct();
-        } else {
-            RegisterLoginActivity.startActivity(getActivity());
-            Utils.showToast(getString(R.string.user_not_login), true);
-            return;
-        }
+        judgeLogin();
     }
 
     @Override
@@ -115,7 +111,7 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
         return new CartPresenter();
     }
 
-    @OnClick({R.id.tv_to_shop, R.id.tv_edit, R.id.tv_product_order})
+    @OnClick({R.id.tv_to_shop, R.id.tv_edit, R.id.tv_product_order,R.id.tv_goto_login})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.tv_to_shop:
@@ -171,6 +167,11 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
                     backFromManageCart();
                 }
                 break;
+            case R.id.tv_goto_login:
+                if (!UserUtil.isLogined()) {
+                    RegisterLoginActivity.startActivity(getActivity());
+                }
+                break;
         }
 
     }
@@ -203,10 +204,9 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
             cart_recyclerview.setVisibility(View.VISIBLE);
             ll_cart_empty.setVisibility(View.GONE);
             tv_edit.setVisibility(View.VISIBLE);
+            rl_to_pay.setVisibility(View.VISIBLE);
         }
-        rl_to_pay.setVisibility(View.VISIBLE);
         cartAdapter.totalPrice = 0;
-//        cartAdapter.selectAll(false,true);
 
         cartAdapter.setDataList(newDataList);
         if (!cartAdapter.isAllSelected()) {
@@ -246,5 +246,23 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
     public void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(LoginAccountEvent accountEvent) {
+        judgeLogin();
+    }
+
+    private void judgeLogin(){
+        if (!UserUtil.isLogined()) {
+            tv_goto_login.setVisibility(View.VISIBLE);
+            rl_to_pay.setVisibility(View.GONE);
+            tv_edit.setVisibility(View.GONE);
+            cart_recyclerview.setVisibility(View.GONE);
+        }else{
+            mPresenter.getCartProduct();
+            tv_goto_login.setVisibility(View.GONE);
+            tv_edit.setVisibility(View.VISIBLE);
+            cart_recyclerview.setVisibility(View.VISIBLE);
+        }
     }
 }

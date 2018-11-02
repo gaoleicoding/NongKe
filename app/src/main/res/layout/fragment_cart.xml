@@ -159,6 +159,19 @@
             android:textColor="@color/white"
             android:textSize="16sp" />
     </LinearLayout>
-
+    <TextView
+        android:id="@+id/tv_goto_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="@drawable/shape_recharge_ammount_bg_select"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="去登录"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
 
 </RelativeLayout>

@@ -60,6 +60,8 @@ public class OrderActivity extends BaseMvpActivity {
     RecyclerView order_product_recyclerview;
     @BindView(R.id.ll_order_discount_layout)
     LinearLayout ll_order_discount_layout;
+    @BindView(R.id.ll_balance_pay)
+    LinearLayout ll_balance_pay;
 
     private List<Product> orderProductList;
     private OrderProductAdapter orderProductAdapter;
@@ -89,11 +91,13 @@ public class OrderActivity extends BaseMvpActivity {
         iv_back.setVisibility(View.VISIBLE);
         orderProductList = (List<Product>) bundle.getSerializable("product_list");
         initRecyclerView();
+        if (UserUtil.getUserInfo().rspBody.money > 10)
+            ll_balance_pay.setVisibility(View.GONE);
         for (int i = 0; i < orderProductList.size(); i++) {
             Product productInfo = orderProductList.get(i);
             totalPrice = totalPrice + productInfo.productPrice * productInfo.amount;
         }
-        tv_order_money.setText( totalPrice + "");
+        tv_order_money.setText(totalPrice + "");
         if (UserUtil.getUserInfo().rspBody.isVip == 1) {
             ll_order_discount_layout.setVisibility(View.VISIBLE);
             int productDiscount = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.vip_discount.content);
@@ -116,8 +120,8 @@ public class OrderActivity extends BaseMvpActivity {
                 //before 输入框中改变前的字符串的位置 默认为0
                 //count 输入框中改变后的一共输入字符串的数量
                 String string = text.toString();
-                int ammount=0;
-                if(!string.equalsIgnoreCase("")){
+                int ammount = 0;
+                if (!string.equalsIgnoreCase("")) {
                     ammount = Utils.stringToInt(string);
                 }
                 if (ammount > UserUtil.getUserInfo().rspBody.money) {

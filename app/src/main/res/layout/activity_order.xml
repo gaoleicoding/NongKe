@@ -96,7 +96,9 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp" />
 
-            <include layout="@layout/layout_pay_style" />
+            <com.nongke.jindao.view.PayView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <LinearLayout
                 style="@style/code_edit_layout_style"
@@ -121,8 +123,8 @@
             <LinearLayout
                 android:id="@+id/ll_order_discount_layout"
                 style="@style/code_edit_layout_style"
-                android:visibility="gone"
-                android:layout_marginLeft="20dp">
+                android:layout_marginLeft="20dp"
+                android:visibility="gone">
 
                 <TextView
                     style="@style/common_txt_16sp"
@@ -141,13 +143,16 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_balance_pay"
                 style="@style/code_edit_layout_style"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:focusableInTouchMode="true"
+                android:visibility="gone">
 
                 <TextView
                     style="@style/common_txt_16sp"
-                    android:text="使用余额"/>
+                    android:text="使用余额" />
 
                 <EditText
                     android:id="@+id/et_balance_pay"

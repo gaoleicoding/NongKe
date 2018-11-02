@@ -16,6 +16,7 @@ import com.nongke.jindao.R;
 import com.nongke.jindao.adapter.ProductDetailImgAdapter;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
 import com.nongke.jindao.base.mmodel.Product;
+import com.nongke.jindao.base.utils.UserUtil;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.event.UpdateCartEvent;
 import com.nongke.jindao.mpresenter.ProductDetailPresenter;
@@ -131,6 +132,11 @@ public class ProductDetailActivity extends BaseMvpActivity<ProductDetailPresente
 
                 break;
             case R.id.tv_product_order:
+                if (!UserUtil.isLogined()) {
+                    RegisterLoginActivity.startActivity(this);
+                    Utils.showToast(getString(R.string.user_not_login), true);
+                    return;
+                }
                 List<Product> list = new ArrayList<>();
                 list.add(product);
                 Bundle bundle = new Bundle();

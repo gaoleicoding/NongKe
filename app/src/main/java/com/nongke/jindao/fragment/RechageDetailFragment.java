@@ -15,6 +15,7 @@ import com.nongke.jindao.base.utils.OnlineParamUtil;
 import com.nongke.jindao.base.utils.UserUtil;
 import com.nongke.jindao.base.event.LoginAccountEvent;
 import com.nongke.jindao.base.utils.Utils;
+import com.nongke.jindao.mcontract.ProductClassifyContract;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -45,6 +46,13 @@ public class RechageDetailFragment extends BaseMvpFragment {
     TextView tv_money_recharge;
     @BindView(R.id.tv_money_pay)
     TextView tv_money_pay;
+    @BindView(R.id.tv_phone_recharge_desc)
+    TextView tv_phone_recharge_desc;
+
+    @BindView(R.id.ll_money_recharge)
+    LinearLayout ll_money_recharge;
+    @BindView(R.id.ll_money_pay)
+    LinearLayout ll_money_pay;
     @BindView(R.id.ll_pay_alipay)
     LinearLayout ll_pay_alipay;
     @BindView(R.id.ll_pay_wechat)
@@ -88,11 +96,6 @@ public class RechageDetailFragment extends BaseMvpFragment {
     public void click(View view) {
         switch (view.getId()) {
             case R.id.tv_vip_recharge:
-                if (!UserUtil.isLogined()) {
-                    RegisterLoginActivity.startActivity(getActivity());
-                    Utils.showToast(getString(R.string.user_not_login), true);
-                    return;
-                }
                 VipRechargeActivity.startActivity(getActivity());
                 break;
             case R.id.tv_recharge_50:
@@ -100,14 +103,14 @@ public class RechageDetailFragment extends BaseMvpFragment {
                 tv_recharge_50.setTextColor(getResources().getColor(R.color.white));
                 tv_recharge_100.setBackgroundResource(R.drawable.shape_recharge_ammount_bg);
                 tv_recharge_100.setTextColor(getResources().getColor(R.color.color_black));
-                showRechargeMoney(50);
+//                showRechargeMoney(50);
                 break;
             case R.id.tv_recharge_100:
                 tv_recharge_100.setBackgroundResource(R.drawable.shape_recharge_ammount_bg_select);
                 tv_recharge_100.setTextColor(getResources().getColor(R.color.white));
                 tv_recharge_50.setBackgroundResource(R.drawable.shape_recharge_ammount_bg);
                 tv_recharge_50.setTextColor(getResources().getColor(R.color.color_black));
-                showRechargeMoney(100);
+//                showRechargeMoney(100);
                 break;
             case R.id.ll_pay_alipay:
                 img_pay_alipay.setImageResource(R.drawable.icon_pay_select);
@@ -138,24 +141,26 @@ public class RechageDetailFragment extends BaseMvpFragment {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(LoginAccountEvent accountEvent) {
-        judgeVip();
+        judgeLoginAndVip();
     }
 
-    public void judgeVip() {
+    public void judgeLoginAndVip() {
         if (UserUtil.isLogined()) {
-            if (OnlineParamUtil.paramResData == null || OnlineParamUtil.paramResData.rspBody == null||UserUtil.getUserInfo().rspBody==null)
+            if (OnlineParamUtil.paramResData == null || OnlineParamUtil.paramResData.rspBody == null || UserUtil.getUserInfo().rspBody == null)
                 return;
+//            ll_money_recharge.setVisibility(View.VISIBLE);
+//            ll_money_pay.setVisibility(View.VISIBLE);
             tv_recharge_phone_num.setText(UserUtil.getUserInfo().rspBody.phone);
 
-            showRechargeMoney(50);
+//            showRechargeMoney(50);
             int phoneDiscount = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.vip_phone_discount.content);
             if (UserUtil.getUserInfo().rspBody.isVip == 1 && phoneDiscount < 100) {
                 tv_vip_recharge.setVisibility(View.GONE);
                 String recharge_50 = getResources().getString(R.string.recharge_50);
-                String recharge_50_format = String.format(recharge_50, phoneDiscount);
+                String recharge_50_format = String.format(recharge_50, phoneDiscount * 50 / 100);
                 tv_recharge_50.setText(recharge_50_format);
                 String recharge_100 = getResources().getString(R.string.recharge_100);
-                String recharge_100_format = String.format(recharge_100, phoneDiscount);
+                String recharge_100_format = String.format(recharge_100, phoneDiscount * 100 / 100);
                 tv_recharge_100.setText(recharge_100_format);
 
                 tv_recharge_50.setTextSize(16);
@@ -169,16 +174,29 @@ public class RechageDetailFragment extends BaseMvpFragment {
                 tv_recharge_100.setTextSize(18);
 
             }
+
+        } else {
+            tv_recharge_phone_num.setText("");
+            ll_money_recharge.setVisibility(View.GONE);
+            ll_money_pay.setVisibility(View.GONE);
+            tv_recharge_50.setText("50元");
+            tv_recharge_100.setText("100元");
+            tv_vip_recharge.setVisibility(View.GONE);
         }
+        tv_phone_recharge_desc.setText(OnlineParamUtil.paramResData.rspBody.phone_recharge_desc.content);
     }
 
     private void showRechargeMoney(int rechargeMoney) {
         int phoneDiscount = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.vip_phone_discount.content);
-        tv_money_recharge.setText("充值金额："+rechargeMoney+"元");
+        tv_money_recharge.setText(rechargeMoney + "");
         if (UserUtil.getUserInfo().rspBody.isVip == 1) {
-            tv_money_pay.setText("实际支付："+rechargeMoney * phoneDiscount / 100+"元");
-        }
-        else  tv_money_pay.setText("实际支付："+rechargeMoney+"元" );
+            tv_money_pay.setText(rechargeMoney * phoneDiscount / 100 + "");
+        } else tv_money_pay.setText(rechargeMoney + "");
 
+    }
+
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

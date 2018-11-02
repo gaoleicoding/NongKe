@@ -74,11 +74,8 @@ public class RechargeFragment extends BaseMvpFragment {
 
     @Override
     protected void loadData() {
-        rechageDetailFragment . judgeVip();
+        rechageDetailFragment.judgeLoginAndVip();
     }
-
-
-
 
 
     /**
@@ -88,7 +85,6 @@ public class RechargeFragment extends BaseMvpFragment {
 
         tabLayout.getTabAt(0).setCustomView(R.layout.tab_recharge_detail);
         tabLayout.getTabAt(1).setCustomView(R.layout.tab_recharge_record);
-
 
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

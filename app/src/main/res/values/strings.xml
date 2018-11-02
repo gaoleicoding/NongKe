@@ -36,8 +36,8 @@
     <string name="recharge_discount">充值优惠</string>
     <string name="phone_fee_recharge_record">充值记录</string>
     <string name="you_are_not_vip">（你不是VIP会员，立即升级）</string>
-    <string name="recharge_50">50元\n\nvip会员%1$d折优惠</string>
-    <string name="recharge_100">100元\n\nvip会员%1$d折优惠</string>
+    <string name="recharge_50">50元\n\n会员优惠价:%1$d元</string>
+    <string name="recharge_100">100元\n\n会员优惠价:%1$d元</string>
     <string name="pay">支付</string>
     <string name="go_to_pay">去支付</string>
     <string name="pay_method">支付方式：</string>
@@ -117,7 +117,8 @@
     <string name="get_msgcode_failure">获取短信验证码失败</string>
     <string name="get_msgcode_frequent">获取短信验证码太频繁，请稍后再试</string>
     <string name="register_msg_code_invalid">验证码无效</string>
-    <string name="vip_recharge_price">VIP会员  %1$d元</string>
+    <string name="vip_recharge_price">VIP会员价  %1$d元</string>
+    <string name="vip_recharge_origin_price">原价  %1$d元</string>
     <string name="vip_recharge_price_to_user">（存到余额%1$d元）</string>
     <string name="daoli_balance">稻粒余额</string>
     <string name="daoli_recharge_ammount">充值金额</string>
@@ -133,19 +134,17 @@
     <string name="balance">下单</string>
     <string name="product_sold_out">商品已售罄</string>
     <string name="money_symbol">¥</string>
-    <string name="vip_contract_title">升级即同意</string>
+    <string name="vip_contract_title">阅读并同意</string>
     <string name="vip_contract_desc">《金稻商城VIP升级协议》</string>
-    <string name="read_agree_contract">升级即同意《金稻商城VIP升级协议》</string>
-
+    <string name="read_agree_contract">请选择 阅读并同意《金稻商城VIP升级协议》</string>
 
 
     <string name="vip_member_recharge_instruction">VIP会员权益说明：\n\n
-    1、VIP会员享受话费充值和购物88折优惠\n\n
-    2、VIP会员每30天200元充值额度\n\n
-        3、VIP会员仅支持注册号码手机充值，不可充值其它号码\n\n
-    4、成为VIP会员后，你有权推荐该APP让其他人注册\n\n
-        5、邀请会员注册VIP会有提成10元、5元、15元不等\n\n
-    6、邀请的会员成为VIP后在商城消费，你也会有相应提成\n</string>
+1、VIP会员享受话费充值88折优惠，每月限额200元，限本机号码\n\n
+2、VIP会员享受商城购物88折\n\n
+3、VIP会员享受全国推广权\n\n
+4、VIP会员享受推广会员的VIP充值佣金、购物佣金和话费充值佣金\n\n
+</string>
 
     <string name="daoli_recharge_instruction">稻粒说明：\n\n
     1、非VIP会员使用稻粒购物享受88折优惠\n\n

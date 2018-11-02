@@ -66,6 +66,7 @@
                     android:gravity="center"
                     android:paddingBottom="20dp"
                     android:paddingTop="20dp"
+                    android:text="50元"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 
@@ -79,6 +80,7 @@
                     android:gravity="center"
                     android:paddingBottom="20dp"
                     android:paddingTop="20dp"
+                    android:text="100元"
                     android:textColor="@color/color_black"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -86,23 +88,67 @@
 
         <include layout="@layout/layout_pay_style" />
 
-        <TextView
-            android:id="@+id/tv_money_recharge"
-            style="@style/user_info_txt"
-            android:layout_marginTop="20dp"
-            android:text="@string/recharge_ammount" />
+        <LinearLayout
+            android:id="@+id/ll_money_recharge"
+            style="@style/code_edit_layout_style"
+            android:visibility="gone"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp">
 
-        <TextView
-            android:id="@+id/tv_money_pay"
-            style="@style/user_info_txt"
-            android:layout_marginTop="20dp"
-            android:text="@string/recharge_pay_indeed" />
+            <TextView
+                style="@style/common_txt_16sp"
+                android:text="@string/recharge_ammount" />
+
+            <TextView
+                android:id="@+id/tv_money_recharge"
+                style="@style/common_txt_16sp"
+                android:textColor="@color/app_color"
+                android:textSize="18sp" />
+
+            <TextView
+                style="@style/common_txt_16sp"
+                android:text=" 元" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_money_pay"
+            style="@style/code_edit_layout_style"
+            android:layout_marginLeft="20dp"
+            android:visibility="gone"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                style="@style/common_txt_16sp"
+                android:text="实付金额：" />
+
+            <TextView
+                android:id="@+id/tv_money_pay"
+                style="@style/common_txt_16sp"
+                android:textColor="@color/app_color"
+                android:textSize="18sp" />
+
+            <TextView
+                style="@style/common_txt_16sp"
+                android:text=" 元" />
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/tv_recharge_immediate"
             style="@style/btn_selector_match_style"
             android:layout_marginBottom="20dp"
             android:text="@string/recharge_immedate" />
+
+        <TextView
+            android:id="@+id/tv_phone_recharge_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/color_ae6271"
+            android:textSize="14sp"/>
+
 
     </LinearLayout>
 
