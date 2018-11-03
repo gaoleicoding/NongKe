@@ -9,13 +9,12 @@ import android.widget.TextView;
 import com.nongke.jindao.R;
 import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.activity.VipRechargeActivity;
+import com.nongke.jindao.base.event.LoginAccountEvent;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.utils.OnlineParamUtil;
 import com.nongke.jindao.base.utils.UserUtil;
-import com.nongke.jindao.base.event.LoginAccountEvent;
 import com.nongke.jindao.base.utils.Utils;
-import com.nongke.jindao.mcontract.ProductClassifyContract;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -127,7 +126,7 @@ public class RechageDetailFragment extends BaseMvpFragment {
                     return;
                 }
                 String supportPhoneRecharge = OnlineParamUtil.paramResData.rspBody.support_phone_recharge.content;
-                if (supportPhoneRecharge.equals("false")) {
+                if ("false".equals(supportPhoneRecharge.trim())) {
                     Utils.showToast("抱歉，暂时不支持话费充值业务", false);
                     return;
                 }

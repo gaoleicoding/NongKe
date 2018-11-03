@@ -54,6 +54,10 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
     public TabLayout tabLayout;
     @BindView(R.id.title)
     TextView title;
+    @BindView(R.id.tv_maintain_desc)
+    TextView tv_maintain_desc;
+    @BindView(R.id.rl_maintain_desc)
+    RelativeLayout rl_maintain_desc;
     HomeFragment homeFragment;
     RechargeFragment projectFragment;
     ClassifyFragment classifyFragment;
@@ -281,14 +285,17 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
 
     @Override
     public void showOnlineParame(OnlineParamResData onlineParamResData) {
-
+        if ("true".equals(onlineParamResData.rspBody.is_maintaining_boolean.content.trim())) {
+            rl_maintain_desc.setVisibility(View.VISIBLE);
+            tv_maintain_desc.setText(onlineParamResData.rspBody.is_maintaining_content.content);
+        }
     }
 
     @Override
     public void showMessageList(MessageResData messageResData) {
         if (messageResData == null || messageResData.rspBody == null) return;
         if (messageResData.rspBody.size() > 0) {
-            String msgTitle=messageResData.rspBody.get(0).title;
+            String msgTitle = messageResData.rspBody.get(0).title;
             homeFragment.tv_notice_content.setText(msgTitle);
         }
     }

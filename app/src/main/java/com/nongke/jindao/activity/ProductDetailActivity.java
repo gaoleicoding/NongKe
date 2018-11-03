@@ -18,14 +18,10 @@ import com.nongke.jindao.base.activity.BaseMvpActivity;
 import com.nongke.jindao.base.mmodel.Product;
 import com.nongke.jindao.base.utils.UserUtil;
 import com.nongke.jindao.base.utils.Utils;
-import com.nongke.jindao.event.UpdateCartEvent;
 import com.nongke.jindao.mpresenter.ProductDetailPresenter;
-import com.nongke.jindao.mpresenter.RegisterLoginPresenter;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.io.Serializable;
 import java.util.ArrayList;

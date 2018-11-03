@@ -8,14 +8,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.nongke.jindao.R;
 import com.nongke.jindao.adapter.OrderProductAdapter;
 import com.nongke.jindao.adapter.divider.SpacesItemDecoration;
@@ -27,7 +24,6 @@ import com.nongke.jindao.base.utils.UserUtil;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.mpresenter.ProductDetailPresenter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -43,7 +39,6 @@ public class OrderActivity extends BaseMvpActivity {
     ImageView iv_back;
     @BindView(R.id.title)
     TextView title;
-
     @BindView(R.id.tv_product_total_price)
     TextView tv_product_total_price;
     @BindView(R.id.tv_order_money)
@@ -55,13 +50,15 @@ public class OrderActivity extends BaseMvpActivity {
     @BindView(R.id.et_balance_pay)
     EditText et_balance_pay;
     @BindView(R.id.tv_pay)
-    TextView tv_pay;
+    TextView tv_pay; @BindView(R.id.tv_order_postage)
+    TextView tv_order_postage;
     @BindView(R.id.order_product_recyclerview)
     RecyclerView order_product_recyclerview;
     @BindView(R.id.ll_order_discount_layout)
     LinearLayout ll_order_discount_layout;
     @BindView(R.id.ll_balance_pay)
-    LinearLayout ll_balance_pay;
+    LinearLayout ll_balance_pay; @BindView(R.id.ll_order_postage)
+    LinearLayout ll_order_postage;
 
     private List<Product> orderProductList;
     private OrderProductAdapter orderProductAdapter;
@@ -109,7 +106,12 @@ public class OrderActivity extends BaseMvpActivity {
         }
 
         tv_order_indeed_pay.setText(indeedPayPrice + "");
-        tv_product_total_price.setText(indeedPayPrice + "");
+        int postage = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.postage.content);
+        if(postage>0) {
+            ll_order_postage.setVisibility(View.VISIBLE);
+            tv_order_postage.setText(postage + "");
+        }
+        tv_product_total_price.setText(indeedPayPrice+postage + "");
         LogUtil.d(TAG, "orderProductList.size():" + orderProductList.size());
 
         et_balance_pay.addTextChangedListener(new TextWatcher() {

@@ -105,7 +105,7 @@ public class VipRechargeActivity extends BaseActivity {
                 tv_vip_origin_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG); //中划线
 
             }
-            if ("true".equals(giftBoolean)) {
+            if ("true".equals(giftBoolean.trim())) {
                 tv_vip_origin_price_gift.setVisibility(View.VISIBLE);
                 tv_vip_origin_price_gift.setText(gift);
             }

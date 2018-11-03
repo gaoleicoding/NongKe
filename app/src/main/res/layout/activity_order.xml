@@ -111,7 +111,6 @@
                 <TextView
                     android:id="@+id/tv_order_money"
                     style="@style/common_txt_16sp"
-                    android:text="100"
                     android:textColor="@color/app_color"
                     android:textSize="18sp" />
 
@@ -133,7 +132,6 @@
                 <TextView
                     android:id="@+id/tv_order_discount_money"
                     style="@style/common_txt_16sp"
-                    android:text="100"
                     android:textColor="@color/app_color"
                     android:textSize="18sp" />
 
@@ -164,6 +162,7 @@
             <LinearLayout
                 style="@style/code_edit_layout_style"
                 android:layout_marginLeft="20dp"
+                android:visibility="gone"
                 android:layout_marginTop="10dp">
 
                 <TextView
@@ -173,7 +172,28 @@
                 <TextView
                     android:id="@+id/tv_order_indeed_pay"
                     style="@style/common_txt_16sp"
-                    android:text="100"
+                    android:textColor="@color/app_color"
+                    android:textSize="18sp" />
+
+                <TextView
+                    style="@style/common_txt_16sp"
+                    android:text=" 元" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_order_postage"
+                style="@style/code_edit_layout_style"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/common_txt_16sp"
+                    android:text="+运费：" />
+
+                <TextView
+                    android:id="@+id/tv_order_postage"
+                    style="@style/common_txt_16sp"
                     android:textColor="@color/app_color"
                     android:textSize="18sp" />
 

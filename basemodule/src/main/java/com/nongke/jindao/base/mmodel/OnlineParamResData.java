@@ -7,6 +7,8 @@ public class OnlineParamResData extends BaseResData {
     public RspBody rspBody;
 
     public class RspBody {
+        public ParamContent is_maintaining_boolean;
+        public ParamContent is_maintaining_content;
         public ParamContent card_discount;
         public ParamContent Papay_vip_bill_extract_3;
         public ParamContent pay_vip_bill_extract_2;
@@ -33,6 +35,7 @@ public class OnlineParamResData extends BaseResData {
         public ParamContent vip_right_desc;
         public ParamContent daoli_use_desc;
         public ParamContent phone_recharge_desc;
+        public ParamContent postage;
 
     }
 
