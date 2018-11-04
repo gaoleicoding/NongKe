@@ -17,11 +17,15 @@ import com.nongke.jindao.R;
 import com.nongke.jindao.adapter.OrderProductAdapter;
 import com.nongke.jindao.adapter.divider.SpacesItemDecoration;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
+import com.nongke.jindao.base.mmodel.OrderProductResData;
 import com.nongke.jindao.base.mmodel.Product;
 import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.OnlineParamUtil;
 import com.nongke.jindao.base.utils.UserUtil;
 import com.nongke.jindao.base.utils.Utils;
+import com.nongke.jindao.mcontract.MyProfileContract;
+import com.nongke.jindao.mcontract.OrderProductContract;
+import com.nongke.jindao.mpresenter.OrderProductPresenter;
 import com.nongke.jindao.mpresenter.ProductDetailPresenter;
 
 import java.util.List;
@@ -34,7 +38,7 @@ import butterknife.OnClick;
  * author: zlm
  * date: 2017/3/17 16:01
  */
-public class OrderActivity extends BaseMvpActivity {
+public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implements OrderProductContract.View{
     @BindView(R.id.iv_back)
     ImageView iv_back;
     @BindView(R.id.title)
@@ -87,6 +91,7 @@ public class OrderActivity extends BaseMvpActivity {
         title.setText(getString(R.string.order_detail));
         iv_back.setVisibility(View.VISIBLE);
         orderProductList = (List<Product>) bundle.getSerializable("product_list");
+
         initRecyclerView();
         if (UserUtil.getUserInfo().rspBody.money > 10)
             ll_balance_pay.setVisibility(View.GONE);
@@ -158,13 +163,13 @@ public class OrderActivity extends BaseMvpActivity {
     }
 
     @Override
-    public ProductDetailPresenter initPresenter() {
-        return new ProductDetailPresenter();
+    public OrderProductPresenter initPresenter() {
+        return new OrderProductPresenter();
     }
 
     @Override
     protected void loadData() {
-
+        mPresenter.buyProduct(orderProductList);
 
     }
 
@@ -195,4 +200,8 @@ public class OrderActivity extends BaseMvpActivity {
     }
 
 
+    @Override
+    public void showOrderProduct(OrderProductResData productResData) {
+
+    }
 }

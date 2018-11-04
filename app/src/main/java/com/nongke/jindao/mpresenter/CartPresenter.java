@@ -1,6 +1,8 @@
 package com.nongke.jindao.mpresenter;
 
 
+import android.util.Log;
+
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.api.ApiService;
 import com.nongke.jindao.base.application.CustomApplication;
@@ -54,6 +56,7 @@ public class CartPresenter extends BasePresenter<CartContract.View> implements C
         hashMap.put("amount", amount);
         hashMap.put("productId", productId);
         String jsonString = new JSONObject(hashMap).toString();
+        Log.d("OrderProductPresenter","updateProductAmount-------jsonString："+jsonString);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonString);
         Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).updateProductAmount(requestBody);
         addSubscribe(observable, new BaseObserver<BaseResData>(false) {

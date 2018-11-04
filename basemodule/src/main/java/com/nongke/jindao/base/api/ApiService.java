@@ -10,7 +10,9 @@ import com.nongke.jindao.base.mmodel.LogoutResData;
 import com.nongke.jindao.base.mmodel.MessageResData;
 import com.nongke.jindao.base.mmodel.MsgCodeResData;
 import com.nongke.jindao.base.mmodel.OnlineParamResData;
+import com.nongke.jindao.base.mmodel.OrderProductResData;
 import com.nongke.jindao.base.mmodel.ProductResData;
+import com.nongke.jindao.base.mmodel.RechargeResData;
 import com.nongke.jindao.base.mmodel.RegisterResData;
 import com.nongke.jindao.base.mmodel.UpdateAddressResData;
 import com.nongke.jindao.base.mmodel.UpdateProfileResData;
@@ -98,5 +100,11 @@ public interface ApiService {
 
     @POST("cart/clearCart")
     Observable<BaseResData> clearCart();
+
+    @POST("pay/buyProduct")
+    Observable<OrderProductResData> buyProduct(@Body RequestBody requestBody);
+
+    @POST("pay/recharge")
+    Observable<RechargeResData> recharge(@Body RequestBody requestBody);
 
 }

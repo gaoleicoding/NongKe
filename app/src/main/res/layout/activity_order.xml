@@ -102,6 +102,7 @@
 
             <LinearLayout
                 style="@style/code_edit_layout_style"
+                android:layout_marginTop="25dp"
                 android:layout_marginLeft="20dp">
 
                 <TextView
@@ -123,6 +124,7 @@
                 android:id="@+id/ll_order_discount_layout"
                 style="@style/code_edit_layout_style"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
                 android:visibility="gone">
 
                 <TextView
@@ -163,7 +165,7 @@
                 style="@style/code_edit_layout_style"
                 android:layout_marginLeft="20dp"
                 android:visibility="gone"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="8dp">
 
                 <TextView
                     style="@style/common_txt_16sp"
@@ -261,10 +263,10 @@
                 android:gravity="center"
                 android:maxLines="1"
                 android:paddingBottom="10dp"
-                android:paddingLeft="24dp"
-                android:paddingRight="24dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
                 android:paddingTop="10dp"
-                android:text="@string/go_to_pay"
+                android:text="@string/pay"
                 android:textColor="#fffdf0"
                 android:textSize="14sp" />
         </LinearLayout>

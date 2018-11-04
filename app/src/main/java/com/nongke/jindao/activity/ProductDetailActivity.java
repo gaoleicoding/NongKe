@@ -36,6 +36,7 @@ import butterknife.OnClick;
  * date: 2017/3/17 16:01
  */
 public class ProductDetailActivity extends BaseMvpActivity<ProductDetailPresenter> {
+
     @BindView(R.id.iv_back)
     ImageView iv_back;
     @BindView(R.id.title)
@@ -128,6 +129,9 @@ public class ProductDetailActivity extends BaseMvpActivity<ProductDetailPresente
 
                 break;
             case R.id.tv_product_order:
+                if (product.stockAmount <= 0) {
+                    return;
+                }
                 if (!UserUtil.isLogined()) {
                     RegisterLoginActivity.startActivity(this);
                     Utils.showToast(getString(R.string.user_not_login), true);
@@ -137,7 +141,9 @@ public class ProductDetailActivity extends BaseMvpActivity<ProductDetailPresente
                 list.add(product);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("product_list", (Serializable) list);
-                OrderActivity.startActivity(context, bundle);
+                OrderActivity.startActivity(ProductDetailActivity.this, bundle);
+
+
                 break;
         }
     }
@@ -159,7 +165,7 @@ public class ProductDetailActivity extends BaseMvpActivity<ProductDetailPresente
         product.amount = 1;
         if (product.stockAmount <= 0) {
             tv_product_order.setText(getString(R.string.product_sold_out));
-            tv_product_order.setTextColor(getResources().getColor(R.color.color_9b9b9b));
+            tv_product_order.setBackgroundColor(getResources().getColor(R.color.color_9b9b9b));
             tv_product_add_cart.setVisibility(View.GONE);
         }
     }

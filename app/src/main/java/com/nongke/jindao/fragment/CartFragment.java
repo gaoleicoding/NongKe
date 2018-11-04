@@ -10,7 +10,6 @@ import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.nongke.jindao.MainActivity;
 import com.nongke.jindao.R;
 import com.nongke.jindao.activity.OrderActivity;
@@ -28,15 +27,12 @@ import com.nongke.jindao.event.ProductTotalPriceEvent;
 import com.nongke.jindao.event.UpdateCartEvent;
 import com.nongke.jindao.mcontract.CartContract;
 import com.nongke.jindao.mpresenter.CartPresenter;
-
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -66,8 +62,6 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
     @BindView(R.id.cb_product_select_all)
     CheckBox cb_product_select_all;
     boolean isEditingCart;
-
-
     private List<Product> cartDataList;
     private CartAdapter cartAdapter;
 
