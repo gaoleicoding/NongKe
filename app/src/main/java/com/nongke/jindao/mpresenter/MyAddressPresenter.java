@@ -11,8 +11,11 @@ import com.nongke.jindao.base.thirdframe.retrofit.RetrofitProvider;
 import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
 import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.Utils;
+import com.nongke.jindao.event.ProductAmountEvent;
+import com.nongke.jindao.event.UpdateAddressEvent;
 import com.nongke.jindao.mcontract.MyAddressContract;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -40,6 +43,8 @@ public class MyAddressPresenter extends BasePresenter<MyAddressContract.View> im
             public void onNext(UpdateAddressResData updateAddressResData) {
                 if ("10000".equals(updateAddressResData.retCode))
                     Utils.showToast(CustomApplication.context.getString(R.string.address_save_success), true);
+                UpdateAddressEvent updateAddressEvent = new UpdateAddressEvent();
+                EventBus.getDefault().post(updateAddressEvent);
                 LogUtil.d2("updateAddressResData------------" + updateAddressResData.toString());
             }
         });

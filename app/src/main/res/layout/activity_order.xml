@@ -24,7 +24,6 @@
             android:orientation="vertical">
 
             <RelativeLayout
-                android:id="@+id/rl_message_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
@@ -32,62 +31,100 @@
                 android:paddingRight="15dp"
                 android:paddingTop="15dp">
 
-                <ImageView
-                    android:id="@+id/iv_address"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/icon_address" />
+                <RelativeLayout
+                    android:id="@+id/rl_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/tv_name"
-                    android:layout_width="wrap_content"
+                    <ImageView
+                        android:id="@+id/iv_address"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/icon_address" />
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/iv_address"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textColor="@color/color_3e3e3e"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="15652009705"
+                        android:textColor="@color/color_3e3e3e"
+                        android:textSize="16sp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_name"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@id/iv_address"
+                        android:textColor="@color/color_3e3e3e"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_address"
+                        android:paddingTop="15dp"
+                        android:src="@drawable/color_divider" />
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_inviter_time"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_below="@id/tv_inviter_commission"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:ellipsize="end"-->
+                    <!--android:maxLines="5"-->
+                    <!--android:textColor="@color/color_5b5d5c"-->
+                    <!--android:textSize="16sp" />-->
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_add_address"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/iv_address"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:text="收货人：高磊"
-                    android:textColor="@color/color_3e3e3e"
-                    android:textSize="16sp" />
+                    android:background="@color/white"
+                    android:paddingBottom="15dp"
+                    android:paddingTop="15dp">
 
-                <TextView
-                    android:id="@+id/tv_phone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:text="15652009705"
-                    android:textColor="@color/color_3e3e3e"
-                    android:textSize="16sp" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:orientation="vertical">
 
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/icon_add_address" />
 
-                <TextView
-                    android:id="@+id/tv_address"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_name"
-                    android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@id/iv_address"
-                    android:text="收货地址：北京市昌平区天通苑北东三旗村"
-                    android:textColor="@color/color_3e3e3e"
-                    android:textSize="14sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="请先完善收货人信息"
+                            android:textColor="@color/color_bfbfbf"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </RelativeLayout>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_address"
-                    android:paddingTop="15dp"
-                    android:src="@drawable/color_divider" />
-                <!--<TextView-->
-                <!--android:id="@+id/tv_inviter_time"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_below="@id/tv_inviter_commission"-->
-                <!--android:layout_marginTop="10dp"-->
-                <!--android:ellipsize="end"-->
-                <!--android:maxLines="5"-->
-                <!--android:textColor="@color/color_5b5d5c"-->
-                <!--android:textSize="16sp" />-->
             </RelativeLayout>
 
             <android.support.v7.widget.RecyclerView
@@ -102,8 +139,8 @@
 
             <LinearLayout
                 style="@style/code_edit_layout_style"
-                android:layout_marginTop="25dp"
-                android:layout_marginLeft="20dp">
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="25dp">
 
                 <TextView
                     style="@style/common_txt_16sp"
@@ -164,8 +201,8 @@
             <LinearLayout
                 style="@style/code_edit_layout_style"
                 android:layout_marginLeft="20dp"
-                android:visibility="gone"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:visibility="gone">
 
                 <TextView
                     style="@style/common_txt_16sp"

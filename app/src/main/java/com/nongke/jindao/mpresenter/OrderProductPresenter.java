@@ -6,6 +6,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.nongke.jindao.base.api.ApiService;
 import com.nongke.jindao.base.mmodel.BannerResData;
+import com.nongke.jindao.base.mmodel.MyAddressResData;
 import com.nongke.jindao.base.mmodel.OrderProduct;
 import com.nongke.jindao.base.mmodel.OrderProductResData;
 import com.nongke.jindao.base.mmodel.Product;
@@ -67,6 +68,21 @@ public class OrderProductPresenter extends BasePresenter<OrderProductContract.Vi
 
                 mView.showOrderProduct(productResData);
 
+            }
+        });
+    }
+
+    @Override
+    public void getUserAddress() {
+        Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).getUserAddress();
+        addSubscribe(observable, new BaseObserver<MyAddressResData>(false) {
+            @Override
+            public void onNext(MyAddressResData userAddressResData) {
+                LogUtil.d2("userAddressResData------------ :" + userAddressResData.toString());
+                mView.showUserAddressResData(userAddressResData);
+//                if (logoutResData.retDesc.contains("未登录"))
+//                    Utils.showToast(CustomApplication.context.getString(R.string.user_not_login), true);
+//
             }
         });
     }
