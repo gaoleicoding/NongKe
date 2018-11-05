@@ -86,14 +86,16 @@
             </LinearLayout>
         </RelativeLayout>
 
-        <include layout="@layout/layout_pay_style" />
+        <com.nongke.jindao.view.PayView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:id="@+id/ll_money_recharge"
             style="@style/code_edit_layout_style"
-            android:visibility="gone"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:visibility="gone">
 
             <TextView
                 style="@style/common_txt_16sp"
@@ -114,8 +116,8 @@
             android:id="@+id/ll_money_pay"
             style="@style/code_edit_layout_style"
             android:layout_marginLeft="20dp"
-            android:visibility="gone"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:visibility="gone">
 
             <TextView
                 style="@style/common_txt_16sp"
@@ -143,11 +145,11 @@
             android:id="@+id/tv_phone_recharge_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="10dp"
             android:textColor="@color/color_ae6271"
-            android:textSize="14sp"/>
+            android:textSize="14sp" />
 
 
     </LinearLayout>

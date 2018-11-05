@@ -10,6 +10,7 @@ import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.nongke.jindao.MainActivity;
 import com.nongke.jindao.R;
 import com.nongke.jindao.activity.OrderActivity;
@@ -27,12 +28,15 @@ import com.nongke.jindao.event.ProductTotalPriceEvent;
 import com.nongke.jindao.event.UpdateCartEvent;
 import com.nongke.jindao.mcontract.CartContract;
 import com.nongke.jindao.mpresenter.CartPresenter;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -51,7 +55,8 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
     @BindView(R.id.tv_product_total_price)
     TextView tv_product_total_price;
     @BindView(R.id.tv_product_order)
-    TextView tv_product_order; @BindView(R.id.tv_goto_login)
+    TextView tv_product_order;
+    @BindView(R.id.tv_goto_login)
     TextView tv_goto_login;
     @BindView(R.id.cart_recyclerview)
     RecyclerView cart_recyclerview;
@@ -105,7 +110,7 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
         return new CartPresenter();
     }
 
-    @OnClick({R.id.tv_to_shop, R.id.tv_edit, R.id.tv_product_order,R.id.tv_goto_login})
+    @OnClick({R.id.tv_to_shop, R.id.tv_edit, R.id.tv_product_order, R.id.tv_goto_login})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.tv_to_shop:
@@ -116,7 +121,7 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
                 if (isEditingCart) {
                     int selectListLength = cartAdapter.selectProductList.size();
                     if (selectListLength == 0) {
-                        Utils.showToast("您还没选择要删除的商品", false);
+                        Utils.showToast("你还没选择要删除的商品", false);
                         return;
                     }
 
@@ -237,26 +242,27 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
         mPresenter.getCartProduct();
     }
 
-    public void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
-    }
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(LoginAccountEvent accountEvent) {
         judgeLogin();
     }
 
-    private void judgeLogin(){
+    private void judgeLogin() {
         if (!UserUtil.isLogined()) {
             tv_goto_login.setVisibility(View.VISIBLE);
             rl_to_pay.setVisibility(View.GONE);
             tv_edit.setVisibility(View.GONE);
             cart_recyclerview.setVisibility(View.GONE);
-        }else{
+        } else {
             mPresenter.getCartProduct();
             tv_goto_login.setVisibility(View.GONE);
             tv_edit.setVisibility(View.VISIBLE);
             cart_recyclerview.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

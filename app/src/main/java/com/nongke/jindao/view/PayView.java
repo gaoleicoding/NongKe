@@ -27,6 +27,7 @@ public class PayView extends FrameLayout implements View.OnClickListener {
     LinearLayout ll_pay_wechat;
     ImageView img_pay_alipay;
     ImageView img_pay_wechat;
+    public int payType = 3;
 
     public PayView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -46,15 +47,23 @@ public class PayView extends FrameLayout implements View.OnClickListener {
             case R.id.ll_pay_alipay:
                 img_pay_alipay.setImageResource(R.drawable.icon_pay_select);
                 img_pay_wechat.setImageResource(R.drawable.icon_pay_unselect);
+                payType = 3;
                 break;
             case R.id.ll_pay_wechat:
                 img_pay_wechat.setImageResource(R.drawable.icon_pay_select);
                 img_pay_alipay.setImageResource(R.drawable.icon_pay_unselect);
+                payType = 4;
                 break;
 
         }
 
     }
 
+    public int getPayType() {
+        return payType;
+    }
 
+    public void setPayType(int payType) {
+        this.payType = payType;
+    }
 }

@@ -302,6 +302,7 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
         if (messageResData == null || messageResData.rspBody == null) return;
         if (messageResData.rspBody.size() > 0) {
             String msgTitle = messageResData.rspBody.get(0).title;
+            if(homeFragment.tv_notice_content!=null)
             homeFragment.tv_notice_content.setText(msgTitle);
         }
     }

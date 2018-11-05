@@ -75,7 +75,7 @@
                             android:textSize="18sp" />
 
                         <EditText
-                            android:id="@+id/et_transfer_amount"
+                            android:id="@+id/et_recharge_amount"
                             style="@style/code_edit_num_style"
                             android:hint="@string/input_with_amount_hint"
                             android:inputType="number" />
@@ -115,7 +115,7 @@
             <include layout="@layout/layout_pay_style" />
 
             <TextView
-                android:id="@+id/tv_withdraw_immediate"
+                android:id="@+id/tv_daoli_recharge"
                 style="@style/btn_selector_match_style"
                 android:text="@string/recharge_immedate"
                 android:layout_marginBottom="20dp"

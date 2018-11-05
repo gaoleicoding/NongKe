@@ -80,6 +80,9 @@ public interface ApiService {
     @POST("user/listMessage")
     Observable<MessageResData> listMessage();
 
+    @POST("user/getUserInfo")
+    Observable<LoginResData> getUserInfo();
+
     @POST("product/pageProduct")
     Observable<ProductResData> pageProduct(@Body RequestBody requestBody);
 

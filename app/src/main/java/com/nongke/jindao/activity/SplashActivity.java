@@ -88,7 +88,7 @@ public class SplashActivity extends BaseMvpActivity<RegisterLoginPresenter> impl
 //        if ("10000".equals(loginResData.retCode)) {
 //            MainActivity.startActivity(this);
 //        }
-        handler.sendEmptyMessageDelayed(0, 2000);
+        handler.sendEmptyMessageDelayed(0, 500);
     }
 
     @Override

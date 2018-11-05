@@ -2,11 +2,15 @@ package com.nongke.jindao.mpresenter;
 
 
 import com.nongke.jindao.base.api.ApiService;
+import com.nongke.jindao.base.mmodel.BannerResData;
+import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.mmodel.RechargeResData;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.thirdframe.retrofit.RetrofitProvider;
 import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
 import com.nongke.jindao.base.utils.LogUtil;
+import com.nongke.jindao.base.utils.UserUtil;
+import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.mcontract.RechargeContract;
 
 import org.json.JSONObject;
@@ -36,8 +40,26 @@ public class RechargePresenter extends BasePresenter<RechargeContract.View> impl
         addSubscribe(observable, new BaseObserver<RechargeResData>(false) {
             @Override
             public void onNext(RechargeResData rechargeResData) {
-                LogUtil.d2("recharge------------:" + rechargeResData.rspBody.toString());
-                mView.showRechargeRes(rechargeResData);
+                if("10000".equals(rechargeResData.retCode)) {
+                    LogUtil.d2("recharge------------:" + rechargeResData.rspBody.toString());
+                    mView.showRechargeRes(rechargeResData);
+                }else {
+                    Utils.showToast(rechargeResData.retDesc,false);
+                }
+
+            }
+        });
+    }
+
+    @Override
+    public void getUserInfo() {
+        Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).getUserInfo();
+        addSubscribe(observable, new BaseObserver<LoginResData>(false) {
+            @Override
+            public void onNext(LoginResData loginResData) {
+                LogUtil.d2("getBannerProduct------------ :" + loginResData.toString());
+
+                mView.showUserInfo(loginResData);
 
             }
         });

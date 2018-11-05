@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ import com.alipay.sdk.app.PayTask;
 import com.nongke.jindao.PayResult;
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
+import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.mmodel.RechargeResData;
 import com.nongke.jindao.base.thirdframe.retrofit.UrlConfig;
 import com.nongke.jindao.base.utils.OnlineParamUtil;
@@ -73,12 +75,14 @@ public class VipRechargeActivity extends BaseMvpActivity<RechargePresenter> impl
     TextView tv_vip_contract_content;
     @BindView(R.id.cb_vip_contract)
     CheckBox cb_vip_contract;
+    @BindView(R.id.et_recharge_amount)
+    EditText et_recharge_amount;
 
     boolean isInContract;
-    public final int SDK_PAY_FLAG=0;
-    public String TAG="VipRechargeActivity";
+    public final int SDK_PAY_FLAG = 0, REFRESH_RECHARGE_VIP = 1;
+    public String TAG = "VipRechargeActivity";
 
-    private Handler mHandler     = new Handler() {
+    private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case SDK_PAY_FLAG: {
@@ -92,12 +96,19 @@ public class VipRechargeActivity extends BaseMvpActivity<RechargePresenter> impl
                     if (TextUtils.equals(resultStatus, "9000")) {
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
                         Toast.makeText(VipRechargeActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
+                        mHandler.sendEmptyMessageDelayed(REFRESH_RECHARGE_VIP, 1000);
                     } else {
                         // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
                         Toast.makeText(VipRechargeActivity.this, "支付失败", Toast.LENGTH_SHORT).show();
                     }
                     break;
+
+
                 }
+                case REFRESH_RECHARGE_VIP:
+                    mPresenter.getUserInfo();
+                    break;
+
             }
         }
 
@@ -179,8 +190,12 @@ public class VipRechargeActivity extends BaseMvpActivity<RechargePresenter> impl
                     return;
                 }
                 if (!cb_vip_contract.isChecked()) {
-                    Utils.showToast(getResources().getString(R.string.read_agree_contract), false);return;
+                    Utils.showToast(getResources().getString(R.string.read_agree_contract), false);
+                    return;
                 }
+
+
+
                 mPresenter.recharge(1, 3, Utils.stringToFloat(OnlineParamUtil.paramResData.rspBody.vip_price.content), Utils.stringToFloat(OnlineParamUtil.paramResData.rspBody.vip_price.content));
                 break;
             case R.id.tv_vip_contract:
@@ -229,7 +244,7 @@ public class VipRechargeActivity extends BaseMvpActivity<RechargePresenter> impl
     @Override
     public void showRechargeRes(RechargeResData rechargeResData) {
         final String paySign = rechargeResData.rspBody.paySign;
-        Log.d(TAG,"paySign:"+paySign);
+        Log.d(TAG, "paySign:" + paySign);
         Runnable payRunnable = new Runnable() {
 
             @Override
@@ -245,6 +260,12 @@ public class VipRechargeActivity extends BaseMvpActivity<RechargePresenter> impl
         // 必须异步调用
         Thread payThread = new Thread(payRunnable);
         payThread.start();
+
+    }
+
+    @Override
+    public void showUserInfo(LoginResData loginResData) {
+        UserUtil.setUserInfo(loginResData);
 
     }
 }
