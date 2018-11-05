@@ -15,9 +15,7 @@ public class OrderProductContract {
 
     public interface Presenter {
 
-
         void buyProduct(List<Product> list);
-
 
     }
 

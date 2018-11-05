@@ -11,10 +11,15 @@ import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.activity.VipRechargeActivity;
 import com.nongke.jindao.base.event.LoginAccountEvent;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
+import com.nongke.jindao.base.mmodel.RechargeResData;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.utils.OnlineParamUtil;
 import com.nongke.jindao.base.utils.UserUtil;
 import com.nongke.jindao.base.utils.Utils;
+import com.nongke.jindao.mcontract.CartContract;
+import com.nongke.jindao.mcontract.RechargeContract;
+import com.nongke.jindao.mpresenter.CartPresenter;
+import com.nongke.jindao.mpresenter.RechargePresenter;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -29,7 +34,7 @@ import butterknife.OnClick;
  * @date 2018/2/11
  */
 
-public class RechageDetailFragment extends BaseMvpFragment {
+public class RechageDetailFragment extends BaseMvpFragment<RechargePresenter> implements RechargeContract.View  {
 
     @BindView(R.id.tv_recharge_50)
     TextView tv_recharge_50;
@@ -83,8 +88,8 @@ public class RechageDetailFragment extends BaseMvpFragment {
     }
 
     @Override
-    public BasePresenter initPresenter() {
-        return null;
+    public RechargePresenter initPresenter() {
+        return new RechargePresenter();
     }
 
     @Override
@@ -130,6 +135,11 @@ public class RechageDetailFragment extends BaseMvpFragment {
                     Utils.showToast("抱歉，暂时不支持话费充值业务", false);
                     return;
                 }
+                if (UserUtil.getUserInfo().rspBody.isVip == 0) {
+                    Utils.showToast("你不是VIP会员，不能使用话费充值业务", false);
+                    return;
+                }
+//                mPresenter.recharge();
                 break;
             default:
                 break;
@@ -197,5 +207,10 @@ public class RechageDetailFragment extends BaseMvpFragment {
     public void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    public void showRechargeRes(RechargeResData rechargeResData) {
+
     }
 }

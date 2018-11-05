@@ -14,6 +14,7 @@ import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 /**
  * Created by gaolei on 2018/6/15.
@@ -21,7 +22,8 @@ import java.util.Locale;
 
 public class Utils {
 
-
+    public static Pattern pattern = Pattern.compile("^[-+]?[0-9]");
+    public static Pattern pattern2 = Pattern.compile("^[-+]?[0-9]+(\\.[0-9]+)?$");
     /**
      * md5 加密
      *
@@ -132,6 +134,26 @@ public class Utils {
 
     public static int stringToInt(String value) {
         return Integer.parseInt(value.trim());
+    }
+
+    public static float stringToFloat(String value) {
+        return Float.parseFloat(value.trim());
+    }
+
+    public static float stringToDigit(String value) {
+
+
+        if (pattern.matcher(value).matches()) {
+//数字
+            return Integer.parseInt(value.trim());
+        } else if (pattern2.matcher(value).matches()) {
+//小数
+            return Float.parseFloat(value.trim());
+        } else {
+//非数字
+            Utils.showToast("数据格式转化出错", false);
+        }
+        return Float.parseFloat(value.trim());
     }
 
 

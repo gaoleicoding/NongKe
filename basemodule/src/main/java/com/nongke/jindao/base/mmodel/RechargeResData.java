@@ -25,10 +25,23 @@ public class RechargeResData {
     public RspBody rspBody;
 
     public class RspBody {
-        public int orderType,paySign,subject,flag;
-        public String orderId,payType,body;
+        public int orderType,flag;
+        public String orderId,paySign,payType,subject,body;
         public float totalMoney, totalPay;
 
-
+        @Override
+        public String toString() {
+            return "RspBody{" +
+                    "orderType=" + orderType +
+                    ", paySign=" + paySign +
+                    ", subject=" + subject +
+                    ", flag=" + flag +
+                    ", orderId='" + orderId + '\'' +
+                    ", payType='" + payType + '\'' +
+                    ", body='" + body + '\'' +
+                    ", totalMoney=" + totalMoney +
+                    ", totalPay=" + totalPay +
+                    '}';
+        }
     }
 }

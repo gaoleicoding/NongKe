@@ -48,6 +48,19 @@
         <activity android:name=".activity.ProductDetailActivity"></activity>
         <activity android:name=".activity.OrderActivity"></activity>
 
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"/>
+
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"/>
+
+
         <!--value的值填写你在友盟后台申请的应用Appkey-->
         <meta-data
             android:name="UMENG_APPKEY"

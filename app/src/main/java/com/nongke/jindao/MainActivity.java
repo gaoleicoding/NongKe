@@ -26,6 +26,7 @@ import com.nongke.jindao.base.utils.FileProvider7;
 import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.PermissionUtil;
 import com.nongke.jindao.base.utils.UserUtil;
+import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.fragment.CartFragment;
 import com.nongke.jindao.fragment.ClassifyFragment;
 import com.nongke.jindao.fragment.HomeFragment;
@@ -69,7 +70,7 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
     private static final int REQUEST_CROP_PHOTO = 0x033;
     private static final int REQUEST_PERMISSIONS = 0x044;
     ImageUtils imageUtils;
-    private static final String TAG = "photopicker";
+    private static final String TAG = "MainActivity";
 
 
     public static void startActivity(Context context) {
@@ -123,6 +124,11 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
         tabLayout.setupWithViewPager(viewPager);
         initTab();
 //        new PhotoPickerUtil(this);
+        if (Utils.pattern.matcher("1").matches()) {
+
+        }
+        int discount=Utils.stringToInt("1");
+        Log.d(TAG,"discount:"+discount);
     }
 
 

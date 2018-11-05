@@ -145,4 +145,5 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
     api project(':basemodule')
     api files('libs/zxing.jar')
+    implementation files('libs/alipaySdk-20180601.jar')
 }
