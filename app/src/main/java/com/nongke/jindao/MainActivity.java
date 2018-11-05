@@ -124,7 +124,7 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
         tabLayout.setupWithViewPager(viewPager);
         initTab();
 //        new PhotoPickerUtil(this);
-        if (Utils.pattern.matcher("1").matches()) {
+        if (Utils.intPattern.matcher("1").matches()) {
 
         }
         int discount=Utils.stringToInt("1");

@@ -26,6 +26,8 @@ import com.nongke.jindao.base.mmodel.ProductResData;
 import com.nongke.jindao.base.utils.Constants;
 import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.ScreenUtils;
+import com.nongke.jindao.base.utils.UserUtil;
+import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.mcontract.ProductContract;
 import com.nongke.jindao.mpresenter.ProductPresenter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -250,6 +252,10 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
                 mainActivity.viewPager.setCurrentItem(1);
                 break;
             case R.id.home_vip_layout:
+                if (UserUtil.getUserInfo().rspBody.isVip == 1) {
+                    Utils.showToast("你已经是VIP会员",false);
+                    return;
+                }
                 VipRechargeActivity.startActivity(getActivity());
                 break;
             case R.id.home_company_layout:

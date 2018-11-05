@@ -200,6 +200,7 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
             case R.id.tv_pay:
                 if (rl_add_address.getVisibility() == View.VISIBLE)
                     Utils.showToast("请先完善收货人信息", false);
+
                 break;
             case R.id.rl_address:
                 MyAddressActivity.startActivity(OrderActivity.this);

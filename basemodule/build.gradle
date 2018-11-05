@@ -88,9 +88,7 @@ android {
         api rootProject.ext.dependencies["umeng-common"]
         api rootProject.ext.dependencies["umeng-analytics"]
         api 'cat.ereza:customactivityoncrash:2.2.0'
-
+//        api files('libs/alipaySdk-20180601.jar')
 
     }
-}
-dependencies {
 }

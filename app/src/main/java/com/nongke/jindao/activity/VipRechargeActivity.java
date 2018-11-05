@@ -18,12 +18,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
-import com.nongke.jindao.PayResult;
+import com.nongke.jindao.base.pay.PayResult;
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
 import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.mmodel.RechargeResData;
-import com.nongke.jindao.base.thirdframe.retrofit.UrlConfig;
+import com.nongke.jindao.base.pay.alipay.AliPayUtil;
 import com.nongke.jindao.base.utils.OnlineParamUtil;
 import com.nongke.jindao.base.utils.UserUtil;
 import com.nongke.jindao.base.utils.Utils;
@@ -35,7 +35,8 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import retrofit2.http.Url;
+
+import static com.nongke.jindao.base.pay.alipay.AliPayUtil.SDK_PAY_FLAG;
 
 
 /**
@@ -79,13 +80,13 @@ public class VipRechargeActivity extends BaseMvpActivity<RechargePresenter> impl
     EditText et_recharge_amount;
 
     boolean isInContract;
-    public final int SDK_PAY_FLAG = 0, REFRESH_RECHARGE_VIP = 1;
+    public final int  REFRESH_LOGIN_VIP = 1;
     public String TAG = "VipRechargeActivity";
 
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
-                case SDK_PAY_FLAG: {
+                case SDK_PAY_FLAG:
                     PayResult payResult = new PayResult((Map<String, String>) msg.obj);
                     /**
                      对于支付结果，请商户依赖服务端的异步通知结果。同步通知结果，仅作为支付结束的通知。
@@ -96,16 +97,14 @@ public class VipRechargeActivity extends BaseMvpActivity<RechargePresenter> impl
                     if (TextUtils.equals(resultStatus, "9000")) {
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
                         Toast.makeText(VipRechargeActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
-                        mHandler.sendEmptyMessageDelayed(REFRESH_RECHARGE_VIP, 1000);
+                        mHandler.sendEmptyMessageDelayed(REFRESH_LOGIN_VIP, 1000);
                     } else {
                         // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
                         Toast.makeText(VipRechargeActivity.this, "支付失败", Toast.LENGTH_SHORT).show();
                     }
                     break;
 
-
-                }
-                case REFRESH_RECHARGE_VIP:
+                case REFRESH_LOGIN_VIP:
                     mPresenter.getUserInfo();
                     break;
 
@@ -194,8 +193,6 @@ public class VipRechargeActivity extends BaseMvpActivity<RechargePresenter> impl
                     return;
                 }
 
-
-
                 mPresenter.recharge(1, 3, Utils.stringToFloat(OnlineParamUtil.paramResData.rspBody.vip_price.content), Utils.stringToFloat(OnlineParamUtil.paramResData.rspBody.vip_price.content));
                 break;
             case R.id.tv_vip_contract:
@@ -227,10 +224,6 @@ public class VipRechargeActivity extends BaseMvpActivity<RechargePresenter> impl
         return super.onKeyDown(keyCode, event);
     }
 
-    private void back() {
-
-    }
-
     @Override
     public RechargePresenter initPresenter() {
         return new RechargePresenter();
@@ -245,21 +238,22 @@ public class VipRechargeActivity extends BaseMvpActivity<RechargePresenter> impl
     public void showRechargeRes(RechargeResData rechargeResData) {
         final String paySign = rechargeResData.rspBody.paySign;
         Log.d(TAG, "paySign:" + paySign);
-        Runnable payRunnable = new Runnable() {
-
-            @Override
-            public void run() {
-                PayTask alipay = new PayTask(VipRechargeActivity.this);
-                Map<String, String> result = alipay.payV2(paySign, true);
-                Message msg = new Message();
-                msg.what = SDK_PAY_FLAG;
-                msg.obj = result;
-                mHandler.sendMessage(msg);
-            }
-        };
-        // 必须异步调用
-        Thread payThread = new Thread(payRunnable);
-        payThread.start();
+//        Runnable payRunnable = new Runnable() {
+//
+//            @Override
+//            public void run() {
+//                PayTask alipay = new PayTask(VipRechargeActivity.this);
+//                Map<String, String> result = alipay.payV2(paySign, true);
+//                Message msg = new Message();
+//                msg.what = SDK_PAY_FLAG;
+//                msg.obj = result;
+//                mHandler.sendMessage(msg);
+//            }
+//        };
+//        // 必须异步调用
+//        Thread payThread = new Thread(payRunnable);
+//        payThread.start();
+        AliPayUtil.pay(mHandler,this,paySign);
 
     }
 

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -12,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
-import com.nongke.jindao.PayResult;
+import com.nongke.jindao.base.pay.PayResult;
 import com.nongke.jindao.R;
 import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.activity.VipRechargeActivity;
@@ -20,13 +19,11 @@ import com.nongke.jindao.base.event.LoginAccountEvent;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.mmodel.RechargeResData;
-import com.nongke.jindao.base.mpresenter.BasePresenter;
+import com.nongke.jindao.base.pay.alipay.AliPayUtil;
 import com.nongke.jindao.base.utils.OnlineParamUtil;
 import com.nongke.jindao.base.utils.UserUtil;
 import com.nongke.jindao.base.utils.Utils;
-import com.nongke.jindao.mcontract.CartContract;
 import com.nongke.jindao.mcontract.RechargeContract;
-import com.nongke.jindao.mpresenter.CartPresenter;
 import com.nongke.jindao.mpresenter.RechargePresenter;
 
 import org.greenrobot.eventbus.EventBus;
@@ -107,8 +104,6 @@ public class RechageDetailFragment extends BaseMvpFragment<RechargePresenter> im
     @Override
     public void initData(Bundle bundle) {
         EventBus.getDefault().register(this);
-
-
     }
 
     @Override
@@ -251,21 +246,23 @@ public class RechageDetailFragment extends BaseMvpFragment<RechargePresenter> im
     @Override
     public void showRechargeRes(RechargeResData rechargeResData) {
         final String paySign = rechargeResData.rspBody.paySign;
-        Runnable payRunnable = new Runnable() {
+//        Runnable payRunnable = new Runnable() {
+//
+//            @Override
+//            public void run() {
+//                PayTask alipay = new PayTask(getActivity());
+//                Map<String, String> result = alipay.payV2(paySign, true);
+//                Message msg = new Message();
+//                msg.what = SDK_PAY_FLAG;
+//                msg.obj = result;
+//                mHandler.sendMessage(msg);
+//            }
+//        };
+//        // 必须异步调用
+//        Thread payThread = new Thread(payRunnable);
+//        payThread.start();
 
-            @Override
-            public void run() {
-                PayTask alipay = new PayTask(getActivity());
-                Map<String, String> result = alipay.payV2(paySign, true);
-                Message msg = new Message();
-                msg.what = SDK_PAY_FLAG;
-                msg.obj = result;
-                mHandler.sendMessage(msg);
-            }
-        };
-        // 必须异步调用
-        Thread payThread = new Thread(payRunnable);
-        payThread.start();
+        AliPayUtil.pay(mHandler,getActivity(),paySign);
     }
 
     @Override

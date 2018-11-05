@@ -2,17 +2,25 @@ package com.nongke.jindao.base.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gaolei.basemodule.R;
 import com.gaolei.basemodule.R2;
+import com.nongke.jindao.base.mpresenter.BasePresenter;
+import com.nongke.jindao.base.pay.PayResult;
 import com.nongke.jindao.base.utils.ExitAppUtils;
 import com.nongke.jindao.base.utils.PermissionUtil;
 import com.nongke.jindao.base.utils.StatusBarUtil;
 import com.umeng.analytics.MobclickAgent;
+
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
