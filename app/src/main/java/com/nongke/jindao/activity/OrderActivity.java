@@ -172,7 +172,7 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
 //        }
 
         LogUtil.d(TAG, "orderProductList.size():" + orderProductList.size());
-        et_balance_pay.setHint(UserUtil.userInfo.rspBody.money);
+        et_balance_pay.setHint(UserUtil.userInfo.rspBody.money+"");
         et_balance_pay.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence text, int start, int before, int count) {

@@ -46,7 +46,7 @@ public class MyBillAdapter extends RecyclerView.Adapter<MyBillAdapter.MyViewHold
         holder.itemView.setTag(position);
         final BillBody resData = list.get(position);
         holder.tv_bill_time.setText( Utils.ms2Date(Long.parseLong(resData.time)));
-        holder.tv_bill_amount.setText(resData.totalDesc);
+        holder.tv_bill_amount.setText(resData.totalDesc+"元");
         holder.tv_bill_type.setText(resData.description);
 
     }

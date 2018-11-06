@@ -142,6 +142,7 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
                         }
                         cartAdapter.selectProductList.clear();
                     }
+                    cartAdapter.selectAll(false, true);
                     cartAdapter.notifyDataSetChanged();
                     backFromManageCart();
 
@@ -234,7 +235,7 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(ProductTotalPriceEvent priceEvent) {
-        tv_product_total_price.setText("合计：" + priceEvent.totalPrice + "元");
+        tv_product_total_price.setText("合计：" + Utils.keepDecimal2(priceEvent.totalPrice) + "元");
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

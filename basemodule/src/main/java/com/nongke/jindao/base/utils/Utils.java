@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.nongke.jindao.base.application.CustomApplication;
 
 import java.security.MessageDigest;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -132,6 +134,11 @@ public class Utils {
         return format.format(date);
     }
 
+    public static String keepDecimal2(float value) {
+        NumberFormat ddf1= NumberFormat.getNumberInstance() ;
+        ddf1.setMaximumFractionDigits(2);
+        return ddf1.format(value);
+    }
     public static int stringToInt(String value) {
         return Integer.parseInt(value.trim());
     }

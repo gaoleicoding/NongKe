@@ -88,9 +88,6 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
         requestPermission();
         String cacheDir = getCacheDir().getPath();
         String filesDir = getFilesDir().getPath();
-        Log.d("gaolei", "cacheDir---------" + cacheDir);
-        Log.d("gaolei", "filesDir---------" + filesDir);
-//        loadGlideImage();
     }
 
     protected void initView() {
@@ -122,12 +119,11 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
         //将TabLayout和ViewPager关联起来
         tabLayout.setupWithViewPager(viewPager);
         initTab();
-//        new PhotoPickerUtil(this);
-        if (Utils.intPattern.matcher("1").matches()) {
 
-        }
-        int discount=Utils.stringToInt("1");
-        Log.d(TAG,"discount:"+discount);
+        float value1=(float)0.1;
+        float value2=(float) 0.8;
+        value1=value2+value1;
+        Log.d(TAG,"value1:"+value1);
     }
 
 

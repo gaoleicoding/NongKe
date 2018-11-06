@@ -107,8 +107,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         if (holder.cb_product_select.isChecked()) {
             totalPrice = totalPrice + productInfo.productPrice * productInfo.amount;
 
+            updateTotalPrice(totalPrice);
         }
-        updateTotalPrice(totalPrice);
         holder.cb_product_select.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {

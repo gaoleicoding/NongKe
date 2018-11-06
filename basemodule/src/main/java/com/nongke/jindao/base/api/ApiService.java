@@ -22,6 +22,7 @@ import com.nongke.jindao.base.mmodel.UpdateProfileResData;
 import com.nongke.jindao.base.mmodel.MyAddressResData;
 import com.nongke.jindao.base.mmodel.MyInviterResData;
 import com.nongke.jindao.base.mmodel.MyProfileResData;
+import com.nongke.jindao.base.mmodel.UserRecordResData;
 
 import io.reactivex.Observable;
 import okhttp3.MultipartBody;
@@ -93,7 +94,7 @@ public interface ApiService {
     Observable<PhoneRecordResData> listUserPhoneRecord();
 
     @POST("user/listUserRecord")
-    Observable<PhoneRecordResData> listUserRecord();
+    Observable<UserRecordResData> listUserRecord(@Body RequestBody requestBody);
 
     @POST("user/pageUserOrderInfo")
     Observable<OrderRecordResData> pageUserOrderInfo();
