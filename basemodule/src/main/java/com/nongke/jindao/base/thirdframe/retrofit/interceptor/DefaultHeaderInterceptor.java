@@ -2,7 +2,7 @@ package com.nongke.jindao.base.thirdframe.retrofit.interceptor;
 
 import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.utils.LogUtil;
-import com.nongke.jindao.base.utils.UserUtil;
+import com.nongke.jindao.base.utils.account.UserUtil;
 
 import java.io.IOException;
 

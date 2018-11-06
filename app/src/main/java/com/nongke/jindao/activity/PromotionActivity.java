@@ -25,7 +25,7 @@ import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseActivity;
 import com.nongke.jindao.base.qrcode.LogoConfig;
 import com.nongke.jindao.base.utils.FileProvider7;
-import com.nongke.jindao.base.utils.UserUtil;
+import com.nongke.jindao.base.utils.account.UserUtil;
 
 import java.io.File;
 import java.io.FileOutputStream;

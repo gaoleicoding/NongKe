@@ -11,20 +11,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nongke.jindao.R;
-import com.nongke.jindao.adapter.CartAdapter;
 import com.nongke.jindao.adapter.MessageAdapter;
 import com.nongke.jindao.adapter.divider.RecycleViewDivider;
-import com.nongke.jindao.adapter.divider.SpacesItemDecoration;
 import com.nongke.jindao.base.activity.BaseActivity;
-import com.nongke.jindao.base.activity.BaseMvpActivity;
-import com.nongke.jindao.base.mmodel.MessageResData;
-import com.nongke.jindao.base.mmodel.OnlineParamResData;
-import com.nongke.jindao.base.mmodel.Product;
-import com.nongke.jindao.base.utils.OnlineParamUtil;
-import com.nongke.jindao.mcontract.MessageContract;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.nongke.jindao.base.utils.account.MessageUtil;
+import com.nongke.jindao.base.utils.account.OnlineParamUtil;
 
 import butterknife.BindView;
 
@@ -64,7 +55,7 @@ public class MessageActivity extends BaseActivity {
         iv_back.setVisibility(View.VISIBLE);
     }
     private void initRecyclerView() {
-        messageAdapter = new MessageAdapter(this, OnlineParamUtil.getMessageResData().rspBody);
+        messageAdapter = new MessageAdapter(this, MessageUtil.getMessageResData().rspBody);
         message_recyclerview.addItemDecoration(new RecycleViewDivider(this,LinearLayoutManager.VERTICAL));
 
         message_recyclerview.setLayoutManager(new LinearLayoutManager(this));

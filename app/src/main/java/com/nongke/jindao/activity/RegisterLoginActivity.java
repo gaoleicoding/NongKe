@@ -22,7 +22,7 @@ import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.event.UpdateCartEvent;
 import com.nongke.jindao.mcontract.RegisterLoginContract;
 import com.nongke.jindao.mpresenter.RegisterLoginPresenter;
-import com.nongke.jindao.base.utils.UserUtil;
+import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.view.CountDownButton;
 
 import org.greenrobot.eventbus.EventBus;

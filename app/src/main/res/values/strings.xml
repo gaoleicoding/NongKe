@@ -81,7 +81,7 @@
     <string name="input_transfer_account">请输入转账账户</string>
     <string name="transfer_immediate">立即转账</string>
     <string name="transfer_record">转账记录</string>
-    <string name="share_commission">分享佣金：</string>
+    <string name="share_commission">佣金余额：</string>
     <string name="commission_convert_to_balance">转换成余额</string>
     <string name="withdrawable_amount">可提现金额：</string>
     <string name="withdraw_amount">提现金额</string>

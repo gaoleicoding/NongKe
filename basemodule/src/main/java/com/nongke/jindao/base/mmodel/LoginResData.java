@@ -43,7 +43,8 @@ public class LoginResData extends BaseResData{
 
     public class RspBody {
         public String code, img, imgUrl, inviterPhone, inviterUid, phone, token, uid;
-        public int cardMoney, commission, money, id, isManager, isVip, status;
+        public int  id, isManager, isVip, status;
+        public float cardMoney, commission, money;
 
         @Override
         public String toString() {

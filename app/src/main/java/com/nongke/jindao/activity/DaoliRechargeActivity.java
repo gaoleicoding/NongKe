@@ -13,15 +13,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alipay.sdk.app.PayTask;
 import com.nongke.jindao.base.pay.PayResult;
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
 import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.mmodel.RechargeResData;
 import com.nongke.jindao.base.pay.alipay.AliPayUtil;
-import com.nongke.jindao.base.utils.OnlineParamUtil;
-import com.nongke.jindao.base.utils.UserUtil;
+import com.nongke.jindao.base.utils.account.OnlineParamUtil;
+import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.mcontract.RechargeContract;
 import com.nongke.jindao.mpresenter.RechargePresenter;
@@ -138,21 +137,7 @@ public class DaoliRechargeActivity extends BaseMvpActivity<RechargePresenter> im
     @Override
     public void showRechargeRes(RechargeResData rechargeResData) {
         final String paySign = rechargeResData.rspBody.paySign;
-//        Runnable payRunnable = new Runnable() {
-//
-//            @Override
-//            public void run() {
-//                PayTask alipay = new PayTask(DaoliRechargeActivity.this);
-//                Map<String, String> result = alipay.payV2(paySign, true);
-//                Message msg = new Message();
-//                msg.what = SDK_PAY_FLAG;
-//                msg.obj = result;
-//                mHandler.sendMessage(msg);
-//            }
-//        };
-//        // 必须异步调用
-//        Thread payThread = new Thread(payRunnable);
-//        payThread.start();
+
         AliPayUtil.pay(mHandler,this,paySign);
     }
 

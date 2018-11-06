@@ -1,4 +1,4 @@
-package com.nongke.jindao.base.utils;
+package com.nongke.jindao.base.utils.account;
 
 import com.nongke.jindao.base.event.LoginAccountEvent;
 import com.nongke.jindao.base.mmodel.LoginResData;

@@ -16,6 +16,8 @@ import com.nongke.jindao.R;
 import com.nongke.jindao.activity.MyAddressActivity;
 import com.nongke.jindao.activity.DaoLiTransferActivity;
 import com.nongke.jindao.activity.DaoliRechargeActivity;
+import com.nongke.jindao.activity.MyBillActivity;
+import com.nongke.jindao.activity.MyCommissionActivity;
 import com.nongke.jindao.activity.MyInviterActivity;
 import com.nongke.jindao.activity.MyProfileActivity;
 import com.nongke.jindao.activity.PromotionActivity;
@@ -30,7 +32,7 @@ import com.nongke.jindao.base.utils.SharedPreferencesUtils;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.base.event.LoginAccountEvent;
 import com.nongke.jindao.mpresenter.RegisterLoginPresenter;
-import com.nongke.jindao.base.utils.UserUtil;
+import com.nongke.jindao.base.utils.account.UserUtil;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -51,8 +53,8 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
     LinearLayout my_daoli_recharge_layout;
     @BindView(R.id.my_daoli_transfer_layout)
     LinearLayout my_daoli_transfer_layout;
-    @BindView(R.id.my_recharge_layout)
-    LinearLayout my_recharge_layout;
+    @BindView(R.id.my_bill_layout)
+    LinearLayout my_bill_layout;
     @BindView(R.id.my_commission_layout)
     LinearLayout my_commission_layout;
     @BindView(R.id.my_inviter_layout)
@@ -166,7 +168,7 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
     }
 
 
-    @OnClick({R.id.iv_user_photo, R.id.my_daoli_recharge_layout, R.id.my_daoli_transfer_layout, R.id.my_recharge_layout, R.id.my_commission_layout, R.id.my_withdraw_layout,
+    @OnClick({R.id.iv_user_photo, R.id.my_daoli_recharge_layout, R.id.my_daoli_transfer_layout, R.id.my_bill_layout, R.id.my_commission_layout, R.id.my_withdraw_layout,
             R.id.my_withdraw_record_layout, R.id.my_profile_layout, R.id.my_promotion_layout, R.id.my_location_layout, R.id.my_order_layout, R.id.my_logout_layout,
             R.id.tv_vip_recharge, R.id.my_inviter_layout})
     public void click(View view) {
@@ -178,7 +180,7 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
         switch (view.getId()) {
             case R.id.tv_vip_recharge:
                 if (UserUtil.getUserInfo().rspBody.isVip == 0)
-                VipRechargeActivity.startActivity(getActivity());
+                    VipRechargeActivity.startActivity(getActivity());
                 break;
             case R.id.my_daoli_recharge_layout:
                 DaoliRechargeActivity.startActivity(getActivity());
@@ -186,11 +188,11 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
             case R.id.my_daoli_transfer_layout:
                 DaoLiTransferActivity.startActivity(getActivity());
                 break;
-            case R.id.my_recharge_layout:
-
+            case R.id.my_bill_layout:
+                MyBillActivity.startActivity(getActivity());
                 break;
             case R.id.my_commission_layout:
-
+                MyCommissionActivity.startActivity(getActivity());
                 break;
             case R.id.my_inviter_layout:
                 Bundle bundle = new Bundle();
@@ -209,7 +211,7 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
                 break;
             case R.id.my_promotion_layout:
                 if (UserUtil.getUserInfo().rspBody.isVip != 1) {
-                    Utils.showToast("你现在不是VIP会员，没有推广权限",false);
+                    Utils.showToast("你现在不是VIP会员，没有推广权限", false);
                     return;
                 }
                 PromotionActivity.startActivity(getActivity());

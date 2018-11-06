@@ -22,7 +22,8 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout style="@style/code_edit_layout_style">
+            <LinearLayout style="@style/code_edit_layout_style"
+                android:layout_marginTop="10dp">
 
                 <TextView
                     style="@style/common_txt_16sp"

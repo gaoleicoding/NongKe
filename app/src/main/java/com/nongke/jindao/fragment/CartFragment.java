@@ -21,7 +21,7 @@ import com.nongke.jindao.base.event.LoginAccountEvent;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mmodel.Product;
 import com.nongke.jindao.base.mmodel.ProductResData;
-import com.nongke.jindao.base.utils.UserUtil;
+import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.event.ProductAmountEvent;
 import com.nongke.jindao.event.ProductTotalPriceEvent;

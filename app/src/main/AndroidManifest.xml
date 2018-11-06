@@ -47,6 +47,9 @@
         <activity android:name=".activity.WebViewActivity"></activity>
         <activity android:name=".activity.ProductDetailActivity"></activity>
         <activity android:name=".activity.OrderActivity"></activity>
+        <activity android:name=".activity.MyBillActivity"></activity>
+        <activity android:name=".activity.MyCommissionActivity"></activity>
+        <activity android:name=".activity.WithdrawRecordActivity"></activity>
 
 
 

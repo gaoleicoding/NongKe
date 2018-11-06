@@ -5,12 +5,15 @@ import android.os.Message;
 
 import com.nongke.jindao.base.mmodel.BannerResData;
 import com.nongke.jindao.base.mmodel.BaseResData;
+import com.nongke.jindao.base.mmodel.BillResData;
 import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.mmodel.LogoutResData;
 import com.nongke.jindao.base.mmodel.MessageResData;
 import com.nongke.jindao.base.mmodel.MsgCodeResData;
 import com.nongke.jindao.base.mmodel.OnlineParamResData;
 import com.nongke.jindao.base.mmodel.OrderProductResData;
+import com.nongke.jindao.base.mmodel.OrderRecordResData;
+import com.nongke.jindao.base.mmodel.PhoneRecordResData;
 import com.nongke.jindao.base.mmodel.ProductResData;
 import com.nongke.jindao.base.mmodel.RechargeResData;
 import com.nongke.jindao.base.mmodel.RegisterResData;
@@ -83,6 +86,18 @@ public interface ApiService {
     @POST("user/getUserInfo")
     Observable<LoginResData> getUserInfo();
 
+    @POST("user/listUserBill")
+    Observable<BillResData> listUserBill();
+
+    @POST("user/listUserPhoneRecord")
+    Observable<PhoneRecordResData> listUserPhoneRecord();
+
+    @POST("user/listUserRecord")
+    Observable<PhoneRecordResData> listUserRecord();
+
+    @POST("user/pageUserOrderInfo")
+    Observable<OrderRecordResData> pageUserOrderInfo();
+
     @POST("product/pageProduct")
     Observable<ProductResData> pageProduct(@Body RequestBody requestBody);
 
@@ -109,5 +124,8 @@ public interface ApiService {
 
     @POST("pay/recharge")
     Observable<RechargeResData> recharge(@Body RequestBody requestBody);
+
+    @POST("pay/payForProductOnline")
+    Observable<RechargeResData> payForProductOnline(@Body RequestBody requestBody);
 
 }

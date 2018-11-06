@@ -18,14 +18,13 @@ import android.widget.Toast;
 import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.adapter.MainTabAdapter;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
-import com.nongke.jindao.base.mmodel.MessageResData;
 import com.nongke.jindao.base.mmodel.OnlineParamResData;
 import com.nongke.jindao.base.photopicker.ImageUtils;
 import com.nongke.jindao.base.photopicker.UriUtils;
 import com.nongke.jindao.base.utils.FileProvider7;
 import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.PermissionUtil;
-import com.nongke.jindao.base.utils.UserUtil;
+import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.fragment.CartFragment;
 import com.nongke.jindao.fragment.ClassifyFragment;
@@ -286,7 +285,7 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
     @Override
     protected void loadData() {
         mPresenter.getOnlineParame();
-        mPresenter.listMessage();
+
     }
 
     @Override
@@ -297,13 +296,5 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
         }
     }
 
-    @Override
-    public void showMessageList(MessageResData messageResData) {
-        if (messageResData == null || messageResData.rspBody == null) return;
-        if (messageResData.rspBody.size() > 0) {
-            String msgTitle = messageResData.rspBody.get(0).title;
-            if(homeFragment.tv_notice_content!=null)
-            homeFragment.tv_notice_content.setText(msgTitle);
-        }
-    }
+
 }

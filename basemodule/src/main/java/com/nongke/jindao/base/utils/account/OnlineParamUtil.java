@@ -1,4 +1,4 @@
-package com.nongke.jindao.base.utils;
+package com.nongke.jindao.base.utils.account;
 
 import com.nongke.jindao.base.mmodel.MessageResData;
 import com.nongke.jindao.base.mmodel.OnlineParamResData;
@@ -6,7 +6,6 @@ import com.nongke.jindao.base.mmodel.OnlineParamResData;
 public class OnlineParamUtil {
 
     public static OnlineParamResData paramResData;
-    public static MessageResData messageResData;
 
     public static OnlineParamResData getParamResData() {
         return paramResData;
@@ -16,11 +15,4 @@ public class OnlineParamUtil {
         OnlineParamUtil.paramResData = paramResData;
     }
 
-    public static MessageResData getMessageResData() {
-        return messageResData;
-    }
-
-    public static void setMessageResData(MessageResData messageResData) {
-        OnlineParamUtil.messageResData = messageResData;
-    }
 }

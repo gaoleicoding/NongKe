@@ -11,10 +11,7 @@ public class OnlineParameContract {
 
     public interface Presenter {
 
-
         void getOnlineParame();
-
-        void listMessage();
 
     }
 
@@ -22,6 +19,6 @@ public class OnlineParameContract {
 
         void showOnlineParame(OnlineParamResData onlineParamResData);
 
-        void showMessageList(MessageResData messageResData);
+
     }
 }

@@ -14,7 +14,6 @@ import com.bumptech.glide.request.RequestOptions;
 import com.nongke.jindao.R;
 import com.nongke.jindao.activity.MyInviterActivity;
 import com.nongke.jindao.base.mmodel.MyInviterResData.InviterBody;
-import com.nongke.jindao.base.utils.UserUtil;
 import com.nongke.jindao.base.utils.Utils;
 
 import java.util.List;

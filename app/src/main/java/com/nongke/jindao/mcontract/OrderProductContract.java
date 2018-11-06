@@ -5,6 +5,7 @@ import com.nongke.jindao.base.mmodel.MyAddressResData;
 import com.nongke.jindao.base.mmodel.OrderProductResData;
 import com.nongke.jindao.base.mmodel.Product;
 import com.nongke.jindao.base.mmodel.ProductResData;
+import com.nongke.jindao.base.mmodel.RechargeResData;
 
 import java.util.List;
 
@@ -19,7 +20,8 @@ public class OrderProductContract {
         void buyProduct(List<Product> list);
 
         void getUserAddress();
-
+        void payForProductOnline(String orderId,int orderType, int payType, String list,float cornMoney,float rmb,
+                                 float totalPay,float postage,String uid,String phone,String userName,String address);
     }
 
     public interface View {
@@ -27,6 +29,6 @@ public class OrderProductContract {
         void showOrderProduct(OrderProductResData productResData);
 
         void showUserAddressResData(MyAddressResData userAddressResData);
-
+        void showOrderProductPayRes(RechargeResData rechargeResData);
     }
 }

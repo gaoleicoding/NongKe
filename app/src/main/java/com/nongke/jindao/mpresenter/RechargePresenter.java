@@ -2,14 +2,12 @@ package com.nongke.jindao.mpresenter;
 
 
 import com.nongke.jindao.base.api.ApiService;
-import com.nongke.jindao.base.mmodel.BannerResData;
 import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.mmodel.RechargeResData;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.thirdframe.retrofit.RetrofitProvider;
 import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
 import com.nongke.jindao.base.utils.LogUtil;
-import com.nongke.jindao.base.utils.UserUtil;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.mcontract.RechargeContract;
 

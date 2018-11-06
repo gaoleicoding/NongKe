@@ -1,25 +1,14 @@
 package com.nongke.jindao.view;
 
-import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.nongke.jindao.R;
-import com.nongke.jindao.activity.RegisterLoginActivity;
-import com.nongke.jindao.activity.VipRechargeActivity;
-import com.nongke.jindao.base.utils.OnlineParamUtil;
-import com.nongke.jindao.base.utils.UserUtil;
-import com.nongke.jindao.base.utils.Utils;
-
-import butterknife.BindView;
-import butterknife.OnClick;
 
 public class PayView extends FrameLayout implements View.OnClickListener {
 

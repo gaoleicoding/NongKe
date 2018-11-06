@@ -150,7 +150,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/my_recharge_layout"
+            android:id="@+id/my_bill_layout"
             style="@style/user_info_layout">
 
             <ImageView

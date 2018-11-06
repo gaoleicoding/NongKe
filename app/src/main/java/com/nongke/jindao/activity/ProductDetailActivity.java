@@ -16,7 +16,7 @@ import com.nongke.jindao.R;
 import com.nongke.jindao.adapter.ProductDetailImgAdapter;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
 import com.nongke.jindao.base.mmodel.Product;
-import com.nongke.jindao.base.utils.UserUtil;
+import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.mpresenter.ProductDetailPresenter;
 import com.youth.banner.Banner;

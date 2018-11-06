@@ -21,12 +21,13 @@ import com.nongke.jindao.adapter.ProductAdapter;
 import com.nongke.jindao.adapter.divider.GridItemSpaceDecoration;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mmodel.BannerResData;
+import com.nongke.jindao.base.mmodel.MessageResData;
 import com.nongke.jindao.base.mmodel.Product;
 import com.nongke.jindao.base.mmodel.ProductResData;
 import com.nongke.jindao.base.utils.Constants;
 import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.ScreenUtils;
-import com.nongke.jindao.base.utils.UserUtil;
+import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.mcontract.ProductContract;
 import com.nongke.jindao.mpresenter.ProductPresenter;
@@ -114,7 +115,7 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
         mPresenter.getBannerProduct();
 
         mPresenter.pageProduct(Constants.pageSize, Constants.orderType_DESC, Constants.orderBy_create_time);
-
+        mPresenter.listMessage();
     }
 
 
@@ -275,7 +276,14 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
         }
 
     }
-
+    @Override
+    public void showMessageList(MessageResData messageResData) {
+        if (messageResData == null || messageResData.rspBody == null) return;
+        if (messageResData.rspBody.size() > 0) {
+            String msgTitle = messageResData.rspBody.get(0).title;
+            tv_notice_content.setText(msgTitle);
+        }
+    }
     public void scrollToTop() {
         project_recyclerview.scrollToPosition(0);
     }
