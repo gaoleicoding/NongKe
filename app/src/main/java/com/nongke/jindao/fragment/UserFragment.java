@@ -20,6 +20,7 @@ import com.nongke.jindao.activity.MyBillActivity;
 import com.nongke.jindao.activity.MyCommissionActivity;
 import com.nongke.jindao.activity.MyInviterActivity;
 import com.nongke.jindao.activity.MyProfileActivity;
+import com.nongke.jindao.activity.OrderRecordActivity;
 import com.nongke.jindao.activity.PromotionActivity;
 import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.activity.VipRechargeActivity;
@@ -220,7 +221,7 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
                 MyAddressActivity.startActivity(getActivity());
                 break;
             case R.id.my_order_layout:
-
+                OrderRecordActivity.startActivity(getActivity());
                 break;
             case R.id.my_logout_layout:
 

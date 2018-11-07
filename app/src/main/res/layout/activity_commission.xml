@@ -8,11 +8,13 @@
     android:orientation="vertical">
 
     <com.nongke.jindao.base.view.TitleView
+        android:id="@+id/title_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview_commission"
+        android:layout_below="@id/title_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"

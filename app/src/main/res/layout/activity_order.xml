@@ -194,6 +194,7 @@
                 <EditText
                     android:id="@+id/et_balance_pay"
                     style="@style/common_edit_style"
+                    android:layout_marginLeft="0dp"
                     android:hint="输入金额"
                     android:inputType="number" />
             </LinearLayout>

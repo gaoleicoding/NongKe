@@ -36,6 +36,7 @@ import com.nongke.jindao.base.utils.account.OnlineParamUtil;
 import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.event.UpdateAddressEvent;
+import com.nongke.jindao.event.UpdateCartEvent;
 import com.nongke.jindao.mcontract.OrderProductContract;
 import com.nongke.jindao.mpresenter.OrderProductPresenter;
 
@@ -113,6 +114,8 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
                     if (TextUtils.equals(resultStatus, "9000")) {
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
                         Toast.makeText(OrderActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
+                        UpdateCartEvent updateCartEvent = new UpdateCartEvent();
+                        EventBus.getDefault().post(updateCartEvent);
                         finish();
                     } else {
                         // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
@@ -130,10 +133,6 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
         Intent intent = new Intent(context, OrderActivity.class);
         intent.putExtra("params", bundle);
         context.startActivity(intent);
-    }
-
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override

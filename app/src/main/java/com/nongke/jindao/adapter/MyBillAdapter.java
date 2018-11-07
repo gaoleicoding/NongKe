@@ -26,7 +26,6 @@ public class MyBillAdapter extends RecyclerView.Adapter<MyBillAdapter.MyViewHold
     public MyBillAdapter(Context context, List<BillBody> list) {
         this.context = context;
         this.list = list;
-
     }
 
     public void setList(List<BillBody> list) {
@@ -38,7 +37,6 @@ public class MyBillAdapter extends RecyclerView.Adapter<MyBillAdapter.MyViewHold
 
         View view = LayoutInflater.from(context).inflate(R.layout.item_bill, null);
         MyViewHolder holder = new MyViewHolder(view);
-
         return holder;
     }
 
@@ -46,9 +44,8 @@ public class MyBillAdapter extends RecyclerView.Adapter<MyBillAdapter.MyViewHold
         holder.itemView.setTag(position);
         final BillBody resData = list.get(position);
         holder.tv_bill_time.setText( Utils.ms2Date(Long.parseLong(resData.time)));
-        holder.tv_bill_amount.setText(resData.totalDesc+"元");
+        holder.tv_bill_amount.setText(resData.totalDesc);
         holder.tv_bill_type.setText(resData.description);
-
     }
 
     @Override
@@ -65,7 +62,6 @@ public class MyBillAdapter extends RecyclerView.Adapter<MyBillAdapter.MyViewHold
             tv_bill_time = view.findViewById(R.id.tv_bill_time);
             tv_bill_amount = view.findViewById(R.id.tv_bill_amount);
             tv_bill_type = view.findViewById(R.id.tv_bill_type);
-
 
         }
     }

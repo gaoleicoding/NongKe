@@ -13,15 +13,11 @@ import android.widget.TextView;
 import com.nongke.jindao.R;
 import com.nongke.jindao.adapter.MyBillAdapter;
 import com.nongke.jindao.adapter.divider.RecycleViewDivider;
-import com.nongke.jindao.base.activity.BaseActivity;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
 import com.nongke.jindao.base.mmodel.BillResData;
 import com.nongke.jindao.base.mmodel.BillResData.BillBody;
-import com.nongke.jindao.base.utils.account.MessageUtil;
 import com.nongke.jindao.mcontract.MyBillContract;
-import com.nongke.jindao.mcontract.MyInviterContract;
 import com.nongke.jindao.mpresenter.MyBillPresenter;
-import com.nongke.jindao.mpresenter.MyInviterPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,12 +45,6 @@ public class MyBillActivity extends BaseMvpActivity<MyBillPresenter> implements 
         Intent intent = new Intent(context, MyBillActivity.class);
         context.startActivity(intent);
     }
-
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        initRecyclerView();
-    }
-
     @Override
     public MyBillPresenter initPresenter() {
         return new MyBillPresenter();
@@ -74,6 +64,7 @@ public class MyBillActivity extends BaseMvpActivity<MyBillPresenter> implements 
     protected void initData(Bundle bundle) {
         title.setText(getString(R.string.my_bill));
         iv_back.setVisibility(View.VISIBLE);
+        initRecyclerView();
     }
 
     private void initRecyclerView() {

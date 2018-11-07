@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:id="@+id/header_layout"
+        android:id="@+id/title_layout"
         android:layout_width="match_parent"
         android:layout_height="42dp"
         android:background="@color/app_color">
@@ -38,7 +38,7 @@
         android:id="@+id/cart_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/header_layout"
+        android:layout_below="@id/title_layout"
         android:layout_margin="5dp"
         android:paddingBottom="45dp" />
 

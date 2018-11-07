@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f2f2f2"
+    android:orientation="vertical">
+
+    <com.nongke.jindao.base.view.TitleView
+        android:id="@+id/title_layout"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <!--下拉刷新组件-->
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/smartRefreshLayout_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <ExpandableListView
+        android:id="@+id/order_expand_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title_layout"
+        android:layout_marginTop="3dp" />
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    <TextView
+        android:id="@+id/tv_order_record_hint"
+        style="@style/common_txt"
+        android:layout_centerInParent="true" />
+</RelativeLayout>

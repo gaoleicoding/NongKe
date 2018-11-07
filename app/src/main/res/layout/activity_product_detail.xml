@@ -189,7 +189,7 @@
                 android:id="@+id/tv_product_add_cart"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="#fda127"
+                android:background="@color/color_fda127"
                 android:gravity="center"
                 android:clickable="true"
                 android:ellipsize="end"

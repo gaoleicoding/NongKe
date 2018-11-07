@@ -8,21 +8,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.nongke.jindao.R;
-import com.nongke.jindao.adapter.MessageAdapter;
-import com.nongke.jindao.adapter.MyBillAdapter;
 import com.nongke.jindao.adapter.UserRecordAdapter;
 import com.nongke.jindao.adapter.divider.RecycleViewDivider;
-import com.nongke.jindao.base.activity.BaseActivity;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
 import com.nongke.jindao.base.mmodel.UserRecordResData;
 import com.nongke.jindao.base.mmodel.UserRecordResData.UserRecordBody;
-import com.nongke.jindao.base.utils.account.MessageUtil;
-import com.nongke.jindao.mcontract.MyBillContract;
 import com.nongke.jindao.mcontract.UserRecordContract;
-import com.nongke.jindao.mpresenter.MyBillPresenter;
 import com.nongke.jindao.mpresenter.UserRecordPresenter;
 
 import java.util.ArrayList;
@@ -53,11 +48,6 @@ public class MyCommissionActivity extends BaseMvpActivity<UserRecordPresenter> i
         context.startActivity(intent);
     }
 
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        initRecyclerView();
-    }
-
     @Override
     public UserRecordPresenter initPresenter() {
         return new UserRecordPresenter();
@@ -65,7 +55,7 @@ public class MyCommissionActivity extends BaseMvpActivity<UserRecordPresenter> i
 
     @Override
     protected void loadData() {
-        mPresenter.listUserRecord(3);
+        mPresenter.listUserRecord("3");
     }
 
     @Override
@@ -75,8 +65,9 @@ public class MyCommissionActivity extends BaseMvpActivity<UserRecordPresenter> i
 
     @Override
     protected void initData(Bundle bundle) {
-        title.setText(getString(R.string.notice));
+        title.setText(getString(R.string.my_commission));
         iv_back.setVisibility(View.VISIBLE);
+        initRecyclerView();
     }
 
     private void initRecyclerView() {
@@ -96,7 +87,7 @@ public class MyCommissionActivity extends BaseMvpActivity<UserRecordPresenter> i
     @Override
     public void showUserRecord(UserRecordResData userRecordResData) {
         if (userRecordResData.rspBody.size() == 0) {
-            tv_commission_hint.setText("你还没有充值记录");
+            tv_commission_hint.setText("你还没有佣金");
             tv_commission_hint.setVisibility(View.VISIBLE);
         } else {
             userRecordAdapter.setList(userRecordResData.rspBody);

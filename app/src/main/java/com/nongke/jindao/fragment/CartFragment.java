@@ -142,7 +142,7 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
                         }
                         cartAdapter.selectProductList.clear();
                     }
-                    cartAdapter.selectAll(false, true);
+
                     cartAdapter.notifyDataSetChanged();
                     backFromManageCart();
 
@@ -155,6 +155,7 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
                     bundle.putSerializable("product_list", (Serializable) cartAdapter.selectProductList);
                     OrderActivity.startActivity(getActivity(), bundle);
                 }
+                cartAdapter.selectAll(false, true);
                 break;
             case R.id.tv_edit:
                 if (!isEditingCart) {
@@ -241,6 +242,7 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(UpdateCartEvent updateCartEvent) {
         mPresenter.getCartProduct();
+        tv_product_total_price.setText("合计：0元");
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

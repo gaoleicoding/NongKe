@@ -28,6 +28,8 @@ import io.reactivex.Observable;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -94,10 +96,11 @@ public interface ApiService {
     Observable<PhoneRecordResData> listUserPhoneRecord();
 
     @POST("user/listUserRecord")
-    Observable<UserRecordResData> listUserRecord(@Body RequestBody requestBody);
+    @FormUrlEncoded
+    Observable<UserRecordResData> listUserRecord(@Field("type") String type);
 
     @POST("user/pageUserOrderInfo")
-    Observable<OrderRecordResData> pageUserOrderInfo();
+    Observable<OrderRecordResData> pageUserOrderInfo(@Body RequestBody requestBody);
 
     @POST("product/pageProduct")
     Observable<ProductResData> pageProduct(@Body RequestBody requestBody);

@@ -70,11 +70,35 @@ public class OrderRecordResData {
     public RspBody rspBody;
 
     public class RspBody {
-        public int id, firstPage, lastPage, hasNextPage, hasPreviousPage, isFirstPage, isLastPage;
+        public int id, firstPage, lastPage;
+        public boolean hasNextPage, hasPreviousPage, isFirstPage, isLastPage;
         public String orderId, orderType, productDetail, uid;
         public float discount, discountMoney, postage, totalCardMoney, totalCardPay, totalMoney, totalPay;
         public List<ProductOrder> list;
 
-
+        @Override
+        public String toString() {
+            return "RspBody{" +
+                    "id=" + id +
+                    ", firstPage=" + firstPage +
+                    ", lastPage=" + lastPage +
+                    ", hasNextPage=" + hasNextPage +
+                    ", hasPreviousPage=" + hasPreviousPage +
+                    ", isFirstPage=" + isFirstPage +
+                    ", isLastPage=" + isLastPage +
+                    ", orderId='" + orderId + '\'' +
+                    ", orderType='" + orderType + '\'' +
+                    ", productDetail='" + productDetail + '\'' +
+                    ", uid='" + uid + '\'' +
+                    ", discount=" + discount +
+                    ", discountMoney=" + discountMoney +
+                    ", postage=" + postage +
+                    ", totalCardMoney=" + totalCardMoney +
+                    ", totalCardPay=" + totalCardPay +
+                    ", totalMoney=" + totalMoney +
+                    ", totalPay=" + totalPay +
+                    ", list=" + list +
+                    '}';
+        }
     }
 }

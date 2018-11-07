@@ -1,6 +1,5 @@
 package com.nongke.jindao.mcontract;
 
-import com.nongke.jindao.base.mmodel.BillResData;
 import com.nongke.jindao.base.mmodel.UserRecordResData;
 
 /**
@@ -11,7 +10,7 @@ public class UserRecordContract {
 
     public interface Presenter {
 
-        void listUserRecord(int type);
+        void listUserRecord(String type);
 
     }
 
