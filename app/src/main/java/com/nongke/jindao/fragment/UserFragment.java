@@ -2,6 +2,10 @@ package com.nongke.jindao.fragment;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Gravity;
@@ -9,6 +13,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -79,7 +84,8 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
     @BindView(R.id.my_logout_layout)
     LinearLayout my_logout_layout;
     @BindView(R.id.ll_userinfo_profile_logined)
-    LinearLayout ll_userinfo_profile_logined;
+    LinearLayout ll_userinfo_profile_logined; @BindView(R.id.custom_service_layout)
+    LinearLayout custom_service_layout;
 
     @BindView(R.id.iv_user_photo)
     public ImageView iv_user_photo;
@@ -175,7 +181,7 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
 
     @OnClick({R.id.iv_user_photo, R.id.my_daoli_recharge_layout, R.id.my_daoli_transfer_layout, R.id.my_bill_layout, R.id.my_commission_layout, R.id.my_withdraw_layout,
             R.id.my_withdraw_record_layout, R.id.my_profile_layout, R.id.my_promotion_layout, R.id.my_location_layout, R.id.my_order_layout, R.id.my_logout_layout,
-            R.id.tv_vip_recharge, R.id.my_inviter_layout})
+            R.id.tv_vip_recharge, R.id.my_inviter_layout,R.id.custom_service_layout})
     public void click(View view) {
         if (!UserUtil.isLogined()) {
             RegisterLoginActivity.startActivity(getActivity());
@@ -254,7 +260,8 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
 
                 }
                 break;
-            default:
+            case R.id.custom_service_layout:
+                toQQServer(getActivity());
                 break;
         }
 
@@ -310,6 +317,18 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
     @Override
     public void showUserInfo(LoginResData loginResData) {
         UserUtil.setUserInfo(loginResData);
+    }
+    public static void toQQServer(Context context){
+        try {
+            ApplicationInfo info = context.getPackageManager().getApplicationInfo("com.tencent.mobileqq",
+                    PackageManager.GET_UNINSTALLED_PACKAGES);
+            if (info!=null){
+                context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("mqqwpa://im/chat?chat_type=wpa&uin=2472328899&version=1")));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            Toast.makeText(context,"本机未安装QQ应用",Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

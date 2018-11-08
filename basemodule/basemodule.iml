@@ -113,6 +113,7 @@
     <orderEntry type="library" name="Gradle: com.android.support.constraint:constraint-layout-solver:1.1.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.youth.banner:banner-1.4.10" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:/Users/GaoLei/gaolei/JinDaoMall/NongKe/NongKe/basemodule/libs/zxing.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:multidex-1.0.3" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-vector-drawable-27.0.1" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-core-utils-27.0.2" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-media-compat-26.1.0" level="project" />

@@ -36,7 +36,7 @@ android {
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        multiDexEnabled true
     }
     //执行lint检查，有任何的错误或者警告提示，都会终止构建
     lintOptions {
@@ -144,6 +144,6 @@ dependencies {
     //    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
     api project(':basemodule')
-//    api files('libs/zxing.jar')
-//    implementation files('libs/alipaySdk-20180601.jar')
+    //    api files('libs/zxing.jar')
+    //    implementation files('libs/alipaySdk-20180601.jar')
 }
