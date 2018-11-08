@@ -16,6 +16,33 @@
       <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/activity/CustomServiceActivity.java" />
       <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/icon_qq.png" />
       <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_custom_service.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/basemodule/libs/SecurityEnvSDK/SecurityEnvSDK-release-1.1.0.jar" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/basemodule/libs/SecurityEnvSDK/jni/arm64-v8a/libsecurityenv.so" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/basemodule/libs/SecurityEnvSDK/jni/armeabi-v7a/libsecurityenv.so" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/basemodule/libs/SecurityEnvSDK/jni/armeabi/libsecurityenv.so" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/basemodule/libs/SecurityEnvSDK/jni/x86/libsecurityenv.so" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-08-18-08-54-391.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-08-18-08-54-391.rawproto" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-08-18-09-33-939.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-08-18-09-33-939.rawproto" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-08-18-09-40-945.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-08-18-09-40-945.rawproto" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-08-18-10-24-751.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-08-18-10-24-751.rawproto" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-08-18-11-01-123.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-08-18-11-01-123.rawproto" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-08-18-11-41-504.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-08-18-11-41-504.rawproto" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-08-18-12-05-867.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-08-18-12-05-867.rawproto" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-08-18-14-13-430.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-08-18-14-13-430.rawproto" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-08-18-14-22-330.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-08-18-14-22-330.rawproto" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-08-18-46-25-602.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-08-18-46-25-602.rawproto" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-08-18-57-19-480.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-08-18-57-19-480.rawproto" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" />
@@ -372,9 +399,12 @@
       <file leaf-file-name="UserFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/UserFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="596">
-              <caret line="325" column="124" lean-forward="false" selection-start-line="325" selection-start-column="124" selection-end-line="325" selection-end-column="124" />
-              <folding />
+            <state relative-caret-position="512">
+              <caret line="325" column="115" lean-forward="true" selection-start-line="325" selection-start-column="115" selection-end-line="325" selection-end-column="125" />
+              <folding>
+                <element signature="e#6457#6491#0" expanded="true" />
+                <element signature="e#8642#8676#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -15524,12 +15554,12 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2911726" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295063" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20895523" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20895523" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33295062" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21938232" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21938232" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36394948" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.009584664" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -16282,9 +16312,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nongke/jindao/fragment/UserFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
-          <caret line="325" column="124" lean-forward="false" selection-start-line="325" selection-start-column="124" selection-end-line="325" selection-end-column="124" />
-          <folding />
+        <state relative-caret-position="512">
+          <caret line="325" column="115" lean-forward="true" selection-start-line="325" selection-start-column="115" selection-end-line="325" selection-end-column="125" />
+          <folding>
+            <element signature="e#6457#6491#0" expanded="true" />
+            <element signature="e#8642#8676#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
