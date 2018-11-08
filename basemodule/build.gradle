@@ -71,11 +71,11 @@ android {
         api rootProject.ext.dependencies["event-bus"]
         annotationProcessor rootProject.ext.dependencies["eventbus-annotation-processor"]
         // BlockCanary进行卡顿监控和提示
-        debugImplementation rootProject.ext.dependencies["blockcanary-android"]
-        releaseImplementation rootProject.ext.dependencies["blockcanary-no-op"]
-        //LeakCanary
-        debugImplementation rootProject.ext.dependencies["leakcanary-android"]
-        releaseImplementation rootProject.ext.dependencies["leakcanary-android-no-op"]
+//        debugImplementation rootProject.ext.dependencies["blockcanary-android"]
+//        releaseImplementation rootProject.ext.dependencies["blockcanary-no-op"]
+//        //LeakCanary
+//        debugImplementation rootProject.ext.dependencies["leakcanary-android"]
+//        releaseImplementation rootProject.ext.dependencies["leakcanary-android-no-op"]
         // Optional, if you use support library fragments:
         debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.1'
         //okhttp保存cookie

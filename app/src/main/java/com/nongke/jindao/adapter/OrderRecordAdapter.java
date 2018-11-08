@@ -87,17 +87,7 @@ public class OrderRecordAdapter extends BaseExpandableListAdapter {
         ProductOrder productOrder = list.get(groupPosition);
         tv_order.setText("订单号:" + productOrder.orderId);
         tv_time.setText(Utils.ms2Date(Long.parseLong(productOrder.createTime)));
-        if (productOrder.statusDesc == 0)
-            tv_order_status.setText("无效订单");
-        if (productOrder.statusDesc == 1)
-            tv_order_status.setText("未付款");
-        if (productOrder.statusDesc == 2)
-            tv_order_status.setText("已付款");
-        if (productOrder.statusDesc == 3)
-            tv_order_status.setText("交易成功");
-        if (productOrder.statusDesc == 4)
-            tv_order_status.setText("订单已取消");
-
+            tv_order_status.setText(productOrder.statusDesc);
         return convertView;
     }
 

@@ -58,7 +58,7 @@ import static com.nongke.jindao.base.pay.alipay.AliPayUtil.SDK_PAY_FLAG;
  * author: zlm
  * date: 2017/3/17 16:01
  */
-public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implements OrderProductContract.View {
+public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implements OrderProductContract.View, PayView.OnPayTypeClickListener {
     @BindView(R.id.iv_back)
     ImageView iv_back;
     @BindView(R.id.title)
@@ -101,8 +101,8 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
     private List<Product> orderProductList;
     private OrderProductAdapter orderProductAdapter;
     String TAG = "OrderActivity";
-    //    float totalPrice, indeedPayPrice;
-    float discountMoney, totalMoney, rmb, totalPay, cornMoney = 0;
+    float postage;
+    float discountMoney, totalCardMoney, totalMoney, cornMoney = 0, totalCardPay, rmb, totalPay;
     String orderId, phone, userName, address;
     //totalPay(折后金额) = rmb（用户付款金额）+cornMoney（余额）
     private Handler mHandler = new Handler() {
@@ -118,7 +118,7 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
                     // 判断resultStatus 为9000则代表支付成功
                     if (TextUtils.equals(resultStatus, "9000")) {
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
-                        Toast.makeText(OrderActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
+                        Utils.showToast("支付成功",false);
                         UpdateCartEvent updateCartEvent = new UpdateCartEvent();
                         EventBus.getDefault().post(updateCartEvent);
                         finish();
@@ -154,28 +154,8 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
         orderProductList = (List<Product>) bundle.getSerializable("product_list");
 
         initRecyclerView();
-//        if (UserUtil.getUserInfo().rspBody.money > 10)
-//            ll_balance_pay.setVisibility(View.GONE);
-//        for (int i = 0; i < orderProductList.size(); i++) {
-//            Product productInfo = orderProductList.get(i);
-//            totalPrice = totalPrice + productInfo.productPrice * productInfo.amount;
-//        }
-//        tv_order_money.setText(totalPrice + "");
-//        if (UserUtil.getUserInfo().rspBody.isVip == 1) {
-//            ll_order_discount_layout.setVisibility(View.VISIBLE);
-//            int productDiscount = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.vip_discount.content);
-//            tv_order_discount_money.setText(discountMoney + "");
-//        } else {
-//            indeedPayPrice = totalPrice;
-//        }
-//
-//        tv_order_indeed_pay.setText(indeedPayPrice + "");
-//        int postage = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.postage.content);
-//        if (postage > 0) {
-//            ll_order_postage.setVisibility(View.VISIBLE);
-//            tv_order_postage.setText(postage + "");
-//        }
-
+        pay_view.setOnPayTypeClickListener(this);
+        postage = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.postage.content);
         LogUtil.d(TAG, "orderProductList.size():" + orderProductList.size());
         et_balance_pay.setHint(UserUtil.userInfo.rspBody.money + "");
         et_balance_pay.addTextChangedListener(new TextWatcher() {
@@ -238,12 +218,15 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
                     Utils.showToast("订单还未生成，请稍后再支付", false);
                     return;
                 }
-                float postage = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.postage.content);
+                float daoli = UserUtil.getUserInfo().rspBody.cardMoney;
+                if (pay_view.getPayType() == 1 && totalPay > daoli) {
+                    Utils.showToast("你的稻粒不足，请选择其它支付方式", false);
+                    return;
+                }
+
                 mPresenter.payForProductOnline(orderId, 4, pay_view.getPayType(), new Gson().toJson(orderProductList),
-                        cornMoney, discountMoney - cornMoney, discountMoney - cornMoney + postage, 0, UserUtil.userInfo.rspBody.uid, phone,
+                        cornMoney, rmb, totalPay, postage, UserUtil.userInfo.rspBody.uid, phone,
                         userName, address);
-
-
                 break;
             case R.id.rl_address:
                 MyAddressActivity.startActivity(OrderActivity.this);
@@ -274,7 +257,6 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
     @Override
     public void showUserAddressResData(MyAddressResData userAddressResData) {
         if (tv_phone == null || tv_name == null || tv_address == null) return;
-
         if (userAddressResData == null)
             return;
         if (userAddressResData.retCode.equals("10000") && userAddressResData.retDesc.equals("操作成功")) {
@@ -294,19 +276,27 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
         orderId = productResData.rspBody.orderId;
         totalMoney = productResData.rspBody.totalMoney;
         discountMoney = productResData.rspBody.discountMoney;
+        totalCardMoney = productResData.rspBody.totalCardMoney;
+        totalCardPay = productResData.rspBody.totalCardPay;
         float postage = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.postage.content);
         if (postage > 0) {
             ll_order_postage.setVisibility(View.VISIBLE);
             tv_order_postage.setText(postage + "");
         }
-        tv_order_money.setText(totalMoney + "");
-        tv_order_indeed_pay.setText(discountMoney - cornMoney + "");
-        tv_product_total_price.setText(discountMoney - cornMoney + postage + "");
+        onPayTypeClick(3);
+
     }
 
     @Override
     public void showOrderProductPayRes(RechargeResData rechargeResData) {
         final String paySign = rechargeResData.rspBody.paySign;
+        if(paySign==null&&rechargeResData.rspBody.flag==1){
+            Utils.showToast("点卡支付成功",false);
+            UpdateCartEvent updateCartEvent = new UpdateCartEvent();
+            EventBus.getDefault().post(updateCartEvent);
+            finish();
+            return;
+        }
         Log.d(TAG, "paySign:" + paySign);
         AliPayUtil.pay(mHandler, this, paySign);
     }
@@ -321,4 +311,55 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
         super.onDestroy();
         EventBus.getDefault().unregister(this);
     }
+
+    @Override
+    public void onPayTypeClick(int type) {
+        if (UserUtil.getUserInfo().rspBody.isVip == 0) {
+            if (type == 1) {
+                rmb = totalCardPay;
+                totalPay = totalCardPay - cornMoney + postage;
+            }
+            if (type == 3) {
+                rmb = totalMoney;
+                totalPay = totalMoney - cornMoney + postage;
+            }
+            if (type == 4) {
+                rmb = totalMoney;
+                totalPay = totalMoney - cornMoney + postage;
+            }
+        }
+        if (UserUtil.getUserInfo().rspBody.isVip == 1) {
+            if (type == 1) {
+                rmb = totalCardMoney;
+                totalPay = totalCardMoney - cornMoney + postage;
+            }
+            if (type == 3) {
+                rmb = discountMoney ;
+                totalPay = discountMoney - cornMoney + postage;
+            }
+            if (type == 4) {
+                rmb = discountMoney ;
+                totalPay = discountMoney - cornMoney + postage;
+            }
+        }
+        LogUtil.d(TAG, "isVip------------" + UserUtil.getUserInfo().rspBody.isVip);
+        LogUtil.d(TAG, "-----------------非vip----------");
+        LogUtil.d(TAG, "totalMoney------------" + totalMoney);
+        LogUtil.d(TAG, "totalCardPay------------" + totalCardPay);
+        LogUtil.d(TAG, "-----------------vip----------------");
+        LogUtil.d(TAG, "discountMoney------------" + discountMoney);
+        LogUtil.d(TAG, "totalCardMoney------------" + totalCardMoney);
+        LogUtil.d(TAG, "--------------固定-------------------");
+        LogUtil.d(TAG, "totalMoney------------" + totalMoney);
+        LogUtil.d(TAG, "cornMoney------------" + cornMoney);
+        LogUtil.d(TAG, "postage------------" + postage);
+        LogUtil.d(TAG, "--------------显示-------------------");
+        LogUtil.d(TAG, "rmb------------" + rmb);
+        LogUtil.d(TAG, "totalPay------------" + totalPay);
+
+        tv_order_money.setText(totalMoney + "");
+        tv_order_indeed_pay.setText(rmb + "");
+        tv_product_total_price.setText(totalPay + "");
+    }
+
 }

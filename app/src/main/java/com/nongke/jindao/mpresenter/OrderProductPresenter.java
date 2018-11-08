@@ -79,6 +79,9 @@ public class OrderProductPresenter extends BasePresenter<OrderProductContract.Vi
     @Override
     public void payForProductOnline(String orderId,int orderType, int payType, String list,float cornMoney,float rmb,
                                     float totalPay,float postage,String uid,String phone,String userName,String address) {
+//        orderType (integer, optional): 1:标识vip 购买 2:标识点卡购买 3:标识话费充值 4:标识购物内容 ,
+//        payType (integer, optional): 1:标识点卡 2:标识余额(针对点卡) 3:标识支付宝 4:标识微信 ,
+
         HashMap hashMap = new HashMap();
         hashMap.put("orderId", orderId);
         hashMap.put("orderType", orderType);

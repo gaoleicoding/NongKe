@@ -75,8 +75,7 @@ public class VipRechargeActivity extends BaseMvpActivity<RechargePresenter> impl
     TextView tv_vip_contract_content;
     @BindView(R.id.cb_vip_contract)
     CheckBox cb_vip_contract;
-    @BindView(R.id.et_recharge_amount)
-    EditText et_recharge_amount;
+
 
     boolean isInContract;
     public final int  REFRESH_LOGIN_VIP = 1;

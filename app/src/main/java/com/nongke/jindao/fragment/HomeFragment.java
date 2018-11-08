@@ -1,6 +1,8 @@
 package com.nongke.jindao.fragment;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -268,6 +270,10 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
                 WebViewActivity.startActivity(getActivity(), bundle);
                 break;
             case R.id.home_custom_layout:
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                Uri data = Uri.parse("tel:" + "4007882109");
+                intent.setData(data);
+                startActivity(intent);
 
                 break;
 

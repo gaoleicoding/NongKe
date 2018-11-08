@@ -11,12 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nongke.jindao.R;
-import com.nongke.jindao.adapter.MyBillAdapter;
 import com.nongke.jindao.adapter.WithdrawRecordAdapter;
 import com.nongke.jindao.adapter.divider.RecycleViewDivider;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
 import com.nongke.jindao.base.mmodel.WithdrawRecordResData;
-import com.nongke.jindao.base.utils.account.MessageUtil;
 import com.nongke.jindao.mcontract.WithdrawRecordContract;
 import com.nongke.jindao.mpresenter.WithdrawRecordPresenter;
 
@@ -36,7 +34,8 @@ public class WithdrawRecordActivity extends BaseMvpActivity<WithdrawRecordPresen
     @BindView(R.id.iv_back)
     ImageView iv_back;
     @BindView(R.id.title)
-    TextView title; @BindView(R.id.tv_withdraw_hint)
+    TextView title;
+    @BindView(R.id.tv_withdraw_hint)
     TextView tv_withdraw_hint;
     @BindView(R.id.recyclerview_message)
     RecyclerView message_recyclerview;
@@ -65,7 +64,7 @@ public class WithdrawRecordActivity extends BaseMvpActivity<WithdrawRecordPresen
     }
 
     private void initRecyclerView() {
-        withdrawRecordList=new ArrayList<>();
+        withdrawRecordList = new ArrayList<>();
         withdrawRecordAdapter = new WithdrawRecordAdapter(this, withdrawRecordList);
         message_recyclerview.addItemDecoration(new RecycleViewDivider(this, LinearLayoutManager.VERTICAL));
 
@@ -90,11 +89,15 @@ public class WithdrawRecordActivity extends BaseMvpActivity<WithdrawRecordPresen
 
     @Override
     public void showUserCash(WithdrawRecordResData withdrawRecordResData) {
-        if (withdrawRecordResData.rspBody.size() == 0) {
-            tv_withdraw_hint.setText("你还没有充值记录");
+        if (withdrawRecordResData.rspBody == null) {
+            tv_withdraw_hint.setText("你还没有提现记录");
             tv_withdraw_hint.setVisibility(View.VISIBLE);
+            return;
         }
-        else {
+        if (withdrawRecordResData.rspBody.size() == 0) {
+            tv_withdraw_hint.setText("你还没有提现记录");
+            tv_withdraw_hint.setVisibility(View.VISIBLE);
+        } else {
             withdrawRecordAdapter.setList(withdrawRecordResData.rspBody);
             tv_withdraw_hint.setVisibility(View.GONE);
         }

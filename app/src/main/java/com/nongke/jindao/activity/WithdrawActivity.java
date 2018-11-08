@@ -20,9 +20,7 @@ import com.nongke.jindao.base.utils.Constants;
 import com.nongke.jindao.base.utils.SharedPreferencesUtils;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.base.utils.account.UserUtil;
-import com.nongke.jindao.mcontract.MyProfileContract;
 import com.nongke.jindao.mcontract.WithdrawContract;
-import com.nongke.jindao.mpresenter.MyProfilePresenter;
 import com.nongke.jindao.mpresenter.WithdrawPresenter;
 
 import butterknife.BindView;
@@ -154,7 +152,28 @@ public class WithdrawActivity extends BaseMvpActivity<WithdrawPresenter> impleme
                     Utils.showToast("输入金额超过你的余额，请重新输入", false);
                     return;
                 }
-                mPresenter.saveUserCash(withdrawAmount, bankName, bankNum, bankAdress, userName, phone);
+                if (bankName == null) {
+                    Utils.showToast("请选择 银行名称", false);
+                    return;
+                }
+                if (bankNum == null) {
+                    Utils.showToast("请选输入 银行卡号", false);
+                    return;
+                }
+                if (bankAdress == null) {
+                    Utils.showToast("请输入 银行支行", false);
+                    return;
+                }
+                if (userName == null) {
+                    Utils.showToast("请输入 户主姓名", false);
+                    return;
+                }
+                if (phone == null) {
+                    Utils.showToast("请输入联系电话", false);
+                    return;
+                }
+                if (Utils.isMobileNO(et_contact_phone_num.getText().toString()))
+                    mPresenter.saveUserCash(withdrawAmount, bankName, bankNum, bankAdress, userName, phone);
                 break;
 
             default:

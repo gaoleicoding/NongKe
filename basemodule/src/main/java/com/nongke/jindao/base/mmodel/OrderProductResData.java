@@ -41,8 +41,8 @@ public class OrderProductResData {
     public RspBody rspBody;
 
     public class RspBody {
-        public int id;
-        public String orderId, orderType, productDetail, uid;
+        public int id,orderType;
+        public String orderId, productDetail, uid;
         public float  discount, discountMoney,postage, totalCardMoney, totalCardPay, totalMoney, totalPay;
         public List<Product> list;
 

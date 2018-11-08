@@ -12,22 +12,28 @@
 
     <TextView
         android:id="@+id/tv_bill_time"
-        style="@style/common_txt_12sp"
-        android:textSize="13sp"/>
+        style="@style/common_txt"
+        android:text="adfasdf"
+        />
 
 
     <TextView
         android:id="@+id/tv_bill_amount"
-        style="@style/common_txt_12sp"
+        style="@style/common_txt"
         android:layout_marginLeft="20dp"
-        android:textSize="13sp"/>
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="adfasdf"
+       />
 
 
     <TextView
         android:id="@+id/tv_bill_type"
-        style="@style/common_txt_12sp"
+        style="@style/common_txt"
         android:layout_marginLeft="20dp"
         android:ellipsize="end"
-        android:maxLines="1"
-        android:textSize="13sp"/>
+        android:text="adfasdf"
+        android:maxLines="1"/>
 </LinearLayout>
