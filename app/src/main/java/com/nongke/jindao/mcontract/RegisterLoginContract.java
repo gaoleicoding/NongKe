@@ -18,10 +18,7 @@ public class RegisterLoginContract {
 
         void getLoginData(String phone, String password);
 
-        void getLogoutData();
-
         void getMessageCode(String phone, int type);
-        void uploadImg(String path);
 
     }
 
@@ -33,7 +30,7 @@ public class RegisterLoginContract {
 
         void showLoginResData(LoginResData loginResData);
 
-
         void showMsgCodeResData(MsgCodeResData msgCodeResData);
     }
+
 }

@@ -26,6 +26,7 @@ public class Utils {
 
     public static Pattern intPattern = Pattern.compile("^[-+]?[0-9]");
     public static Pattern decimalPattern = Pattern.compile("^[-+]?[0-9]+(\\.[0-9]+)?$");
+
     /**
      * md5 加密
      *
@@ -135,12 +136,17 @@ public class Utils {
     }
 
     public static String keepDecimal2(float value) {
-        NumberFormat ddf1= NumberFormat.getNumberInstance() ;
+        NumberFormat ddf1 = NumberFormat.getNumberInstance();
         ddf1.setMaximumFractionDigits(2);
         return ddf1.format(value);
     }
+
     public static int stringToInt(String value) {
         return Integer.parseInt(value.trim());
+    }
+
+    public static double stringToDouble(String value) {
+        return Double.parseDouble(value.trim());
     }
 
     public static float stringToFloat(String value) {

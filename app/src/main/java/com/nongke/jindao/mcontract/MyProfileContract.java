@@ -12,9 +12,10 @@ public class MyProfileContract {
 
         void saveOrUpdateUserProfile(String bankName, String bankAddress, String bankNum, String userName, String phone, String code);
 
-        void getUserProfile();
+
         void getMessageCodeForUpdate();
 
+        void getUserProfile();
     }
 
     public interface View {
@@ -22,4 +23,5 @@ public class MyProfileContract {
         void showUserProfileResData(MyProfileResData userProfileResData);
 
     }
+
 }

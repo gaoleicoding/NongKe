@@ -108,6 +108,7 @@ public class OrderRecordActivity extends BaseMvpActivity<OrderRecordPresenter> i
             for (int i = 0; i < orderRecordList.size(); i++) {
                 order_expand_listview.expandGroup(i);
             }
+            smartRefreshLayout.finishLoadMore();
         }
     }
 

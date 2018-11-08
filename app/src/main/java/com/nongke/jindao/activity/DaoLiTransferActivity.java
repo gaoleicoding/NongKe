@@ -12,7 +12,14 @@ import android.widget.TextView;
 
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
+import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
+import com.nongke.jindao.base.utils.Utils;
+import com.nongke.jindao.base.utils.account.UserUtil;
+import com.nongke.jindao.mcontract.DaoLiTransferContract;
+import com.nongke.jindao.mcontract.RechargeContract;
+import com.nongke.jindao.mpresenter.DaoLiTransferPresenter;
+import com.nongke.jindao.mpresenter.RechargePresenter;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -22,20 +29,20 @@ import butterknife.OnClick;
  * author: zlm
  * date: 2017/3/17 16:01
  */
-public class DaoLiTransferActivity extends BaseMvpActivity {
+public class DaoLiTransferActivity extends BaseMvpActivity<DaoLiTransferPresenter>{
     @BindView(R.id.iv_back)
     ImageView iv_back;
     @BindView(R.id.title)
     TextView title;
     @BindView(R.id.et_transfer_amount)
     EditText et_transfer_amount;
-    @BindView(R.id.et_transfer_account)
-    EditText et_transfer_account;
+    @BindView(R.id.et_transfer_phone)
+    EditText et_transfer_phone;
     @BindView(R.id.tv_transfer)
     TextView tv_transfer;
     @BindView(R.id.tv_transfer_record)
-    TextView tv_transfer_record;
-
+    TextView tv_transfer_record; @BindView(R.id.tv_daoli)
+    TextView tv_daoli;
 
 
     public static void startActivity(Context context) {
@@ -52,11 +59,12 @@ public class DaoLiTransferActivity extends BaseMvpActivity {
     protected void initData(Bundle bundle) {
         title.setText(getString(R.string.my_daoli_transfer));
         iv_back.setVisibility(View.VISIBLE);
+        tv_daoli.setText(UserUtil.userInfo.rspBody.cardMoney+"");
     }
 
     @Override
-    public BasePresenter initPresenter() {
-        return null;
+    public DaoLiTransferPresenter initPresenter() {
+        return new DaoLiTransferPresenter();
     }
 
     @Override
@@ -64,19 +72,30 @@ public class DaoLiTransferActivity extends BaseMvpActivity {
 
     }
 
-    @OnClick({R.id.iv_back, R.id.tv_transfer, R.id.tv_transfer_record })
+    @OnClick({R.id.iv_back, R.id.tv_transfer, R.id.tv_transfer_record})
     public void click(View view) {
         switch (view.getId()) {
-//            case R.id.iv_back:
-//                    finish();
-//
-//                break;
 
             case R.id.tv_transfer:
+                String amountStr = et_transfer_amount.getText().toString();
+                if (amountStr.trim().length() == 0) {
+                    Utils.showToast("请输入金额", false);
+                    return;
+                }
 
+                int amount = Utils.stringToInt(amountStr);
+                if (amount > UserUtil.userInfo.rspBody.cardMoney) {
+                    Utils.showToast("输入金额超过你的稻粒，请重新输入", false);
+                    return;
+                }
+                String phoneNum = et_transfer_phone.getText().toString();
+                if (Utils.isMobileNO(phoneNum)) {
+
+                    mPresenter.cardMoneyToUser(amount, phoneNum);
+                }
                 break;
             case R.id.tv_transfer_record:
-
+                DaoLiTransferRecordActivity.startActivity(DaoLiTransferActivity.this);
                 break;
 
             default:
@@ -84,6 +103,5 @@ public class DaoLiTransferActivity extends BaseMvpActivity {
         }
 
     }
-
 
 }

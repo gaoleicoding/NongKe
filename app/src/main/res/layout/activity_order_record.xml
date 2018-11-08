@@ -13,13 +13,14 @@
     <!--下拉刷新组件-->
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/smartRefreshLayout_home"
+        android:layout_below="@id/title_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <ExpandableListView
         android:id="@+id/order_expand_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/title_layout"
+
         android:layout_marginTop="3dp" />
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 

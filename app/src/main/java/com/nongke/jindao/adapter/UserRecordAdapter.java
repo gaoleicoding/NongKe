@@ -48,7 +48,6 @@ public class UserRecordAdapter extends RecyclerView.Adapter<UserRecordAdapter.My
         holder.tv_bill_time.setText( Utils.ms2Date(Long.parseLong(resData.createTime)));
         holder.tv_bill_amount.setText(resData.amount+"元");
         holder.tv_bill_type.setText(resData.description);
-
     }
 
     @Override
@@ -65,7 +64,6 @@ public class UserRecordAdapter extends RecyclerView.Adapter<UserRecordAdapter.My
             tv_bill_time = view.findViewById(R.id.tv_bill_time);
             tv_bill_amount = view.findViewById(R.id.tv_bill_amount);
             tv_bill_type = view.findViewById(R.id.tv_bill_type);
-
 
         }
     }

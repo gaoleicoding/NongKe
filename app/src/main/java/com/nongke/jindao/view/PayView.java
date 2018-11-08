@@ -14,8 +14,10 @@ public class PayView extends FrameLayout implements View.OnClickListener {
 
     LinearLayout ll_pay_alipay;
     LinearLayout ll_pay_wechat;
+    LinearLayout ll_pay_daoli;
     ImageView img_pay_alipay;
     ImageView img_pay_wechat;
+    ImageView img_pay_daoli;
     public int payType = 3;
 
     public PayView(Context context, AttributeSet attrs) {
@@ -23,10 +25,13 @@ public class PayView extends FrameLayout implements View.OnClickListener {
         LayoutInflater.from(context).inflate(R.layout.layout_pay_style, this);
         ll_pay_alipay = findViewById(R.id.ll_pay_alipay);
         ll_pay_wechat = findViewById(R.id.ll_pay_wechat);
+        ll_pay_daoli = findViewById(R.id.ll_pay_daoli);
         img_pay_alipay = findViewById(R.id.img_pay_alipay);
         img_pay_wechat = findViewById(R.id.img_pay_wechat);
+        img_pay_daoli = findViewById(R.id.img_pay_daoli);
         ll_pay_alipay.setOnClickListener(this);
         ll_pay_wechat.setOnClickListener(this);
+        ll_pay_daoli.setOnClickListener(this);
     }
 
 
@@ -36,12 +41,20 @@ public class PayView extends FrameLayout implements View.OnClickListener {
             case R.id.ll_pay_alipay:
                 img_pay_alipay.setImageResource(R.drawable.icon_pay_select);
                 img_pay_wechat.setImageResource(R.drawable.icon_pay_unselect);
+                img_pay_daoli.setImageResource(R.drawable.icon_pay_unselect);
                 payType = 3;
                 break;
             case R.id.ll_pay_wechat:
                 img_pay_wechat.setImageResource(R.drawable.icon_pay_select);
                 img_pay_alipay.setImageResource(R.drawable.icon_pay_unselect);
+                img_pay_daoli.setImageResource(R.drawable.icon_pay_unselect);
                 payType = 4;
+                break;
+            case R.id.ll_pay_daoli:
+                img_pay_daoli.setImageResource(R.drawable.icon_pay_select);
+                img_pay_wechat.setImageResource(R.drawable.icon_pay_select);
+                img_pay_alipay.setImageResource(R.drawable.icon_pay_unselect);
+                payType = 1;
                 break;
 
         }

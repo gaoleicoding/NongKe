@@ -24,7 +24,7 @@
             android:ellipsize="end"
             android:maxLines="2"
             android:textColor="@color/color_5b5d5c"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:text="口红" />
 
         <LinearLayout
@@ -42,7 +42,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:textColor="@color/color_5b5d5c"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:text="59元" />
 
 
@@ -67,7 +67,7 @@
                     android:maxLines="1"
                     android:text="1"
                     android:textColor="@color/color_5b5d5c"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <!--<ImageView-->
                     <!--android:id="@+id/iv_product_add"-->

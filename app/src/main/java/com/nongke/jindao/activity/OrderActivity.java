@@ -39,6 +39,7 @@ import com.nongke.jindao.event.UpdateAddressEvent;
 import com.nongke.jindao.event.UpdateCartEvent;
 import com.nongke.jindao.mcontract.OrderProductContract;
 import com.nongke.jindao.mpresenter.OrderProductPresenter;
+import com.nongke.jindao.view.PayView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -90,14 +91,18 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
     LinearLayout ll_balance_pay;
     @BindView(R.id.ll_order_postage)
     LinearLayout ll_order_postage;
+    @BindView(R.id.ll_pay_daoli)
+    LinearLayout ll_pay_daoli;
     @BindView(R.id.rl_add_address)
     RelativeLayout rl_add_address;
+    @BindView(R.id.ll_pay_view)
+    PayView pay_view;
 
     private List<Product> orderProductList;
     private OrderProductAdapter orderProductAdapter;
     String TAG = "OrderActivity";
-//    float totalPrice, indeedPayPrice;
-    float discountMoney ,totalMoney,rmb,totalPay,cornMoney=0;
+    //    float totalPrice, indeedPayPrice;
+    float discountMoney, totalMoney, rmb, totalPay, cornMoney = 0;
     String orderId, phone, userName, address;
     //totalPay(折后金额) = rmb（用户付款金额）+cornMoney（余额）
     private Handler mHandler = new Handler() {
@@ -145,6 +150,7 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
         EventBus.getDefault().register(this);
         title.setText(getString(R.string.order_detail));
         iv_back.setVisibility(View.VISIBLE);
+        ll_pay_daoli.setVisibility(View.VISIBLE);
         orderProductList = (List<Product>) bundle.getSerializable("product_list");
 
         initRecyclerView();
@@ -171,7 +177,7 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
 //        }
 
         LogUtil.d(TAG, "orderProductList.size():" + orderProductList.size());
-        et_balance_pay.setHint(UserUtil.userInfo.rspBody.money+"");
+        et_balance_pay.setHint(UserUtil.userInfo.rspBody.money + "");
         et_balance_pay.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence text, int start, int before, int count) {
@@ -187,7 +193,7 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
                     Utils.showToast("您输入的金额大于你的余额", false);
                     return;
                 }
-                cornMoney=ammount;
+                cornMoney = ammount;
 
             }
 
@@ -228,13 +234,13 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
                     Utils.showToast("请先完善收货人信息", false);
                     return;
                 }
-                if(orderId==null){
-                    Utils.showToast("订单还未生成，请稍后再支付",false);
+                if (orderId == null) {
+                    Utils.showToast("订单还未生成，请稍后再支付", false);
                     return;
                 }
                 float postage = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.postage.content);
-                mPresenter.payForProductOnline(orderId, 4, 3, new Gson().toJson(orderProductList),
-                        cornMoney, discountMoney-cornMoney, discountMoney-cornMoney+postage, 0, UserUtil.userInfo.rspBody.uid, phone,
+                mPresenter.payForProductOnline(orderId, 4, pay_view.getPayType(), new Gson().toJson(orderProductList),
+                        cornMoney, discountMoney - cornMoney, discountMoney - cornMoney + postage, 0, UserUtil.userInfo.rspBody.uid, phone,
                         userName, address);
 
 
@@ -286,7 +292,7 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
     @Override
     public void showOrderProduct(OrderProductResData productResData) {
         orderId = productResData.rspBody.orderId;
-        totalMoney=productResData.rspBody.totalMoney;
+        totalMoney = productResData.rspBody.totalMoney;
         discountMoney = productResData.rspBody.discountMoney;
         float postage = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.postage.content);
         if (postage > 0) {
@@ -294,8 +300,8 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
             tv_order_postage.setText(postage + "");
         }
         tv_order_money.setText(totalMoney + "");
-        tv_order_indeed_pay.setText(discountMoney-cornMoney + "");
-        tv_product_total_price.setText(discountMoney-cornMoney + postage + "");
+        tv_order_indeed_pay.setText(discountMoney - cornMoney + "");
+        tv_product_total_price.setText(discountMoney - cornMoney + postage + "");
     }
 
     @Override

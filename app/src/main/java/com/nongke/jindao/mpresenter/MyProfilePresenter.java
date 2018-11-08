@@ -14,6 +14,7 @@ import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.ResponseStatusUtil;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.mcontract.MyProfileContract;
+import com.nongke.jindao.mcontract.WithdrawContract;
 
 import org.json.JSONObject;
 
@@ -63,6 +64,7 @@ public class MyProfilePresenter extends BasePresenter<MyProfileContract.View> im
             }
         });
     }
+
 
     @Override
     public void getMessageCodeForUpdate() {

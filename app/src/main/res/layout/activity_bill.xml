@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_f2f2f2"
     android:orientation="vertical">
 
     <com.nongke.jindao.base.view.TitleView
+        android:id="@+id/title_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -13,6 +14,7 @@
         android:id="@+id/recyclerview_message"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/title_layout"
         android:background="@color/white"
         android:layout_marginTop="1dp"
         android:paddingBottom="15dp" />
@@ -20,5 +22,7 @@
         android:id="@+id/tv_bill_hint"
         style="@style/common_txt"
         android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:text="你还没有充值记录"
         />
-</LinearLayout>
+</RelativeLayout>

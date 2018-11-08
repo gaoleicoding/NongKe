@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:minHeight="40dp"
@@ -10,20 +10,25 @@
     <TextView
         android:id="@+id/tv_order"
         android:layout_marginLeft="10dp"
-        style="@style/common_txt_12sp" />
+        android:textSize="13sp"
+        style="@style/common_txt" />
 
 
     <TextView
         android:id="@+id/tv_time"
-        style="@style/common_txt_12sp"
-        android:layout_marginLeft="20dp" />
+        style="@style/common_txt"
+        android:layout_toRightOf="@id/tv_order"
+        android:textSize="13sp"
+        android:layout_marginLeft="15dp" />
 
 
     <TextView
         android:id="@+id/tv_order_status"
-        style="@style/common_txt_12sp"
-        android:layout_marginLeft="20dp"
+        style="@style/common_txt"
+        android:layout_marginRight="10dp"
         android:textColor="@color/color_fda127"
+        android:textSize="13sp"
+        android:layout_alignParentRight="true"
         android:ellipsize="end"
         android:maxLines="1" />
-</LinearLayout>
+</RelativeLayout>

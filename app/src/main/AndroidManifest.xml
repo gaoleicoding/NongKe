@@ -51,6 +51,7 @@
         <activity android:name=".activity.MyCommissionActivity"></activity>
         <activity android:name=".activity.WithdrawRecordActivity"></activity>
         <activity android:name=".activity.OrderRecordActivity"></activity>
+        <activity android:name=".activity.DaoLiTransferRecordActivity"></activity>
 
 
 

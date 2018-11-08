@@ -45,6 +45,7 @@ public class MyBillActivity extends BaseMvpActivity<MyBillPresenter> implements 
         Intent intent = new Intent(context, MyBillActivity.class);
         context.startActivity(intent);
     }
+
     @Override
     public MyBillPresenter initPresenter() {
         return new MyBillPresenter();
@@ -84,10 +85,8 @@ public class MyBillActivity extends BaseMvpActivity<MyBillPresenter> implements 
     @Override
     public void showUserBill(BillResData billResData) {
         if (billResData.rspBody.size() == 0) {
-            tv_bill_hint.setText("你还没有充值记录");
             tv_bill_hint.setVisibility(View.VISIBLE);
-        }
-        else {
+        } else {
             billAdapter.setList(billResData.rspBody);
             tv_bill_hint.setVisibility(View.GONE);
         }

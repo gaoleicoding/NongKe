@@ -121,6 +121,7 @@
     <string name="vip_recharge_origin_price">原价  %1$d元</string>
     <string name="vip_recharge_price_to_user">（存到余额%1$d元）</string>
     <string name="daoli_balance">稻粒余额</string>
+    <string name="daoli">稻粒</string>
     <string name="daoli_recharge_ammount">充值金额</string>
     <string name="user_not_login">你还没有登录,请登录</string>
     <string name="address_save_success">地址保存成功</string>

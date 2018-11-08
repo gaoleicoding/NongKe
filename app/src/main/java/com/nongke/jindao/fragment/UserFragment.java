@@ -13,9 +13,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.nongke.jindao.R;
-import com.nongke.jindao.activity.MyAddressActivity;
 import com.nongke.jindao.activity.DaoLiTransferActivity;
 import com.nongke.jindao.activity.DaoliRechargeActivity;
+import com.nongke.jindao.activity.MyAddressActivity;
 import com.nongke.jindao.activity.MyBillActivity;
 import com.nongke.jindao.activity.MyCommissionActivity;
 import com.nongke.jindao.activity.MyInviterActivity;
@@ -25,15 +25,19 @@ import com.nongke.jindao.activity.PromotionActivity;
 import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.activity.VipRechargeActivity;
 import com.nongke.jindao.activity.WithdrawActivity;
+import com.nongke.jindao.activity.WithdrawRecordActivity;
 import com.nongke.jindao.base.activity.BaseActivity;
+import com.nongke.jindao.base.event.LoginAccountEvent;
+import com.nongke.jindao.base.event.UpdateUserInfoEvent;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
+import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.photopicker.ImageUtils;
 import com.nongke.jindao.base.utils.PermissionUtil;
 import com.nongke.jindao.base.utils.SharedPreferencesUtils;
 import com.nongke.jindao.base.utils.Utils;
-import com.nongke.jindao.base.event.LoginAccountEvent;
-import com.nongke.jindao.mpresenter.RegisterLoginPresenter;
 import com.nongke.jindao.base.utils.account.UserUtil;
+import com.nongke.jindao.mcontract.UserInfoContract;
+import com.nongke.jindao.mpresenter.UserInfoPresenter;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -48,7 +52,7 @@ import butterknife.OnClick;
  * @date 2018/2/11
  */
 
-public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
+public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements UserInfoContract.View {
 
     @BindView(R.id.my_daoli_recharge_layout)
     LinearLayout my_daoli_recharge_layout;
@@ -159,8 +163,8 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
     }
 
     @Override
-    public RegisterLoginPresenter initPresenter() {
-        return new RegisterLoginPresenter();
+    public UserInfoPresenter initPresenter() {
+        return new UserInfoPresenter();
     }
 
     @Override
@@ -205,7 +209,7 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
 
                 break;
             case R.id.my_withdraw_record_layout:
-
+                WithdrawRecordActivity.startActivity(getActivity());
                 break;
             case R.id.my_profile_layout:
                 MyProfileActivity.startActivity(getActivity());
@@ -296,4 +300,16 @@ public class UserFragment extends BaseMvpFragment<RegisterLoginPresenter> {
     public void onEvent(LoginAccountEvent accountEvent) {
         judgeLoginAndVip();
     }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(UpdateUserInfoEvent userInfoEvent) {
+        mPresenter.getUserInfo();
+    }
+
+
+    @Override
+    public void showUserInfo(LoginResData loginResData) {
+        UserUtil.setUserInfo(loginResData);
+    }
+
 }

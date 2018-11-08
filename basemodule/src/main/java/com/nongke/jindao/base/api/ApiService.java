@@ -23,6 +23,7 @@ import com.nongke.jindao.base.mmodel.MyAddressResData;
 import com.nongke.jindao.base.mmodel.MyInviterResData;
 import com.nongke.jindao.base.mmodel.MyProfileResData;
 import com.nongke.jindao.base.mmodel.UserRecordResData;
+import com.nongke.jindao.base.mmodel.WithdrawRecordResData;
 
 import io.reactivex.Observable;
 import okhttp3.MultipartBody;
@@ -102,8 +103,22 @@ public interface ApiService {
     @POST("user/pageUserOrderInfo")
     Observable<OrderRecordResData> pageUserOrderInfo(@Body RequestBody requestBody);
 
+    @POST("user/cardMoneyToUser")
+    Observable<BaseResData> cardMoneyToUser(@Body RequestBody requestBody);
+
+    @POST("user/saveUserCash")
+    Observable<BaseResData> saveUserCash(@Body RequestBody requestBody);
+
+    @POST("user/commissionToMoney")
+    @FormUrlEncoded
+    Observable<BaseResData> commissionToMoney(@Field("amount") double amount);
+
+    @POST("user/listUserCash")
+    Observable<WithdrawRecordResData> listUserCash();
+
     @POST("product/pageProduct")
     Observable<ProductResData> pageProduct(@Body RequestBody requestBody);
+
 
     @POST("product/getBannerProduct")
     Observable<BannerResData> getBannerProduct();

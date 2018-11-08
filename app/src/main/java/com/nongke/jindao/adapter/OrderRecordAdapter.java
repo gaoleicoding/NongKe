@@ -85,7 +85,7 @@ public class OrderRecordAdapter extends BaseExpandableListAdapter {
         TextView tv_order_status = convertView.findViewById(R.id.tv_order_status);
 
         ProductOrder productOrder = list.get(groupPosition);
-        tv_order.setText("订单号：" + productOrder.orderId);
+        tv_order.setText("订单号:" + productOrder.orderId);
         tv_time.setText(Utils.ms2Date(Long.parseLong(productOrder.createTime)));
         if (productOrder.statusDesc == 0)
             tv_order_status.setText("无效订单");

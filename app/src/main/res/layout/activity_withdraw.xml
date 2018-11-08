@@ -31,6 +31,7 @@
 
 
                 <TextView
+                    android:id="@+id/tv_commission_amount"
                     style="@style/common_txt_16sp"
                     android:text="100"
                     android:textSize="18sp"
@@ -59,6 +60,7 @@
 
 
                 <TextView
+                    android:id="@+id/tv_withdrawable_amount"
                     style="@style/common_txt_16sp"
                     android:text="100"
                     android:textSize="18sp"
@@ -83,7 +85,7 @@
                         android:text="@string/withdraw_amount" />
 
                     <EditText
-                        android:id="@+id/et_transfer_amount"
+                        android:id="@+id/et_withdraw_amount"
                         style="@style/code_edit_num_style"
                         android:hint="@string/input_with_amount_hint" />
                 </LinearLayout>
@@ -245,8 +247,12 @@
                     android:text="@string/share_commission" />
 
                 <TextView
+                    android:id="@+id/tv_commission"
                     style="@style/common_txt_16sp"
-                    android:text="0.00元" />
+                     />
+                <TextView
+                    style="@style/common_txt_16sp"
+                    android:text=" 元" />
 
             </LinearLayout>
 

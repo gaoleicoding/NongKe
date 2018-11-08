@@ -18,8 +18,12 @@ import com.nongke.jindao.base.activity.BaseMvpActivity;
 import com.nongke.jindao.base.mmodel.MyProfileResData;
 import com.nongke.jindao.base.utils.Constants;
 import com.nongke.jindao.base.utils.SharedPreferencesUtils;
+import com.nongke.jindao.base.utils.Utils;
+import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.mcontract.MyProfileContract;
+import com.nongke.jindao.mcontract.WithdrawContract;
 import com.nongke.jindao.mpresenter.MyProfilePresenter;
+import com.nongke.jindao.mpresenter.WithdrawPresenter;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -29,13 +33,13 @@ import butterknife.OnClick;
  * author: zlm
  * date: 2017/3/17 16:01
  */
-public class WithdrawActivity extends BaseMvpActivity<MyProfilePresenter> implements MyProfileContract.View {
+public class WithdrawActivity extends BaseMvpActivity<WithdrawPresenter> implements WithdrawContract.View {
     @BindView(R.id.iv_back)
     ImageView iv_back;
     @BindView(R.id.title)
     TextView title;
-    @BindView(R.id.et_transfer_amount)
-    EditText et_transfer_amount;
+    @BindView(R.id.et_withdraw_amount)
+    EditText et_withdraw_amount;
     @BindView(R.id.et_withdraw_contact_phone_num)
     EditText et_contact_phone_num;
     @BindView(R.id.et_withdraw_bank_card)
@@ -59,7 +63,15 @@ public class WithdrawActivity extends BaseMvpActivity<MyProfilePresenter> implem
     LinearLayout ll_select_bank;
     @BindView(R.id.tv_withdraw_select_bank)
     TextView tv_select_bank;
-
+    @BindView(R.id.tv_commission_amount)
+    TextView tv_commission_amount;
+    @BindView(R.id.tv_withdrawable_amount)
+    TextView tv_withdrawable_amount;
+    @BindView(R.id.tv_commission)
+    TextView tv_commission;
+    @BindView(R.id.tv_confirm_commission_convert)
+    TextView tv_confirm_commission_convert;
+    String bankName, bankNum, bankAdress, userName, phone;
     boolean isInCommission = false;
 
     public static void startActivity(Context context) {
@@ -76,11 +88,14 @@ public class WithdrawActivity extends BaseMvpActivity<MyProfilePresenter> implem
     protected void initData(Bundle bundle) {
         title.setText(getString(R.string.my_withdraw));
         iv_back.setVisibility(View.VISIBLE);
+        tv_commission_amount.setText(UserUtil.getUserInfo().rspBody.commission + "");
+        tv_commission.setText(UserUtil.getUserInfo().rspBody.commission + "");
+        tv_withdrawable_amount.setText(UserUtil.getUserInfo().rspBody.money + "");
     }
 
     @Override
-    public MyProfilePresenter initPresenter() {
-        return new MyProfilePresenter();
+    public WithdrawPresenter initPresenter() {
+        return new WithdrawPresenter();
     }
 
     @Override
@@ -88,7 +103,7 @@ public class WithdrawActivity extends BaseMvpActivity<MyProfilePresenter> implem
         mPresenter.getUserProfile();
     }
 
-    @OnClick({R.id.iv_back, R.id.tv_commission_convert_to_balance, R.id.ll_select_bank,R.id.tv_withdraw_immediate})
+    @OnClick({R.id.iv_back, R.id.tv_commission_convert_to_balance, R.id.ll_select_bank, R.id.tv_withdraw_immediate, R.id.tv_confirm_commission_convert})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
@@ -109,7 +124,7 @@ public class WithdrawActivity extends BaseMvpActivity<MyProfilePresenter> implem
                 isInCommission = true;
                 break;
             case R.id.ll_select_bank:
-                Integer storedWhich=(Integer) SharedPreferencesUtils.getParam(WithdrawActivity.this,"which_bank",new Integer(-1));
+                Integer storedWhich = (Integer) SharedPreferencesUtils.getParam(WithdrawActivity.this, "which_bank", new Integer(-1));
                 Dialog myDialog = new AlertDialog.Builder(this)
                         .setTitle(getString(R.string.please_select_bank))
                         .setSingleChoiceItems(Constants.banks, storedWhich.intValue(), new DialogInterface.OnClickListener() {
@@ -117,7 +132,7 @@ public class WithdrawActivity extends BaseMvpActivity<MyProfilePresenter> implem
                             public void onClick(DialogInterface dialog, int which) {
 //                                Toast.makeText(UserProfileActivity.this, banks[which], Toast.LENGTH_SHORT).show();
                                 tv_select_bank.setText(Constants.banks[which]);
-                                SharedPreferencesUtils.setParam(WithdrawActivity.this,"which_bank",which);
+                                SharedPreferencesUtils.setParam(WithdrawActivity.this, "which_bank", which);
 
                                 dialog.cancel();
                             }
@@ -125,8 +140,21 @@ public class WithdrawActivity extends BaseMvpActivity<MyProfilePresenter> implem
                         .create();
                 myDialog.show();
                 break;
+            case R.id.tv_confirm_commission_convert:
+                double commissionAmount = Utils.stringToDouble(et_commission_convert_amount.getText().toString());
+                if (commissionAmount > UserUtil.userInfo.rspBody.commission) {
+                    Utils.showToast("输入金额超过你的佣金，请重新输入", false);
+                    return;
+                }
+                mPresenter.commissionToMoney(commissionAmount);
+                break;
             case R.id.tv_withdraw_immediate:
-
+                float withdrawAmount = Utils.stringToFloat(et_withdraw_amount.getText().toString());
+                if (withdrawAmount > UserUtil.userInfo.rspBody.money) {
+                    Utils.showToast("输入金额超过你的余额，请重新输入", false);
+                    return;
+                }
+                mPresenter.saveUserCash(withdrawAmount, bankName, bankNum, bankAdress, userName, phone);
                 break;
 
             default:
@@ -157,10 +185,16 @@ public class WithdrawActivity extends BaseMvpActivity<MyProfilePresenter> implem
     @Override
     public void showUserProfileResData(MyProfileResData userProfileResData) {
         if (userProfileResData == null || userProfileResData.rspBody == null) return;
-        tv_select_bank.setText(userProfileResData.rspBody.bankName);
-        et_bank_branch_address.setText(userProfileResData.rspBody.bankAdress);
-        et_bank_card_num.setText(userProfileResData.rspBody.bankNum);
-        et_bank_card_owner.setText(userProfileResData.rspBody.userName);
-        et_contact_phone_num.setText(userProfileResData.rspBody.phone);
+
+        bankName = userProfileResData.rspBody.bankName;
+        bankNum = userProfileResData.rspBody.bankNum;
+        bankAdress = userProfileResData.rspBody.bankAdress;
+        userName = userProfileResData.rspBody.userName;
+        phone = userProfileResData.rspBody.phone;
+        tv_select_bank.setText(bankName);
+        et_bank_card_num.setText(bankNum);
+        et_bank_branch_address.setText(bankAdress);
+        et_bank_card_owner.setText(userName);
+        et_contact_phone_num.setText(phone);
     }
 }

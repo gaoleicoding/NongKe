@@ -281,6 +281,8 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
         }
     }
 
+
+
     @Override
     public void showMsgCodeResData(MsgCodeResData msgCodeResData) {
 //        Utils.showToast("msgCodeResData.toString():"+msgCodeResData.toString(),false);

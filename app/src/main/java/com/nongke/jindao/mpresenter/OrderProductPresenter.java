@@ -53,14 +53,14 @@ public class OrderProductPresenter extends BasePresenter<OrderProductContract.Vi
         String listString = "{  \"list\":" + new Gson().toJson(productList) + "}";
 //        hashMap.put("list", listString);
 //        String jsonString = new JSONObject(hashMap).toString();
-        String jsonString = "{\n" +
-                "  \"list\": [\n" +
-                "    {\n" +
-                "      \"amount\": 1,\n" +
-                "      \"productId\": 26\n" +
-                "    }\n" +
-                "  ]\n" +
-                "}";
+//        String jsonString = "{\n" +
+//                "  \"list\": [\n" +
+//                "    {\n" +
+//                "      \"amount\": 1,\n" +
+//                "      \"productId\": 26\n" +
+//                "    }\n" +
+//                "  ]\n" +
+//                "}";
 
         Log.d("OrderProductPresenter", "buyProduct-------jsonString：" + listString);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), listString);
