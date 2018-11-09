@@ -275,7 +275,7 @@
 
             <ImageView
                 style="@style/user_info_icon"
-                android:src="@drawable/icon_qq" />
+                android:src="@drawable/icon_qq2" />
 
             <TextView
                 style="@style/user_info_txt"
@@ -284,7 +284,6 @@
 
         <LinearLayout
             android:id="@+id/help_feedback_layout"
-            android:visibility="gone"
             style="@style/user_info_layout">
 
             <ImageView

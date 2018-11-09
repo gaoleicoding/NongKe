@@ -175,6 +175,12 @@ public class HelpFeedbackActivity extends BaseMvpActivity {
             try {
                 sender.sendMail(subject, body, user, receiver, attachment);
                 Utils.showToast("您的反馈与建议，我们已经收到", false);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        finish();
+                    }
+                });
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 if (e.getMessage() != null)
