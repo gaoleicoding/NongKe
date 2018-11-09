@@ -43,7 +43,8 @@ public class RechageRecordFragment extends BaseMvpFragment<RechargeRecordPresent
 
     @Override
     public void initData(Bundle bundle) {
-        judgeLogin();
+        EventBus.getDefault().register(this);
+
     }
 
     @Override
@@ -70,6 +71,7 @@ public class RechageRecordFragment extends BaseMvpFragment<RechargeRecordPresent
 
     @Override
     protected void loadData() {
+        judgeLogin();
         mPresenter.listUserPhoneRecord();
     }
 
