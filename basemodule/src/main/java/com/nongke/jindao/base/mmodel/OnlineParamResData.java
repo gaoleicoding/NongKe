@@ -20,7 +20,7 @@ public class OnlineParamResData extends BaseResData {
         public ParamContent pay_phone_bill_extract_1;
         public ParamContent register_redirect_url;
         public ParamContent company_address;
-        public ParamContent customer_service_telephone;
+
         public ParamContent support_phone_recharge;
         public ParamContent pay_product_bill_extract;
         public ParamContent vip_price;
@@ -36,6 +36,8 @@ public class OnlineParamResData extends BaseResData {
         public ParamContent daoli_use_desc;
         public ParamContent phone_recharge_desc;
         public ParamContent postage;
+        public ParamContent custom_service_qq;
+        public ParamContent customer_service_phone;
 
     }
 

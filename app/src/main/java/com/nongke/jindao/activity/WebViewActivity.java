@@ -20,6 +20,7 @@ import com.nongke.jindao.base.activity.BaseMvpActivity;
 import com.nongke.jindao.base.mmodel.MyInviterResData;
 import com.nongke.jindao.base.utils.Constants;
 import com.nongke.jindao.base.utils.LogUtil;
+import com.nongke.jindao.base.utils.account.OnlineParamUtil;
 import com.nongke.jindao.mcontract.MyInviterContract;
 import com.nongke.jindao.mpresenter.MyInviterPresenter;
 import com.nongke.jindao.view.CustomWebview;
@@ -62,7 +63,7 @@ public class WebViewActivity extends BaseMvpActivity {
         LogUtil.d("fromWhere-------------:"+fromWhere);
         if(Constants.FROM_DOWNLOAD.equals(fromWhere)) {
             title.setText(getString(R.string.app_download));
-            webView.loadUrl(Constants.DOWNLOAD_URL);
+            webView.loadUrl(OnlineParamUtil.getParamResData().rspBody.register_redirect_url.content.trim());
         }
         iv_back.setVisibility(View.VISIBLE);
 

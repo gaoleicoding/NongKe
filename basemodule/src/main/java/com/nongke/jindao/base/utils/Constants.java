@@ -5,7 +5,7 @@ public class Constants {
     public static final String FROM_DOWNLOAD = "downlod";
     public static final String DOWNLOAD_URL = "https://www.pgyer.com/jindao";
 
-    public static final int pageSize = 6;
+    public static final int pageSize = 10;
     public static final String orderType_DESC = "DESC";
     public static final String orderType_ASC = "ASC";
     public static final String orderBy_create_time = "create_time";

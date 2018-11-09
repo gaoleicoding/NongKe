@@ -89,6 +89,8 @@ android {
         api rootProject.ext.dependencies["umeng-common"]
         api rootProject.ext.dependencies["umeng-analytics"]
         api 'cat.ereza:customactivityoncrash:2.2.0'
+
+        compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 //        api files('libs/alipaySdk-20180601.jar')
 
     }

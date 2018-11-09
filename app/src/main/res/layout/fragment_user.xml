@@ -280,6 +280,19 @@
                 style="@style/user_info_txt"
                 android:text="@string/custom_service" />
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/help_feedback_layout"
+            style="@style/user_info_layout"
+            android:visibility="gone">
+
+            <ImageView
+                style="@style/user_info_icon"
+                android:src="@drawable/icon_help_feedback" />
+
+            <TextView
+                style="@style/user_info_txt"
+                android:text="@string/help_feedback" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/my_logout_layout"

@@ -40,6 +40,7 @@ import com.nongke.jindao.base.photopicker.ImageUtils;
 import com.nongke.jindao.base.utils.PermissionUtil;
 import com.nongke.jindao.base.utils.SharedPreferencesUtils;
 import com.nongke.jindao.base.utils.Utils;
+import com.nongke.jindao.base.utils.account.OnlineParamUtil;
 import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.mcontract.UserInfoContract;
 import com.nongke.jindao.mpresenter.UserInfoPresenter;
@@ -84,8 +85,11 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
     @BindView(R.id.my_logout_layout)
     LinearLayout my_logout_layout;
     @BindView(R.id.ll_userinfo_profile_logined)
-    LinearLayout ll_userinfo_profile_logined; @BindView(R.id.custom_service_layout)
+    LinearLayout ll_userinfo_profile_logined;
+    @BindView(R.id.custom_service_layout)
     LinearLayout custom_service_layout;
+    @BindView(R.id.help_feedback_layout)
+    LinearLayout help_feedback_layout;
 
     @BindView(R.id.iv_user_photo)
     public ImageView iv_user_photo;
@@ -181,7 +185,7 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
 
     @OnClick({R.id.iv_user_photo, R.id.my_daoli_recharge_layout, R.id.my_daoli_transfer_layout, R.id.my_bill_layout, R.id.my_commission_layout, R.id.my_withdraw_layout,
             R.id.my_withdraw_record_layout, R.id.my_profile_layout, R.id.my_promotion_layout, R.id.my_location_layout, R.id.my_order_layout, R.id.my_logout_layout,
-            R.id.tv_vip_recharge, R.id.my_inviter_layout,R.id.custom_service_layout})
+            R.id.tv_vip_recharge, R.id.my_inviter_layout, R.id.custom_service_layout, R.id.help_feedback_layout})
     public void click(View view) {
         if (!UserUtil.isLogined()) {
             RegisterLoginActivity.startActivity(getActivity());
@@ -263,6 +267,8 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
             case R.id.custom_service_layout:
                 toQQServer(getActivity());
                 break;
+            case R.id.help_feedback_layout:
+                break;
         }
 
     }
@@ -318,16 +324,18 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
     public void showUserInfo(LoginResData loginResData) {
         UserUtil.setUserInfo(loginResData);
     }
-    public static void toQQServer(Context context){
+
+    public static void toQQServer(Context context) {
         try {
+            String qq = OnlineParamUtil.getParamResData().rspBody.custom_service_qq.content.trim();
             ApplicationInfo info = context.getPackageManager().getApplicationInfo("com.tencent.mobileqq",
                     PackageManager.GET_UNINSTALLED_PACKAGES);
-            if (info!=null){
-                context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("mqqwpa://im/chat?chat_type=wpa&uin=2472328899&version=1")));
+            if (info != null) {
+                context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("mqqwpa://im/chat?chat_type=wpa&uin=" + qq + "&version=1")));
             }
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
-            Toast.makeText(context,"本机未安装QQ应用",Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "本机未安装QQ应用", Toast.LENGTH_SHORT).show();
         }
     }
 
