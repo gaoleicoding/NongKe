@@ -38,6 +38,8 @@ public class OnlineParamResData extends BaseResData {
         public ParamContent postage;
         public ParamContent custom_service_qq;
         public ParamContent customer_service_phone;
+        public ParamContent custom_service_email;
+        public ParamContent custom_service_subscription_num;
 
     }
 

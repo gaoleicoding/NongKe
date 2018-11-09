@@ -268,6 +268,7 @@
                 style="@style/user_info_txt"
                 android:text="@string/my_order" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/custom_service_layout"
             style="@style/user_info_layout">
@@ -280,14 +281,15 @@
                 style="@style/user_info_txt"
                 android:text="@string/custom_service" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/help_feedback_layout"
-            style="@style/user_info_layout"
-            android:visibility="gone">
+            android:visibility="gone"
+            style="@style/user_info_layout">
 
             <ImageView
                 style="@style/user_info_icon"
-                android:src="@drawable/icon_help_feedback" />
+                android:src="@drawable/icon_help_feedback2" />
 
             <TextView
                 style="@style/user_info_txt"

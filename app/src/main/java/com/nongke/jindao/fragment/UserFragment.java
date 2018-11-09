@@ -20,6 +20,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.nongke.jindao.R;
 import com.nongke.jindao.activity.DaoLiTransferActivity;
 import com.nongke.jindao.activity.DaoliRechargeActivity;
+import com.nongke.jindao.activity.HelpFeedbackActivity;
 import com.nongke.jindao.activity.MyAddressActivity;
 import com.nongke.jindao.activity.MyBillActivity;
 import com.nongke.jindao.activity.MyCommissionActivity;
@@ -237,6 +238,7 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
             case R.id.my_order_layout:
                 OrderRecordActivity.startActivity(getActivity());
                 break;
+
             case R.id.my_logout_layout:
 
                 if (UserUtil.getUserInfo() == null) {
@@ -268,7 +270,9 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
                 toQQServer(getActivity());
                 break;
             case R.id.help_feedback_layout:
+                HelpFeedbackActivity.startActivity(getActivity());
                 break;
+
         }
 
     }

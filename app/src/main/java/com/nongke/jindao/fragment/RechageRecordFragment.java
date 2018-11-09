@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.nongke.jindao.R;
-import com.nongke.jindao.adapter.InviterAdapter;
 import com.nongke.jindao.adapter.PhoneRecordAdapter;
 import com.nongke.jindao.adapter.divider.RecycleViewDivider;
 import com.nongke.jindao.base.event.LoginAccountEvent;
@@ -109,11 +108,12 @@ public class RechageRecordFragment extends BaseMvpFragment<RechargeRecordPresent
     private void judgeLogin() {
         if (!UserUtil.isLogined()) {
             tv_recharge_hint.setVisibility(View.VISIBLE);
+            recharge_recyclerview.setVisibility(View.GONE);
             tv_recharge_hint.setText("你还没有登录");
         } else {
             mPresenter.listUserPhoneRecord();
             tv_recharge_hint.setVisibility(View.GONE);
-
+            recharge_recyclerview.setVisibility(View.VISIBLE);
         }
     }
 

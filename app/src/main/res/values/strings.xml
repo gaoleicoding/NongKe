@@ -139,7 +139,11 @@
     <string name="vip_contract_desc">《金稻商城VIP升级协议》</string>
     <string name="read_agree_contract">请选择 阅读并同意《金稻商城VIP升级协议》</string>
     <string name="custom_service">在线客服</string>
-    <string name="help_feedback">帮助与反馈</string>
+    <string name="help_feedback">反馈与建议</string>
+    <string name="email_title">标题</string>
+    <string name="email_content">内容</string>
+    <string name="email_info_hint">请输入你要发送的邮件信息</string>
+    <string name="add_attachment">添加附件</string>
 
 
     <string name="vip_member_recharge_instruction">VIP会员权益说明：\n\n

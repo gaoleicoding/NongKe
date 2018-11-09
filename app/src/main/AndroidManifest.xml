@@ -53,6 +53,7 @@
         <activity android:name=".activity.OrderRecordActivity"></activity>
         <activity android:name=".activity.DaoLiTransferRecordActivity"></activity>
         <activity android:name=".activity.CustomServiceActivity"></activity>
+        <activity android:name=".activity.HelpFeedbackActivity"></activity>
 
 
 

@@ -122,7 +122,7 @@ public class PromotionActivity extends BaseActivity {
                                     .decodeResource(getResources(),
                                             R.drawable.app_icon));
                     Bitmap codeBitmap = createCode(shareContent, logoBitmap);
-                    saveBitmap(codeBitmap, "guolin_code.png");
+                    saveBitmap(codeBitmap, "promotion_code.png");
                     iv_qrcode.setImageBitmap(codeBitmap);
                 } else {
                     Toast.makeText(PromotionActivity.this, "请输入要生成的字符串",

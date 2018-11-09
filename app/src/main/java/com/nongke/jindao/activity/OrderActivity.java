@@ -118,7 +118,7 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
                     // 判断resultStatus 为9000则代表支付成功
                     if (TextUtils.equals(resultStatus, "9000")) {
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
-                        Utils.showToast("支付成功",false);
+                        Utils.showToast("支付成功", false);
                         UpdateCartEvent updateCartEvent = new UpdateCartEvent();
                         EventBus.getDefault().post(updateCartEvent);
                         finish();
@@ -273,6 +273,7 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
 
     @Override
     public void showOrderProduct(OrderProductResData productResData) {
+        if (productResData == null || productResData.rspBody == null) return;
         orderId = productResData.rspBody.orderId;
         totalMoney = productResData.rspBody.totalMoney;
         discountMoney = productResData.rspBody.discountMoney;
@@ -290,8 +291,8 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
     @Override
     public void showOrderProductPayRes(RechargeResData rechargeResData) {
         final String paySign = rechargeResData.rspBody.paySign;
-        if(paySign==null&&rechargeResData.rspBody.flag==1){
-            Utils.showToast("点卡支付成功",false);
+        if (paySign == null && rechargeResData.rspBody.flag == 1) {
+            Utils.showToast("点卡支付成功", false);
             UpdateCartEvent updateCartEvent = new UpdateCartEvent();
             EventBus.getDefault().post(updateCartEvent);
             finish();
@@ -334,11 +335,11 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
                 totalPay = totalCardMoney - cornMoney + postage;
             }
             if (type == 3) {
-                rmb = discountMoney ;
+                rmb = discountMoney;
                 totalPay = discountMoney - cornMoney + postage;
             }
             if (type == 4) {
-                rmb = discountMoney ;
+                rmb = discountMoney;
                 totalPay = discountMoney - cornMoney + postage;
             }
         }
