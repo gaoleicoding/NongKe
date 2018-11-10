@@ -3,7 +3,6 @@ package com.nongke.jindao.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListView;
@@ -14,22 +13,22 @@ import android.widget.Toast;
 import com.nongke.jindao.R;
 import com.nongke.jindao.adapter.OrderRecordAdapter;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
-import com.nongke.jindao.base.mmodel.OrderInfo;
+import com.nongke.jindao.base.event.LoginAccountEvent;
+import com.nongke.jindao.base.event.ManageOrderEvent;
 import com.nongke.jindao.base.mmodel.OrderRecordResData;
-import com.nongke.jindao.base.mmodel.Product;
 import com.nongke.jindao.base.mmodel.ProductOrder;
-import com.nongke.jindao.base.mmodel.ProductResData;
-import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.mcontract.OrderRecordContract;
 import com.nongke.jindao.mpresenter.OrderRecordPresenter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 
@@ -84,7 +83,7 @@ public class OrderRecordActivity extends BaseMvpActivity<OrderRecordPresenter> i
         orderRecordAdapter = new OrderRecordAdapter(this, orderRecordList);
         order_expand_listview.setAdapter(orderRecordAdapter);
         order_expand_listview.setGroupIndicator(null);
-
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -124,7 +123,7 @@ public class OrderRecordActivity extends BaseMvpActivity<OrderRecordPresenter> i
         smartRefreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(RefreshLayout refreshLayout) {
-                Log.d(TAG,"hasNextPage----------------" + hasNextPage);
+                Log.d(TAG, "hasNextPage----------------" + hasNextPage);
                 if (hasNextPage)
                     mPresenter.onLoadMore();
                 else
@@ -159,5 +158,15 @@ public class OrderRecordActivity extends BaseMvpActivity<OrderRecordPresenter> i
         });
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(ManageOrderEvent manageOrderEvent) {
+        Log.d(TAG,"manageOrderEvent.orderId----------"+manageOrderEvent.orderId);
+        order_expand_listview.collapseGroup(manageOrderEvent.groupPosition);
+        order_expand_listview.expandGroup(manageOrderEvent.groupPosition);
+        if (manageOrderEvent.manageType == -1)
+            mPresenter.cancelUserOrderInfo(manageOrderEvent.orderId);
+        if (manageOrderEvent.manageType == 1)
+            mPresenter.confirmUserOrderInfo(manageOrderEvent.orderId);
+    }
 
 }

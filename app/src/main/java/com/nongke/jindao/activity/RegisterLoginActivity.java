@@ -17,6 +17,7 @@ import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.mmodel.MsgCodeResData;
 import com.nongke.jindao.base.mmodel.RegisterResData;
 import com.nongke.jindao.base.utils.LogUtil;
+import com.nongke.jindao.base.utils.ResponseStatusUtil;
 import com.nongke.jindao.base.utils.SharedPreferencesUtils;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.event.UpdateCartEvent;
@@ -235,10 +236,8 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
                 layout_register.setVisibility(View.GONE);
                 isInRegister = false;
             }
-        } else if (registerResData.retDesc != null && "20000".equals(registerResData.retCode))
-            Utils.showToast(registerResData.retDesc, true);
-        else {
-            Utils.showToast(getString(R.string.register_failure), true);
+        } else {
+            ResponseStatusUtil.handleResponseStatus(registerResData);
         }
     }
 
@@ -252,10 +251,8 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
                 layout_forget_password.setVisibility(View.GONE);
                 isInForgetPwd = false;
             }
-        } else if (registerResData.retDesc != null && "20000".equals(registerResData.retCode))
-            Utils.showToast(registerResData.retDesc, true);
-        else {
-            Utils.showToast(getString(R.string.reset_pwd_failure), true);
+        }else {
+            ResponseStatusUtil.handleResponseStatus(registerResData);
         }
     }
 
@@ -274,10 +271,8 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
             EventBus.getDefault().post(updateCartEvent);
             finish();
 //            ExitAppUtils.getInstance().exit();
-        } else if (loginResData.retDesc != null && "20000".equals(loginResData.retCode))
-            Utils.showToast(loginResData.retDesc, true);
-        else {
-            Utils.showToast(getString(R.string.login_failure), true);
+        } else {
+            ResponseStatusUtil.handleResponseStatus(loginResData);
         }
     }
 
@@ -293,6 +288,6 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
             Utils.showToast(getString(R.string.get_msgcode_frequent), true);
         else if (msgCodeResData.retDesc != null && "20000".equals(msgCodeResData.retCode))
             Utils.showToast(msgCodeResData.retDesc, true);
-        else Utils.showToast(getString(R.string.get_msgcode_failure), true);
+        else ResponseStatusUtil.handleResponseStatus(msgCodeResData);
     }
 }

@@ -100,6 +100,14 @@ public interface ApiService {
     @FormUrlEncoded
     Observable<UserRecordResData> listUserRecord(@Field("type") String type);
 
+    @POST("user/confirmUserOrderInfo")
+    @FormUrlEncoded
+    Observable<BannerResData> confirmUserOrderInfo(@Field("orderId") String orderId);
+
+    @POST("user/cancelUserOrderInfo")
+    @FormUrlEncoded
+    Observable<BannerResData> cancelUserOrderInfo(@Field("orderId") String orderId);
+
     @POST("user/pageUserOrderInfo")
     Observable<OrderRecordResData> pageUserOrderInfo(@Body RequestBody requestBody);
 

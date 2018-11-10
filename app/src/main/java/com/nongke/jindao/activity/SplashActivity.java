@@ -11,20 +11,18 @@ import com.nongke.jindao.MainActivity;
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
 import com.nongke.jindao.base.mmodel.LoginResData;
-import com.nongke.jindao.base.mmodel.MsgCodeResData;
-import com.nongke.jindao.base.mmodel.RegisterResData;
 import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.SharedPreferencesUtils;
 import com.nongke.jindao.base.utils.account.UserUtil;
-import com.nongke.jindao.mcontract.RegisterLoginContract;
-import com.nongke.jindao.mpresenter.RegisterLoginPresenter;
+import com.nongke.jindao.mcontract.SplashLoginContract;
+import com.nongke.jindao.mpresenter.SplashLoginPresenter;
 
 /**
  * description: test
  * author: zlm
  * date: 2017/3/17 16:01
  */
-public class SplashActivity extends BaseMvpActivity<RegisterLoginPresenter> implements RegisterLoginContract.View {
+public class SplashActivity extends BaseMvpActivity<SplashLoginPresenter> implements SplashLoginContract.View {
 
 
     Handler handler = new Handler() {
@@ -51,8 +49,8 @@ public class SplashActivity extends BaseMvpActivity<RegisterLoginPresenter> impl
     }
 
     @Override
-    public RegisterLoginPresenter initPresenter() {
-        return new RegisterLoginPresenter();
+    public SplashLoginPresenter initPresenter() {
+        return new SplashLoginPresenter();
     }
 
     @Override
@@ -71,28 +69,15 @@ public class SplashActivity extends BaseMvpActivity<RegisterLoginPresenter> impl
         finish();
     }
 
-    @Override
-    public void showRegisterResData(RegisterResData registerResData) {
-
-    }
-
-    @Override
-    public void showResetPasswordData(RegisterResData registerResData) {
-
-    }
 
     @Override
     public void showLoginResData(LoginResData loginResData) {
         LogUtil.d("loginResData.toString():" + loginResData.toString());
-        UserUtil.setUserInfo(loginResData);
-//        if ("10000".equals(loginResData.retCode)) {
-//            MainActivity.startActivity(this);
-//        }
+        if ("10000".equals(loginResData.retCode)) {
+            UserUtil.setUserInfo(loginResData);
+        }
+
         handler.sendEmptyMessageDelayed(0, 500);
     }
 
-    @Override
-    public void showMsgCodeResData(MsgCodeResData msgCodeResData) {
-
-    }
 }

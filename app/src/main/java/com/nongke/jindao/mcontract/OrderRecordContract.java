@@ -12,7 +12,12 @@ public class OrderRecordContract {
     public interface Presenter {
 
         void pageUserOrderInfo();
+
         void onLoadMore();
+
+        void confirmUserOrderInfo(String orderId);
+
+        void cancelUserOrderInfo(String orderId);
     }
 
     public interface View {

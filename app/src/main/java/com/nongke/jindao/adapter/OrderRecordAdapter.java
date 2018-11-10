@@ -6,13 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.nongke.jindao.R;
+import com.nongke.jindao.base.event.ManageOrderEvent;
 import com.nongke.jindao.base.mmodel.Product;
 import com.nongke.jindao.base.mmodel.ProductOrder;
 import com.nongke.jindao.base.thirdframe.glide.ImageLoader;
 import com.nongke.jindao.base.utils.Utils;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -86,8 +90,10 @@ public class OrderRecordAdapter extends BaseExpandableListAdapter {
 
         ProductOrder productOrder = list.get(groupPosition);
         tv_order.setText("订单号:" + productOrder.orderId);
+//        Log.d(TAG,"productOrder.totalMoney-----------"+productOrder.totalMoney);
+        Log.d(TAG, "productOrder.totalPay-----------" + productOrder.totalPay);
         tv_time.setText(Utils.ms2Date(Long.parseLong(productOrder.createTime)));
-            tv_order_status.setText(productOrder.statusDesc);
+        tv_order_status.setText(productOrder.statusDesc);
         return convertView;
     }
 
@@ -97,39 +103,67 @@ public class OrderRecordAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             convertView = View.inflate(context, R.layout.order_child_view, null);
         }
+        final ProductOrder productOrder = list.get(groupPosition);
         //获取布局控件id
         ImageView iv_product = convertView.findViewById(R.id.iv_product);
         TextView tv_product_name = convertView.findViewById(R.id.tv_product_name);
         TextView tv_product_price = convertView.findViewById(R.id.tv_product_price);
         TextView tv_product_ammount = convertView.findViewById(R.id.tv_product_ammount);
-
+        LinearLayout ll_product_del_confirm = convertView.findViewById(R.id.ll_product_del_confirm);
+        TextView tv_order_pay = convertView.findViewById(R.id.tv_order_pay);
+        TextView tv_del_order = convertView.findViewById(R.id.tv_del_order);
+        final TextView tv_confirm_order = convertView.findViewById(R.id.tv_confirm_order);
+        tv_confirm_order.setTag(groupPosition + "");
+//        tv_del_order.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ManageOrderEvent manageOrderEvent = new ManageOrderEvent();
+//                manageOrderEvent.manageType = -1;
+//                manageOrderEvent.orderId = productOrder.orderId;
+//                EventBus.getDefault().post(manageOrderEvent);
+//                list.remove(groupPosition);
+//            }
+//        });
+//        tv_confirm_order.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ManageOrderEvent manageOrderEvent = new ManageOrderEvent();
+//                manageOrderEvent.manageType = 1;
+//                manageOrderEvent.groupPosition = groupPosition;
+//                manageOrderEvent.orderId = productOrder.orderId;
+//                EventBus.getDefault().post(manageOrderEvent);
+//                tv_confirm_order.setText("已确认收货");
+//
+//            }
+//        });
         //根据服务器返回的数据来显示和隐藏按钮
         final Product productInfo = list.get(groupPosition).products.get(childPosition);
 
         tv_product_name.setText(productInfo.productName);
         tv_product_price.setText(productInfo.productPrice + "元");
-        tv_product_ammount.setText("x "+productInfo.amount );
+        tv_product_ammount.setText("x " + productInfo.amount);
         ImageLoader.getInstance().load(context, productInfo.img, iv_product);
-
+        if (isLastChild) {
+            tv_order_pay.setVisibility(View.VISIBLE);
+            String pay = "实付：" + productOrder.totalPay + "元";
+            if (productOrder.postage > 0) {
+                String postagePay = "（含运费" + productOrder.postage + "元）";
+                pay = pay + postagePay;
+            }
+            tv_order_pay.setText(pay);
+        } else {
+            tv_order_pay.setVisibility(View.GONE);
+        }
 //        if (isLastChild) {
-//            Log.d(TAG, "isLastChild----------------" + isLastChild);
-//            View footerView = View.inflate(context, R.layout.order_child_footer_view, null);
-//            parent.addView(footerView);
-//            //设置评价按钮的点击事件
-//            btnChildviewEvaluate.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Toast.makeText(context, "确认收货", Toast.LENGTH_SHORT).show();
-//                }
-//            });
-//            //设置删除按钮的点击事件
-//            btnChildviewDelete.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    dataMap.get(titleArr[groupPosition]).remove(childPosition);
-//                    notifyDataSetChanged();
-//                }
-//            });
+//            ll_product_del_confirm.setVisibility(View.VISIBLE);
+//            tv_order_pay.setVisibility(View.VISIBLE);
+//            if ("已完成".equals(productOrder.statusDesc) && tv_confirm_order.getTag().equals(groupPosition+""))
+//                tv_confirm_order.setVisibility(View.GONE);
+//
+//            tv_order_pay.setText("合计：" + productOrder.totalPay + "元");
+//        } else {
+//            ll_product_del_confirm.setVisibility(View.GONE);
+//            tv_order_pay.setVisibility(View.GONE);
 //        }
         return convertView;
 
