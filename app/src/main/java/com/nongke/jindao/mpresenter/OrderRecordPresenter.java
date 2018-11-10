@@ -14,6 +14,7 @@ import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.thirdframe.retrofit.RetrofitProvider;
 import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
 import com.nongke.jindao.base.utils.LogUtil;
+import com.nongke.jindao.base.utils.ResponseStatusUtil;
 import com.nongke.jindao.base.utils.account.MessageUtil;
 import com.nongke.jindao.mcontract.OrderRecordContract;
 import com.nongke.jindao.mcontract.ProductContract;
@@ -79,10 +80,9 @@ public class OrderRecordPresenter extends BasePresenter<OrderRecordContract.View
         addSubscribe(observable, new BaseObserver<OrderRecordResData>(false) {
             @Override
             public void onNext(OrderRecordResData orderRecordResData) {
-
-
+                if ("10000".equals(orderRecordResData.retCode))
                 mView.showUserOrderInfo(orderRecordResData);
-
+                else ResponseStatusUtil.handleResponseStatus(orderRecordResData);
             }
         });
     }

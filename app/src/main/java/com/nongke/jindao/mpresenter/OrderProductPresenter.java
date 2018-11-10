@@ -17,6 +17,7 @@ import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.thirdframe.retrofit.RetrofitProvider;
 import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
 import com.nongke.jindao.base.utils.LogUtil;
+import com.nongke.jindao.base.utils.ResponseStatusUtil;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.event.UpdateCartEvent;
 import com.nongke.jindao.mcontract.OrderProductContract;
@@ -70,9 +71,9 @@ public class OrderProductPresenter extends BasePresenter<OrderProductContract.Vi
             public void onNext(OrderProductResData productResData) {
                 if(productResData.rspBody!=null)
                 Log.d("OrderActivity","buyProduct------------ :" + productResData.rspBody.toString());
-
+                if ("10000".equals(productResData.retCode))
                 mView.showOrderProduct(productResData);
-
+                else ResponseStatusUtil.handleResponseStatus(productResData);
             }
         });
     }
@@ -108,8 +109,9 @@ public class OrderProductPresenter extends BasePresenter<OrderProductContract.Vi
             @Override
             public void onNext(RechargeResData rechargeResData) {
                 Log.d("OrderActivity","payForProductOnline------------:" +rechargeResData.rspBody.toString());
+                if ("10000".equals(rechargeResData.retCode))
                mView.showOrderProductPayRes(rechargeResData);
-
+                else ResponseStatusUtil.handleResponseStatus(rechargeResData);
             }
         });
     }
@@ -120,10 +122,9 @@ public class OrderProductPresenter extends BasePresenter<OrderProductContract.Vi
             @Override
             public void onNext(MyAddressResData userAddressResData) {
                 Log.d("OrderActivity","getUserAddress------------:" +userAddressResData.toString());
-
+                if ("10000".equals(userAddressResData.retCode))
                 mView.showUserAddressResData(userAddressResData);
-//                if (logoutResData.retDesc.contains("未登录"))
-//                    Utils.showToast(CustomApplication.context.getString(R.string.user_not_login), true);
+                else ResponseStatusUtil.handleResponseStatus(userAddressResData);
 //
             }
         });

@@ -44,9 +44,10 @@ public class MyProfilePresenter extends BasePresenter<MyProfileContract.View> im
         addSubscribe(observable, new BaseObserver<UpdateProfileResData>(false) {
             @Override
             public void onNext(UpdateProfileResData updateProfileResData) {
-
+                if ("10000".equals(updateProfileResData.retCode))
                 ResponseStatusUtil.handleResponseStatus(updateProfileResData);
-                LogUtil.d2("updateAddressResData------------" + updateProfileResData.toString());
+                else ResponseStatusUtil.handleResponseStatus(updateProfileResData);
+
             }
         });
     }
@@ -58,9 +59,9 @@ public class MyProfilePresenter extends BasePresenter<MyProfileContract.View> im
             @Override
             public void onNext(MyProfileResData userProfileResData) {
                 LogUtil.d2("userProfileResData------------ :" + userProfileResData.toString());
-
+                if ("10000".equals(userProfileResData.retCode))
                 mView.showUserProfileResData(userProfileResData);
-
+                else ResponseStatusUtil.handleResponseStatus(userProfileResData);
             }
         });
     }
@@ -76,12 +77,7 @@ public class MyProfilePresenter extends BasePresenter<MyProfileContract.View> im
                 LogUtil.d2("getMessageCode------------msgCodeResData:" + msgCodeResData.toString());
                 if ("10000".equals(msgCodeResData.retCode)) {
                     Utils.showToast(CustomApplication.context.getString(R.string.get_msgcode_success), true);
-                } else if (msgCodeResData.retDesc != null && msgCodeResData.retDesc.contains("isv.BUSINESS_LIMIT_CONTROL") && "20000".equals(msgCodeResData.retCode))
-                    Utils.showToast(CustomApplication.context.getString(R.string.get_msgcode_frequent), true);
-                else if (msgCodeResData.retDesc != null && "20000".equals(msgCodeResData.retCode))
-                    Utils.showToast(msgCodeResData.retDesc, true);
-                else
-                    Utils.showToast(CustomApplication.context.getString(R.string.get_msgcode_failure), true);
+                } else ResponseStatusUtil.handleResponseStatus(msgCodeResData);
             }
         });
     }

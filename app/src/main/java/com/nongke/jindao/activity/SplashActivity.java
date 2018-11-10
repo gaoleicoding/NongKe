@@ -12,6 +12,7 @@ import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
 import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.utils.LogUtil;
+import com.nongke.jindao.base.utils.ResponseStatusUtil;
 import com.nongke.jindao.base.utils.SharedPreferencesUtils;
 import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.mcontract.SplashLoginContract;
@@ -75,7 +76,7 @@ public class SplashActivity extends BaseMvpActivity<SplashLoginPresenter> implem
         LogUtil.d("loginResData.toString():" + loginResData.toString());
         if ("10000".equals(loginResData.retCode)) {
             UserUtil.setUserInfo(loginResData);
-        }
+        }else ResponseStatusUtil.handleResponseStatus(loginResData);
 
         handler.sendEmptyMessageDelayed(0, 500);
     }

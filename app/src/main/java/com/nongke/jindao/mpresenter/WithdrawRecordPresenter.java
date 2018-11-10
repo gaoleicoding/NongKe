@@ -6,6 +6,7 @@ import com.nongke.jindao.base.mmodel.WithdrawRecordResData;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.thirdframe.retrofit.RetrofitProvider;
 import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
+import com.nongke.jindao.base.utils.ResponseStatusUtil;
 import com.nongke.jindao.mcontract.WithdrawRecordContract;
 
 import io.reactivex.Observable;
@@ -19,9 +20,9 @@ public class WithdrawRecordPresenter extends BasePresenter<WithdrawRecordContrac
         addSubscribe(observable, new BaseObserver<WithdrawRecordResData>(false) {
             @Override
             public void onNext(WithdrawRecordResData withdrawRecordResData) {
-
+                if ("10000".equals(withdrawRecordResData.retCode))
                 mView.showUserCash(withdrawRecordResData);
-
+                else ResponseStatusUtil.handleResponseStatus(withdrawRecordResData);
             }
         });
     }

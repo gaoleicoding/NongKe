@@ -2,7 +2,7 @@ package com.nongke.jindao.base.mmodel;
 
 import java.util.List;
 
-public class OrderProductResData {
+public class OrderProductResData extends BaseResData{
 
     //    {
 //        "extra": {},

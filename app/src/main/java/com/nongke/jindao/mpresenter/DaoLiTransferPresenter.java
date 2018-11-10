@@ -44,6 +44,7 @@ public class DaoLiTransferPresenter extends BasePresenter<DaoLiTransferContract>
                    UpdateUserInfoEvent userInfoEvent=new UpdateUserInfoEvent();
                    EventBus.getDefault().post(userInfoEvent);
                }
+
             }
         });
     }

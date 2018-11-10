@@ -7,6 +7,7 @@ import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.thirdframe.retrofit.RetrofitProvider;
 import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
 import com.nongke.jindao.base.utils.LogUtil;
+import com.nongke.jindao.base.utils.ResponseStatusUtil;
 import com.nongke.jindao.mcontract.UserRecordContract;
 
 import org.json.JSONObject;
@@ -30,9 +31,9 @@ public class UserRecordPresenter extends BasePresenter<UserRecordContract.View> 
             @Override
             public void onNext(UserRecordResData userRecordResData) {
                 LogUtil.d2("listUserRecord------------ :" + userRecordResData.rspBody.toString());
-
+                if ("10000".equals(userRecordResData.retCode))
                 mView.showUserRecord(userRecordResData);
-
+                else ResponseStatusUtil.handleResponseStatus(userRecordResData);
             }
         });
     }

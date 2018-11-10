@@ -8,6 +8,7 @@ import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.thirdframe.retrofit.RetrofitProvider;
 import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
 import com.nongke.jindao.base.utils.LogUtil;
+import com.nongke.jindao.base.utils.ResponseStatusUtil;
 import com.nongke.jindao.mcontract.MyBillContract;
 import com.nongke.jindao.mcontract.RechargeRecordContract;
 
@@ -26,9 +27,9 @@ public class MyBillPresenter extends BasePresenter<MyBillContract.View> implemen
             @Override
             public void onNext(BillResData billResData) {
                 LogUtil.d2("listUserPhoneRecord------------ :" + billResData.rspBody.toString());
-
+                if ("10000".equals(billResData.retCode))
                 mView.showUserBill(billResData);
-
+                else ResponseStatusUtil.handleResponseStatus(billResData);
             }
         });
     }

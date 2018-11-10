@@ -60,8 +60,9 @@ public class WithdrawPresenter extends BasePresenter<WithdrawContract.View> impl
             @Override
             public void onNext(MyProfileResData userProfileResData) {
                 LogUtil.d2("userProfileResData------------ :" + userProfileResData.toString());
-
+                if ("10000".equals(userProfileResData.retCode))
                 mView.showUserProfileResData(userProfileResData);
+                else ResponseStatusUtil.handleResponseStatus(userProfileResData);
 
             }
         });

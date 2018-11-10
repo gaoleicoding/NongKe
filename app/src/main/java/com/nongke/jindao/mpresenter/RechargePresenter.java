@@ -8,6 +8,7 @@ import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.thirdframe.retrofit.RetrofitProvider;
 import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
 import com.nongke.jindao.base.utils.LogUtil;
+import com.nongke.jindao.base.utils.ResponseStatusUtil;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.mcontract.RechargeContract;
 
@@ -38,11 +39,11 @@ public class RechargePresenter extends BasePresenter<RechargeContract.View> impl
         addSubscribe(observable, new BaseObserver<RechargeResData>(false) {
             @Override
             public void onNext(RechargeResData rechargeResData) {
-                if("10000".equals(rechargeResData.retCode)) {
+                if ("10000".equals(rechargeResData.retCode)) {
                     LogUtil.d2("recharge------------:" + rechargeResData.rspBody.toString());
                     mView.showRechargeRes(rechargeResData);
-                }else {
-                    Utils.showToast(rechargeResData.retDesc,false);
+                } else {
+                    ResponseStatusUtil.handleResponseStatus(rechargeResData);
                 }
 
             }
@@ -56,9 +57,9 @@ public class RechargePresenter extends BasePresenter<RechargeContract.View> impl
             @Override
             public void onNext(LoginResData loginResData) {
                 LogUtil.d2("getBannerProduct------------ :" + loginResData.toString());
-
-                mView.showUserInfo(loginResData);
-
+                if ("10000".equals(loginResData.retCode))
+                    mView.showUserInfo(loginResData);
+                else ResponseStatusUtil.handleResponseStatus(loginResData);
             }
         });
     }

@@ -12,6 +12,7 @@ import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.thirdframe.retrofit.RetrofitProvider;
 import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
 import com.nongke.jindao.base.utils.LogUtil;
+import com.nongke.jindao.base.utils.ResponseStatusUtil;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.mcontract.CartContract;
 import com.nongke.jindao.mcontract.ProductDetailContract;
@@ -42,7 +43,9 @@ public class CartPresenter extends BasePresenter<CartContract.View> implements C
         addSubscribe(observable, new BaseObserver<ProductResData>(false) {
             @Override
             public void onNext(ProductResData productResData) {
-                mView.showProduct(productResData);
+                if ("10000".equals(productResData.retCode))
+                    mView.showProduct(productResData);
+                else ResponseStatusUtil.handleResponseStatus(productResData);
 //                LogUtil.d2("getCartProduct.rspBody.list.size()------------ :" + productResData.rspBody.list.size());
 //                LogUtil.d2("getCartProduct------------ :" + productResData.toString());
             }
@@ -56,7 +59,7 @@ public class CartPresenter extends BasePresenter<CartContract.View> implements C
         hashMap.put("amount", amount);
         hashMap.put("productId", productId);
         String jsonString = new JSONObject(hashMap).toString();
-        Log.d("OrderProductPresenter","updateProductAmount-------jsonString："+jsonString);
+        Log.d("OrderProductPresenter", "updateProductAmount-------jsonString：" + jsonString);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonString);
         Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).updateProductAmount(requestBody);
         addSubscribe(observable, new BaseObserver<BaseResData>(false) {

@@ -10,6 +10,7 @@ import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.thirdframe.retrofit.RetrofitProvider;
 import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
 import com.nongke.jindao.base.utils.LogUtil;
+import com.nongke.jindao.base.utils.ResponseStatusUtil;
 import com.nongke.jindao.mcontract.RegisterLoginContract;
 
 import org.json.JSONObject;
@@ -40,7 +41,9 @@ public class RegisterLoginPresenter extends BasePresenter<RegisterLoginContract.
         addSubscribe(observable, new BaseObserver<RegisterResData>(false) {
             @Override
             public void onNext(RegisterResData registerResData) {
+                if ("10000".equals(registerResData.retCode))
                 mView.showRegisterResData(registerResData);
+                else ResponseStatusUtil.handleResponseStatus(registerResData);
             }
         });
     }
@@ -59,7 +62,9 @@ public class RegisterLoginPresenter extends BasePresenter<RegisterLoginContract.
         addSubscribe(observable, new BaseObserver<RegisterResData>(false) {
             @Override
             public void onNext(RegisterResData registerResData) {
+                if ("10000".equals(registerResData.retCode))
                 mView.showResetPasswordData(registerResData);
+                else ResponseStatusUtil.handleResponseStatus(registerResData);
             }
         });
     }
@@ -95,8 +100,10 @@ public class RegisterLoginPresenter extends BasePresenter<RegisterLoginContract.
         addSubscribe(observable, new BaseObserver<MsgCodeResData>(false) {
             @Override
             public void onNext(MsgCodeResData msgCodeResData) {
-                LogUtil.d2("getMessageCode------------msgCodeResData:" + msgCodeResData.toString());
+                if ("10000".equals(msgCodeResData.retCode))
                 mView.showMsgCodeResData(msgCodeResData);
+                else ResponseStatusUtil.handleResponseStatus(msgCodeResData);
+
             }
         });
     }

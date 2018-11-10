@@ -20,6 +20,7 @@ import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.ResponseStatusUtil;
 import com.nongke.jindao.base.utils.SharedPreferencesUtils;
 import com.nongke.jindao.base.utils.Utils;
+import com.nongke.jindao.base.event.LoginEvent;
 import com.nongke.jindao.event.UpdateCartEvent;
 import com.nongke.jindao.mcontract.RegisterLoginContract;
 import com.nongke.jindao.mpresenter.RegisterLoginPresenter;
@@ -27,6 +28,8 @@ import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.view.CountDownButton;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -100,10 +103,9 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
 
     @Override
     protected void initData(Bundle bundle) {
-
-
         title.setText(getString(R.string.login));
         iv_back.setVisibility(View.VISIBLE);
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -228,9 +230,7 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
     @Override
     public void showRegisterResData(RegisterResData registerResData) {
         LogUtil.d("registerResData.toString():" + registerResData.toString());
-//        Utils.showToast("registerResData.toString():"+registerResData.toString(),false);
         if ("10000".equals(registerResData.retCode)) {
-            Utils.showToast(getString(R.string.register_success), true);
             title.setText(getString(R.string.login));
             if (isInRegister) {
                 layout_register.setVisibility(View.GONE);
@@ -245,24 +245,18 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
     public void showResetPasswordData(RegisterResData registerResData) {
         LogUtil.d("showResetPasswordData.toString():" + registerResData.toString());
         if ("10000".equals(registerResData.retCode)) {
-            Utils.showToast(getString(R.string.reset_pwd_success), true);
             title.setText(getString(R.string.login));
             if (isInForgetPwd) {
                 layout_forget_password.setVisibility(View.GONE);
                 isInForgetPwd = false;
             }
-        }else {
-            ResponseStatusUtil.handleResponseStatus(registerResData);
         }
     }
 
     @Override
     public void showLoginResData(LoginResData loginResData) {
-//        Utils.showToast("loginResData.toString():"+loginResData.toString(),false);
 
-        LogUtil.d("loginResData.toString():" + loginResData.toString());
         if ("10000".equals(loginResData.retCode)) {
-//            Utils.showToast(getString(R.string.login_success), true);
             UserUtil.setUserInfo(loginResData);
             SharedPreferencesUtils.setParam(RegisterLoginActivity.this, "phone_num", et_login_phone_num.getText().toString());
             SharedPreferencesUtils.setParam(RegisterLoginActivity.this, "password", et_login_password.getText().toString());
@@ -270,9 +264,6 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
             UpdateCartEvent updateCartEvent = new UpdateCartEvent();
             EventBus.getDefault().post(updateCartEvent);
             finish();
-//            ExitAppUtils.getInstance().exit();
-        } else {
-            ResponseStatusUtil.handleResponseStatus(loginResData);
         }
     }
 
@@ -280,14 +271,14 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
 
     @Override
     public void showMsgCodeResData(MsgCodeResData msgCodeResData) {
-//        Utils.showToast("msgCodeResData.toString():"+msgCodeResData.toString(),false);
-        LogUtil.d("msgCodeResData.toString():" + msgCodeResData.toString());
-        if ("10000".equals(msgCodeResData.retCode)) {
-            Utils.showToast(getString(R.string.get_msgcode_success), true);
-        } else if (msgCodeResData.retDesc != null && msgCodeResData.retDesc.contains("isv.BUSINESS_LIMIT_CONTROL") && "20000".equals(msgCodeResData.retCode))
-            Utils.showToast(getString(R.string.get_msgcode_frequent), true);
-        else if (msgCodeResData.retDesc != null && "20000".equals(msgCodeResData.retCode))
-            Utils.showToast(msgCodeResData.retDesc, true);
-        else ResponseStatusUtil.handleResponseStatus(msgCodeResData);
+
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(LoginEvent accountEvent) {
+        startActivity(this);
+    }
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

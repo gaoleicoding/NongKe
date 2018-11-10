@@ -7,6 +7,7 @@ import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.thirdframe.retrofit.RetrofitProvider;
 import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
 import com.nongke.jindao.base.utils.LogUtil;
+import com.nongke.jindao.base.utils.ResponseStatusUtil;
 import com.nongke.jindao.mcontract.RechargeRecordContract;
 
 import io.reactivex.Observable;
@@ -24,9 +25,9 @@ public class RechargeRecordPresenter extends BasePresenter<RechargeRecordContrac
             @Override
             public void onNext(PhoneRecordResData recordResData) {
                 LogUtil.d2("listUserPhoneRecord------------ :" + recordResData.rspBody.toString());
-
+                if ("10000".equals(recordResData.retCode))
                 mView.showRechargeRecordRes(recordResData);
-
+                else ResponseStatusUtil.handleResponseStatus(recordResData);
             }
         });
     }

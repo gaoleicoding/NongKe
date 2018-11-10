@@ -9,6 +9,7 @@ import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.thirdframe.retrofit.RetrofitProvider;
 import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
 import com.nongke.jindao.base.utils.LogUtil;
+import com.nongke.jindao.base.utils.ResponseStatusUtil;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.event.UpdateCartEvent;
 import com.nongke.jindao.mcontract.ProductContract;
@@ -39,7 +40,7 @@ public class ProductDetailPresenter extends BasePresenter<ProductDetailContract.
         addSubscribe(observable, new BaseObserver<BaseResData>(false) {
             @Override
             public void onNext(BaseResData baseResData) {
-                Utils.showToast(baseResData.retDesc, true);
+                ResponseStatusUtil.handleResponseStatus(baseResData);
                 LogUtil.d2("saveCart------------ :" + baseResData.toString());
                 UpdateCartEvent updateCartEvent = new UpdateCartEvent();
                 EventBus.getDefault().post(updateCartEvent);
