@@ -20,7 +20,7 @@ public class OrderProductContract {
         void buyProduct(List<Product> list);
 
         void getUserAddress();
-
+        void cancelUserOrderInfo(String orderId);
         void payForProductOnline(String orderId, int orderType, int payType, String list, float cornMoney, float rmb,
                                  float totalPay, float postage, String uid, String phone, String userName, String address);
     }

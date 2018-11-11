@@ -129,5 +129,17 @@ public class OrderProductPresenter extends BasePresenter<OrderProductContract.Vi
             }
         });
     }
+
+    @Override
+    public void cancelUserOrderInfo(String orderId) {
+        Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).cancelUserOrderInfo(orderId);
+        addSubscribe(observable, new BaseObserver<BaseResData>(false) {
+            @Override
+            public void onNext(BaseResData baseResData) {
+
+
+            }
+        });
+    }
 }
 

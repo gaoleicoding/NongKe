@@ -406,6 +406,7 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
             builder.setNegativeButton("取消订单", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                    mPresenter.cancelUserOrderInfo(orderId);
                     finish();
                 }
             });

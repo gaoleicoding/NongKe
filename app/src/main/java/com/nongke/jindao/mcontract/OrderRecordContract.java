@@ -17,7 +17,7 @@ public class OrderRecordContract {
 
         void confirmUserOrderInfo(String orderId);
 
-        void cancelUserOrderInfo(String orderId);
+        void deleteUserOrderInfo(String orderId);
     }
 
     public interface View {

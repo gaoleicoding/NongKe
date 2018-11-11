@@ -56,9 +56,11 @@ public class OrderRecordPresenter extends BasePresenter<OrderRecordContract.View
         });
     }
 
+
+
     @Override
-    public void cancelUserOrderInfo(String orderId) {
-        Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).cancelUserOrderInfo(orderId);
+    public void deleteUserOrderInfo(String orderId) {
+        Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).deleteUserOrderInfo(orderId);
         addSubscribe(observable, new BaseObserver<BaseResData>(false) {
             @Override
             public void onNext(BaseResData baseResData) {
@@ -82,7 +84,9 @@ public class OrderRecordPresenter extends BasePresenter<OrderRecordContract.View
             public void onNext(OrderRecordResData orderRecordResData) {
                 if ("10000".equals(orderRecordResData.retCode))
                 mView.showUserOrderInfo(orderRecordResData);
-                else ResponseStatusUtil.handleResponseStatus(orderRecordResData);
+                else {
+                    ResponseStatusUtil.handleResponseStatus(orderRecordResData);
+                }
             }
         });
     }

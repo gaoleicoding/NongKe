@@ -108,6 +108,10 @@ public interface ApiService {
     @FormUrlEncoded
     Observable<BannerResData> cancelUserOrderInfo(@Field("orderId") String orderId);
 
+    @POST("user/deleteUserOrderInfo")
+    @FormUrlEncoded
+    Observable<BannerResData> deleteUserOrderInfo(@Field("orderId") String orderId);
+
     @POST("user/pageUserOrderInfo")
     Observable<OrderRecordResData> pageUserOrderInfo(@Body RequestBody requestBody);
 

@@ -82,7 +82,9 @@ public class RegisterLoginPresenter extends BasePresenter<RegisterLoginContract.
         addSubscribe(observable, new BaseObserver<LoginResData>(false) {
             @Override
             public void onNext(LoginResData loginResData) {
+                if ("10000".equals(loginResData.retCode))
                 mView.showLoginResData(loginResData);
+                else ResponseStatusUtil.handleResponseStatus(loginResData);
             }
         });
     }

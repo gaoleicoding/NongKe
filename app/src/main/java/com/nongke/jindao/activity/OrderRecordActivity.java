@@ -164,9 +164,9 @@ public class OrderRecordActivity extends BaseMvpActivity<OrderRecordPresenter> i
         order_expand_listview.collapseGroup(manageOrderEvent.groupPosition);
         order_expand_listview.expandGroup(manageOrderEvent.groupPosition);
         if (manageOrderEvent.manageType == -1)
-            mPresenter.cancelUserOrderInfo(manageOrderEvent.orderId);
-        if (manageOrderEvent.manageType == 1)
-            mPresenter.confirmUserOrderInfo(manageOrderEvent.orderId);
+            mPresenter.deleteUserOrderInfo(manageOrderEvent.orderId);
+//        if (manageOrderEvent.manageType == 1)
+//            mPresenter.confirmUserOrderInfo(manageOrderEvent.orderId);
     }
 
 }

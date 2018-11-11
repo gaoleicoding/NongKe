@@ -114,16 +114,16 @@ public class OrderRecordAdapter extends BaseExpandableListAdapter {
         TextView tv_del_order = convertView.findViewById(R.id.tv_del_order);
         final TextView tv_confirm_order = convertView.findViewById(R.id.tv_confirm_order);
         tv_confirm_order.setTag(groupPosition + "");
-//        tv_del_order.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ManageOrderEvent manageOrderEvent = new ManageOrderEvent();
-//                manageOrderEvent.manageType = -1;
-//                manageOrderEvent.orderId = productOrder.orderId;
-//                EventBus.getDefault().post(manageOrderEvent);
-//                list.remove(groupPosition);
-//            }
-//        });
+        tv_del_order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ManageOrderEvent manageOrderEvent = new ManageOrderEvent();
+                manageOrderEvent.manageType = -1;
+                manageOrderEvent.orderId = productOrder.orderId;
+                EventBus.getDefault().post(manageOrderEvent);
+                list.remove(groupPosition);
+            }
+        });
 //        tv_confirm_order.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -154,17 +154,16 @@ public class OrderRecordAdapter extends BaseExpandableListAdapter {
         } else {
             tv_order_pay.setVisibility(View.GONE);
         }
-//        if (isLastChild) {
-//            ll_product_del_confirm.setVisibility(View.VISIBLE);
+        if (isLastChild) {
+            ll_product_del_confirm.setVisibility(View.VISIBLE);
 //            tv_order_pay.setVisibility(View.VISIBLE);
 //            if ("已完成".equals(productOrder.statusDesc) && tv_confirm_order.getTag().equals(groupPosition+""))
 //                tv_confirm_order.setVisibility(View.GONE);
 //
-//            tv_order_pay.setText("合计：" + productOrder.totalPay + "元");
-//        } else {
-//            ll_product_del_confirm.setVisibility(View.GONE);
+        } else {
+            ll_product_del_confirm.setVisibility(View.GONE);
 //            tv_order_pay.setVisibility(View.GONE);
-//        }
+        }
         return convertView;
 
     }
