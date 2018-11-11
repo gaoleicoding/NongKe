@@ -33,7 +33,6 @@
                 <TextView
                     android:id="@+id/tv_commission_amount"
                     style="@style/common_txt_16sp"
-                    android:text="100"
                     android:textSize="18sp"
                     android:textColor="@color/app_color" />
 
@@ -62,7 +61,6 @@
                 <TextView
                     android:id="@+id/tv_withdrawable_amount"
                     style="@style/common_txt_16sp"
-                    android:text="100"
                     android:textSize="18sp"
                     android:textColor="@color/app_color" />
 

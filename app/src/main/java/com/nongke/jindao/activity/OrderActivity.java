@@ -1,17 +1,20 @@
 package com.nongke.jindao.activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -21,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.nongke.jindao.MainActivity;
 import com.nongke.jindao.R;
 import com.nongke.jindao.adapter.OrderProductAdapter;
 import com.nongke.jindao.adapter.divider.SpacesItemDecoration;
@@ -31,7 +35,9 @@ import com.nongke.jindao.base.mmodel.Product;
 import com.nongke.jindao.base.mmodel.RechargeResData;
 import com.nongke.jindao.base.pay.PayResult;
 import com.nongke.jindao.base.pay.alipay.AliPayUtil;
+import com.nongke.jindao.base.utils.FloatOperationUtil;
 import com.nongke.jindao.base.utils.LogUtil;
+import com.nongke.jindao.base.utils.SoftKeyboardUtil;
 import com.nongke.jindao.base.utils.account.OnlineParamUtil;
 import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.base.utils.Utils;
@@ -45,6 +51,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -100,6 +107,7 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
 
     private List<Product> orderProductList;
     private OrderProductAdapter orderProductAdapter;
+    List<View> viewList;
     String TAG = "OrderActivity";
     float postage;
     float discountMoney, totalCardMoney, totalMoney, cornMoney = 0, totalCardPay, rmb, totalPay;
@@ -152,7 +160,8 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
         iv_back.setVisibility(View.VISIBLE);
         ll_pay_daoli.setVisibility(View.VISIBLE);
         orderProductList = (List<Product>) bundle.getSerializable("product_list");
-
+        viewList = new ArrayList<View>();
+        viewList.add(et_balance_pay);
         initRecyclerView();
         pay_view.setOnPayTypeClickListener(this);
         postage = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.postage.content);
@@ -167,14 +176,21 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
                 //count 输入框中改变后的一共输入字符串的数量
                 String ammountText = text.toString();
                 float ammount = 0;
-                if (ammountText.trim().equalsIgnoreCase("")) return;
-                ammount = Utils.stringToFloat(ammountText);
-                if (ammount > UserUtil.getUserInfo().rspBody.money) {
-                    Utils.showToast("您输入的金额大于你的余额", false);
-                    return;
+                if (!ammountText.trim().equalsIgnoreCase("")) {
+                    ammount = Utils.stringToFloat(ammountText);
+                    if (ammount > UserUtil.getUserInfo().rspBody.money) {
+                        Utils.showToast("您输入的金额大于你的余额，请重新输入", false);
+                        et_balance_pay.setText("");
+                        return;
+                    }
+                    if (ammount > totalMoney) {
+                        Utils.showToast("您输入的金额大于商品总值，请重新输入", false);
+                        et_balance_pay.setText("");
+                        return;
+                    }
                 }
                 cornMoney = ammount;
-
+                onPayTypeClick(pay_view.getPayType());
             }
 
             @Override
@@ -223,7 +239,7 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
                     Utils.showToast("你的稻粒不足，请选择其它支付方式", false);
                     return;
                 }
-
+                SoftKeyboardUtil.hideSoftKeyboard(this, viewList);
                 mPresenter.payForProductOnline(orderId, 4, pay_view.getPayType(), new Gson().toJson(orderProductList),
                         cornMoney, rmb, totalPay, postage, UserUtil.userInfo.rspBody.uid, phone,
                         userName, address);
@@ -279,6 +295,10 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
         discountMoney = productResData.rspBody.discountMoney;
         totalCardMoney = productResData.rspBody.totalCardMoney;
         totalCardPay = productResData.rspBody.totalCardPay;
+        LogUtil.d(TAG, "showOrderProduct------------------totalMoney:" + totalMoney);
+        LogUtil.d(TAG, "showOrderProduct------------------discountMoney:" + discountMoney);
+        LogUtil.d(TAG, "showOrderProduct------------------totalCardMoney:" + totalCardMoney);
+        LogUtil.d(TAG, "showOrderProduct------------------totalCardPay:" + totalCardPay);
         float postage = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.postage.content);
         if (postage > 0) {
             ll_order_postage.setVisibility(View.VISIBLE);
@@ -317,34 +337,40 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
     public void onPayTypeClick(int type) {
         if (UserUtil.getUserInfo().rspBody.isVip == 0) {
             if (type == 1) {
-                rmb = totalCardPay;
-                totalPay = totalCardPay - cornMoney + postage;
+                rmb = FloatOperationUtil.sub(totalCardPay, cornMoney);
+                totalPay = FloatOperationUtil.add(totalCardPay, postage);
+                ll_balance_pay.setVisibility(View.GONE);
             }
             if (type == 3) {
-                rmb = totalMoney;
-                totalPay = totalMoney - cornMoney + postage;
+                rmb = FloatOperationUtil.sub(totalMoney, cornMoney);
+                totalPay = FloatOperationUtil.add(totalMoney, postage);
+                ll_balance_pay.setVisibility(View.VISIBLE);
             }
             if (type == 4) {
-                rmb = totalMoney;
-                totalPay = totalMoney - cornMoney + postage;
+                rmb = FloatOperationUtil.sub(totalMoney, cornMoney);
+                totalPay = FloatOperationUtil.add(totalMoney, postage);
+                ll_balance_pay.setVisibility(View.VISIBLE);
             }
         }
         if (UserUtil.getUserInfo().rspBody.isVip == 1) {
             if (type == 1) {
-                rmb = totalCardMoney;
-                totalPay = totalCardMoney - cornMoney + postage;
+                rmb = FloatOperationUtil.sub(totalCardMoney, cornMoney);
+                totalPay = FloatOperationUtil.add(totalCardMoney, postage);
+                ll_balance_pay.setVisibility(View.GONE);
             }
             if (type == 3) {
-                rmb = discountMoney;
-                totalPay = discountMoney - cornMoney + postage;
+                rmb = FloatOperationUtil.sub(discountMoney, cornMoney);
+                totalPay = FloatOperationUtil.add(discountMoney, postage);
+                ll_balance_pay.setVisibility(View.VISIBLE);
             }
             if (type == 4) {
-                rmb = discountMoney;
-                totalPay = discountMoney - cornMoney + postage;
+                rmb = FloatOperationUtil.sub(discountMoney, cornMoney);
+                totalPay = FloatOperationUtil.add(discountMoney, postage);
+                ll_balance_pay.setVisibility(View.VISIBLE);
             }
         }
+        LogUtil.d(TAG, "--------------onPayTypeClick------------------" + pay_view.getPayType());
         LogUtil.d(TAG, "isVip------------" + UserUtil.getUserInfo().rspBody.isVip);
-        LogUtil.d(TAG, "-----------------非vip----------");
         LogUtil.d(TAG, "totalMoney------------" + totalMoney);
         LogUtil.d(TAG, "totalCardPay------------" + totalCardPay);
         LogUtil.d(TAG, "-----------------vip----------------");
@@ -363,4 +389,32 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
         tv_product_total_price.setText(totalPay + "");
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK
+                && event.getAction() == KeyEvent.ACTION_DOWN) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(OrderActivity.this);
+            builder.setTitle("订单支付提醒");
+            builder.setMessage("你的已生成订单还没有支付，需要继续支付吗？");
+            builder.setPositiveButton("继续支付", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+
+                }
+            });
+            builder.setNegativeButton("取消订单", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+
+            builder.show();
+
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
 }

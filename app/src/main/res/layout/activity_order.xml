@@ -180,25 +180,7 @@
                     android:text=" 元" />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/ll_balance_pay"
-                style="@style/code_edit_layout_style"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:focusableInTouchMode="true"
-                >
 
-                <TextView
-                    style="@style/common_txt_16sp"
-                    android:text="使用余额：" />
-
-                <EditText
-                    android:id="@+id/et_balance_pay"
-                    style="@style/common_edit_style"
-                    android:layout_marginLeft="0dp"
-                    android:hint="输入金额"
-                    android:inputType="number" />
-            </LinearLayout>
 
             <LinearLayout
                 style="@style/code_edit_layout_style"
@@ -219,7 +201,25 @@
                     style="@style/common_txt_16sp"
                     android:text=" 元" />
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_balance_pay"
+                style="@style/code_edit_layout_style"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:focusableInTouchMode="true"
+                >
 
+                <TextView
+                    style="@style/common_txt_16sp"
+                    android:text="使用余额：" />
+
+                <EditText
+                    android:id="@+id/et_balance_pay"
+                    style="@style/common_edit_style"
+                    android:layout_marginLeft="0dp"
+                    android:hint="输入金额"
+                    android:inputType="number" />
+            </LinearLayout>
             <LinearLayout
                 android:id="@+id/ll_order_postage"
                 style="@style/code_edit_layout_style"

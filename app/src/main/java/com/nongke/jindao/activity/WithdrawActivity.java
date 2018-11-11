@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
+import com.nongke.jindao.base.mmodel.BaseResData;
 import com.nongke.jindao.base.mmodel.MyProfileResData;
 import com.nongke.jindao.base.utils.Constants;
 import com.nongke.jindao.base.utils.SharedPreferencesUtils;
@@ -106,10 +107,7 @@ public class WithdrawActivity extends BaseMvpActivity<WithdrawPresenter> impleme
         switch (view.getId()) {
             case R.id.iv_back:
                 if (isInCommission) {
-                    ll_commission_convert_amount.setVisibility(View.GONE);
-                    ll_withdraw_amount.setVisibility(View.VISIBLE);
-                    title.setText(getString(R.string.my_withdraw));
-                    isInCommission = false;
+                    backFromCommissionToBalance();
                 } else
                     finish();
 
@@ -182,6 +180,12 @@ public class WithdrawActivity extends BaseMvpActivity<WithdrawPresenter> impleme
 
     }
 
+    private void backFromCommissionToBalance() {
+        ll_commission_convert_amount.setVisibility(View.GONE);
+        ll_withdraw_amount.setVisibility(View.VISIBLE);
+        title.setText(getString(R.string.my_withdraw));
+        isInCommission = false;
+    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -215,5 +219,13 @@ public class WithdrawActivity extends BaseMvpActivity<WithdrawPresenter> impleme
         et_bank_branch_address.setText(bankAdress);
         et_bank_card_owner.setText(userName);
         et_contact_phone_num.setText(phone);
+    }
+
+    @Override
+    public void showCommissionToMoney(BaseResData baseResData) {
+        if ("10000".equals(baseResData.retCode)) {
+            backFromCommissionToBalance();
+            tv_commission_amount.setText(UserUtil.getUserInfo().rspBody.commission + "");
+        }
     }
 }

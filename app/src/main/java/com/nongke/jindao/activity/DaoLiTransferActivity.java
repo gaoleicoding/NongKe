@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
+import com.nongke.jindao.base.mmodel.BaseResData;
 import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.utils.Utils;
@@ -29,7 +30,7 @@ import butterknife.OnClick;
  * author: zlm
  * date: 2017/3/17 16:01
  */
-public class DaoLiTransferActivity extends BaseMvpActivity<DaoLiTransferPresenter>{
+public class DaoLiTransferActivity extends BaseMvpActivity<DaoLiTransferPresenter> implements DaoLiTransferContract.View {
     @BindView(R.id.iv_back)
     ImageView iv_back;
     @BindView(R.id.title)
@@ -41,7 +42,8 @@ public class DaoLiTransferActivity extends BaseMvpActivity<DaoLiTransferPresente
     @BindView(R.id.tv_transfer)
     TextView tv_transfer;
     @BindView(R.id.tv_transfer_record)
-    TextView tv_transfer_record; @BindView(R.id.tv_daoli)
+    TextView tv_transfer_record;
+    @BindView(R.id.tv_daoli)
     TextView tv_daoli;
 
 
@@ -59,7 +61,7 @@ public class DaoLiTransferActivity extends BaseMvpActivity<DaoLiTransferPresente
     protected void initData(Bundle bundle) {
         title.setText(getString(R.string.my_daoli_transfer));
         iv_back.setVisibility(View.VISIBLE);
-        tv_daoli.setText(UserUtil.userInfo.rspBody.cardMoney+"");
+        tv_daoli.setText(UserUtil.userInfo.rspBody.cardMoney + "");
     }
 
     @Override
@@ -104,4 +106,8 @@ public class DaoLiTransferActivity extends BaseMvpActivity<DaoLiTransferPresente
 
     }
 
+    @Override
+    public void showCardMoneyToUser(BaseResData baseResData) {
+        if ("10000".equals(baseResData.retCode)) finish();
+    }
 }

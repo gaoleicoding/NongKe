@@ -47,7 +47,10 @@ public class WithdrawPresenter extends BasePresenter<WithdrawContract.View> impl
         addSubscribe(observable, new BaseObserver<BaseResData>(false) {
             @Override
             public void onNext(BaseResData baseResData) {
-
+                if("10000".equals(baseResData.retCode)) {
+                    UpdateUserInfoEvent userInfoEvent=new UpdateUserInfoEvent();
+                    EventBus.getDefault().post(userInfoEvent);
+                }else
                 ResponseStatusUtil.handleResponseStatus(baseResData);
             }
         });
@@ -78,6 +81,8 @@ public class WithdrawPresenter extends BasePresenter<WithdrawContract.View> impl
                 if("10000".equals(baseResData.retCode)) {
                     UpdateUserInfoEvent userInfoEvent=new UpdateUserInfoEvent();
                     EventBus.getDefault().post(userInfoEvent);
+                    mView.showCommissionToMoney(baseResData);
+                    ResponseStatusUtil.handleResponseStatus(baseResData);
                 }
             }
         });

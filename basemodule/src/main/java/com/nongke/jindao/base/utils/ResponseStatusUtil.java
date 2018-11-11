@@ -8,6 +8,9 @@ import com.nongke.jindao.base.mmodel.BaseResData;
 import org.greenrobot.eventbus.EventBus;
 
 public class ResponseStatusUtil {
+    public static String STATUS_10000="10000";
+    public static String STATUS_20000="20000";
+    public static String STATUS_30000="30000";
 
     public static void handleResponseStatus(BaseResData baseResData) {
         if (baseResData == null) return;

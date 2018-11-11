@@ -36,6 +36,7 @@ import com.nongke.jindao.mpresenter.OnlineParamePresenter;
 import com.nongke.jindao.view.CustomViewPager;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -120,10 +121,13 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
         tabLayout.setupWithViewPager(viewPager);
         initTab();
 
-        float value1=(float)0.1;
-        float value2=(float) 0.8;
-        value1=value2+value1;
-        Log.d(TAG,"value1:"+value1);
+//        float value1=(float)0.1;
+//        float value2=(float) 0.8;
+//        value1=value2+value1;
+        BigDecimal b1 = new BigDecimal("1.55");//必须用字符串
+        BigDecimal b2 = new BigDecimal("1.0");
+        BigDecimal b = b1.subtract(b2);//会输出0.1
+        Log.d(TAG,"value1:"+b.toString());
     }
 
 

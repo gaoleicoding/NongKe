@@ -1,5 +1,6 @@
 package com.nongke.jindao.mcontract;
 
+import com.nongke.jindao.base.mmodel.BaseResData;
 import com.nongke.jindao.base.mmodel.MyProfileResData;
 
 /**
@@ -20,6 +21,7 @@ public class WithdrawContract {
     public interface View {
 
         void showUserProfileResData(MyProfileResData userProfileResData);
+        void showCommissionToMoney(BaseResData baseResData);
 
     }
 }

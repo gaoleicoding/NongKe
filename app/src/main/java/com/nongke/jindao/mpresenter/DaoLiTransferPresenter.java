@@ -24,7 +24,7 @@ import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
 
-public class DaoLiTransferPresenter extends BasePresenter<DaoLiTransferContract> implements DaoLiTransferContract.Presenter {
+public class DaoLiTransferPresenter extends BasePresenter<DaoLiTransferContract.View> implements DaoLiTransferContract.Presenter {
 
     @Override
     public void cardMoneyToUser(int amount, String phone) {
@@ -40,15 +40,14 @@ public class DaoLiTransferPresenter extends BasePresenter<DaoLiTransferContract>
             @Override
             public void onNext(BaseResData resData) {
                 ResponseStatusUtil.handleResponseStatus(resData);
-               if("10000".equals(resData.retCode)) {
-                   UpdateUserInfoEvent userInfoEvent=new UpdateUserInfoEvent();
-                   EventBus.getDefault().post(userInfoEvent);
-               }
-
+                if ("10000".equals(resData.retCode)) {
+                    UpdateUserInfoEvent userInfoEvent = new UpdateUserInfoEvent();
+                    EventBus.getDefault().post(userInfoEvent);
+                    mView.showCardMoneyToUser(resData);
+                }
             }
         });
     }
-
 
 
 }

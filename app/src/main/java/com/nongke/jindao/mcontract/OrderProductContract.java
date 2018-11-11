@@ -20,8 +20,9 @@ public class OrderProductContract {
         void buyProduct(List<Product> list);
 
         void getUserAddress();
-        void payForProductOnline(String orderId,int orderType, int payType, String list,float cornMoney,float rmb,
-                                 float totalPay,float postage,String uid,String phone,String userName,String address);
+
+        void payForProductOnline(String orderId, int orderType, int payType, String list, float cornMoney, float rmb,
+                                 float totalPay, float postage, String uid, String phone, String userName, String address);
     }
 
     public interface View {
@@ -29,6 +30,7 @@ public class OrderProductContract {
         void showOrderProduct(OrderProductResData productResData);
 
         void showUserAddressResData(MyAddressResData userAddressResData);
+
         void showOrderProductPayRes(RechargeResData rechargeResData);
     }
 }
