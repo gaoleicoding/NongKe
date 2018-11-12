@@ -225,7 +225,7 @@ public class WithdrawActivity extends BaseMvpActivity<WithdrawPresenter> impleme
     public void showCommissionToMoney(BaseResData baseResData) {
         if ("10000".equals(baseResData.retCode)) {
             backFromCommissionToBalance();
-            tv_commission_amount.setText(UserUtil.getUserInfo().rspBody.commission + "");
+            mPresenter.getUserProfile();
         }
     }
 }

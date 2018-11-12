@@ -39,7 +39,8 @@ public class OrderRecordAdapter extends BaseExpandableListAdapter {
     //  获得父项的数量
     @Override
     public int getGroupCount() {
-        return list.size();
+        int groupCount=list.size();
+        return groupCount;
     }
 
     //  获得某个父项的子项数目
@@ -103,6 +104,7 @@ public class OrderRecordAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             convertView = View.inflate(context, R.layout.order_child_view, null);
         }
+        if(groupPosition>=getGroupCount())return convertView;
         final ProductOrder productOrder = list.get(groupPosition);
         //获取布局控件id
         ImageView iv_product = convertView.findViewById(R.id.iv_product);
@@ -122,6 +124,7 @@ public class OrderRecordAdapter extends BaseExpandableListAdapter {
                 manageOrderEvent.orderId = productOrder.orderId;
                 EventBus.getDefault().post(manageOrderEvent);
                 list.remove(groupPosition);
+                notifyDataSetChanged();
             }
         });
 //        tv_confirm_order.setOnClickListener(new View.OnClickListener() {

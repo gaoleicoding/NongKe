@@ -26,6 +26,7 @@ import com.nongke.jindao.base.email.MailSender;
 import com.nongke.jindao.base.email.ToastUtils;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.utils.Utils;
+import com.nongke.jindao.base.utils.account.OnlineParamUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -71,6 +72,7 @@ public class HelpFeedbackActivity extends BaseMvpActivity {
     protected void initData(Bundle bundle) {
         title.setText(getString(R.string.help_feedback));
         iv_back.setVisibility(View.VISIBLE);
+        receiveEmail= OnlineParamUtil.getParamResData().rspBody.custom_service_email_receiver.content;
     }
 
     @Override
@@ -174,7 +176,7 @@ public class HelpFeedbackActivity extends BaseMvpActivity {
             // TODO Auto-generated method stub
             try {
                 sender.sendMail(subject, body, user, receiver, attachment);
-                Utils.showToast("您的反馈与建议，我们已经收到", false);
+                Utils.showToast("您的反馈我们已经收到", false);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -184,7 +186,7 @@ public class HelpFeedbackActivity extends BaseMvpActivity {
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 if (e.getMessage() != null)
-                    Utils.showToast(e.getMessage().toString(), false);
+                    Utils.showToast("反馈发送失败，请稍后再试", false);
                 e.printStackTrace();
             }
         }

@@ -188,10 +188,12 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
             R.id.my_withdraw_record_layout, R.id.my_profile_layout, R.id.my_promotion_layout, R.id.my_location_layout, R.id.my_order_layout, R.id.my_logout_layout,
             R.id.tv_vip_recharge, R.id.my_inviter_layout, R.id.custom_service_layout, R.id.help_feedback_layout})
     public void click(View view) {
-        if (!UserUtil.isLogined()) {
-            RegisterLoginActivity.startActivity(getActivity());
-            Utils.showToast(getString(R.string.user_not_login), true);
-            return;
+        if (view.getId() != R.id.custom_service_layout || view.getId() != R.id.help_feedback_layout) {
+            if (!UserUtil.isLogined()) {
+                RegisterLoginActivity.startActivity(getActivity());
+                Utils.showToast(getString(R.string.user_not_login), true);
+                return;
+            }
         }
         switch (view.getId()) {
             case R.id.tv_vip_recharge:

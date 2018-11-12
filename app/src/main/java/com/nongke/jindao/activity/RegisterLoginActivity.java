@@ -277,6 +277,7 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
     public void onEvent(LoginEvent accountEvent) {
         startActivity(this);
     }
+
     public void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);

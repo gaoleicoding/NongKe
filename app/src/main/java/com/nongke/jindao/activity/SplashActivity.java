@@ -10,6 +10,7 @@ import android.view.View;
 import com.nongke.jindao.MainActivity;
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
+import com.nongke.jindao.base.event.LoginEvent;
 import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.ResponseStatusUtil;
@@ -17,6 +18,10 @@ import com.nongke.jindao.base.utils.SharedPreferencesUtils;
 import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.mcontract.SplashLoginContract;
 import com.nongke.jindao.mpresenter.SplashLoginPresenter;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * description: test
@@ -46,7 +51,7 @@ public class SplashActivity extends BaseMvpActivity<SplashLoginPresenter> implem
 
     @Override
     protected void initData(Bundle bundle) {
-
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -76,9 +81,18 @@ public class SplashActivity extends BaseMvpActivity<SplashLoginPresenter> implem
         LogUtil.d("loginResData.toString():" + loginResData.toString());
         if ("10000".equals(loginResData.retCode)) {
             UserUtil.setUserInfo(loginResData);
-        }else ResponseStatusUtil.handleResponseStatus(loginResData);
+        } else ResponseStatusUtil.handleResponseStatus(loginResData);
 
         handler.sendEmptyMessageDelayed(0, 500);
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(LoginEvent accountEvent) {
+        RegisterLoginActivity.startActivity(this);
+    }
+
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
 }

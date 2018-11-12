@@ -337,7 +337,7 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
     public void onPayTypeClick(int type) {
         if (UserUtil.getUserInfo().rspBody.isVip == 0) {
             if (type == 1) {
-                rmb = FloatOperationUtil.sub(totalCardPay, cornMoney);
+                rmb = totalCardPay;
                 totalPay = FloatOperationUtil.add(totalCardPay, postage);
                 ll_balance_pay.setVisibility(View.GONE);
             }
@@ -354,7 +354,7 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
         }
         if (UserUtil.getUserInfo().rspBody.isVip == 1) {
             if (type == 1) {
-                rmb = FloatOperationUtil.sub(totalCardMoney, cornMoney);
+                rmb = totalCardMoney;
                 totalPay = FloatOperationUtil.add(totalCardMoney, postage);
                 ll_balance_pay.setVisibility(View.GONE);
             }
