@@ -40,7 +40,9 @@
             android:launchMode="singleInstance" >
         </activity>
 
-        <activity android:name=".activity.RegisterLoginActivity"></activity>
+        <activity android:name=".activity.RegisterLoginActivity"
+            android:launchMode="singleTop"
+            ></activity>
         <activity android:name=".activity.DaoliRechargeActivity"></activity>
         <activity android:name=".activity.DaoLiTransferActivity"></activity>
         <activity android:name=".activity.WithdrawActivity"></activity>

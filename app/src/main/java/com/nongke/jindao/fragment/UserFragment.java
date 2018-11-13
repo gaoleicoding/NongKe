@@ -257,8 +257,8 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
                 RegisterLoginActivity.startActivity(getActivity());
                 UserUtil.setUserInfo(null);
                 UserUtil.setLogined(false);
-                LoginAccountEvent accountEvent = new LoginAccountEvent();
-                EventBus.getDefault().post(accountEvent);
+//                LoginAccountEvent accountEvent = new LoginAccountEvent();
+//                EventBus.getDefault().post(accountEvent);
                 break;
             case R.id.iv_user_photo:
                 if (!UserUtil.isLogined())

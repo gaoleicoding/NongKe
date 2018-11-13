@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
 import com.nongke.jindao.base.event.FinishOrderActivityEvent;

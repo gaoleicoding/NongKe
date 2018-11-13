@@ -4,15 +4,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -20,19 +16,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.nongke.jindao.R;
 import com.nongke.jindao.adapter.OrderProductAdapter;
 import com.nongke.jindao.adapter.divider.SpacesItemDecoration;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
-import com.nongke.jindao.base.event.FinishOrderActivityEvent;
 import com.nongke.jindao.base.mmodel.MyAddressResData;
 import com.nongke.jindao.base.mmodel.OrderProductResData;
 import com.nongke.jindao.base.mmodel.Product;
 import com.nongke.jindao.base.mmodel.RechargeResData;
-import com.nongke.jindao.base.pay.alipay.PayResult;
 import com.nongke.jindao.base.pay.alipay.AliPayUtil;
 import com.nongke.jindao.base.pay.wxpay.WXPayUtil;
 import com.nongke.jindao.base.utils.FloatOperationUtil;
@@ -53,12 +46,9 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static com.nongke.jindao.base.pay.alipay.AliPayUtil.SDK_PAY_FLAG;
 
 /**
  * description: test

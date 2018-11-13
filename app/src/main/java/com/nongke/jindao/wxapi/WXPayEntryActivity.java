@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.nongke.jindao.base.event.UpdateUserInfoEvent;
+import com.nongke.jindao.base.event.FinishOrderActivityEvent;
 import com.nongke.jindao.base.pay.wxpay.WXPayUtil;
 import com.nongke.jindao.base.utils.LogUtil;
 import com.tencent.mm.opensdk.constants.ConstantsAPI;
@@ -53,8 +53,8 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
         if (resp.getType() == ConstantsAPI.COMMAND_PAY_BY_WX) {
             if (resp.errCode == 0) { //支付成功
                 Toast.makeText(this, "支付成功", Toast.LENGTH_SHORT).show();
-                UpdateUserInfoEvent userInfoEvent = new UpdateUserInfoEvent();
-                EventBus.getDefault().post(userInfoEvent);
+                FinishOrderActivityEvent finishOrderActivityEvent = new FinishOrderActivityEvent();
+                EventBus.getDefault().post(finishOrderActivityEvent);
             } else if (resp.errCode == -2) {
                 Toast.makeText(this, "取消支付", Toast.LENGTH_SHORT).show();
             } else {
