@@ -112,7 +112,10 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
 
-            <include layout="@layout/layout_pay_style" />
+            <com.nongke.jindao.view.PayView
+                android:id="@+id/ll_pay_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/tv_daoli_recharge"

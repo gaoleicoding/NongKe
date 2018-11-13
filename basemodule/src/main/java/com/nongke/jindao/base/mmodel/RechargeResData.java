@@ -2,7 +2,7 @@ package com.nongke.jindao.base.mmodel;
 
 import java.util.List;
 
-public class RechargeResData extends BaseResData{
+public class RechargeResData extends BaseResData {
 
 //    {
 //        "extra": {},
@@ -25,20 +25,26 @@ public class RechargeResData extends BaseResData{
     public RspBody rspBody;
 
     public class RspBody {
-        public int orderType,flag;
-        public String orderId,paySign,payType,subject,body;
+        public int orderType, flag;
+        public String orderId, paySign, payType, subject, body, appId, partnerId, prepayId, nonceStr, timeStamp, packageValue;
         public float totalMoney, totalPay;
 
         @Override
         public String toString() {
             return "RspBody{" +
                     "orderType=" + orderType +
-                    ", paySign=" + paySign +
-                    ", subject=" + subject +
                     ", flag=" + flag +
                     ", orderId='" + orderId + '\'' +
+                    ", paySign='" + paySign + '\'' +
                     ", payType='" + payType + '\'' +
+                    ", subject='" + subject + '\'' +
                     ", body='" + body + '\'' +
+                    ", appId='" + appId + '\'' +
+                    ", partnerId='" + partnerId + '\'' +
+                    ", prepayId='" + prepayId + '\'' +
+                    ", nonceStr='" + nonceStr + '\'' +
+                    ", timeStamp='" + timeStamp + '\'' +
+                    ", packageValue='" + packageValue + '\'' +
                     ", totalMoney=" + totalMoney +
                     ", totalPay=" + totalPay +
                     '}';

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,7 +23,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.nongke.jindao.MainActivity;
 import com.nongke.jindao.R;
 import com.nongke.jindao.adapter.OrderProductAdapter;
 import com.nongke.jindao.adapter.divider.SpacesItemDecoration;
@@ -33,8 +31,9 @@ import com.nongke.jindao.base.mmodel.MyAddressResData;
 import com.nongke.jindao.base.mmodel.OrderProductResData;
 import com.nongke.jindao.base.mmodel.Product;
 import com.nongke.jindao.base.mmodel.RechargeResData;
-import com.nongke.jindao.base.pay.PayResult;
+import com.nongke.jindao.base.pay.alipay.PayResult;
 import com.nongke.jindao.base.pay.alipay.AliPayUtil;
+import com.nongke.jindao.base.pay.wxpay.WXPayUtil;
 import com.nongke.jindao.base.utils.FloatOperationUtil;
 import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.SoftKeyboardUtil;
@@ -290,6 +289,7 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
     @Override
     public void showOrderProduct(OrderProductResData productResData) {
         if (productResData == null || productResData.rspBody == null) return;
+        LogUtil.d(TAG, "productResData.toString()：" + productResData.toString());
         orderId = productResData.rspBody.orderId;
         totalMoney = productResData.rspBody.totalMoney;
         discountMoney = productResData.rspBody.discountMoney;
@@ -310,6 +310,7 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
 
     @Override
     public void showOrderProductPayRes(RechargeResData rechargeResData) {
+        LogUtil.d(TAG, "showOrderProductPayRes:" + rechargeResData.rspBody.toString());
         final String paySign = rechargeResData.rspBody.paySign;
         if (paySign == null && rechargeResData.rspBody.flag == 1) {
             Utils.showToast("点卡支付成功", false);
@@ -318,8 +319,12 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
             finish();
             return;
         }
-        Log.d(TAG, "paySign:" + paySign);
-        AliPayUtil.pay(mHandler, this, paySign);
+        LogUtil.d(TAG, "paySign:" + paySign);
+        if (3 == pay_view.getPayType())
+            AliPayUtil.pay(mHandler, this, paySign);
+        if (4 == pay_view.getPayType()) {
+            WXPayUtil.pay(rechargeResData.rspBody);
+        }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

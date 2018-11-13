@@ -250,3 +250,9 @@ public static final int *;
 -keep class com.alipay.android.app.IRemoteServiceCallback$Stub{*;}
 -keep class com.alipay.sdk.app.PayTask{ public *;}
 -keep class com.alipay.sdk.app.AuthTask{ public *;}
+
+
+   #微信支付
+   -keep class com.tencent.mm.opensdk.** {*;}
+   -keep class com.tencent.wxop.** {*;}
+   -keep class com.tencent.mm.sdk.** {*;}

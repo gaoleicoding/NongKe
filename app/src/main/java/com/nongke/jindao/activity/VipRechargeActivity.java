@@ -11,24 +11,25 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nongke.jindao.base.pay.PayResult;
+import com.nongke.jindao.base.pay.alipay.PayResult;
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
 import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.mmodel.RechargeResData;
 import com.nongke.jindao.base.pay.alipay.AliPayUtil;
+import com.nongke.jindao.base.pay.wxpay.WXPayUtil;
 import com.nongke.jindao.base.utils.account.OnlineParamUtil;
 import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.base.view.TitleView;
 import com.nongke.jindao.mcontract.RechargeContract;
 import com.nongke.jindao.mpresenter.RechargePresenter;
+import com.nongke.jindao.view.PayView;
 
 import java.util.Map;
 
@@ -60,14 +61,6 @@ public class VipRechargeActivity extends BaseMvpActivity<RechargePresenter> impl
     TextView tv_vip_origin_price_gift;
     @BindView(R.id.tv_vip_price_to_user)
     TextView tv_vip_price_to_user;
-    @BindView(R.id.ll_pay_alipay)
-    LinearLayout ll_pay_alipay;
-    @BindView(R.id.ll_pay_wechat)
-    LinearLayout ll_pay_wechat;
-    @BindView(R.id.img_pay_alipay)
-    ImageView img_pay_alipay;
-    @BindView(R.id.img_pay_wechat)
-    ImageView img_pay_wechat;
 
     @BindView(R.id.tv_vip_contract)
     TextView tv_vip_contract;
@@ -75,7 +68,8 @@ public class VipRechargeActivity extends BaseMvpActivity<RechargePresenter> impl
     TextView tv_vip_contract_content;
     @BindView(R.id.cb_vip_contract)
     CheckBox cb_vip_contract;
-
+    @BindView(R.id.ll_pay_view)
+    PayView pay_view;
 
     boolean isInContract;
     public final int  REFRESH_LOGIN_VIP = 1;
@@ -163,7 +157,7 @@ public class VipRechargeActivity extends BaseMvpActivity<RechargePresenter> impl
     }
 
 
-    @OnClick({R.id.ll_pay_alipay, R.id.ll_pay_wechat, R.id.iv_back, R.id.tv_pay, R.id.tv_vip_contract, R.id.tv_vip_contract_content})
+    @OnClick({ R.id.iv_back, R.id.tv_pay, R.id.tv_vip_contract, R.id.tv_vip_contract_content})
     public void click(View view) {
         switch (view.getId()) {
 
@@ -175,14 +169,7 @@ public class VipRechargeActivity extends BaseMvpActivity<RechargePresenter> impl
                     layout_title.setVisibility(View.VISIBLE);
                 } else finish();
                 break;
-            case R.id.ll_pay_alipay:
-                img_pay_alipay.setImageResource(R.drawable.icon_pay_select);
-                img_pay_wechat.setImageResource(R.drawable.icon_pay_unselect);
-                break;
-            case R.id.ll_pay_wechat:
-                img_pay_wechat.setImageResource(R.drawable.icon_pay_select);
-                img_pay_alipay.setImageResource(R.drawable.icon_pay_unselect);
-                break;
+
             case R.id.tv_pay:
                 if (UserUtil.getUserInfo().rspBody.isVip == 1) {
                     Utils.showToast("你已经是VIP会员", false);
@@ -193,7 +180,7 @@ public class VipRechargeActivity extends BaseMvpActivity<RechargePresenter> impl
                     return;
                 }
 
-                mPresenter.recharge(1, 3, Utils.stringToFloat(OnlineParamUtil.paramResData.rspBody.vip_price.content), Utils.stringToFloat(OnlineParamUtil.paramResData.rspBody.vip_price.content));
+                mPresenter.recharge(1, pay_view.getPayType(), Utils.stringToFloat(OnlineParamUtil.paramResData.rspBody.vip_price.content), Utils.stringToFloat(OnlineParamUtil.paramResData.rspBody.vip_price.content));
                 break;
             case R.id.tv_vip_contract:
                 isInContract = true;
@@ -239,7 +226,10 @@ public class VipRechargeActivity extends BaseMvpActivity<RechargePresenter> impl
         final String paySign = rechargeResData.rspBody.paySign;
         Log.d(TAG, "paySign:" + paySign);
 
-        AliPayUtil.pay(mHandler,this,paySign);
+        if (3 == pay_view.getPayType())AliPayUtil.pay(mHandler, this, paySign);
+        if (4 == pay_view.getPayType()) {
+            WXPayUtil.pay(rechargeResData.rspBody);
+        }
 
     }
 

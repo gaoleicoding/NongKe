@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nongke.jindao.base.pay.PayResult;
+import com.nongke.jindao.base.pay.alipay.PayResult;
 import com.nongke.jindao.R;
 import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.activity.VipRechargeActivity;
@@ -19,11 +19,13 @@ import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.mmodel.RechargeResData;
 import com.nongke.jindao.base.pay.alipay.AliPayUtil;
+import com.nongke.jindao.base.pay.wxpay.WXPayUtil;
 import com.nongke.jindao.base.utils.account.OnlineParamUtil;
 import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.mcontract.RechargeContract;
 import com.nongke.jindao.mpresenter.RechargePresenter;
+import com.nongke.jindao.view.PayView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -40,7 +42,7 @@ import butterknife.OnClick;
  * @date 2018/2/11
  */
 
-public class RechageDetailFragment extends BaseMvpFragment<RechargePresenter> implements RechargeContract.View  {
+public class RechageDetailFragment extends BaseMvpFragment<RechargePresenter> implements RechargeContract.View {
 
     @BindView(R.id.tv_recharge_50)
     TextView tv_recharge_50;
@@ -58,19 +60,12 @@ public class RechageDetailFragment extends BaseMvpFragment<RechargePresenter> im
     TextView tv_money_pay;
     @BindView(R.id.tv_phone_recharge_desc)
     TextView tv_phone_recharge_desc;
-
     @BindView(R.id.ll_money_recharge)
     LinearLayout ll_money_recharge;
     @BindView(R.id.ll_money_pay)
     LinearLayout ll_money_pay;
-    @BindView(R.id.ll_pay_alipay)
-    LinearLayout ll_pay_alipay;
-    @BindView(R.id.ll_pay_wechat)
-    LinearLayout ll_pay_wechat;
-    @BindView(R.id.img_pay_alipay)
-    ImageView img_pay_alipay;
-    @BindView(R.id.img_pay_wechat)
-    ImageView img_pay_wechat;
+    @BindView(R.id.ll_pay_view)
+    PayView pay_view;
 
     public final int SDK_PAY_FLAG = 0;
     private Handler mHandler = new Handler() {
@@ -100,6 +95,7 @@ public class RechageDetailFragment extends BaseMvpFragment<RechargePresenter> im
 
         ;
     };
+
     @Override
     public void initData(Bundle bundle) {
         EventBus.getDefault().register(this);
@@ -128,7 +124,7 @@ public class RechageDetailFragment extends BaseMvpFragment<RechargePresenter> im
     public void loadData() {
     }
 
-    @OnClick({R.id.tv_vip_recharge, R.id.tv_recharge_50, R.id.tv_recharge_100, R.id.ll_pay_alipay, R.id.ll_pay_wechat, R.id.tv_recharge_immediate})
+    @OnClick({R.id.tv_vip_recharge, R.id.tv_recharge_50, R.id.tv_recharge_100, R.id.tv_recharge_immediate})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.tv_vip_recharge:
@@ -139,23 +135,14 @@ public class RechageDetailFragment extends BaseMvpFragment<RechargePresenter> im
                 tv_recharge_50.setTextColor(getResources().getColor(R.color.white));
                 tv_recharge_100.setBackgroundResource(R.drawable.shape_recharge_ammount_bg);
                 tv_recharge_100.setTextColor(getResources().getColor(R.color.color_black));
-//                showRechargeMoney(50);
                 break;
             case R.id.tv_recharge_100:
                 tv_recharge_100.setBackgroundResource(R.drawable.shape_recharge_ammount_bg_select);
                 tv_recharge_100.setTextColor(getResources().getColor(R.color.white));
                 tv_recharge_50.setBackgroundResource(R.drawable.shape_recharge_ammount_bg);
                 tv_recharge_50.setTextColor(getResources().getColor(R.color.color_black));
-//                showRechargeMoney(100);
                 break;
-            case R.id.ll_pay_alipay:
-                img_pay_alipay.setImageResource(R.drawable.icon_pay_select);
-                img_pay_wechat.setImageResource(R.drawable.icon_pay_unselect);
-                break;
-            case R.id.ll_pay_wechat:
-                img_pay_wechat.setImageResource(R.drawable.icon_pay_select);
-                img_pay_alipay.setImageResource(R.drawable.icon_pay_unselect);
-                break;
+
             case R.id.tv_recharge_immediate:
                 if (!UserUtil.isLogined()) {
                     RegisterLoginActivity.startActivity(getActivity());
@@ -171,7 +158,7 @@ public class RechageDetailFragment extends BaseMvpFragment<RechargePresenter> im
                     Utils.showToast("你不是VIP会员，不能使用话费充值业务", false);
                     return;
                 }
-                mPresenter.recharge(3, 3, 1, (float)0.88);
+                mPresenter.recharge(3, pay_view.getPayType(), 1, (float) 0.88);
 
                 break;
             default:
@@ -190,39 +177,35 @@ public class RechageDetailFragment extends BaseMvpFragment<RechargePresenter> im
         if (UserUtil.isLogined()) {
             if (OnlineParamUtil.paramResData == null || OnlineParamUtil.paramResData.rspBody == null || UserUtil.getUserInfo().rspBody == null)
                 return;
-//            ll_money_recharge.setVisibility(View.VISIBLE);
-//            ll_money_pay.setVisibility(View.VISIBLE);
             tv_recharge_phone_num.setText(UserUtil.getUserInfo().rspBody.phone);
 
-//            showRechargeMoney(50);
             int phoneDiscount = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.vip_phone_discount.content);
+
+            String recharge_50 = getResources().getString(R.string.recharge_50);
+            String recharge_50_format = String.format(recharge_50, phoneDiscount * 50 / 100);
+            tv_recharge_50.setText(recharge_50_format);
+            String recharge_100 = getResources().getString(R.string.recharge_100);
+            String recharge_100_format = String.format(recharge_100, phoneDiscount * 100 / 100);
+            tv_recharge_100.setText(recharge_100_format);
+
             if (UserUtil.getUserInfo().rspBody.isVip == 1 && phoneDiscount < 100) {
                 tv_vip_recharge.setVisibility(View.GONE);
-                String recharge_50 = getResources().getString(R.string.recharge_50);
-                String recharge_50_format = String.format(recharge_50, phoneDiscount * 50 / 100);
-                tv_recharge_50.setText(recharge_50_format);
-                String recharge_100 = getResources().getString(R.string.recharge_100);
-                String recharge_100_format = String.format(recharge_100, phoneDiscount * 100 / 100);
-                tv_recharge_100.setText(recharge_100_format);
-
-                tv_recharge_50.setTextSize(16);
-                tv_recharge_100.setTextSize(16);
 
             } else {
                 tv_vip_recharge.setVisibility(View.VISIBLE);
-                tv_recharge_50.setText("50元");
-                tv_recharge_100.setText("100元");
-                tv_recharge_50.setTextSize(18);
-                tv_recharge_100.setTextSize(18);
+//                tv_recharge_50.setText("50元");
+//                tv_recharge_100.setText("100元");
+//                tv_recharge_50.setTextSize(18);
+//                tv_recharge_100.setTextSize(18);
 
             }
 
         } else {
             tv_recharge_phone_num.setText("");
-            ll_money_recharge.setVisibility(View.GONE);
-            ll_money_pay.setVisibility(View.GONE);
-            tv_recharge_50.setText("50元");
-            tv_recharge_100.setText("100元");
+//            ll_money_recharge.setVisibility(View.GONE);
+//            ll_money_pay.setVisibility(View.GONE);
+//            tv_recharge_50.setText("50元");
+//            tv_recharge_100.setText("100元");
             tv_vip_recharge.setVisibility(View.GONE);
         }
         tv_phone_recharge_desc.setText(OnlineParamUtil.paramResData.rspBody.phone_recharge_desc.content);
@@ -246,7 +229,12 @@ public class RechageDetailFragment extends BaseMvpFragment<RechargePresenter> im
     public void showRechargeRes(RechargeResData rechargeResData) {
         final String paySign = rechargeResData.rspBody.paySign;
 
-        AliPayUtil.pay(mHandler,getActivity(),paySign);
+        if (3 == pay_view.getPayType()) {
+            AliPayUtil.pay(mHandler, getActivity(), paySign);
+        }
+        if (4 == pay_view.getPayType()) {
+            WXPayUtil.pay(rechargeResData.rspBody);
+        }
     }
 
     @Override

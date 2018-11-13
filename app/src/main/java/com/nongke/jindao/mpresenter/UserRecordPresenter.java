@@ -30,7 +30,6 @@ public class UserRecordPresenter extends BasePresenter<UserRecordContract.View> 
         addSubscribe(observable, new BaseObserver<UserRecordResData>(false) {
             @Override
             public void onNext(UserRecordResData userRecordResData) {
-                LogUtil.d2("listUserRecord------------ :" + userRecordResData.rspBody.toString());
                 if ("10000".equals(userRecordResData.retCode))
                 mView.showUserRecord(userRecordResData);
                 else ResponseStatusUtil.handleResponseStatus(userRecordResData);

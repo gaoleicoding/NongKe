@@ -26,7 +26,6 @@ public class MyBillPresenter extends BasePresenter<MyBillContract.View> implemen
         addSubscribe(observable, new BaseObserver<BillResData>(false) {
             @Override
             public void onNext(BillResData billResData) {
-                LogUtil.d2("listUserPhoneRecord------------ :" + billResData.rspBody.toString());
                 if ("10000".equals(billResData.retCode))
                 mView.showUserBill(billResData);
                 else ResponseStatusUtil.handleResponseStatus(billResData);

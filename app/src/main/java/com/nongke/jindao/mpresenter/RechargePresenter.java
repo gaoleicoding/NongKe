@@ -26,6 +26,8 @@ public class RechargePresenter extends BasePresenter<RechargeContract.View> impl
 
     @Override
     public void recharge(int orderType, int payType, float totalMoney, float totalPay) {
+//        orderType (integer, optional): 1:标识vip 购买 2:标识稻粒购买 3:标识话费充值 ,
+//        payType (integer, optional): 1:标识稻粒 2:标识余额(针对稻粒) 3标识 支付宝 4标识微信 ,
         HashMap hashMap = new HashMap();
         hashMap.put("orderType", orderType);
         hashMap.put("payType", payType);
@@ -40,7 +42,7 @@ public class RechargePresenter extends BasePresenter<RechargeContract.View> impl
             @Override
             public void onNext(RechargeResData rechargeResData) {
                 if ("10000".equals(rechargeResData.retCode)) {
-                    LogUtil.d2("recharge------------:" + rechargeResData.rspBody.toString());
+                    LogUtil.d("RechargePresenter：" + rechargeResData.rspBody.toString());
                     mView.showRechargeRes(rechargeResData);
                 } else {
                     ResponseStatusUtil.handleResponseStatus(rechargeResData);

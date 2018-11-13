@@ -63,14 +63,13 @@ public class OrderProductPresenter extends BasePresenter<OrderProductContract.Vi
 //                "  ]\n" +
 //                "}";
 
-        Log.d("OrderProductPresenter", "buyProduct-------jsonString：" + listString);
+
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), listString);
         Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).buyProduct(requestBody);
         addSubscribe(observable, new BaseObserver<OrderProductResData>(false) {
             @Override
             public void onNext(OrderProductResData productResData) {
                 if(productResData.rspBody!=null)
-                Log.d("OrderActivity","buyProduct------------ :" + productResData.rspBody.toString());
                 if ("10000".equals(productResData.retCode))
                 mView.showOrderProduct(productResData);
                 else ResponseStatusUtil.handleResponseStatus(productResData);
@@ -108,7 +107,6 @@ public class OrderProductPresenter extends BasePresenter<OrderProductContract.Vi
         addSubscribe(observable, new BaseObserver<RechargeResData>(false) {
             @Override
             public void onNext(RechargeResData rechargeResData) {
-                Log.d("OrderActivity","payForProductOnline------------:" +rechargeResData.rspBody.toString());
                 if ("10000".equals(rechargeResData.retCode))
                mView.showOrderProductPayRes(rechargeResData);
                 else ResponseStatusUtil.handleResponseStatus(rechargeResData);

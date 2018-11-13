@@ -118,6 +118,7 @@
                     android:layout_marginRight="20dp" />
 
                 <com.nongke.jindao.view.PayView
+                    android:id="@+id/ll_pay_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 

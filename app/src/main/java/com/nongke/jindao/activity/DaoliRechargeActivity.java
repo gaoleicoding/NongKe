@@ -13,17 +13,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nongke.jindao.base.pay.PayResult;
+import com.nongke.jindao.base.pay.alipay.AliPayUtil;
+import com.nongke.jindao.base.pay.alipay.PayResult;
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
 import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.mmodel.RechargeResData;
-import com.nongke.jindao.base.pay.alipay.AliPayUtil;
+import com.nongke.jindao.base.pay.wxpay.WXPayUtil;
 import com.nongke.jindao.base.utils.account.OnlineParamUtil;
 import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.mcontract.RechargeContract;
 import com.nongke.jindao.mpresenter.RechargePresenter;
+import com.nongke.jindao.view.PayView;
 
 import java.util.Map;
 
@@ -36,7 +38,7 @@ import butterknife.OnClick;
  * @date 2018/2/11
  */
 
-public class DaoliRechargeActivity extends BaseMvpActivity<RechargePresenter> implements RechargeContract.View  {
+public class DaoliRechargeActivity extends BaseMvpActivity<RechargePresenter> implements RechargeContract.View, PayView.OnPayTypeClickListener {
     @BindView(R.id.iv_back)
     ImageView iv_back;
     @BindView(R.id.title)
@@ -55,6 +57,8 @@ public class DaoliRechargeActivity extends BaseMvpActivity<RechargePresenter> im
     TextView tv_daoli_recharge;
     @BindView(R.id.et_recharge_amount)
     EditText et_recharge_amount;
+    @BindView(R.id.ll_pay_view)
+    PayView pay_view;
 
     public final int SDK_PAY_FLAG = 0, REFRESH_RECHARGE_VIP = 1;
     private Handler mHandler = new Handler() {
@@ -86,6 +90,7 @@ public class DaoliRechargeActivity extends BaseMvpActivity<RechargePresenter> im
 
         ;
     };
+
     public static void startActivity(Context context) {
         Intent intent = new Intent(context, DaoliRechargeActivity.class);
         context.startActivity(intent);
@@ -103,6 +108,7 @@ public class DaoliRechargeActivity extends BaseMvpActivity<RechargePresenter> im
         if (OnlineParamUtil.paramResData == null || OnlineParamUtil.paramResData.rspBody == null)
             return;
         tv_daoli_desc.setText(OnlineParamUtil.paramResData.rspBody.daoli_use_desc.content);
+        pay_view.setOnPayTypeClickListener(this);
     }
 
 
@@ -111,11 +117,11 @@ public class DaoliRechargeActivity extends BaseMvpActivity<RechargePresenter> im
         switch (view.getId()) {
 
             case R.id.tv_daoli_recharge:
-                String ammount=et_recharge_amount.getText().toString();
-                if(Utils.intPattern.matcher(ammount).matches()) {
-                    mPresenter.recharge(2, 3, Utils.stringToInt(ammount), Utils.stringToInt(ammount));
-                }else {
-                    Utils.showToast("请输入整数金额",false);
+                String ammount = et_recharge_amount.getText().toString();
+                if (Utils.intPattern.matcher(ammount).matches()) {
+                    mPresenter.recharge(2, pay_view.getPayType(), Utils.stringToInt(ammount), Utils.stringToInt(ammount));
+                } else {
+                    Utils.showToast("请输入整数金额", false);
                 }
 
                 break;
@@ -137,12 +143,20 @@ public class DaoliRechargeActivity extends BaseMvpActivity<RechargePresenter> im
     @Override
     public void showRechargeRes(RechargeResData rechargeResData) {
         final String paySign = rechargeResData.rspBody.paySign;
-
-        AliPayUtil.pay(mHandler,this,paySign);
+        if (3 == pay_view.getPayType())
+            AliPayUtil.pay(mHandler, this, paySign);
+        if (4 == pay_view.getPayType()) {
+            WXPayUtil.pay(rechargeResData.rspBody);
+        }
     }
 
     @Override
     public void showUserInfo(LoginResData loginResData) {
         UserUtil.setUserInfo(loginResData);
+    }
+
+    @Override
+    public void onPayTypeClick(int type) {
+
     }
 }

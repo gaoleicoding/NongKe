@@ -28,12 +28,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"
-            android:launchMode="singleTask">
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"></activity>
 
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleInstance" >
         </activity>
+
         <activity android:name=".activity.RegisterLoginActivity"></activity>
         <activity android:name=".activity.DaoliRechargeActivity"></activity>
         <activity android:name=".activity.DaoLiTransferActivity"></activity>
@@ -54,7 +60,6 @@
         <activity android:name=".activity.DaoLiTransferRecordActivity"></activity>
         <activity android:name=".activity.CustomServiceActivity"></activity>
         <activity android:name=".activity.HelpFeedbackActivity"></activity>
-
 
 
         <!--value的值填写你在友盟后台申请的应用Appkey-->

@@ -24,7 +24,6 @@ public class RechargeRecordPresenter extends BasePresenter<RechargeRecordContrac
         addSubscribe(observable, new BaseObserver<PhoneRecordResData>(false) {
             @Override
             public void onNext(PhoneRecordResData recordResData) {
-                LogUtil.d2("listUserPhoneRecord------------ :" + recordResData.rspBody.toString());
                 if ("10000".equals(recordResData.retCode))
                 mView.showRechargeRecordRes(recordResData);
                 else ResponseStatusUtil.handleResponseStatus(recordResData);

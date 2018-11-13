@@ -88,7 +88,6 @@ public class OrderRecordActivity extends BaseMvpActivity<OrderRecordPresenter> i
 
     @Override
     public void showUserOrderInfo(OrderRecordResData orderRecordResData) {
-        Log.d(TAG, "pageUserOrderInfo------------ :" + orderRecordResData.rspBody.toString());
 
         final List<ProductOrder> newDataList = orderRecordResData.rspBody.list;
         hasNextPage = orderRecordResData.rspBody.hasNextPage;

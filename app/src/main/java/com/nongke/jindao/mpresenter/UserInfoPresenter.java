@@ -13,6 +13,7 @@ import com.nongke.jindao.base.thirdframe.rxjava.BaseObserver;
 import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.ResponseStatusUtil;
 import com.nongke.jindao.base.utils.Utils;
+import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.mcontract.UserInfoContract;
 
 import java.io.File;
@@ -30,9 +31,10 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.View> impl
         addSubscribe(observable, new BaseObserver<LoginResData>(false) {
             @Override
             public void onNext(LoginResData loginResData) {
-                if ("10000".equals(loginResData.retCode))
-                    mView.showUserInfo(loginResData);
-                else ResponseStatusUtil.handleResponseStatus(loginResData);
+                if ("10000".equals(loginResData.retCode)) {
+                    if (mView == null) UserUtil.setUserInfo(loginResData);
+                    else mView.showUserInfo(loginResData);
+                } else ResponseStatusUtil.handleResponseStatus(loginResData);
             }
         });
     }
