@@ -45,8 +45,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:background="@null"
+                android:imeOptions="actionSearch"
+                android:singleLine="true"
                 android:hint="@string/input_key_word"
-                android:maxLines="1"
                 android:padding="8dp"
                 android:textSize="14sp" />
         </LinearLayout>

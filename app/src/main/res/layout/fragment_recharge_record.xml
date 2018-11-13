@@ -16,8 +16,7 @@
 
     <TextView
         android:id="@+id/tv_recharge_hint"
-        style="@style/common_txt"
-        android:layout_centerInParent="true"
+        style="@style/common_hint_txt"
         />
 
 

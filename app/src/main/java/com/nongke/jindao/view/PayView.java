@@ -58,7 +58,7 @@ public class PayView extends FrameLayout implements View.OnClickListener {
                 break;
             case R.id.ll_pay_daoli:
                 img_pay_daoli.setImageResource(R.drawable.icon_pay_select);
-                img_pay_wechat.setImageResource(R.drawable.icon_pay_select);
+                img_pay_wechat.setImageResource(R.drawable.icon_pay_unselect);
                 img_pay_alipay.setImageResource(R.drawable.icon_pay_unselect);
                 payType = 1;
                 if (onPayTypeClickListener != null)

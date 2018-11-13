@@ -22,9 +22,7 @@
         android:paddingBottom="15dp" />
     <TextView
         android:id="@+id/tv_withdraw_hint"
-        style="@style/common_txt"
-        android:layout_centerInParent="true"
-        android:visibility="gone"
+        style="@style/common_hint_txt"
         android:text="你还没有提现记录"
         />
 </RelativeLayout>

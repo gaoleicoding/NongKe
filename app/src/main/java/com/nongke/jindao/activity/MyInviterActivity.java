@@ -44,7 +44,7 @@ public class MyInviterActivity extends BaseMvpActivity<MyInviterPresenter> imple
     private List<InviterBody> inviterList;
     InviterAdapter inviterAdapter;
     String uid;
-    public static int level = 0;
+    public static int level = 1;
 
     public static void startActivity(Context context, Bundle bundle) {
         Intent intent = new Intent(context, MyInviterActivity.class);

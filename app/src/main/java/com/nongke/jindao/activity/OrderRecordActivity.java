@@ -160,13 +160,13 @@ public class OrderRecordActivity extends BaseMvpActivity<OrderRecordPresenter> i
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(ManageOrderEvent manageOrderEvent) {
         Log.d(TAG,"manageOrderEvent.orderId----------"+manageOrderEvent.orderId);
-//        order_expand_listview.collapseGroup(manageOrderEvent.groupPosition);
-//        order_expand_listview.expandGroup(manageOrderEvent.groupPosition);
+        order_expand_listview.collapseGroup(manageOrderEvent.groupPosition);
+        order_expand_listview.expandGroup(manageOrderEvent.groupPosition);
 //        orderRecordAdapter.notifyDataSetChanged();
         if (manageOrderEvent.manageType == -1)
             mPresenter.deleteUserOrderInfo(manageOrderEvent.orderId);
-//        if (manageOrderEvent.manageType == 1)
-//            mPresenter.confirmUserOrderInfo(manageOrderEvent.orderId);
+        if (manageOrderEvent.manageType == 1)
+            mPresenter.confirmUserOrderInfo(manageOrderEvent.orderId);
     }
 
 }

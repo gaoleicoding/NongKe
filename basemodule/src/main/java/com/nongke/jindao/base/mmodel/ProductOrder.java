@@ -8,5 +8,6 @@ public class ProductOrder {
     public int payType;
     public float cornMoney, discountMoney, discount, rmb, postCode, postage, totalMoney, totalPay;
     public List<Product> products;
+    public boolean isConfirmReceive;
 
 }

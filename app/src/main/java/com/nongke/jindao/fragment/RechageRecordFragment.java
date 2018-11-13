@@ -80,9 +80,11 @@ public class RechageRecordFragment extends BaseMvpFragment<RechargeRecordPresent
         if (phoneRecordResData.rspBody.size() == 0) {
             tv_recharge_hint.setText("你还没有充值记录");
             tv_recharge_hint.setVisibility(View.VISIBLE);
+            recharge_recyclerview.setVisibility(View.GONE);
         } else {
             phoneRecordAdapter.setList(phoneRecordResData.rspBody);
             tv_recharge_hint.setVisibility(View.GONE);
+            recharge_recyclerview.setVisibility(View.VISIBLE);
         }
     }
 

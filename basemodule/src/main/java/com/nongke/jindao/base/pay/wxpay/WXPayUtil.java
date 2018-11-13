@@ -34,16 +34,7 @@ public class WXPayUtil {
         return iwxapi;
     }
 
-    //生成随机字符串
-    public static String genNonceStr() {
-        Random random = new Random();
-        return MD5.getMessageDigest(String.valueOf(random.nextInt(10000)).getBytes());
-    }
 
-    //获得时间戳
-    private static long genTimeStamp() {
-        return System.currentTimeMillis() / 1000;
-    }
 
     public static void pay(RechargeResData.RspBody rspBdy) {
         if (judgeCanGo()) {

@@ -3,7 +3,10 @@ package com.nongke.jindao.fragment;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,10 +16,14 @@ import com.nongke.jindao.adapter.RechargeTabAdapter;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.utils.Constants;
+import com.nongke.jindao.base.utils.LogUtil;
+import com.nongke.jindao.base.utils.SoftKeyboardUtil;
+import com.nongke.jindao.base.utils.SystemUtil;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.view.CustomViewPager;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -79,6 +86,20 @@ public class ClassifyFragment extends BaseMvpFragment {
         //将TabLayout和ViewPager关联起来
         tabLayout.setupWithViewPager(viewPager);
         initTab();
+
+        et_product_search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {//搜索按键action
+                    List<View> list = new ArrayList<View>();
+                    list.add(et_product_search);
+                    SoftKeyboardUtil.hideSoftKeyboard(getActivity(), list);
+                    searchProduct();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     /**
@@ -136,7 +157,7 @@ public class ClassifyFragment extends BaseMvpFragment {
 //                return;
 
             tabPosition = (int) view.getTag();
-            if (!lastSearchName.equals(et_product_search.getText().toString())&& tabPosition == 0) {
+            if (!lastSearchName.equals(et_product_search.getText().toString()) && tabPosition == 0) {
                 defaultFragment.changeOrderBy(searchName, Constants.orderType_DESC, Constants.orderBy_create_time);
             } else if (!lastSearchName.equals(et_product_search.getText().toString()) && tabPosition == 1) {
                 salesFragment.changeOrderBy(searchName, Constants.orderType_DESC, Constants.orderBy_sales_amount);
@@ -167,25 +188,29 @@ public class ClassifyFragment extends BaseMvpFragment {
     public void click(View view) {
         switch (view.getId()) {
             case R.id.tv_search:
-                searchName = et_product_search.getText().toString();
-                if (searchName.length() == 0) {
-                    Utils.showToast("请输入搜索内容", false);
-                    return;
-                }
-                iv_back.setVisibility(View.VISIBLE);
-                tabPosition = 0;
-                TabLayout.Tab tab = tabLayout.getTabAt(tabPosition);
-                if (tab != null) {
-                    tab.select();
-                }
-
-                defaultFragment.changeOrderBy(searchName, Constants.orderType_DESC, Constants.orderBy_create_time);
+                searchProduct();
                 break;
             case R.id.iv_back:
                 backFromSearch();
                 break;
 
         }
+    }
+
+    private void searchProduct() {
+        searchName = et_product_search.getText().toString();
+        if (searchName.length() == 0) {
+            Utils.showToast("请输入搜索内容", false);
+            return;
+        }
+        iv_back.setVisibility(View.VISIBLE);
+        tabPosition = 0;
+        TabLayout.Tab tab = tabLayout.getTabAt(tabPosition);
+        if (tab != null) {
+            tab.select();
+        }
+
+        defaultFragment.changeOrderBy(searchName, Constants.orderType_DESC, Constants.orderBy_create_time);
     }
 
     public void backFromSearch() {
@@ -218,4 +243,6 @@ public class ClassifyFragment extends BaseMvpFragment {
     protected void loadData() {
 
     }
+
+
 }

@@ -55,9 +55,9 @@
                             android:textSize="18sp" />
 
                         <TextView
+                            android:id="@+id/tv_daoli_amount"
                             style="@style/common_txt_16sp"
                             android:layout_marginLeft="10dp"
-                            android:text="100"
                             android:textColor="@color/app_color"
                             android:textSize="22sp" />
 

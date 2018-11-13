@@ -22,7 +22,6 @@
         android:paddingBottom="15dp" />
     <TextView
         android:id="@+id/tv_commission_hint"
-        style="@style/common_txt"
-        android:layout_centerInParent="true"
+        style="@style/common_hint_txt"
         />
 </RelativeLayout>

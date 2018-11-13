@@ -39,7 +39,7 @@ public class OrderRecordAdapter extends BaseExpandableListAdapter {
     //  获得父项的数量
     @Override
     public int getGroupCount() {
-        int groupCount=list.size();
+        int groupCount = list.size();
         return groupCount;
     }
 
@@ -95,6 +95,8 @@ public class OrderRecordAdapter extends BaseExpandableListAdapter {
         Log.d(TAG, "productOrder.totalPay-----------" + productOrder.totalPay);
         tv_time.setText(Utils.ms2Date(Long.parseLong(productOrder.createTime)));
         tv_order_status.setText(productOrder.statusDesc);
+        if (productOrder.isConfirmReceive)
+            tv_order_status.setText("已完成");
         return convertView;
     }
 
@@ -104,7 +106,7 @@ public class OrderRecordAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             convertView = View.inflate(context, R.layout.order_child_view, null);
         }
-        if(groupPosition>=getGroupCount())return convertView;
+        if (groupPosition >= getGroupCount()) return convertView;
         final ProductOrder productOrder = list.get(groupPosition);
         //获取布局控件id
         ImageView iv_product = convertView.findViewById(R.id.iv_product);
@@ -127,18 +129,20 @@ public class OrderRecordAdapter extends BaseExpandableListAdapter {
                 notifyDataSetChanged();
             }
         });
-//        tv_confirm_order.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ManageOrderEvent manageOrderEvent = new ManageOrderEvent();
-//                manageOrderEvent.manageType = 1;
-//                manageOrderEvent.groupPosition = groupPosition;
-//                manageOrderEvent.orderId = productOrder.orderId;
-//                EventBus.getDefault().post(manageOrderEvent);
-//                tv_confirm_order.setText("已确认收货");
-//
-//            }
-//        });
+        tv_confirm_order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ManageOrderEvent manageOrderEvent = new ManageOrderEvent();
+                manageOrderEvent.manageType = 1;
+                manageOrderEvent.groupPosition = groupPosition;
+                manageOrderEvent.orderId = productOrder.orderId;
+                EventBus.getDefault().post(manageOrderEvent);
+                productOrder.isConfirmReceive = true;
+                notifyDataSetChanged();
+
+            }
+        });
+
         //根据服务器返回的数据来显示和隐藏按钮
         final Product productInfo = list.get(groupPosition).products.get(childPosition);
 
@@ -159,13 +163,15 @@ public class OrderRecordAdapter extends BaseExpandableListAdapter {
         }
         if (isLastChild) {
             ll_product_del_confirm.setVisibility(View.VISIBLE);
-//            tv_order_pay.setVisibility(View.VISIBLE);
-//            if ("已完成".equals(productOrder.statusDesc) && tv_confirm_order.getTag().equals(groupPosition+""))
-//                tv_confirm_order.setVisibility(View.GONE);
-//
+            tv_order_pay.setVisibility(View.VISIBLE);
+            if ("已完成".equals(productOrder.statusDesc))
+                tv_confirm_order.setVisibility(View.GONE);
+            if ("已付款".equals(productOrder.statusDesc))
+                tv_confirm_order.setVisibility(View.VISIBLE);
+            if (productOrder.isConfirmReceive) tv_confirm_order.setText("已确认收货");
+            else tv_confirm_order.setText("确认收货");
         } else {
             ll_product_del_confirm.setVisibility(View.GONE);
-//            tv_order_pay.setVisibility(View.GONE);
         }
         return convertView;
 

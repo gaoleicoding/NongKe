@@ -20,9 +20,7 @@
         android:paddingBottom="15dp" />
     <TextView
         android:id="@+id/tv_bill_hint"
-        style="@style/common_txt"
-        android:layout_centerInParent="true"
-        android:visibility="gone"
+        style="@style/common_hint_txt"
         android:text="你还没有充值记录"
         />
 </RelativeLayout>

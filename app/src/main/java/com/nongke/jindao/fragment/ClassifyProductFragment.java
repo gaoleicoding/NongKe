@@ -13,6 +13,7 @@ import com.nongke.jindao.base.mmodel.ProductResData;
 import com.nongke.jindao.base.utils.Constants;
 import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.ScreenUtils;
+import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.mcontract.ProductClassifyContract;
 import com.nongke.jindao.mpresenter.ProductClassifyPresenter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -121,6 +122,7 @@ public class ClassifyProductFragment extends BaseMvpFragment<ProductClassifyPres
             feedArticleAdapter.notifyItemRangeInserted(articleDataList.size() - newDataList.size(), newDataList.size());
             feedArticleAdapter.notifyDataSetChanged();
             smartRefreshLayout.finishLoadMore();
+            if(newDataList.size()==0) Utils.showToast("你搜索的商品不存在，试试其它",true);
         }
 
     }
