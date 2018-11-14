@@ -156,6 +156,8 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
                     OrderActivity.startActivity(getActivity(), bundle);
                 }
                 cartAdapter.selectAll(false, true);
+                tv_product_total_price.setText("合计：0元");
+
                 break;
             case R.id.tv_edit:
                 if (!isEditingCart) {

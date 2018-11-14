@@ -45,7 +45,10 @@
                     style="@style/common_txt_14sp"
                     android:layout_marginLeft="15dp"
                     android:background="@drawable/selector_btn_bg"
-                    android:padding="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
                     android:text="@string/commission_convert_to_balance"
                     android:textColor="@color/white" />
 

@@ -32,8 +32,8 @@ public class AliPayUtil {
                     if (TextUtils.equals(resultStatus, "9000")) {
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
                         Utils.showToast("支付成功", false);
-                        EventBus.getDefault().post(new UpdateCartEvent());
                         EventBus.getDefault().post(new FinishOrderActivityEvent());
+                        EventBus.getDefault().post(new UpdateCartEvent());
                         EventBus.getDefault().post(new UpdateUserInfoEvent());
                     } else {
                         // 该笔订单真实的支付结果，需要依赖服务端的异步通知。

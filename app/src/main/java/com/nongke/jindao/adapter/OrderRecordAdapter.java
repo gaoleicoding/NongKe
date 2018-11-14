@@ -95,7 +95,10 @@ public class OrderRecordAdapter extends BaseExpandableListAdapter {
         Log.d(TAG, "productOrder.totalPay-----------" + productOrder.totalPay);
         tv_time.setText(Utils.ms2Date(Long.parseLong(productOrder.createTime)));
         tv_order_status.setText(productOrder.statusDesc);
-        if (productOrder.isConfirmReceive)
+
+        if (productOrder.isSend == 2)
+            tv_order_status.setText("已发货");
+        if (productOrder.isConfirmReceive || "已完成".equals(productOrder.statusDesc))
             tv_order_status.setText("已完成");
         return convertView;
     }
@@ -164,10 +167,13 @@ public class OrderRecordAdapter extends BaseExpandableListAdapter {
         if (isLastChild) {
             ll_product_del_confirm.setVisibility(View.VISIBLE);
             tv_order_pay.setVisibility(View.VISIBLE);
-            if ("已完成".equals(productOrder.statusDesc))
-                tv_confirm_order.setVisibility(View.GONE);
-            if ("已付款".equals(productOrder.statusDesc))
+
+            //订单状态为已发货才显示 确认收货按钮
+            if (productOrder.isSend == 2 && !"已完成".equals(productOrder.statusDesc))
                 tv_confirm_order.setVisibility(View.VISIBLE);
+            else tv_confirm_order.setVisibility(View.GONE);
+//            if ("已完成".equals(productOrder.statusDesc))
+//                tv_confirm_order.setVisibility(View.GONE);
             if (productOrder.isConfirmReceive) tv_confirm_order.setText("已确认收货");
             else tv_confirm_order.setText("确认收货");
         } else {

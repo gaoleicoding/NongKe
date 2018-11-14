@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -17,6 +18,8 @@ import com.nongke.jindao.adapter.divider.RecycleViewDivider;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
 import com.nongke.jindao.base.mmodel.UserRecordResData;
 import com.nongke.jindao.base.mmodel.UserRecordResData.UserRecordBody;
+import com.nongke.jindao.base.utils.Utils;
+import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.mcontract.UserRecordContract;
 import com.nongke.jindao.mpresenter.UserRecordPresenter;
 
@@ -35,8 +38,18 @@ public class MyCommissionActivity extends BaseMvpActivity<UserRecordPresenter> i
     ImageView iv_back;
     @BindView(R.id.title)
     TextView title;
+    @BindView(R.id.tv_commission)
+    TextView tv_commission;
+    @BindView(R.id.tv_commission_ammount)
+    TextView tv_commission_ammount;
+    @BindView(R.id.tv_commission_balance_ammount)
+    TextView tv_commission_balance_ammount;
     @BindView(R.id.tv_commission_hint)
     TextView tv_commission_hint;
+    @BindView(R.id.ll_ammount)
+    RelativeLayout ll_ammount;
+    @BindView(R.id.ll_commission_ammount)
+    LinearLayout ll_commission_ammount;
     @BindView(R.id.recyclerview_commission)
     RecyclerView recyclerview_commission;
 
@@ -89,9 +102,13 @@ public class MyCommissionActivity extends BaseMvpActivity<UserRecordPresenter> i
         if (userRecordResData.rspBody.size() == 0) {
             tv_commission_hint.setText("你还没有佣金");
             tv_commission_hint.setVisibility(View.VISIBLE);
+            ll_ammount.setVisibility(View.GONE);
         } else {
             userRecordAdapter.setList(userRecordResData.rspBody);
             tv_commission_hint.setVisibility(View.GONE);
+            ll_ammount.setVisibility(View.VISIBLE);
+            tv_commission_ammount.setText(Utils.keepDecimal2(userRecordAdapter.totalCommission) + "");
+            tv_commission_balance_ammount.setText(UserUtil.getUserInfo().rspBody.commission+"");
         }
     }
 }

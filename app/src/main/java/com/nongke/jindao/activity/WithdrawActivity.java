@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
+import com.nongke.jindao.base.event.LoginAccountEvent;
 import com.nongke.jindao.base.mmodel.BaseResData;
 import com.nongke.jindao.base.mmodel.MyProfileResData;
 import com.nongke.jindao.base.utils.Constants;
@@ -23,6 +24,9 @@ import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.mcontract.WithdrawContract;
 import com.nongke.jindao.mpresenter.WithdrawPresenter;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -227,5 +231,12 @@ public class WithdrawActivity extends BaseMvpActivity<WithdrawPresenter> impleme
             backFromCommissionToBalance();
             mPresenter.getUserProfile();
         }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(LoginAccountEvent accountEvent) {
+        tv_commission_amount.setText(UserUtil.getUserInfo().rspBody.commission + "");
+        tv_commission.setText(UserUtil.getUserInfo().rspBody.commission + "");
+        tv_withdrawable_amount.setText(UserUtil.getUserInfo().rspBody.money + "");
     }
 }

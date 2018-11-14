@@ -22,6 +22,7 @@ import com.nongke.jindao.R;
 import com.nongke.jindao.adapter.OrderProductAdapter;
 import com.nongke.jindao.adapter.divider.SpacesItemDecoration;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
+import com.nongke.jindao.base.event.FinishOrderActivityEvent;
 import com.nongke.jindao.base.mmodel.MyAddressResData;
 import com.nongke.jindao.base.mmodel.OrderProductResData;
 import com.nongke.jindao.base.mmodel.Product;

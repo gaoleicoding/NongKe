@@ -105,7 +105,6 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
     protected void initData(Bundle bundle) {
         title.setText(getString(R.string.login));
         iv_back.setVisibility(View.VISIBLE);
-        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -273,13 +272,7 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
     public void showMsgCodeResData(MsgCodeResData msgCodeResData) {
 
     }
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEvent(LoginEvent accountEvent) {
-        startActivity(this);
-    }
-
     public void onDestroy() {
         super.onDestroy();
-        EventBus.getDefault().unregister(this);
     }
 }

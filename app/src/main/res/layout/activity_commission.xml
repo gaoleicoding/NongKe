@@ -12,16 +12,134 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <!--<LinearLayout-->
+    <!--android:id="@+id/ll_commission_convert_amount"-->
+    <!--style="@style/code_edit_layout_style"-->
+    <!---->
+    <!--android:layout_marginLeft="10dp"-->
+    <!--android:layout_marginRight="10dp"-->
+    <!--android:layout_marginTop="10dp">-->
+
+    <!--<TextView-->
+    <!--style="@style/common_txt_16sp"-->
+    <!--android:text="@string/share_commission" />-->
+
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_commission_amount"-->
+    <!--style="@style/common_txt_16sp"-->
+    <!--android:textColor="@color/app_color"-->
+    <!--android:textSize="18sp" />-->
+
+    <!--<TextView-->
+    <!--style="@style/common_txt_16sp"-->
+    <!--android:text=" 元" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_commission_convert_to_balance"-->
+    <!--style="@style/common_txt_14sp"-->
+    <!--android:layout_marginLeft="15dp"-->
+    <!--android:background="@drawable/selector_btn_bg"-->
+    <!--android:paddingLeft="8dp"-->
+    <!--android:paddingRight="8dp"-->
+    <!--android:paddingTop="5dp"-->
+    <!--android:paddingBottom="5dp"-->
+    <!--android:text="@string/commission_convert_to_balance"-->
+    <!--android:textColor="@color/white" />-->
+    <!--<TextView-->
+    <!--style="@style/common_txt_12sp"-->
+    <!--android:textSize="14sp"-->
+    <!--android:text="（转换成余额后才能体现）" />-->
+
+    <!--</LinearLayout>-->
+
+    <RelativeLayout
+        android:id="@+id/ll_ammount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_layout"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_commission_ammount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/common_txt_16sp"
+                android:layout_marginLeft="30sp"
+                android:text="合计："
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_commission_ammount"
+                style="@style/common_txt_16sp"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/app_color"
+                android:textSize="22sp" />
+
+            <TextView
+                style="@style/common_txt_16sp"
+                android:text=" 元"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_commission_balance_ammount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/ll_commission_ammount"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/common_txt_16sp"
+                android:layout_marginLeft="30sp"
+                android:text="余额："
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_commission_balance_ammount"
+                style="@style/common_txt_16sp"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/app_color"
+                android:textSize="22sp" />
+
+            <TextView
+                style="@style/common_txt_16sp"
+                android:text=" 元"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_commission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_commission_ammount"
+            android:layout_gravity="center_horizontal"
+            android:clickable="true"
+            android:gravity="center"
+            android:paddingBottom="6dp"
+            android:paddingTop="6dp"
+            android:text="佣金转换为余额后才能体现，你可在我要提现中转换"
+            android:textColor="@color/color_676767"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview_commission"
-        android:layout_below="@id/title_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
+        android:layout_below="@id/ll_ammount"
         android:background="@color/white"
         android:paddingBottom="15dp" />
+
     <TextView
         android:id="@+id/tv_commission_hint"
-        style="@style/common_hint_txt"
-        />
+        style="@style/common_hint_txt" />
 </RelativeLayout>

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ProductOrder {
     public String orderId, address, payTime, createTime, description, phone, uid, userName, statusDesc;
-    public int payType;
+    public int payType,isSend;
     public float cornMoney, discountMoney, discount, rmb, postCode, postage, totalMoney, totalPay;
     public List<Product> products;
     public boolean isConfirmReceive;

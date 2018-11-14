@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nongke.jindao.base.event.LoginAccountEvent;
 import com.nongke.jindao.base.pay.alipay.AliPayUtil;
 import com.nongke.jindao.base.pay.alipay.PayResult;
 import com.nongke.jindao.R;
@@ -27,6 +28,9 @@ import com.nongke.jindao.mcontract.RechargeContract;
 import com.nongke.jindao.mpresenter.RechargePresenter;
 import com.nongke.jindao.view.PayView;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.Map;
 
 import butterknife.BindView;
@@ -38,19 +42,12 @@ import butterknife.OnClick;
  * @date 2018/2/11
  */
 
-public class DaoliRechargeActivity extends BaseMvpActivity<RechargePresenter> implements RechargeContract.View, PayView.OnPayTypeClickListener {
+public class DaoliRechargeActivity extends BaseMvpActivity<RechargePresenter> implements RechargeContract.View {
     @BindView(R.id.iv_back)
     ImageView iv_back;
     @BindView(R.id.title)
     TextView title;
-    @BindView(R.id.ll_pay_alipay)
-    LinearLayout ll_pay_alipay;
-    @BindView(R.id.ll_pay_wechat)
-    LinearLayout ll_pay_wechat;
-    @BindView(R.id.img_pay_alipay)
-    ImageView img_pay_alipay;
-    @BindView(R.id.img_pay_wechat)
-    ImageView img_pay_wechat;
+
     @BindView(R.id.tv_daoli_desc)
     TextView tv_daoli_desc;
     @BindView(R.id.tv_daoli_recharge)
@@ -79,8 +76,7 @@ public class DaoliRechargeActivity extends BaseMvpActivity<RechargePresenter> im
         if (OnlineParamUtil.paramResData == null || OnlineParamUtil.paramResData.rspBody == null)
             return;
         tv_daoli_desc.setText(OnlineParamUtil.paramResData.rspBody.daoli_use_desc.content);
-        tv_daoli_amount.setText(UserUtil.getUserInfo().rspBody.cardMoney+"");
-        pay_view.setOnPayTypeClickListener(this);
+        tv_daoli_amount.setText(UserUtil.getUserInfo().rspBody.cardMoney + "");
     }
 
 
@@ -125,10 +121,7 @@ public class DaoliRechargeActivity extends BaseMvpActivity<RechargePresenter> im
     @Override
     public void showUserInfo(LoginResData loginResData) {
         UserUtil.setUserInfo(loginResData);
+        tv_daoli_amount.setText(loginResData.rspBody.cardMoney + "");
     }
 
-    @Override
-    public void onPayTypeClick(int type) {
-
-    }
 }
