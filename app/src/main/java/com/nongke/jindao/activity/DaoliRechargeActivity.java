@@ -28,6 +28,7 @@ import com.nongke.jindao.mcontract.RechargeContract;
 import com.nongke.jindao.mpresenter.RechargePresenter;
 import com.nongke.jindao.view.PayView;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -77,6 +78,7 @@ public class DaoliRechargeActivity extends BaseMvpActivity<RechargePresenter> im
             return;
         tv_daoli_desc.setText(OnlineParamUtil.paramResData.rspBody.daoli_use_desc.content);
         tv_daoli_amount.setText(UserUtil.getUserInfo().rspBody.cardMoney + "");
+        EventBus.getDefault().register(this);
     }
 
 
@@ -118,10 +120,14 @@ public class DaoliRechargeActivity extends BaseMvpActivity<RechargePresenter> im
         }
     }
 
-    @Override
-    public void showUserInfo(LoginResData loginResData) {
-        UserUtil.setUserInfo(loginResData);
-        tv_daoli_amount.setText(loginResData.rspBody.cardMoney + "");
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(LoginAccountEvent accountEvent) {
+        tv_daoli_amount.setText(UserUtil.getUserInfo().rspBody.cardMoney + "");
     }
 
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
 }

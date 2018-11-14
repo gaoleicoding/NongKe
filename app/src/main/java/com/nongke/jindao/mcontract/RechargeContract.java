@@ -16,14 +16,14 @@ public class RechargeContract {
     public interface Presenter {
 
         void recharge(int orderType,int payType,float totalMoney,float totalPay);
-        void getUserInfo();
+//        void getUserInfo();
 
     }
 
     public interface View {
 
         void showRechargeRes(RechargeResData rechargeResData);
-        void showUserInfo(LoginResData loginResData);
+//        void showUserInfo(LoginResData loginResData);
 
     }
 }

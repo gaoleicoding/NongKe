@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nongke.jindao.base.event.LoginAccountEvent;
 import com.nongke.jindao.base.pay.alipay.PayResult;
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
@@ -30,6 +31,9 @@ import com.nongke.jindao.base.view.TitleView;
 import com.nongke.jindao.mcontract.RechargeContract;
 import com.nongke.jindao.mpresenter.RechargePresenter;
 import com.nongke.jindao.view.PayView;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.Map;
 
@@ -199,9 +203,8 @@ public class VipRechargeActivity extends BaseMvpActivity<RechargePresenter> impl
 
     }
 
-    @Override
-    public void showUserInfo(LoginResData loginResData) {
-        UserUtil.setUserInfo(loginResData);
-
-    }
+//    @Subscribe(threadMode = ThreadMode.MAIN)
+//    public void onEvent(LoginAccountEvent accountEvent) {
+//        finish();
+//    }
 }

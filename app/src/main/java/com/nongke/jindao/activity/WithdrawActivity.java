@@ -25,6 +25,7 @@ import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.mcontract.WithdrawContract;
 import com.nongke.jindao.mpresenter.WithdrawPresenter;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -94,6 +95,7 @@ public class WithdrawActivity extends BaseMvpActivity<WithdrawPresenter> impleme
         tv_commission_amount.setText(UserUtil.getUserInfo().rspBody.commission + "");
         tv_commission.setText(UserUtil.getUserInfo().rspBody.commission + "");
         tv_withdrawable_amount.setText(UserUtil.getUserInfo().rspBody.money + "");
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -149,7 +151,12 @@ public class WithdrawActivity extends BaseMvpActivity<WithdrawPresenter> impleme
                 mPresenter.commissionToMoney(commissionAmount);
                 break;
             case R.id.tv_withdraw_immediate:
-                float withdrawAmount = Utils.stringToFloat(et_withdraw_amount.getText().toString());
+                String withdrawStr=et_withdraw_amount.getText().toString().trim();
+                if(withdrawStr.equals("")){
+                    Utils.showToast("请输入提现金额", false);
+                    return;
+                }
+                float withdrawAmount = Utils.stringToFloat(withdrawStr);
                 if (withdrawAmount > UserUtil.userInfo.rspBody.money) {
                     Utils.showToast("输入金额超过你的余额，请重新输入", false);
                     return;
@@ -238,5 +245,10 @@ public class WithdrawActivity extends BaseMvpActivity<WithdrawPresenter> impleme
         tv_commission_amount.setText(UserUtil.getUserInfo().rspBody.commission + "");
         tv_commission.setText(UserUtil.getUserInfo().rspBody.commission + "");
         tv_withdrawable_amount.setText(UserUtil.getUserInfo().rspBody.money + "");
+    }
+
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

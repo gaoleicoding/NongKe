@@ -208,8 +208,5 @@ public class RechageDetailFragment extends BaseMvpFragment<RechargePresenter> im
         }
     }
 
-    @Override
-    public void showUserInfo(LoginResData loginResData) {
 
-    }
 }

@@ -2,19 +2,15 @@ apply plugin: 'com.android.application'
 
 ext.getCNName = {
     java.util.HashMap<String, String> map = new HashMap<>();
-    map.put("xiaomi", "xiaomi-小米.apk");
+
     map.put("Baidu", "Baidu-百度.apk");
     map.put("Tencent", "Tencent-腾讯应用宝.apk");
-    map.put("Wandoujia", "Wandoujia-豌豆荚.apk");
     map.put("huawei", "huawei-华为.apk");
     map.put("Qihoo", "Qihoo-360手机助手.apk");
     map.put("meizu", "meizu-魅族.apk");
     map.put("oppo", "oppo-oppo手机.apk");
-    map.put("lenovo", "lenovo-联想手机.apk");
-    map.put("ppzhushou", "ppzhushou-pp助手.apk");
-    map.put("letv", "letv-乐视手机.apk");
     map.put("vivo", "vivo-vivo手机.apk");
-
+    map.put("xiaomi", "xiaomi-小米.apk");
     return map;
 }
 

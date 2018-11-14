@@ -52,18 +52,18 @@ public class RechargePresenter extends BasePresenter<RechargeContract.View> impl
         });
     }
 
-    @Override
-    public void getUserInfo() {
-        Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).getUserInfo();
-        addSubscribe(observable, new BaseObserver<LoginResData>(false) {
-            @Override
-            public void onNext(LoginResData loginResData) {
-                LogUtil.d2("getBannerProduct------------ :" + loginResData.toString());
-                if ("10000".equals(loginResData.retCode))
-                    mView.showUserInfo(loginResData);
-                else ResponseStatusUtil.handleResponseStatus(loginResData);
-            }
-        });
-    }
+//    @Override
+//    public void getUserInfo() {
+//        Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).getUserInfo();
+//        addSubscribe(observable, new BaseObserver<LoginResData>(false) {
+//            @Override
+//            public void onNext(LoginResData loginResData) {
+//                LogUtil.d2("getBannerProduct------------ :" + loginResData.toString());
+//                if ("10000".equals(loginResData.retCode))
+//                    mView.showUserInfo(loginResData);
+//                else ResponseStatusUtil.handleResponseStatus(loginResData);
+//            }
+//        });
+//    }
 }
 
