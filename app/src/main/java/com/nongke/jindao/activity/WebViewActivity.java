@@ -26,6 +26,7 @@ import com.nongke.jindao.mpresenter.MyInviterPresenter;
 import com.nongke.jindao.view.CustomWebview;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * description: test
@@ -35,6 +36,8 @@ import butterknife.BindView;
 public class WebViewActivity extends BaseMvpActivity {
     @BindView(R.id.iv_back)
     ImageView iv_back;
+    @BindView(R.id.iv_share)
+    ImageView iv_share;
     @BindView(R.id.title)
     TextView title;
     @BindView(R.id.webView)
@@ -71,6 +74,26 @@ public class WebViewActivity extends BaseMvpActivity {
         }
         webView.loadUrl(url);
         iv_back.setVisibility(View.VISIBLE);
+        iv_share.setVisibility(View.VISIBLE);
+
+    }
+
+    @OnClick({R.id.iv_share})
+    public void click(View view) {
+        switch (view.getId()) {
+            case R.id.iv_share:
+                if (Constants.FROM_DOWNLOAD.equals(fromWhere)) {
+                    share("分享App下线地址", url);
+                }
+                if (Constants.COMPANY_WEBSITE.equals(fromWhere)) {
+                    share("分享公司网址", url);
+                }
+
+                break;
+
+            default:
+                break;
+        }
 
     }
 
@@ -84,5 +107,14 @@ public class WebViewActivity extends BaseMvpActivity {
 
     }
 
-
+    private void share(String title, String content) {
+        Intent share_intent = new Intent();
+        share_intent.setAction(Intent.ACTION_SEND);//设置分享行为
+        share_intent.setType("text/plain");//设置分享内容的类型
+        share_intent.putExtra(Intent.EXTRA_SUBJECT, title);//添加分享内容标题
+        share_intent.putExtra(Intent.EXTRA_TEXT, content);//添加分享内容
+        //创建分享的Dialog
+        share_intent = Intent.createChooser(share_intent, "分享");
+        startActivity(share_intent);
+    }
 }

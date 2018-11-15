@@ -232,7 +232,7 @@ public class PromotionActivity extends BaseActivity {
                     shareIntent.setAction(Intent.ACTION_SEND);
                     shareIntent.putExtra(Intent.EXTRA_STREAM, imageFileUri);
                     shareIntent.setType("image/*");
-                    startActivity(Intent.createChooser(shareIntent, "分享到"));
+                    startActivity(Intent.createChooser(shareIntent, "分享推广二维码"));
                     break;
                 default:
                     break;

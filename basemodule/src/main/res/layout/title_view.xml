@@ -25,6 +25,15 @@
         android:text="首页"
         android:textColor="#ffffff"
         android:textSize="17sp" />
+    <ImageView
+        android:id="@+id/iv_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:padding="10dp"
+        android:src="@drawable/icon_share"
+         />
 </RelativeLayout>
 
 
