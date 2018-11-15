@@ -131,6 +131,10 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
         postage = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.postage.content);
         LogUtil.d(TAG, "orderProductList.size():" + orderProductList.size());
         et_balance_pay.setHint(UserUtil.userInfo.rspBody.money + "");
+        if (UserUtil.userInfo.rspBody.money > 1) {
+            ll_balance_pay.setVisibility(View.VISIBLE);
+        }
+
         et_balance_pay.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence text, int start, int before, int count) {
@@ -299,34 +303,34 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
             if (type == 1) {
                 rmb = totalCardPay;
                 totalPay = FloatOperationUtil.add(totalCardPay, postage);
-                ll_balance_pay.setVisibility(View.GONE);
+                showOrHideBalancePay(false);
             }
             if (type == 3) {
                 rmb = FloatOperationUtil.sub(totalMoney, cornMoney);
                 totalPay = FloatOperationUtil.add(totalMoney, postage);
-                ll_balance_pay.setVisibility(View.VISIBLE);
+                showOrHideBalancePay(true);
             }
             if (type == 4) {
                 rmb = FloatOperationUtil.sub(totalMoney, cornMoney);
                 totalPay = FloatOperationUtil.add(totalMoney, postage);
-                ll_balance_pay.setVisibility(View.VISIBLE);
+                showOrHideBalancePay(true);
             }
         }
         if (UserUtil.getUserInfo().rspBody.isVip == 1) {
             if (type == 1) {
                 rmb = totalCardMoney;
                 totalPay = FloatOperationUtil.add(totalCardMoney, postage);
-                ll_balance_pay.setVisibility(View.GONE);
+                showOrHideBalancePay(false);
             }
             if (type == 3) {
                 rmb = FloatOperationUtil.sub(discountMoney, cornMoney);
                 totalPay = FloatOperationUtil.add(discountMoney, postage);
-                ll_balance_pay.setVisibility(View.VISIBLE);
+                showOrHideBalancePay(true);
             }
             if (type == 4) {
                 rmb = FloatOperationUtil.sub(discountMoney, cornMoney);
                 totalPay = FloatOperationUtil.add(discountMoney, postage);
-                ll_balance_pay.setVisibility(View.VISIBLE);
+                showOrHideBalancePay(true);
             }
         }
         LogUtil.d(TAG, "--------------onPayTypeClick------------------" + pay_view.getPayType());
@@ -347,6 +351,15 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
         tv_order_money.setText(totalMoney + "");
         tv_order_indeed_pay.setText(rmb + "");
         tv_product_total_price.setText(totalPay + "");
+    }
+
+    private void showOrHideBalancePay(boolean show) {
+        if (show && UserUtil.userInfo.rspBody.money > 1) {
+            ll_balance_pay.setVisibility(View.VISIBLE);
+        } else {
+            ll_balance_pay.setVisibility(View.GONE);
+            et_balance_pay.setText("");
+        }
     }
 
     @Override

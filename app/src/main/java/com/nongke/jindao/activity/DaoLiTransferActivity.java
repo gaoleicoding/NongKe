@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
+import com.nongke.jindao.base.event.LoginAccountEvent;
 import com.nongke.jindao.base.mmodel.BaseResData;
 import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.mpresenter.BasePresenter;
@@ -21,6 +22,10 @@ import com.nongke.jindao.mcontract.DaoLiTransferContract;
 import com.nongke.jindao.mcontract.RechargeContract;
 import com.nongke.jindao.mpresenter.DaoLiTransferPresenter;
 import com.nongke.jindao.mpresenter.RechargePresenter;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -62,6 +67,8 @@ public class DaoLiTransferActivity extends BaseMvpActivity<DaoLiTransferPresente
         title.setText(getString(R.string.my_daoli_transfer));
         iv_back.setVisibility(View.VISIBLE);
         tv_daoli.setText(UserUtil.userInfo.rspBody.cardMoney + "");
+        EventBus.getDefault().register(this);
+
     }
 
     @Override
@@ -109,5 +116,13 @@ public class DaoLiTransferActivity extends BaseMvpActivity<DaoLiTransferPresente
     @Override
     public void showCardMoneyToUser(BaseResData baseResData) {
         if ("10000".equals(baseResData.retCode)) finish();
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(LoginAccountEvent accountEvent) {
+        tv_daoli.setText(UserUtil.userInfo.rspBody.cardMoney + "");
+    }
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

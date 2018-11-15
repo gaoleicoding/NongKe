@@ -10,7 +10,8 @@ public class MyInviterResData extends BaseResData {
     public class InviterBody {
         public String isVip, phone, uid,invitedUid, img;
         public long createTime;
-        public int commission, id;
+        public int  id;
+        public float commission;
     }
 
 }

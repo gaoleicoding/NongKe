@@ -17,6 +17,7 @@ import com.nongke.jindao.MainActivity;
 import com.nongke.jindao.R;
 import com.nongke.jindao.activity.MessageActivity;
 import com.nongke.jindao.activity.ProductDetailActivity;
+import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.activity.VipRechargeActivity;
 import com.nongke.jindao.activity.WebViewActivity;
 import com.nongke.jindao.adapter.ProductAdapter;
@@ -29,6 +30,7 @@ import com.nongke.jindao.base.mmodel.ProductResData;
 import com.nongke.jindao.base.utils.Constants;
 import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.ScreenUtils;
+import com.nongke.jindao.base.utils.account.OnlineParamUtil;
 import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.mcontract.ProductContract;
@@ -244,8 +246,9 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
     }
 
 
-    @OnClick({R.id.rl_notice,R.id.home_recharge_layout, R.id.home_vip_layout, R.id.home_company_layout, R.id.home_download_layout, R.id.home_custom_layout})
+    @OnClick({R.id.rl_notice, R.id.home_recharge_layout, R.id.home_vip_layout, R.id.home_company_layout, R.id.home_download_layout, R.id.home_custom_layout})
     public void click(View view) {
+        Bundle bundle = new Bundle();
         switch (view.getId()) {
             case R.id.rl_notice:
                 MessageActivity.startActivity(getActivity());
@@ -255,17 +258,24 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
                 mainActivity.viewPager.setCurrentItem(1);
                 break;
             case R.id.home_vip_layout:
+                if (!UserUtil.isLogined()) {
+                    RegisterLoginActivity.startActivity(getActivity());
+                    Utils.showToast(getString(R.string.user_not_login), true);
+                    return;
+                }
                 if (UserUtil.getUserInfo().rspBody.isVip == 1) {
-                    Utils.showToast("你已经是VIP会员",false);
+                    Utils.showToast("你已经是VIP会员", false);
                     return;
                 }
                 VipRechargeActivity.startActivity(getActivity());
                 break;
             case R.id.home_company_layout:
-
+                bundle.putString("url", OnlineParamUtil.getParamResData().rspBody.company_website.content);
+                bundle.putString("fromWhere", Constants.COMPANY_WEBSITE);
+                WebViewActivity.startActivity(getActivity(), bundle);
                 break;
             case R.id.home_download_layout:
-                Bundle bundle = new Bundle();
+                bundle.putString("url", OnlineParamUtil.getParamResData().rspBody.register_redirect_url.content);
                 bundle.putString("fromWhere", Constants.FROM_DOWNLOAD);
                 WebViewActivity.startActivity(getActivity(), bundle);
                 break;
@@ -282,6 +292,7 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
         }
 
     }
+
     @Override
     public void showMessageList(MessageResData messageResData) {
         if (messageResData == null || messageResData.rspBody == null) return;
@@ -290,6 +301,7 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
             tv_notice_content.setText(msgTitle);
         }
     }
+
     public void scrollToTop() {
         project_recyclerview.scrollToPosition(0);
     }

@@ -38,7 +38,6 @@ public class UserRecordAdapter extends RecyclerView.Adapter<UserRecordAdapter.My
         for (int i = 0; i < list.size(); i++) {
             UserRecordBody body = list.get(i);
             if (body.amount > 0) totalCommission = totalCommission + body.amount;
-//            LogUtil.d("UserRecordAdapter", "totalCommission：" +  totalCommission);
         }
         notifyDataSetChanged();
     }

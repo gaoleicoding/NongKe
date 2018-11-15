@@ -40,10 +40,11 @@ public class WebViewActivity extends BaseMvpActivity {
     @BindView(R.id.webView)
     CustomWebview webView;
     String fromWhere;
+    String url;
 
-    public static void startActivity(Context context,Bundle bundle) {
+    public static void startActivity(Context context, Bundle bundle) {
         Intent intent = new Intent(context, WebViewActivity.class);
-        intent.putExtra("params",bundle);
+        intent.putExtra("params", bundle);
         context.startActivity(intent);
     }
 
@@ -59,12 +60,16 @@ public class WebViewActivity extends BaseMvpActivity {
 
     @Override
     protected void initData(Bundle bundle) {
-        fromWhere=bundle.getString("fromWhere","");
-        LogUtil.d("fromWhere-------------:"+fromWhere);
-        if(Constants.FROM_DOWNLOAD.equals(fromWhere)) {
+        fromWhere = bundle.getString("fromWhere", "");
+        url = bundle.getString("url", "");
+        LogUtil.d("fromWhere-------------:" + fromWhere);
+        if (Constants.FROM_DOWNLOAD.equals(fromWhere)) {
             title.setText(getString(R.string.app_download));
-            webView.loadUrl(OnlineParamUtil.getParamResData().rspBody.register_redirect_url.content.trim());
         }
+        if (Constants.COMPANY_WEBSITE.equals(fromWhere)) {
+            title.setText(getString(R.string.company_introduction));
+        }
+        webView.loadUrl(url);
         iv_back.setVisibility(View.VISIBLE);
 
     }

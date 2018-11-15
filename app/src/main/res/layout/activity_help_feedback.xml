@@ -65,7 +65,7 @@
             android:id="@+id/et_email_content"
             style="@style/code_edit_num_style"
             android:layout_height="180dp"
-            android:hint="请输入内容"
+            android:hint="请输入反馈内容"
             android:gravity="top"
             android:inputType="text" />
     </LinearLayout>
