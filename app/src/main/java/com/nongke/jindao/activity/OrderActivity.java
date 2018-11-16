@@ -103,7 +103,7 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
     float postage;
     float discountMoney, totalCardMoney, totalMoney, cornMoney = 0, totalCardPay, rmb, totalPay;
     String orderId, phone, userName, address;
-    //totalPay(折后金额) = rmb（用户付款金额）+cornMoney（余额）
+    //totalPay(折后金额) = discountMoney（vip用户折后金额）+postage（邮费）
 
 
     public static void startActivity(Context context, Bundle bundle) {

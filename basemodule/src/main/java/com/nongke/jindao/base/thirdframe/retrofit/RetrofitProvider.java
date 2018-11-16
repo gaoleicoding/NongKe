@@ -1,35 +1,20 @@
 package com.nongke.jindao.base.thirdframe.retrofit;
 
 
-import com.franmontiel.persistentcookiejar.PersistentCookieJar;
-import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
-import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
-import com.nongke.jindao.base.api.ApiService;
 import com.nongke.jindao.base.application.CustomApplication;
-import com.nongke.jindao.base.thirdframe.retrofit.UrlConfig;
 import com.nongke.jindao.base.thirdframe.retrofit.interceptor.DefaultHeaderInterceptor;
-import com.nongke.jindao.base.thirdframe.retrofit.interceptor.GzipRequestInterceptor;
 import com.nongke.jindao.base.thirdframe.retrofit.interceptor.HttpLoggingInterceptor;
-import com.nongke.jindao.base.thirdframe.retrofit.interceptor.OfflineCacheInterceptor;
-import com.nongke.jindao.base.thirdframe.retrofit.interceptor.OnlineCacheInterceptor;
-import com.nongke.jindao.base.thirdframe.retrofit.interceptor.RetryIntercepter;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import okhttp3.Cache;
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public final class RetrofitProvider {
-
+    private String BASE_URL = "https://www.nongke365.com/";
     private Retrofit mRetrofit;
     private OkHttpClient mOkHttpClient;
     private static volatile RetrofitProvider sInstance;
@@ -65,7 +50,7 @@ public final class RetrofitProvider {
         if (mRetrofit == null) {
             mRetrofit = new Retrofit.Builder()
                     .client(mOkHttpClient)
-                    .baseUrl(UrlConfig.BASE_URL)
+                    .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();

@@ -40,7 +40,7 @@ public class HelpFeedbackActivity extends BaseMvpActivity {
     private final int FILECHOOSER_RESULTCODE = 1;
     private String sendEmail = "tuohuangnongke@163.com";//发送方邮件
     private String sendEmaiPassword = "jindao2018";//发送方邮箱密码(或授权码)
-    private String receiveEmail = "2312965260@qq.com";//接收方邮件
+    private String receiveEmail ="";//接收方邮件
     private String file_path = null;
     @BindView(R.id.send_btn)
     TextView send_btn;
@@ -72,7 +72,7 @@ public class HelpFeedbackActivity extends BaseMvpActivity {
     protected void initData(Bundle bundle) {
         title.setText(getString(R.string.help_feedback));
         iv_back.setVisibility(View.VISIBLE);
-        receiveEmail= OnlineParamUtil.getParamResData().rspBody.custom_service_email_receiver.content;
+        receiveEmail = OnlineParamUtil.getParamResData().rspBody.custom_service_email_receiver.content;
     }
 
     @Override
@@ -90,11 +90,19 @@ public class HelpFeedbackActivity extends BaseMvpActivity {
         switch (view.getId()) {
             case R.id.send_btn:
                 SenderRunnable senderRunnable = new SenderRunnable(sendEmail, sendEmaiPassword);
-                String sendTitle = et_email_title.getText() == null ? "" : et_email_title.getText().toString();
-                String sendContent = et_email_content.getText() == null ? "" : et_email_content.getText().toString();
+                String sendTitle = et_email_title.getText().toString();
+                String sendContent = et_email_content.getText().toString();
+                if ("".equals(sendTitle.trim())) {
+                    Utils.showToast("请输入联系方式", true);
+                    return;
+                }
+                if ("".equals(sendContent.trim())) {
+                    Utils.showToast("请输入反馈内容", true);
+                    return;
+                }
+                receiveEmail=OnlineParamUtil.getParamResData().rspBody.custom_service_email_receiver.content;
                 senderRunnable.setMail(sendTitle, sendContent,
                         receiveEmail, file_path);
-                // ���һ������Ϊnull���������͸�����Ҳ���Է��͸�������"/mnt/sdcard/test.txt"
                 new Thread(senderRunnable).start();
                 break;
             case R.id.add_attachment:
@@ -103,44 +111,29 @@ public class HelpFeedbackActivity extends BaseMvpActivity {
         }
     }
 
-    /**
-     * �����ļ�ѡ�������ѡ���ļ�
-     **/
+
     private void showFileChooser() {
         Intent i = new Intent(Intent.ACTION_GET_CONTENT);
         i.addCategory(Intent.CATEGORY_OPENABLE);
-        // ��֪��Ϊʲô������ֻ����ת��ͼƬ��i.setType("*/*");��������ȷ��ȡ�ļ�·��
         i.setType("image/*");
         startActivityForResult(Intent.createChooser(i, "File Chooser"),
                 FILECHOOSER_RESULTCODE);
     }
 
-    /**
-     * ���ݷ���ѡ����ļ����������ϴ�����
-     **/
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // TODO Auto-generated method stub
         if (resultCode == Activity.RESULT_OK) {
-            // Get the Uri of the selected file
             Uri uri = data.getData();
-            Log.d("gaolei", "uri---------------" + uri);
-//			String[] pojo = { MediaStore.Images.Media.DATA };
-//			CursorLoader cursorLoader = new CursorLoader(this, uri, pojo, null,
-//					null, null);
-//			Cursor cursor = cursorLoader.loadInBackground();
-//			if (cursor != null) {
-//				cursor.moveToFirst();
+
             file_path = getPathByUri4kitkat(this, uri);
             Log.d("gaolei", "file_path---------------" + file_path);
             file_dir.setText(file_path);
-//			}
 
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    // �첽�����ʼ�
     class SenderRunnable implements Runnable {
 
         private String user;
@@ -227,8 +220,6 @@ public class HelpFeedbackActivity extends BaseMvpActivity {
                 return getDataColumn(context, contentUri, selection, selectionArgs);
             }
         } else if ("content".equalsIgnoreCase(uri.getScheme())) {// MediaStore
-            // (and
-            // general)
             return getDataColumn(context, uri, null, null);
         } else if ("file".equalsIgnoreCase(uri.getScheme())) {// File
             return uri.getPath();
