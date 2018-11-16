@@ -358,8 +358,9 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
         if (show && UserUtil.userInfo.rspBody.money > 10) {
             ll_balance_pay.setVisibility(View.VISIBLE);
         } else {
+            cornMoney=0;
             ll_balance_pay.setVisibility(View.GONE);
-            et_balance_pay.setText("");
+//            et_balance_pay.setText("");
         }
     }
 
