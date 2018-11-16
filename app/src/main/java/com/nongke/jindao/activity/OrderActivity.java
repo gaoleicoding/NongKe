@@ -354,7 +354,8 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
     }
 
     private void showOrHideBalancePay(boolean show) {
-        if (show && UserUtil.userInfo.rspBody.money > 1) {
+
+        if (show && UserUtil.userInfo.rspBody.money > 10) {
             ll_balance_pay.setVisibility(View.VISIBLE);
         } else {
             ll_balance_pay.setVisibility(View.GONE);

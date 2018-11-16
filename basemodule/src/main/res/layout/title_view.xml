@@ -32,6 +32,7 @@
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:padding="10dp"
+        android:visibility="gone"
         android:src="@drawable/icon_share"
          />
 </RelativeLayout>
