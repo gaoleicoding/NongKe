@@ -7,7 +7,7 @@ ext.getCNName = {
     map.put("Tencent", "Tencent-腾讯应用宝.apk");
     map.put("huawei", "huawei-华为.apk");
     map.put("Qihoo", "Qihoo-360手机助手.apk");
-    map.put("meizu", "meizu-魅族.apk");
+    map.put("jindao", "jindao-金稻.apk");
     map.put("oppo", "oppo-oppo手机.apk");
     map.put("vivo", "vivo-vivo手机.apk");
     map.put("xiaomi", "xiaomi-小米.apk");
@@ -87,10 +87,10 @@ android {
             dimension "dimension1"
         }
 
-        Wandoujia {
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "Wandoujia", SPAM_VALUE: "Wandoujia"];
-            dimension "dimension1"
-        }
+//        Wandoujia {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "Wandoujia", SPAM_VALUE: "Wandoujia"];
+//            dimension "dimension1"
+//        }
         huawei {
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "huawei", SPAM_VALUE: "huawei"];
             dimension "dimension1"
@@ -99,8 +99,8 @@ android {
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "Qihoo", SPAM_VALUE: "Qihoo"];
             dimension "dimension1"
         }
-        meizu {
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "meizhu", SPAM_VALUE: "meizhu"];
+        jindao {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "jindao", SPAM_VALUE: "jindao"];
             dimension "dimension1"
         }
 
@@ -108,20 +108,20 @@ android {
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "oppo", SPAM_VALUE: "oppo"];
             dimension "dimension1"
         }
-        lenovo {
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "lenovo", SPAM_VALUE: "lenovo"];
-            dimension "dimension1"
-        }
-
-        ppzhushou {
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "ppzhushou", SPAM_VALUE: "ppzhushou"];
-            dimension "dimension1"
-        }
-
-        letv {
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "letv", SPAM_VALUE: "letv"];
-            dimension "dimension1"
-        }
+//        lenovo {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "lenovo", SPAM_VALUE: "lenovo"];
+//            dimension "dimension1"
+//        }
+//
+//        ppzhushou {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "ppzhushou", SPAM_VALUE: "ppzhushou"];
+//            dimension "dimension1"
+//        }
+//
+//        letv {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "letv", SPAM_VALUE: "letv"];
+//            dimension "dimension1"
+//        }
 
         vivo {
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "vivo", SPAM_VALUE: "vivo"];
