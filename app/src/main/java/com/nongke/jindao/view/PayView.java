@@ -7,10 +7,12 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.pay.alipay.AliPayUtil;
 import com.nongke.jindao.base.pay.wxpay.WXPayUtil;
+import com.nongke.jindao.base.utils.account.UserUtil;
 
 public class PayView extends FrameLayout implements View.OnClickListener {
 
@@ -20,6 +22,7 @@ public class PayView extends FrameLayout implements View.OnClickListener {
     ImageView img_pay_alipay;
     ImageView img_pay_wechat;
     ImageView img_pay_daoli;
+    TextView tv_pay_daoli;
     public int payType = 3;
 
     public PayView(Context context, AttributeSet attrs) {
@@ -31,9 +34,12 @@ public class PayView extends FrameLayout implements View.OnClickListener {
         img_pay_alipay = findViewById(R.id.img_pay_alipay);
         img_pay_wechat = findViewById(R.id.img_pay_wechat);
         img_pay_daoli = findViewById(R.id.img_pay_daoli);
+        tv_pay_daoli = findViewById(R.id.tv_pay_daoli);
         ll_pay_alipay.setOnClickListener(this);
         ll_pay_wechat.setOnClickListener(this);
         ll_pay_daoli.setOnClickListener(this);
+        float daoli= UserUtil.getUserInfo().rspBody.cardMoney;
+        tv_pay_daoli.setText("（余额:"+daoli+"元）" );
     }
 
 

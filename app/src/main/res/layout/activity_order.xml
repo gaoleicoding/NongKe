@@ -163,11 +163,11 @@
                 style="@style/code_edit_layout_style"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:visibility="gone">
+                >
 
                 <TextView
                     style="@style/common_txt_16sp"
-                    android:text="折后金额：" />
+                    android:text="实付金额：" />
 
                 <TextView
                     android:id="@+id/tv_order_discount_money"
@@ -181,46 +181,6 @@
             </LinearLayout>
 
 
-
-            <LinearLayout
-                style="@style/code_edit_layout_style"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="8dp">
-
-                <TextView
-                    style="@style/common_txt_16sp"
-                    android:text="实付金额：" />
-
-                <TextView
-                    android:id="@+id/tv_order_indeed_pay"
-                    style="@style/common_txt_16sp"
-                    android:textColor="@color/app_color"
-                    android:textSize="18sp" />
-
-                <TextView
-                    style="@style/common_txt_16sp"
-                    android:text=" 元" />
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/ll_balance_pay"
-                style="@style/code_edit_layout_style"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:focusableInTouchMode="true"
-                android:visibility="gone"
-                >
-
-                <TextView
-                    style="@style/common_txt_16sp"
-                    android:text="使用余额：" />
-
-                <EditText
-                    android:id="@+id/et_balance_pay"
-                    style="@style/common_edit_style"
-                    android:layout_marginLeft="0dp"
-                    android:hint="输入金额"
-                    android:inputType="number" />
-            </LinearLayout>
             <LinearLayout
                 android:id="@+id/ll_order_postage"
                 style="@style/code_edit_layout_style"
@@ -241,6 +201,46 @@
                 <TextView
                     style="@style/common_txt_16sp"
                     android:text=" 元" />
+            </LinearLayout>
+
+            <!--<LinearLayout-->
+                <!--style="@style/code_edit_layout_style"-->
+                <!--android:layout_marginLeft="20dp"-->
+                <!--android:layout_marginTop="8dp">-->
+
+                <!--<TextView-->
+                    <!--style="@style/common_txt_16sp"-->
+                    <!--android:text="实付金额：" />-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_order_indeed_pay"-->
+                    <!--style="@style/common_txt_16sp"-->
+                    <!--android:textColor="@color/app_color"-->
+                    <!--android:textSize="18sp" />-->
+
+                <!--<TextView-->
+                    <!--style="@style/common_txt_16sp"-->
+                    <!--android:text=" 元" />-->
+            <!--</LinearLayout>-->
+
+            <LinearLayout
+                android:id="@+id/ll_balance_pay"
+                style="@style/code_edit_layout_style"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:focusableInTouchMode="true"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/common_txt_16sp"
+                    android:text="使用余额：" />
+
+                <EditText
+                    android:id="@+id/et_balance_pay"
+                    style="@style/common_edit_style"
+                    android:layout_marginLeft="0dp"
+                    android:hint="输入金额"
+                    android:inputType="numberDecimal" />
             </LinearLayout>
         </LinearLayout>
 

@@ -69,8 +69,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
+        android:orientation="horizontal"
         android:visibility="gone"
-        android:orientation="horizontal">
+        >
 
         <ImageView
             android:id="@+id/img_pay_daoli"
@@ -88,5 +89,12 @@
         <TextView
             style="@style/user_info_txt"
             android:text="@string/daoli" />
+
+        <TextView
+            android:id="@+id/tv_pay_daoli"
+            style="@style/user_info_txt"
+            android:layout_marginLeft="0dp"
+            android:textColor="@color/color_9b9b9b"
+             />
     </LinearLayout>
 </LinearLayout>
