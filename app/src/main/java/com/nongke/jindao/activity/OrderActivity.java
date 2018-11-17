@@ -101,7 +101,7 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
     List<View> viewList;
     String TAG = "OrderActivity";
     float postage;
-    float totalMoney, discountMoney,totalPay, totalCardMoney, totalCardPay, cornMoney = 0,rmb, productIndeedPay;
+    float totalMoney, discountMoney,totalPay, totalCardMoney, totalCardPay, cornMoney = 0,rmb_submit, totalPay_submit,productIndeedPay;
     String orderId, phone, userName, address;
     //totalPay(折后金额) = discountMoney（vip用户折后金额）+postage（邮费）
 
@@ -212,13 +212,13 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
                     return;
                 }
                 float daoli = UserUtil.getUserInfo().rspBody.cardMoney;
-                if (pay_view.getPayType() == 1 && totalPay > daoli) {
+                if (pay_view.getPayType() == 1 && totalPay_submit > daoli) {
                     Utils.showToast("你的稻粒不足，请选择其它支付方式", false);
                     return;
                 }
                 SoftKeyboardUtil.hideSoftKeyboard(this, viewList);
                 mPresenter.payForProductOnline(orderId, 4, pay_view.getPayType(), new Gson().toJson(orderProductList),
-                        cornMoney, rmb, totalPay, postage, UserUtil.userInfo.rspBody.uid, phone,
+                        cornMoney, rmb_submit, totalPay_submit, postage, UserUtil.userInfo.rspBody.uid, phone,
                         userName, address);
                 break;
             case R.id.rl_address:
@@ -321,40 +321,40 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
         if (UserUtil.getUserInfo().rspBody.isVip == 0) {
             if (type == 1) {
                 productIndeedPay=totalCardMoney;
-                rmb = totalCardPay;
-                totalPay = totalCardPay;
+                rmb_submit = totalCardPay;
+                totalPay_submit = totalCardPay;
                 showOrHideBalancePay(false);
             }
             if (type == 3) {
                 productIndeedPay=totalMoney;
-                totalPay = FloatOperationUtil.add(totalMoney, postage);
-                rmb = FloatOperationUtil.sub(totalPay, cornMoney);
+                totalPay_submit = totalPay;
+                rmb_submit = FloatOperationUtil.sub(totalPay, cornMoney);
                 showOrHideBalancePay(true);
             }
             if (type == 4) {
                 productIndeedPay=totalMoney;
-                totalPay = FloatOperationUtil.add(totalMoney, postage);
-                rmb = FloatOperationUtil.sub(totalPay, cornMoney);
+                totalPay_submit = totalPay;
+                rmb_submit = FloatOperationUtil.sub(totalPay, cornMoney);
                 showOrHideBalancePay(true);
             }
         }
         if (UserUtil.getUserInfo().rspBody.isVip == 1) {
             if (type == 1) {
                 productIndeedPay=totalCardMoney;
-                rmb = totalCardPay;
-                totalPay = totalCardPay;
+                rmb_submit = totalCardPay;
+                totalPay_submit = totalCardPay;
                 showOrHideBalancePay(false);
             }
             if (type == 3) {
                 productIndeedPay=discountMoney;
-                totalPay = FloatOperationUtil.add(discountMoney, postage);
-                rmb = FloatOperationUtil.sub(totalPay, cornMoney);
+                totalPay_submit =totalPay;
+                rmb_submit = FloatOperationUtil.sub(totalPay, cornMoney);
                 showOrHideBalancePay(true);
             }
             if (type == 4) {
                 productIndeedPay=discountMoney;
-                totalPay = FloatOperationUtil.add(discountMoney, postage);
-                rmb = FloatOperationUtil.sub(totalPay, cornMoney);
+                totalPay_submit = totalPay;
+                rmb_submit = FloatOperationUtil.sub(totalPay, cornMoney);
                 showOrHideBalancePay(true);
             }
         }
@@ -371,12 +371,12 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
         LogUtil.d(TAG, "postage------------" + postage);
         LogUtil.d(TAG, "--------------显示-------------------");
         LogUtil.d(TAG, "productIndeedPay------------" + productIndeedPay);
-        LogUtil.d(TAG, "rmb------------" + rmb);
-        LogUtil.d(TAG, "totalPay------------" + totalPay);
+        LogUtil.d(TAG, "rmb_submit------------" + rmb_submit);
+        LogUtil.d(TAG, "totalPay_submit------------" + totalPay_submit);
 
         tv_order_money.setText(totalMoney + "");
         tv_order_discount_money.setText(productIndeedPay + "");
-        tv_product_total_price.setText( rmb+ "");
+        tv_product_total_price.setText( rmb_submit+ "");
     }
 
     private void showOrHideBalancePay(boolean show) {
