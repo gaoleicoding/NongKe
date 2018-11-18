@@ -152,7 +152,7 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
                         return;
                     }
 //                    if(UserUtil.userInfo.rspBody.isVip==0) {
-                    if (ammount > totalPay) {
+                    if (ammount > totalPay_submit) {
                         Utils.showToast("您输入的金额大于商品总值，请重新输入", false);
                         et_balance_pay.setText("");
                         return;
