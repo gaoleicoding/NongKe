@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
 import com.nongke.jindao.base.mmodel.MyAddressResData;
+import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.mcontract.MyAddressContract;
 import com.nongke.jindao.mpresenter.MyAddressPresenter;
 
@@ -73,7 +74,13 @@ public class MyAddressActivity extends BaseMvpActivity<MyAddressPresenter> imple
                 String userName = et_user_name.getText().toString();
                 String userPhone = et_user_phone_num.getText().toString();
                 String userAddress = et_user_address.getText().toString();
-
+                if(userName.trim().equals("")){
+                    Utils.showToast("收件人不能为空",true);return;
+                }if(userPhone.trim().equals("")){
+                    Utils.showToast("联系电话不能为空",true);return;
+                }if(userAddress.trim().equals("")){
+                    Utils.showToast("收货地址不能为空",true);return;
+                }
                 mPresenter.saveOrUpdateUserAddress(userName, userPhone, userAddress);
                 break;
 

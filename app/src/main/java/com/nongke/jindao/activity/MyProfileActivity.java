@@ -125,6 +125,22 @@ public class MyProfileActivity extends BaseMvpActivity<MyProfilePresenter> imple
                 String userName = et_bank_card_owner.getText().toString();
                 String phone = et_contact_phone_num.getText().toString();
                 String code = et_modify_profile_verify_code.getText().toString();
+                if(bankName.trim().equals("")){
+                    Utils.showToast("银行名称不能为空",true);return;
+                }
+                 if(bankAddress.trim().equals("")){
+                    Utils.showToast("支行地址不能为空",true);return;
+                }
+                if(bankNum.trim().equals("")){
+                    Utils.showToast("银行卡号不能为空",true);return;
+                }
+                if(userName.trim().equals("")){
+                    Utils.showToast("户主名称不能为空",true);return;
+                }
+                if (phone.trim().equals("")) {
+                    Utils.showToast("联系电话不能为空", true);
+                    return;
+                }
 
                 mPresenter.saveOrUpdateUserProfile(bankName,  bankNum, userName, bankAddress,phone, code);
                 break;

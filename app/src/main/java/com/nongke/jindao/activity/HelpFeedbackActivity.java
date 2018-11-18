@@ -104,6 +104,7 @@ public class HelpFeedbackActivity extends BaseMvpActivity {
                 senderRunnable.setMail(sendTitle, sendContent,
                         receiveEmail, file_path);
                 new Thread(senderRunnable).start();
+//                sendEmail();
                 break;
             case R.id.add_attachment:
                 showFileChooser();
@@ -276,5 +277,24 @@ public class HelpFeedbackActivity extends BaseMvpActivity {
      */
     public static boolean isMediaDocument(Uri uri) {
         return "com.android.providers.media.documents".equals(uri.getAuthority());
+    }
+
+    private void sendEmail(){
+        Intent email = new Intent(Intent.ACTION_SENDTO);
+        /*不带附件发送邮件*/
+//        email.setType("plain/text");
+        email.setData(Uri.parse(receiveEmail));
+
+        /*设置邮件默认地址，多个收件人，String数组*/
+        //    email.putExtra(android.content.Intent.EXTRA_EMAIL, (String[])mMailReceivers.toArray(new String[mMailReceivers.size()]));
+        /*多个抄送人，String数组*/
+//        email.putExtra(android.content.Intent.EXTRA_CC, (String[])mMailCopyTos.toArray(new String[mMailCopyTos.size()]));
+        /*邮件标题*/
+        email.putExtra(android.content.Intent.EXTRA_SUBJECT, et_email_title.getText().toString());
+        /*邮件正文*/
+        email.putExtra(android.content.Intent.EXTRA_TEXT, et_email_content.getText().toString());
+//调用系统的邮件系统
+        startActivity(Intent.createChooser(email, "请选择邮件发送软件"));
+
     }
 }
