@@ -38,8 +38,10 @@ public class PayView extends FrameLayout implements View.OnClickListener {
         ll_pay_alipay.setOnClickListener(this);
         ll_pay_wechat.setOnClickListener(this);
         ll_pay_daoli.setOnClickListener(this);
-        float daoli= UserUtil.getUserInfo().rspBody.cardMoney;
-        tv_pay_daoli.setText("（余额:"+daoli+"元）" );
+        if(UserUtil.getUserInfo()!=null) {
+            float daoli = UserUtil.getUserInfo().rspBody.cardMoney;
+            tv_pay_daoli.setText("（余额:" + daoli + "元）");
+        }
     }
 
 
