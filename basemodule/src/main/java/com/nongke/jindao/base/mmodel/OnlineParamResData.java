@@ -26,8 +26,8 @@ public class OnlineParamResData extends BaseResData {
         public ParamContent vip_price;//升级为vip的价格
         public ParamContent vip_original_price;//升级为vip原价
         public ParamContent vip_to_user_money;//升级为vip转到余额的金额
-        public ParamContent vip_recharge_gift_boolean;//vip充值是否送礼物，如果送礼物需要表现出来
-        public ParamContent vip_recharge_gift;//vip充值送的什么礼物
+//        public ParamContent vip_recharge_gift_boolean;//vip充值是否送礼物，如果送礼物需要表现出来
+//        public ParamContent vip_recharge_gift;//vip充值送的什么礼物
 
         public ParamContent vip_phone_recharge;
         public ParamContent vip_discount;

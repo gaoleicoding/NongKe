@@ -100,8 +100,8 @@ public class VipRechargeActivity extends BaseMvpActivity<RechargePresenter> impl
             int vipPrice = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.vip_price.content);
             int vipToUserMoney = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.vip_to_user_money.content);
             int originMoney = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.vip_original_price.content);
-            String giftBoolean = OnlineParamUtil.paramResData.rspBody.vip_recharge_gift_boolean.content;
-            String gift = OnlineParamUtil.paramResData.rspBody.vip_recharge_gift.content;
+//            String giftBoolean = OnlineParamUtil.paramResData.rspBody.vip_recharge_gift_boolean.content;
+//            String gift = OnlineParamUtil.paramResData.rspBody.vip_recharge_gift.content;
             String vip_recharge_price = getResources().getString(R.string.vip_recharge_price);
             String vip_recharge_price_to_user = getResources().getString(R.string.vip_recharge_price_to_user);
             String vip_recharge_origin_price = getResources().getString(R.string.vip_recharge_origin_price);
@@ -109,20 +109,17 @@ public class VipRechargeActivity extends BaseMvpActivity<RechargePresenter> impl
             String recharge_price_to_user = String.format(vip_recharge_price_to_user, vipToUserMoney);
             String recharge_origin_price = String.format(vip_recharge_origin_price, originMoney);
             tv_vip_price.setText(recharge_price);
-//            if (vipToUserMoney > 0) {
-//                tv_vip_price_to_user.setVisibility(View.VISIBLE);
-//                tv_vip_price_to_user.setText(recharge_price_to_user);
-//            }
+
             if (vipPrice < originMoney) {
                 tv_vip_origin_price.setVisibility(View.VISIBLE);
                 tv_vip_origin_price.setText(recharge_origin_price);
                 tv_vip_origin_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG); //中划线
 
             }
-            if ("true".equals(giftBoolean.trim())) {
-                tv_vip_origin_price_gift.setVisibility(View.VISIBLE);
-                tv_vip_origin_price_gift.setText(gift);
-            }
+//            if ("true".equals(giftBoolean.trim())) {
+//                tv_vip_origin_price_gift.setVisibility(View.VISIBLE);
+//                tv_vip_origin_price_gift.setText(gift);
+//            }
         }
     }
 
