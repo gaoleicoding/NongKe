@@ -77,7 +77,6 @@
                         <EditText
                             android:id="@+id/et_recharge_amount"
                             style="@style/code_edit_num_style"
-                            android:hint="@string/input_with_amount_hint"
                             android:inputType="number" />
                     </LinearLayout>
                 </LinearLayout>

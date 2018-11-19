@@ -37,8 +37,8 @@
     <string name="recharge_discount">充值优惠</string>
     <string name="phone_fee_recharge_record">充值记录</string>
     <string name="you_are_not_vip">（你不是VIP会员，立即升级）</string>
-    <string name="recharge_50">50元\n\n会员优惠价:%1$d元</string>
-    <string name="recharge_100">100元\n\n会员优惠价:%1$d元</string>
+    <string name="recharge_50">%1$d元\n\n会员优惠价:%2$d元</string>
+    <string name="recharge_100">%1$d元\n\n会员优惠价:%2$d元</string>
     <string name="pay">支付</string>
     <string name="go_to_pay">去支付</string>
     <string name="pay_method">支付方式：</string>

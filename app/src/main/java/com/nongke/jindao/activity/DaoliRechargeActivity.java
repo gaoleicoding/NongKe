@@ -59,6 +59,8 @@ public class DaoliRechargeActivity extends BaseMvpActivity<RechargePresenter> im
     EditText et_recharge_amount;
     @BindView(R.id.ll_pay_view)
     PayView pay_view;
+    String daoli_recharge_limit_100;
+    float rechargeAmount;
 
     public static void startActivity(Context context) {
         Intent intent = new Intent(context, DaoliRechargeActivity.class);
@@ -76,6 +78,10 @@ public class DaoliRechargeActivity extends BaseMvpActivity<RechargePresenter> im
         iv_back.setVisibility(View.VISIBLE);
         if (OnlineParamUtil.paramResData == null || OnlineParamUtil.paramResData.rspBody == null)
             return;
+        daoli_recharge_limit_100 = OnlineParamUtil.getParamResData().rspBody.daoli_recharge_limit_100.content;
+        if ("true".equals(daoli_recharge_limit_100)) {
+            et_recharge_amount.setHint(getResources().getString(R.string.input_with_amount_hint));
+        }
         tv_daoli_desc.setText(OnlineParamUtil.paramResData.rspBody.daoli_use_desc.content);
         tv_daoli_amount.setText(UserUtil.getUserInfo().rspBody.cardMoney + "");
         EventBus.getDefault().register(this);
@@ -87,12 +93,17 @@ public class DaoliRechargeActivity extends BaseMvpActivity<RechargePresenter> im
         switch (view.getId()) {
 
             case R.id.tv_daoli_recharge:
-                String ammount = et_recharge_amount.getText().toString();
-                if (Utils.intPattern.matcher(ammount).matches()) {
-                    mPresenter.recharge(2, pay_view.getPayType(), Utils.stringToInt(ammount), Utils.stringToInt(ammount));
-                } else {
-                    Utils.showToast("请输入整数金额", false);
+                String ammountStr = et_recharge_amount.getText().toString();
+                rechargeAmount = Utils.stringToInt(ammountStr);
+                if ("true".equals(daoli_recharge_limit_100)) {
+                    if (rechargeAmount % 100 != 0) {
+                        Utils.showToast("请输入整百金额", false);
+                        return;
+                    }
+//                    mPresenter.recharge(2, pay_view.getPayType(), rechargeAmount, rechargeAmount);
+//                    return;
                 }
+                mPresenter.recharge(2, pay_view.getPayType(), rechargeAmount, rechargeAmount);
 
                 break;
 

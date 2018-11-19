@@ -66,7 +66,8 @@ public class RechageDetailFragment extends BaseMvpFragment<RechargePresenter> im
     LinearLayout ll_money_pay;
     @BindView(R.id.ll_pay_view)
     PayView pay_view;
-
+    int phoneDiscount=88,vip_phone_recharge_ammount_50,vip_phone_recharge_ammount_100;
+    float totalMoney,totalPay;
     @Override
     public void initData(Bundle bundle) {
         EventBus.getDefault().register(this);
@@ -106,12 +107,16 @@ public class RechageDetailFragment extends BaseMvpFragment<RechargePresenter> im
                 tv_recharge_50.setTextColor(getResources().getColor(R.color.white));
                 tv_recharge_100.setBackgroundResource(R.drawable.shape_recharge_ammount_bg);
                 tv_recharge_100.setTextColor(getResources().getColor(R.color.color_black));
+                totalMoney=vip_phone_recharge_ammount_50;
+                totalPay=phoneDiscount * vip_phone_recharge_ammount_50 / 100;
                 break;
             case R.id.tv_recharge_100:
                 tv_recharge_100.setBackgroundResource(R.drawable.shape_recharge_ammount_bg_select);
                 tv_recharge_100.setTextColor(getResources().getColor(R.color.white));
                 tv_recharge_50.setBackgroundResource(R.drawable.shape_recharge_ammount_bg);
                 tv_recharge_50.setTextColor(getResources().getColor(R.color.color_black));
+                totalMoney=vip_phone_recharge_ammount_100;
+                totalPay=phoneDiscount * vip_phone_recharge_ammount_100 / 100;
                 break;
 
             case R.id.tv_recharge_immediate:
@@ -129,7 +134,7 @@ public class RechageDetailFragment extends BaseMvpFragment<RechargePresenter> im
                     Utils.showToast("你不是VIP会员，不能使用话费充值业务", false);
                     return;
                 }
-                mPresenter.recharge(3, pay_view.getPayType(), 1, (float) 0.88);
+                mPresenter.recharge(3, pay_view.getPayType(), totalMoney, totalPay);
 
                 break;
             default:
@@ -150,13 +155,15 @@ public class RechageDetailFragment extends BaseMvpFragment<RechargePresenter> im
                 return;
             tv_recharge_phone_num.setText(UserUtil.getUserInfo().rspBody.phone);
 
-            int phoneDiscount = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.vip_phone_discount.content);
+            phoneDiscount = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.vip_phone_discount.content);
+            vip_phone_recharge_ammount_50 = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.vip_phone_recharge_ammount_50.content);
+            vip_phone_recharge_ammount_100 = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.vip_phone_recharge_ammount_100.content);
 
             String recharge_50 = getResources().getString(R.string.recharge_50);
-            String recharge_50_format = String.format(recharge_50, phoneDiscount * 50 / 100);
+            String recharge_50_format = String.format(recharge_50, vip_phone_recharge_ammount_50,phoneDiscount * vip_phone_recharge_ammount_50 / 100);
             tv_recharge_50.setText(recharge_50_format);
             String recharge_100 = getResources().getString(R.string.recharge_100);
-            String recharge_100_format = String.format(recharge_100, phoneDiscount * 100 / 100);
+            String recharge_100_format = String.format(recharge_100, vip_phone_recharge_ammount_100,phoneDiscount * vip_phone_recharge_ammount_100 / 100);
             tv_recharge_100.setText(recharge_100_format);
 
             if (UserUtil.getUserInfo().rspBody.isVip == 1 && phoneDiscount < 100) {
@@ -180,6 +187,9 @@ public class RechageDetailFragment extends BaseMvpFragment<RechargePresenter> im
             tv_vip_recharge.setVisibility(View.GONE);
         }
         tv_phone_recharge_desc.setText(OnlineParamUtil.paramResData.rspBody.phone_recharge_desc.content);
+        //默认充值金额
+        totalMoney=vip_phone_recharge_ammount_50;
+        totalPay=phoneDiscount * vip_phone_recharge_ammount_50 / 100;
     }
 
     private void showRechargeMoney(int rechargeMoney) {
