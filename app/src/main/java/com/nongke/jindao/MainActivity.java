@@ -126,8 +126,12 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
 //        value1=value2+value1;
         BigDecimal b1 = new BigDecimal("1.55");//必须用字符串
         BigDecimal b2 = new BigDecimal("1.0");
+        BigDecimal b3 = new BigDecimal("880");//必须用字符串
+        BigDecimal b4 = new BigDecimal("10");
         BigDecimal b = b1.subtract(b2);//会输出0.1
-        Log.d(TAG,"value1:"+b.toString());
+        float b5 = b3.divide(b4).floatValue();//会输出0.1
+        Log.d(TAG,"value1:"+b);
+        Log.d(TAG,"value1:"+b5);
     }
 
 

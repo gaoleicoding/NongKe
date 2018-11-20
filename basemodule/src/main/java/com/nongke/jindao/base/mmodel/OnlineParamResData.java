@@ -23,6 +23,7 @@ public class OnlineParamResData extends BaseResData {
         public ParamContent vip_phone_recharge_ammount_100;
         public ParamContent daoli_recharge_limit_100;
         public ParamContent withdraw_limit_100;
+        public ParamContent pay_balance_limit;
 
         public ParamContent support_phone_recharge;//是否支持话费充值，如果后期有特殊情况不支持，vip也将不能使用话费充值业务
         public ParamContent pay_product_bill_extract;

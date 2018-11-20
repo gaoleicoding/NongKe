@@ -73,7 +73,7 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
     TextView tv_order_money;
     @BindView(R.id.tv_order_discount_money)
     TextView tv_order_discount_money;
-//    @BindView(R.id.tv_order_indeed_pay)
+    //    @BindView(R.id.tv_order_indeed_pay)
 //    TextView tv_order_indeed_pay;
     @BindView(R.id.et_balance_pay)
     EditText et_balance_pay;
@@ -101,7 +101,7 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
     List<View> viewList;
     String TAG = "OrderActivity";
     float postage;
-    float totalMoney, discountMoney,totalPay, totalCardMoney, totalCardPay, cornMoney = 0,rmb_submit, totalPay_submit,productIndeedPay;
+    float totalMoney, discountMoney, totalPay, totalCardMoney, totalCardPay, cornMoney = 0, rmb_submit, totalPay_submit, productIndeedPay;
     String orderId, phone, userName, address;
     //totalPay(折后金额) = discountMoney（vip用户折后金额）+postage（邮费）
 
@@ -320,19 +320,19 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
     public void onPayTypeClick(int type) {
         if (UserUtil.getUserInfo().rspBody.isVip == 0) {
             if (type == 1) {
-                productIndeedPay=totalCardMoney;
+                productIndeedPay = totalCardMoney;
                 rmb_submit = totalCardPay;
                 totalPay_submit = totalCardPay;
                 showOrHideBalancePay(false);
             }
             if (type == 3) {
-                productIndeedPay=totalMoney;
+                productIndeedPay = totalMoney;
                 totalPay_submit = totalPay;
                 rmb_submit = FloatOperationUtil.sub(totalPay, cornMoney);
                 showOrHideBalancePay(true);
             }
             if (type == 4) {
-                productIndeedPay=totalMoney;
+                productIndeedPay = totalMoney;
                 totalPay_submit = totalPay;
                 rmb_submit = FloatOperationUtil.sub(totalPay, cornMoney);
                 showOrHideBalancePay(true);
@@ -340,19 +340,19 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
         }
         if (UserUtil.getUserInfo().rspBody.isVip == 1) {
             if (type == 1) {
-                productIndeedPay=totalCardMoney;
+                productIndeedPay = totalCardMoney;
                 rmb_submit = totalCardPay;
                 totalPay_submit = totalCardPay;
                 showOrHideBalancePay(false);
             }
             if (type == 3) {
-                productIndeedPay=discountMoney;
-                totalPay_submit =totalPay;
+                productIndeedPay = discountMoney;
+                totalPay_submit = totalPay;
                 rmb_submit = FloatOperationUtil.sub(totalPay, cornMoney);
                 showOrHideBalancePay(true);
             }
             if (type == 4) {
-                productIndeedPay=discountMoney;
+                productIndeedPay = discountMoney;
                 totalPay_submit = totalPay;
                 rmb_submit = FloatOperationUtil.sub(totalPay, cornMoney);
                 showOrHideBalancePay(true);
@@ -376,17 +376,16 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
 
         tv_order_money.setText(totalMoney + "");
         tv_order_discount_money.setText(productIndeedPay + "");
-        tv_product_total_price.setText( rmb_submit+ "");
+        tv_product_total_price.setText(rmb_submit + "");
     }
 
     private void showOrHideBalancePay(boolean show) {
-
-        if (show && UserUtil.userInfo.rspBody.money > 10) {
+        int balanceLimit = Utils.stringToInt(OnlineParamUtil.paramResData.rspBody.pay_balance_limit.content);
+        if (show && UserUtil.userInfo.rspBody.money > balanceLimit) {
             ll_balance_pay.setVisibility(View.VISIBLE);
         } else {
             cornMoney = 0;
             ll_balance_pay.setVisibility(View.GONE);
-//            et_balance_pay.setText("");
         }
     }
 
