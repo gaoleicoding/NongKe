@@ -27,7 +27,7 @@
     <string name="my_profile">个人资料</string>
     <string name="my_bill">我的账单</string>
     <string name="my_commission">佣金明细</string>
-    <string name="my_contact">我的推荐</string>
+    <string name="my_contact">我的粉丝</string>
     <string name="my_withdraw">我要提现</string>
     <string name="my_withdraw_record">提现记录</string>
     <string name="my_address">收货地址</string>
@@ -56,7 +56,7 @@
     <string name="classify_commodity">商品</string>
     <!--<string name="phone_num_colon">手机号：</string>-->
     <string name="phone_num">手机号</string>
-    <string name="invite_code">邀请码</string>
+    <string name="invite_code">推荐人邀请码或手机号</string>
     <string name="phone_num_input">请输入手机号</string>
     <!--<string name="password_colon">密码：</string>-->
     <string name="password">密码&#160;&#160;&#160;&#160;</string>

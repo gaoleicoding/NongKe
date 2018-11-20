@@ -1,6 +1,7 @@
 package com.nongke.jindao.base.utils;
 
 import android.app.ActivityManager;
+import android.content.ClipboardManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.os.Looper;
@@ -140,6 +141,12 @@ public class Utils {
         NumberFormat ddf1 = NumberFormat.getNumberInstance();
         ddf1.setMaximumFractionDigits(2);
         return ddf1.format(value);
+    }
+    public static void copyTxt(Context context,String content) {
+        ClipboardManager cm = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        // 将文本内容放到系统剪贴板里。
+        cm.setText(content);
+        Toast.makeText(context, "复制成功，可以分享给朋友们了", Toast.LENGTH_LONG).show();
     }
 
     public static int stringToInt(String value) {

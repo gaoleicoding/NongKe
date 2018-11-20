@@ -1,6 +1,7 @@
 package com.nongke.jindao.fragment;
 
 import android.Manifest;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -110,6 +111,8 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
     TextView tv_user_profile_not_login;
     @BindView(R.id.tv_member_type)
     TextView tv_member_type;
+    @BindView(R.id.tv_copy_invite_code)
+    TextView tv_copy_invite_code;
 
     public static int PICK_PHOTO = 0;
     public ImageUtils imageUtils;
@@ -186,7 +189,7 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
 
     @OnClick({R.id.iv_user_photo, R.id.my_daoli_recharge_layout, R.id.my_daoli_transfer_layout, R.id.my_bill_layout, R.id.my_commission_layout, R.id.my_withdraw_layout,
             R.id.my_withdraw_record_layout, R.id.my_profile_layout, R.id.my_promotion_layout, R.id.my_location_layout, R.id.my_order_layout, R.id.my_logout_layout,
-            R.id.tv_vip_recharge, R.id.my_inviter_layout, R.id.custom_service_layout, R.id.help_feedback_layout})
+            R.id.tv_vip_recharge, R.id.my_inviter_layout, R.id.custom_service_layout, R.id.help_feedback_layout, R.id.tv_copy_invite_code})
     public void click(View view) {
 //        if (view.getId() != R.id.custom_service_layout && view.getId() != R.id.help_feedback_layout) {
         if (!UserUtil.isLogined()) {
@@ -272,6 +275,9 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
             case R.id.help_feedback_layout:
                 HelpFeedbackActivity.startActivity(getActivity());
                 break;
+            case R.id.tv_copy_invite_code:
+                Utils.copyTxt(getActivity(), UserUtil.userInfo.rspBody.uid);
+                break;
 
         }
 
@@ -301,12 +307,14 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
         if (UserUtil.getUserInfo().rspBody.isVip == 1) {
             tv_member_type.setText("VIP会员");
             tv_member_type.setTextColor(getResources().getColor(R.color.color_efe620));
-            tv_vip_recharge.setText("(邀请码:" + UserUtil.userInfo.rspBody.uid + "）");
+            tv_vip_recharge.setText(" 邀请码：" + UserUtil.userInfo.rspBody.uid);
+            tv_copy_invite_code.setVisibility(View.VISIBLE);
+
         } else {
             tv_member_type.setText(" 普通会员");
             tv_member_type.setTextColor(getResources().getColor(R.color.color_fff3eb));
-
             tv_vip_recharge.setText(" 申请高级会员>>");
+            tv_copy_invite_code.setVisibility(View.GONE);
         }
 
         tv_user_phone_num.setText(UserUtil.getUserInfo().rspBody.phone);
