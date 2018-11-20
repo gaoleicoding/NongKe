@@ -256,9 +256,7 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
                 mPresenter.getLogoutData();
                 RegisterLoginActivity.startActivity(getActivity());
                 UserUtil.setUserInfo(null);
-                UserUtil.setLogined(false);
-//                LoginAccountEvent accountEvent = new LoginAccountEvent();
-//                EventBus.getDefault().post(accountEvent);
+
                 break;
             case R.id.iv_user_photo:
                 if (!UserUtil.isLogined())
@@ -303,7 +301,7 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
         if (UserUtil.getUserInfo().rspBody.isVip == 1) {
             tv_member_type.setText("VIP会员");
             tv_member_type.setTextColor(getResources().getColor(R.color.color_efe620));
-            tv_vip_recharge.setText("（邀请码:" + UserUtil.userInfo.rspBody.uid + "）");
+            tv_vip_recharge.setText("(邀请码：" + UserUtil.userInfo.rspBody.uid + ")");
         } else {
             tv_member_type.setText(" 普通会员");
             tv_member_type.setTextColor(getResources().getColor(R.color.color_fff3eb));

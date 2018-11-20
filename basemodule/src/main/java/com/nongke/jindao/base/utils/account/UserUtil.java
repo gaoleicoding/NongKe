@@ -24,9 +24,9 @@ public class UserUtil {
 
     public static void setUserInfo(LoginResData userInfo) {
         UserUtil.userInfo = userInfo;
-        if(userInfo!=null) {
+        if (userInfo != null) {
             setLogined(true);
-        }
+        } else setLogined(false);
         LoginAccountEvent accountEvent = new LoginAccountEvent();
         EventBus.getDefault().post(accountEvent);
 

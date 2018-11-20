@@ -258,6 +258,7 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
             rl_to_pay.setVisibility(View.GONE);
             tv_edit.setVisibility(View.GONE);
             cart_recyclerview.setVisibility(View.GONE);
+            ll_cart_empty.setVisibility(View.GONE);
         } else {
             mPresenter.getCartProduct();
             tv_goto_login.setVisibility(View.GONE);
