@@ -22,6 +22,7 @@ public class WithdrawContract {
 
         void showUserProfileResData(MyProfileResData userProfileResData);
         void showCommissionToMoney(BaseResData baseResData);
+        void showSaveUserCash(BaseResData baseResData);
 
     }
 }

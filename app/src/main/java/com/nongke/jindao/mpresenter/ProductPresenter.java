@@ -38,9 +38,9 @@ public class ProductPresenter extends BasePresenter<ProductContract.View> implem
             @Override
             public void onNext(BannerResData bannerResData) {
                 LogUtil.d2("getBannerProduct------------ :" + bannerResData.toString());
-
-                mView.showBannerList(bannerResData);
-
+                if("10000".equals(bannerResData.retCode)) {
+                    mView.showBannerList(bannerResData);
+                }
             }
         });
     }
@@ -67,9 +67,9 @@ public class ProductPresenter extends BasePresenter<ProductContract.View> implem
             @Override
             public void onNext(ProductResData productResData) {
                 LogUtil.d2("productResData------------ :" + productResData.toString());
-
-                mView.showProduct(productResData, true);
-
+                if("10000".equals(productResData.retCode)) {
+                    mView.showProduct(productResData, true);
+                }
             }
         });
     }
@@ -87,8 +87,10 @@ public class ProductPresenter extends BasePresenter<ProductContract.View> implem
             @Override
             public void onNext(MessageResData messageResData) {
                 LogUtil.d2("listMessage------------ :" + messageResData.toString());
-                mView.showMessageList(messageResData);
-                MessageUtil.setMessageResData(messageResData);
+                if("10000".equals(messageResData.retCode)) {
+                    mView.showMessageList(messageResData);
+                    MessageUtil.setMessageResData(messageResData);
+                }
             }
         });
     }

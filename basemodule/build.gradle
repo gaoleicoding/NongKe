@@ -3,8 +3,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'org.greenrobot.greendao'
 apply plugin: 'com.jakewharton.butterknife'
 android {
-    compileSdkVersion rootProject.ext.android.compileSdkVersion
-    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    compileSdkVersion 28
+    buildToolsVersion '26.0.2'
     defaultConfig {
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
@@ -92,4 +92,7 @@ android {
 //        api files('libs/alipaySdk-20180601.jar')
 
     }
+}
+
+dependencies {
 }

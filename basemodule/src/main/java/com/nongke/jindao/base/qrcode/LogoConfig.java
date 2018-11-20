@@ -29,7 +29,7 @@ public class LogoConfig {
 		// 开始绘制图片
 		canvas.drawBitmap(bgBitmap, 0, 0, null);
 		canvas.drawBitmap(logoBitmap,(bgWidth - logoBitmap.getWidth()) /2,(bgHeigh - logoBitmap.getHeight()) / 2, null);
-		canvas.save(Canvas.ALL_SAVE_FLAG);// 保存
+		canvas.save();// 保存
 		canvas.restore();
 		if(cvBitmap.isRecycled()){
 			cvBitmap.recycle();

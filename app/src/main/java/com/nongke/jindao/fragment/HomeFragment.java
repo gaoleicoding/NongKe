@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -25,6 +27,7 @@ import com.nongke.jindao.adapter.divider.GridItemSpaceDecoration;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mmodel.BannerResData;
 import com.nongke.jindao.base.mmodel.MessageResData;
+import com.nongke.jindao.base.mmodel.MessageResData.MessageBody;
 import com.nongke.jindao.base.mmodel.Product;
 import com.nongke.jindao.base.mmodel.ProductResData;
 import com.nongke.jindao.base.utils.Constants;
@@ -33,6 +36,8 @@ import com.nongke.jindao.base.utils.ScreenUtils;
 import com.nongke.jindao.base.utils.account.OnlineParamUtil;
 import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.base.utils.Utils;
+import com.nongke.jindao.base.view.marquee.MarqueeView;
+import com.nongke.jindao.base.view.marquee.SimpleMF;
 import com.nongke.jindao.mcontract.ProductContract;
 import com.nongke.jindao.mpresenter.ProductPresenter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -44,6 +49,7 @@ import com.youth.banner.Transformer;
 import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -77,12 +83,34 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
     public TextView tv_notice_content;
     @BindView(R.id.rl_notice)
     RelativeLayout rl_notice;
+    @BindView(R.id.marqueeView_notice)
+    MarqueeView marqueeView_notice;
     private List<Product> articleDataList;
     private ProductAdapter feedArticleAdapter;
     boolean hasNextPage = true;
+    final int LOOP_DISPLAY_MSG = 0;
+    int msgIndex = 0;
 
-//    int pageSize = 6;
-//    String orderType = "DESC", orderBy = "create_time";
+    List<MessageBody> messageBodyList;
+    private final List<String> datas = new ArrayList<String>();
+
+
+    Handler handler = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case LOOP_DISPLAY_MSG:
+                    if (msgIndex > messageBodyList.size() - 1) msgIndex = 0;
+                    String msgTitle = messageBodyList.get(msgIndex).title;
+                    if (tv_notice_content != null)
+                        tv_notice_content.setText(msgTitle);
+
+                    msgIndex++;
+                    handler.sendEmptyMessageDelayed(LOOP_DISPLAY_MSG, 3000);
+                    break;
+
+            }
+        }
+    };
 
     @Override
     public void initData(Bundle bundle) {
@@ -296,10 +324,29 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
     @Override
     public void showMessageList(MessageResData messageResData) {
         if (messageResData == null || messageResData.rspBody == null) return;
-        if (messageResData.rspBody.size() > 0) {
-            String msgTitle = messageResData.rspBody.get(0).title;
-            tv_notice_content.setText(msgTitle);
+        List<MessageBody> messageList = messageResData.rspBody;
+        if (messageList.size() == 0) rl_notice.setVisibility(View.GONE);
+
+        if (messageList.size() > 0 && messageList.size() < 4) {
+            messageBodyList = messageList;
+//            handler.sendEmptyMessage(LOOP_DISPLAY_MSG);
         }
+        if (messageList.size() > 3) {
+            messageBodyList = messageList.subList(0, 3);
+//            handler.sendEmptyMessageDelayed(LOOP_DISPLAY_MSG, 1000);
+        }
+        for (int i = 0; i < messageBodyList.size(); i++) {
+            datas.add(messageBodyList.get(i).title);
+        }
+        initMarqueeView1();
+    }
+
+    private void initMarqueeView1() {
+        SimpleMF<String> marqueeFactory = new SimpleMF(getActivity());
+        marqueeFactory.setData(datas);
+        marqueeView_notice.setMarqueeFactory(marqueeFactory);
+        marqueeView_notice.startFlipping();
+//        marqueeView1.setOnItemClickListener(onSimpleItemClickListener);
     }
 
     public void scrollToTop() {

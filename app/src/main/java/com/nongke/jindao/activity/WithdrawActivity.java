@@ -21,6 +21,7 @@ import com.nongke.jindao.base.mmodel.MyProfileResData;
 import com.nongke.jindao.base.utils.Constants;
 import com.nongke.jindao.base.utils.SharedPreferencesUtils;
 import com.nongke.jindao.base.utils.Utils;
+import com.nongke.jindao.base.utils.account.OnlineParamUtil;
 import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.mcontract.WithdrawContract;
 import com.nongke.jindao.mpresenter.WithdrawPresenter;
@@ -77,6 +78,7 @@ public class WithdrawActivity extends BaseMvpActivity<WithdrawPresenter> impleme
     TextView tv_confirm_commission_convert;
     String bankName, bankNum, bankAdress, userName, phone;
     boolean isInCommission = false;
+    String withdraw_limit_100;
 
     public static void startActivity(Context context) {
         Intent intent = new Intent(context, WithdrawActivity.class);
@@ -96,6 +98,11 @@ public class WithdrawActivity extends BaseMvpActivity<WithdrawPresenter> impleme
         tv_commission.setText(UserUtil.getUserInfo().rspBody.commission + "");
         tv_withdrawable_amount.setText(UserUtil.getUserInfo().rspBody.money + "");
         EventBus.getDefault().register(this);
+
+        withdraw_limit_100 = OnlineParamUtil.getParamResData().rspBody.withdraw_limit_100.content;
+        if ("true".equals(withdraw_limit_100)) {
+            et_withdraw_amount.setHint(getResources().getString(R.string.input_with_amount_hint));
+        }
     }
 
     @Override
@@ -156,7 +163,7 @@ public class WithdrawActivity extends BaseMvpActivity<WithdrawPresenter> impleme
                     Utils.showToast("请输入提现金额", false);
                     return;
                 }
-                float withdrawAmount = Utils.stringToFloat(withdrawStr);
+                float withdrawAmount = Utils.stringToInt(withdrawStr);
                 if (withdrawAmount > UserUtil.userInfo.rspBody.money) {
                     Utils.showToast("输入金额超过你的余额，请重新输入", false);
                     return;
@@ -180,6 +187,13 @@ public class WithdrawActivity extends BaseMvpActivity<WithdrawPresenter> impleme
                 if (phone == null) {
                     Utils.showToast("请输入联系电话", false);
                     return;
+                }
+
+                if ("true".equals(withdraw_limit_100)) {
+                    if (withdrawAmount % 100 != 0) {
+                        Utils.showToast("请输入整百金额", false);
+                        return;
+                    }
                 }
                 if (Utils.isMobileNO(et_contact_phone_num.getText().toString()))
                     mPresenter.saveUserCash(withdrawAmount, bankName, bankNum, bankAdress, userName, phone);
@@ -237,6 +251,13 @@ public class WithdrawActivity extends BaseMvpActivity<WithdrawPresenter> impleme
         if ("10000".equals(baseResData.retCode)) {
             backFromCommissionToBalance();
             mPresenter.getUserProfile();
+        }
+    }
+
+    @Override
+    public void showSaveUserCash(BaseResData baseResData) {
+        if ("10000".equals(baseResData.retCode)) {
+        finish();
         }
     }
 

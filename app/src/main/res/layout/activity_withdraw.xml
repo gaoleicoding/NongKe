@@ -88,7 +88,7 @@
                     <EditText
                         android:id="@+id/et_withdraw_amount"
                         style="@style/code_edit_num_style"
-                        android:hint="@string/input_with_amount_hint" />
+                         />
                 </LinearLayout>
 
 <!--
@@ -227,6 +227,7 @@
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:text="@string/withdraw_hint2"
                     android:textColor="@color/app_color" />
             </LinearLayout>

@@ -3,36 +3,26 @@ package com.nongke.jindao.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.nongke.jindao.base.event.LoginAccountEvent;
-import com.nongke.jindao.base.pay.alipay.AliPayUtil;
-import com.nongke.jindao.base.pay.alipay.PayResult;
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
-import com.nongke.jindao.base.mmodel.LoginResData;
+import com.nongke.jindao.base.event.LoginAccountEvent;
 import com.nongke.jindao.base.mmodel.RechargeResData;
+import com.nongke.jindao.base.pay.alipay.AliPayUtil;
 import com.nongke.jindao.base.pay.wxpay.WXPayUtil;
+import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.base.utils.account.OnlineParamUtil;
 import com.nongke.jindao.base.utils.account.UserUtil;
-import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.mcontract.RechargeContract;
 import com.nongke.jindao.mpresenter.RechargePresenter;
 import com.nongke.jindao.view.PayView;
-
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -100,8 +90,6 @@ public class DaoliRechargeActivity extends BaseMvpActivity<RechargePresenter> im
                         Utils.showToast("请输入整百金额", false);
                         return;
                     }
-//                    mPresenter.recharge(2, pay_view.getPayType(), rechargeAmount, rechargeAmount);
-//                    return;
                 }
                 mPresenter.recharge(2, pay_view.getPayType(), rechargeAmount, rechargeAmount);
 

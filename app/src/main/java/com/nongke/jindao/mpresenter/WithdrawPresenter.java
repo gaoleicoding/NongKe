@@ -50,6 +50,8 @@ public class WithdrawPresenter extends BasePresenter<WithdrawContract.View> impl
                 if("10000".equals(baseResData.retCode)) {
                     UpdateUserInfoEvent userInfoEvent=new UpdateUserInfoEvent();
                     EventBus.getDefault().post(userInfoEvent);
+                    ResponseStatusUtil.handleResponseStatus(baseResData);
+                    mView.showSaveUserCash(baseResData);
                 }else
                 ResponseStatusUtil.handleResponseStatus(baseResData);
             }
