@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.nongke.jindao.MainActivity;
@@ -21,6 +23,7 @@ import com.nongke.jindao.base.utils.ResponseStatusUtil;
 import com.nongke.jindao.base.utils.SharedPreferencesUtils;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.base.event.LoginEvent;
+import com.nongke.jindao.base.utils.account.OnlineParamUtil;
 import com.nongke.jindao.event.UpdateCartEvent;
 import com.nongke.jindao.mcontract.RegisterLoginContract;
 import com.nongke.jindao.mpresenter.RegisterLoginPresenter;
@@ -89,6 +92,15 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
     CountDownButton tv_register_get_verify_code;
     @BindView(R.id.tv_forget_pwd_get_verify_code)
     CountDownButton tv_forget_pwd_get_verify_code;
+    @BindView(R.id.cb_register_contract)
+    CheckBox cb_register_contract;
+    @BindView(R.id.tv_register_contract)
+    TextView tv_register_contract;
+    @BindView(R.id.sv_register_contract_content)
+    ScrollView sv_register_contract_content;
+    @BindView(R.id.tv_register_contract_content)
+    TextView tv_register_contract_content;
+    boolean isInContract;
 
     boolean isInRegister = false, isInForgetPwd = false;
     String registerFlag;
@@ -120,10 +132,11 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
     }
 
     @OnClick({R.id.iv_back, R.id.tv_login, R.id.tv_register_free, R.id.tv_register_get_verify_code, R.id.tv_register, R.id.tv_forget_password,
-            R.id.layout_forget_password, R.id.tv_modify_pwd_submit, R.id.tv_forget_pwd_get_verify_code})
+            R.id.layout_forget_password, R.id.tv_modify_pwd_submit, R.id.tv_forget_pwd_get_verify_code, R.id.tv_register_contract})
     public void click(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
+
                 back();
 
                 break;
@@ -175,22 +188,30 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
                 password = et_register_password.getText().toString().trim();
                 String confirmPassword = et_register_confirm_password.getText().toString().trim();
                 String code = et_register_verify_code.getText().toString().trim();
-                if(!Utils.isMobileNO(phoneNum)){
-                   return;
+                if (!Utils.isMobileNO(phoneNum)) {
+                    return;
                 }
-                if ("".equals(inviteCode)){
+                if ("".equals(inviteCode)) {
                     Utils.showToast("请输入邀请码", true);
                     return;
                 }
-                if (password.length() < 6){
+                if (password.length() < 6) {
                     Utils.showToast(getString(R.string.register_password_too_short), true);
                     return;
                 }
+                if (!cb_register_contract.isChecked()) {
+                    Utils.showToast(getResources().getString(R.string.read_agree_register_contract), false);
+                    return;
+                }
 
-
-                mPresenter.getRegisterData(phoneNum,inviteCode, password, confirmPassword, code);
+                mPresenter.getRegisterData(phoneNum, inviteCode, password, confirmPassword, code);
                 break;
-
+            case R.id.tv_register_contract:
+                isInContract = true;
+                tv_register_contract_content.setText(OnlineParamUtil.paramResData.rspBody.register_contract.content);
+                sv_register_contract_content.setVisibility(View.VISIBLE);
+                title.setText(getResources().getString(R.string.register_contract_desc));
+                break;
             case R.id.tv_modify_pwd_submit:
                 registerFlag = "tv_modify_pwd_submit";
                 phoneNum = et_forget_pwd_phone_num.getText().toString();
@@ -222,18 +243,24 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
     }
 
     private void back() {
-        if (!isInRegister && !isInForgetPwd) {
-            finish();
-        }
-        if (isInRegister) {
-            layout_register.setVisibility(View.GONE);
-            title.setText(getString(R.string.login));
-            isInRegister = false;
-        }
-        if (isInForgetPwd) {
-            layout_forget_password.setVisibility(View.GONE);
-            title.setText(getString(R.string.login));
-            isInForgetPwd = false;
+        if (isInContract) {
+            isInContract = false;
+            sv_register_contract_content.setVisibility(View.GONE);
+            title.setText(getResources().getString(R.string.register));
+        } else {
+            if (!isInRegister && !isInForgetPwd) {
+                finish();
+            }
+            if (isInRegister) {
+                layout_register.setVisibility(View.GONE);
+                title.setText(getString(R.string.login));
+                isInRegister = false;
+            }
+            if (isInForgetPwd) {
+                layout_forget_password.setVisibility(View.GONE);
+                title.setText(getString(R.string.login));
+                isInForgetPwd = false;
+            }
         }
     }
 
@@ -278,11 +305,11 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
     }
 
 
-
     @Override
     public void showMsgCodeResData(MsgCodeResData msgCodeResData) {
 
     }
+
     public void onDestroy() {
         super.onDestroy();
     }

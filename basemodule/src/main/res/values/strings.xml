@@ -139,7 +139,9 @@
     <string name="money_symbol">¥</string>
     <string name="vip_contract_title">阅读并同意</string>
     <string name="vip_contract_desc">《金稻商城VIP升级协议》</string>
+    <string name="register_contract_desc">《金稻商城用户注册协议》</string>
     <string name="read_agree_contract">请选择 阅读并同意《金稻商城VIP升级协议》</string>
+    <string name="read_agree_register_contract">请选择 阅读并同意《金稻商城用户注册协议》</string>
     <string name="custom_service">在线客服</string>
     <string name="help_feedback">反馈与建议</string>
     <string name="email_title">标题</string>

@@ -34,6 +34,7 @@ public class OnlineParamResData extends BaseResData {
 
         public ParamContent vip_phone_recharge;
         public ParamContent vip_discount;
+        public ParamContent register_contract;//注册协议
         public ParamContent vip_contract;//升级为vip的协议
         public ParamContent vip_right_desc;//vip权益介绍
         public ParamContent daoli_use_desc;//稻粒使用说明
