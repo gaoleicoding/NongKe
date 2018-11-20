@@ -294,14 +294,14 @@ public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implem
         LogUtil.d(TAG, "showOrderProductPayRes:" + rechargeResData.rspBody.toString());
         final String paySign = rechargeResData.rspBody.paySign;
         if (paySign == null && rechargeResData.rspBody.flag == 1 && pay_view.getPayType() == 1) {
-            Utils.showToast("点卡支付成功", false);
+            Utils.showToast("点卡支付成功", true);
             UpdateCartEvent updateCartEvent = new UpdateCartEvent();
             EventBus.getDefault().post(updateCartEvent);
             finish();
             return;
         }
         if (paySign == null && rechargeResData.rspBody.flag == 1 && pay_view.getPayType() != 1) {
-            Utils.showToast("余额支付成功", false);
+            Utils.showToast("余额支付成功", true);
             UpdateCartEvent updateCartEvent = new UpdateCartEvent();
             EventBus.getDefault().post(updateCartEvent);
             finish();

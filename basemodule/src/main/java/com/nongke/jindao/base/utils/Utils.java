@@ -165,7 +165,7 @@ public class Utils {
             return Float.parseFloat(value.trim());
         } else {
 //非数字
-            Utils.showToast("数据格式转化出错", false);
+            Utils.showToast("数据格式转化出错", true);
         }
         return Float.parseFloat(value.trim());
     }

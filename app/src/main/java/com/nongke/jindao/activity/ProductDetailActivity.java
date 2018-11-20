@@ -121,7 +121,7 @@ public class ProductDetailActivity extends BaseMvpActivity<ProductDetailPresente
                 break;
             case R.id.tv_product_add_cart:
                 if (ammount > product.stockAmount) {
-                    Utils.showToast("你选择的数量大于库存，请重新选择", false);
+                    Utils.showToast("你选择的数量大于库存，请重新选择", true);
                     return;
                 }
                 product.amount = ammount;

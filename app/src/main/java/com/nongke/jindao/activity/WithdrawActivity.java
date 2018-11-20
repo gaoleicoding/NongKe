@@ -160,7 +160,7 @@ public class WithdrawActivity extends BaseMvpActivity<WithdrawPresenter> impleme
             case R.id.tv_withdraw_immediate:
                 String withdrawStr=et_withdraw_amount.getText().toString().trim();
                 if(withdrawStr.equals("")){
-                    Utils.showToast("请输入提现金额", false);
+                    Utils.showToast("请输入提现金额", true);
                     return;
                 }
                 float withdrawAmount = Utils.stringToInt(withdrawStr);
@@ -169,29 +169,29 @@ public class WithdrawActivity extends BaseMvpActivity<WithdrawPresenter> impleme
                     return;
                 }
                 if (bankName == null) {
-                    Utils.showToast("请选择 银行名称", false);
+                    Utils.showToast("请选择 银行名称", true);
                     return;
                 }
                 if (bankNum == null) {
-                    Utils.showToast("请选输入 银行卡号", false);
+                    Utils.showToast("请选输入 银行卡号", true);
                     return;
                 }
                 if (bankAdress == null) {
-                    Utils.showToast("请输入 银行支行", false);
+                    Utils.showToast("请输入 银行支行", true);
                     return;
                 }
                 if (userName == null) {
-                    Utils.showToast("请输入 户主姓名", false);
+                    Utils.showToast("请输入 户主姓名", true);
                     return;
                 }
                 if (phone == null) {
-                    Utils.showToast("请输入联系电话", false);
+                    Utils.showToast("请输入联系电话", true);
                     return;
                 }
 
                 if ("true".equals(withdraw_limit_100)) {
                     if (withdrawAmount % 100 != 0) {
-                        Utils.showToast("请输入整百金额", false);
+                        Utils.showToast("请输入整百金额", true);
                         return;
                     }
                 }

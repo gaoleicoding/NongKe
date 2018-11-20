@@ -200,7 +200,7 @@ public class ClassifyFragment extends BaseMvpFragment {
     private void searchProduct() {
         searchName = et_product_search.getText().toString();
         if (searchName.length() == 0) {
-            Utils.showToast("请输入搜索内容", false);
+            Utils.showToast("请输入搜索内容", true);
             return;
         }
         iv_back.setVisibility(View.VISIBLE);

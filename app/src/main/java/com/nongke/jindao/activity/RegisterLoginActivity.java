@@ -200,7 +200,7 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
                     return;
                 }
                 if (!cb_register_contract.isChecked()) {
-                    Utils.showToast(getResources().getString(R.string.read_agree_register_contract), false);
+                    Utils.showToast(getResources().getString(R.string.read_agree_register_contract), true);
                     return;
                 }
 

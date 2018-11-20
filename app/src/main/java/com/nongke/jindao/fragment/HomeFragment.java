@@ -292,7 +292,7 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
                     return;
                 }
                 if (UserUtil.getUserInfo().rspBody.isVip == 1) {
-                    Utils.showToast("你已经是VIP会员", false);
+                    Utils.showToast("你已经是VIP会员", true);
                     return;
                 }
                 VipRechargeActivity.startActivity(getActivity());

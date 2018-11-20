@@ -229,7 +229,7 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
                 break;
             case R.id.my_promotion_layout:
                 if (UserUtil.getUserInfo().rspBody.isVip != 1) {
-                    Utils.showToast("你现在不是VIP会员，没有推广权限", false);
+                    Utils.showToast("你现在不是VIP会员，没有推广权限", true);
                     return;
                 }
                 PromotionActivity.startActivity(getActivity());

@@ -87,7 +87,7 @@ public class DaoliRechargeActivity extends BaseMvpActivity<RechargePresenter> im
                 rechargeAmount = Utils.stringToInt(ammountStr);
                 if ("true".equals(daoli_recharge_limit_100)) {
                     if (rechargeAmount % 100 != 0) {
-                        Utils.showToast("请输入整百金额", false);
+                        Utils.showToast("请输入整百金额", true);
                         return;
                     }
                 }

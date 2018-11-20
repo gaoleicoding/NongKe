@@ -121,7 +121,7 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
                 if (isEditingCart) {
                     int selectListLength = cartAdapter.selectProductList.size();
                     if (selectListLength == 0) {
-                        Utils.showToast("你还没选择要删除的商品", false);
+                        Utils.showToast("你还没选择要删除的商品", true);
                         return;
                     }
 
@@ -148,7 +148,7 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
 
                 } else {
                     if (cartAdapter.selectProductList.size() == 0) {
-                        Utils.showToast("你还没有选择要下单的商品", false);
+                        Utils.showToast("你还没有选择要下单的商品", true);
                         return;
                     }
                     Bundle bundle = new Bundle();
