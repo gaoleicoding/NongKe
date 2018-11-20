@@ -56,6 +56,7 @@
     <string name="classify_commodity">商品</string>
     <!--<string name="phone_num_colon">手机号：</string>-->
     <string name="phone_num">手机号</string>
+    <string name="invite_code">邀请码</string>
     <string name="phone_num_input">请输入手机号</string>
     <!--<string name="password_colon">密码：</string>-->
     <string name="password">密码&#160;&#160;&#160;&#160;</string>

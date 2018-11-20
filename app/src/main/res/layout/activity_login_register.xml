@@ -36,7 +36,7 @@
             <EditText
                 android:id="@+id/et_login_phone_num"
                 style="@style/code_edit_num_style"
-                android:inputType="number"/>
+                android:inputType="number" />
         </LinearLayout>
 
         <LinearLayout
@@ -58,14 +58,13 @@
             <EditText
                 android:id="@+id/et_login_password"
                 style="@style/code_edit_num_letter_style"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/tv_login"
             style="@style/btn_selector_match_style"
-            android:text="@string/login"
-           />
+            android:text="@string/login" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -102,8 +101,8 @@
         android:layout_height="match_parent"
         android:layout_below="@id/layout_title"
         android:background="@color/white"
-        android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="gone"
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/et_register_phone_num"
@@ -112,16 +111,22 @@
             android:inputType="number" />
 
         <EditText
+            android:id="@+id/et_register_invite_code"
+            style="@style/edit_match_style"
+            android:hint="@string/invite_code"
+            android:inputType="number" />
+
+        <EditText
             android:id="@+id/et_register_password"
             style="@style/edit_match_style"
             android:hint="@string/password"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword" />
 
         <EditText
             android:id="@+id/et_register_confirm_password"
             style="@style/edit_match_style"
             android:hint="@string/confirm_password"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -148,8 +153,7 @@
         <TextView
             android:id="@+id/tv_register"
             style="@style/btn_selector_match_style"
-            android:text="@string/register"
-            />
+            android:text="@string/register" />
     </LinearLayout>
 
     <LinearLayout
@@ -192,20 +196,19 @@
         <EditText
             android:id="@+id/et_forget_pwd_password"
             style="@style/edit_match_style"
-            android:inputType="textPassword"
-            android:hint="@string/password_new" />
+            android:hint="@string/password_new"
+            android:inputType="textPassword" />
 
         <EditText
             android:id="@+id/et_forget_pwd_confirm_password"
             style="@style/edit_match_style"
-            android:inputType="textPassword"
-            android:hint="@string/confirm_password" />
+            android:hint="@string/confirm_password"
+            android:inputType="textPassword" />
 
 
         <TextView
             android:id="@+id/tv_modify_pwd_submit"
             style="@style/btn_selector_match_style"
-            android:text="@string/submit"
-            />
+            android:text="@string/submit" />
     </LinearLayout>
 </RelativeLayout>

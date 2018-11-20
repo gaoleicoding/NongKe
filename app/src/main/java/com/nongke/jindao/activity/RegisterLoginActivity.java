@@ -63,6 +63,8 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
 
     @BindView(R.id.et_register_phone_num)
     EditText et_register_phone_num;
+    @BindView(R.id.et_register_invite_code)
+    EditText et_register_invite_code;
     @BindView(R.id.et_register_password)
     EditText et_register_password;
     @BindView(R.id.et_register_confirm_password)
@@ -168,16 +170,25 @@ public class RegisterLoginActivity extends BaseMvpActivity<RegisterLoginPresente
             case R.id.tv_register:
                 registerFlag = "tv_register";
 
-                phoneNum = et_register_phone_num.getText().toString();
-                password = et_register_password.getText().toString();
+                phoneNum = et_register_phone_num.getText().toString().trim();
+                String inviteCode = et_register_invite_code.getText().toString().trim();
+                password = et_register_password.getText().toString().trim();
+                String confirmPassword = et_register_confirm_password.getText().toString().trim();
+                String code = et_register_verify_code.getText().toString().trim();
+                if(!Utils.isMobileNO(phoneNum)){
+                   return;
+                }
+                if ("".equals(inviteCode)){
+                    Utils.showToast("请输入邀请码", true);
+                    return;
+                }
                 if (password.length() < 6){
                     Utils.showToast(getString(R.string.register_password_too_short), true);
                     return;
                 }
 
-                String confirmPassword = et_register_confirm_password.getText().toString();
-                String code = et_register_verify_code.getText().toString();
-                mPresenter.getRegisterData(phoneNum, password, confirmPassword, code);
+
+                mPresenter.getRegisterData(phoneNum,inviteCode, password, confirmPassword, code);
                 break;
 
             case R.id.tv_modify_pwd_submit:

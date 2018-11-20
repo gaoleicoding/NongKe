@@ -12,7 +12,7 @@ public class RegisterLoginContract {
 
     public interface Presenter {
 
-        void getRegisterData(String phone, String password, String confirmPassword, String code);
+        void getRegisterData(String phone, String inviterUid,String password, String confirmPassword, String code);
 
         void getResetPasswordData(String phone, String password, String confirmPassword, String code);
 

@@ -28,9 +28,10 @@ public class RegisterLoginPresenter extends BasePresenter<RegisterLoginContract.
 
 
     @Override
-    public void getRegisterData(String phone, String password, String confirmPassword, String code) {
+    public void getRegisterData(String phone,String inviterUid, String password, String confirmPassword, String code) {
         HashMap hashMap = new HashMap();
         hashMap.put("phone", phone);
+        hashMap.put("inviterUid", inviterUid);
         hashMap.put("password", password);
         hashMap.put("confirmPassword", confirmPassword);
         hashMap.put("code", code);
@@ -43,7 +44,7 @@ public class RegisterLoginPresenter extends BasePresenter<RegisterLoginContract.
             public void onNext(RegisterResData registerResData) {
                 if ("10000".equals(registerResData.retCode))
                 mView.showRegisterResData(registerResData);
-                else ResponseStatusUtil.handleResponseStatus(registerResData);
+               ResponseStatusUtil.handleResponseStatus(registerResData);
             }
         });
     }
@@ -64,7 +65,7 @@ public class RegisterLoginPresenter extends BasePresenter<RegisterLoginContract.
             public void onNext(RegisterResData registerResData) {
                 if ("10000".equals(registerResData.retCode))
                 mView.showResetPasswordData(registerResData);
-                else ResponseStatusUtil.handleResponseStatus(registerResData);
+                ResponseStatusUtil.handleResponseStatus(registerResData);
             }
         });
     }

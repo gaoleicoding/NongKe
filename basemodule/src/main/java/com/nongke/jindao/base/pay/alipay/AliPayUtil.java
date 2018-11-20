@@ -6,6 +6,7 @@ import android.os.Message;
 import android.text.TextUtils;
 
 import com.alipay.sdk.app.PayTask;
+import com.nongke.jindao.base.application.CustomApplication;
 import com.nongke.jindao.base.event.FinishOrderActivityEvent;
 import com.nongke.jindao.base.event.UpdateCartEvent;
 import com.nongke.jindao.base.event.UpdateUserInfoEvent;
@@ -33,6 +34,9 @@ public class AliPayUtil {
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
                         Utils.showToast("支付成功", false);
                         EventBus.getDefault().post(new FinishOrderActivityEvent());
+//                        String topActivity = Utils.getTopActivity(CustomApplication.context);
+//                        if ("OrderActivity".equals(topActivity) || "VipRechargeActivity".equals(topActivity))
+//                            activity.finish();
                         EventBus.getDefault().post(new UpdateCartEvent());
                         EventBus.getDefault().post(new UpdateUserInfoEvent());
                     } else {
@@ -49,7 +53,6 @@ public class AliPayUtil {
 
 
     public static void pay(final Activity activity, final String paySign) {
-
         Runnable payRunnable = new Runnable() {
 
             @Override

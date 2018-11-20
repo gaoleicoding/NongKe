@@ -189,11 +189,11 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
             R.id.tv_vip_recharge, R.id.my_inviter_layout, R.id.custom_service_layout, R.id.help_feedback_layout})
     public void click(View view) {
 //        if (view.getId() != R.id.custom_service_layout && view.getId() != R.id.help_feedback_layout) {
-            if (!UserUtil.isLogined()) {
-                RegisterLoginActivity.startActivity(getActivity());
-                Utils.showToast(getString(R.string.user_not_login), true);
-                return;
-            }
+        if (!UserUtil.isLogined()) {
+            RegisterLoginActivity.startActivity(getActivity());
+            Utils.showToast(getString(R.string.user_not_login), true);
+            return;
+        }
 //        }
         switch (view.getId()) {
             case R.id.tv_vip_recharge:
@@ -301,15 +301,20 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
 
     private void judgeLoginAndVip() {
         if (UserUtil.getUserInfo().rspBody.isVip == 1) {
-            tv_member_type.setVisibility(View.GONE);
-            tv_vip_recharge.setText("VIP会员");
+            tv_member_type.setText("VIP会员");
+            tv_member_type.setTextColor(getResources().getColor(R.color.color_efe620));
+            tv_vip_recharge.setText("（邀请码:" + UserUtil.userInfo.rspBody.uid + "）");
         } else {
-            tv_member_type.setVisibility(View.VISIBLE);
+            tv_member_type.setText(" 普通会员");
+            tv_member_type.setTextColor(getResources().getColor(R.color.color_fff3eb));
+
             tv_vip_recharge.setText(" 申请高级会员>>");
         }
 
         tv_user_phone_num.setText(UserUtil.getUserInfo().rspBody.phone);
-        tv_user_inviter_phone_num.setText(UserUtil.getUserInfo().rspBody.inviterPhone);
+        if (UserUtil.getUserInfo().rspBody.inviterPhone == null)
+            tv_user_inviter_phone_num.setText("无");
+        else tv_user_inviter_phone_num.setText(UserUtil.getUserInfo().rspBody.inviterPhone);
         tv_user_balance.setText(UserUtil.getUserInfo().rspBody.money + "元");
         tv_user_commission.setText(UserUtil.getUserInfo().rspBody.commission + "元");
         tv_user_daoli_balance.setText(UserUtil.getUserInfo().rspBody.cardMoney + "元");
