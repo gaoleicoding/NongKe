@@ -120,6 +120,11 @@ public class ProductDetailActivity extends BaseMvpActivity<ProductDetailPresente
                 product.amount = ammount;
                 break;
             case R.id.tv_product_add_cart:
+                if (!UserUtil.isLogined()) {
+                    RegisterLoginActivity.startActivity(this);
+                    Utils.showToast(getString(R.string.user_not_login), true);
+                    return;
+                }
                 if (ammount > product.stockAmount) {
                     Utils.showToast("你选择的数量大于库存，请重新选择", true);
                     return;

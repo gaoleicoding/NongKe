@@ -333,7 +333,7 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
         }
         if (messageList.size() > 3) {
             messageBodyList = messageList.subList(0, 3);
-//            handler.sendEmptyMessageDelayed(LOOP_DISPLAY_MSG, 1000);
+//            handler.sendEmptyMessageDelayed(LOOP_DISPLAY_MSG, 500);
         }
         for (int i = 0; i < messageBodyList.size(); i++) {
             datas.add(messageBodyList.get(i).title);
