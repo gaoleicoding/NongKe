@@ -1,5 +1,6 @@
 package com.nongke.jindao.fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -8,7 +9,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -105,7 +109,7 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
                         tv_notice_content.setText(msgTitle);
 
                     msgIndex++;
-                    handler.sendEmptyMessageDelayed(LOOP_DISPLAY_MSG, 3000);
+                    handler.sendEmptyMessageDelayed(LOOP_DISPLAY_MSG, 4000);
                     break;
 
             }
@@ -209,7 +213,7 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
         //        Transformer.FlipVertical
         banner.setBannerAnimation(Transformer.Default);
         banner.setIndicatorGravity(BannerConfig.CENTER);//设置指示器位置
-        banner.setDelayTime(3000);//设置轮播时间
+        banner.setDelayTime(4000);//设置轮播时间
         banner.setImages(imageList);//设置图片源
         banner.setBannerTitles(titleList);//设置标题源
 
@@ -353,12 +357,5 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
         project_recyclerview.scrollToPosition(0);
     }
 
-    public void onResume() {
-        super.onResume();
 
-    }
-
-    public void onDestroy() {
-        super.onDestroy();
-    }
 }

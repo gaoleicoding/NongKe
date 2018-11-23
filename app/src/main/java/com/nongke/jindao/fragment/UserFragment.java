@@ -1,6 +1,7 @@
 package com.nongke.jindao.fragment;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -116,6 +118,7 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
 
     public static int PICK_PHOTO = 0;
     public ImageUtils imageUtils;
+    private final String TAG = "UserFragment";
 
     @Override
     public void initData(Bundle bundle) {
@@ -147,7 +150,14 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
         super.onCreate(savedInstanceState);
 
     }
-
+    //和activity一致
+    @Override
+    public void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+        mPresenter.getUserInfo();
+        Log.i(TAG, "--UserFragment->>onResume");
+    }
     public void refreshUserInfo() {
         if (UserUtil.isLogined()) {
             ll_userinfo_profile_logined.setVisibility(View.VISIBLE);
@@ -304,6 +314,7 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
     }
 
     private void judgeLoginAndVip() {
+        if(tv_member_type==null)return;
         if (UserUtil.getUserInfo().rspBody.isVip == 1) {
             tv_member_type.setText("VIP会员");
             tv_member_type.setTextColor(getResources().getColor(R.color.color_efe620));
@@ -356,4 +367,79 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
         }
     }
 
+
+    //获得activity的传递的值
+    @Override
+    public void onAttach(Activity activity) {
+        // TODO Auto-generated method stub
+        super.onAttach(activity);
+        Log.i(TAG, "--UserFragment->>onAttach");
+    }
+
+    //实例化成员变量
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        // TODO Auto-generated method stub
+//        super.onCreate(savedInstanceState);
+//        Log.i(TAG, "--UserFragment->>onCreate");
+//    }
+
+
+    //表示activity执行oncreate方法完成了的时候会调用此方法
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
+        super.onActivityCreated(savedInstanceState);
+        Log.i(TAG, "--UserFragment->>onActivityCreated");
+    }
+
+    //和activity一致
+    @Override
+    public void onStart() {
+        // TODO Auto-generated method stub
+        super.onStart();
+        Log.i(TAG, "--UserFragment->>onStart");
+    }
+
+
+
+    //和activity一致
+    @Override
+    public void onPause() {
+        // TODO Auto-generated method stub
+        super.onPause();
+        Log.i(TAG, "--UserFragment->>onPause");
+    }
+
+    //和activity一致
+    @Override
+    public void onStop() {
+        // TODO Auto-generated method stub
+        super.onStop();
+        Log.i(TAG, "--UserFragment->>onStop");
+    }
+
+    //表示fragment销毁相关联的UI布局
+    @Override
+    public void onDestroyView() {
+        // TODO Auto-generated method stub
+        super.onDestroyView();
+        Log.i(TAG, "--UserFragment->>onDestroyView");
+    }
+
+    //销毁fragment对象
+    @Override
+    public void onDestroy() {
+        // TODO Auto-generated method stub
+        super.onDestroy();
+        Log.i(TAG, "--UserFragment->>onDestroy");
+    }
+
+    //脱离activity
+    @Override
+    public void onDetach() {
+        // TODO Auto-generated method stub
+        super.onDetach();
+        Log.i(TAG, "--UserFragment->>onDetach");
+    }
 }

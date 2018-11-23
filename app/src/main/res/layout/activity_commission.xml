@@ -106,7 +106,7 @@
                 <TextView
                     style="@style/common_txt_16sp"
                     android:layout_marginLeft="30sp"
-                    android:text="余额："
+                    android:text="剩余："
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
