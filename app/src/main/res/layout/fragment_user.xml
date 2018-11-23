@@ -16,7 +16,13 @@
             android:layout_height="wrap_content"
             android:background="@color/app_color"
             android:orientation="horizontal"
-            android:padding="18dp">
+            android:paddingBottom="15dp"
+            android:paddingLeft="18dp"
+            android:paddingRight="15dp"
+            android:paddingTop="15dp"
+
+
+            >
 
             <com.nongke.jindao.base.view.CircleImageView
                 android:id="@+id/iv_user_photo"
@@ -40,8 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
                 android:orientation="vertical"
-                android:visibility="gone"
-                >
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tv_user_phone_num"
@@ -111,8 +116,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="5dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -134,12 +138,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="5dp"
                         android:background="@drawable/copy_corner_stroke_bg"
-                        android:paddingBottom="2dp"
-                        android:paddingLeft="4dp"
-                        android:paddingRight="4dp"
-                        android:paddingTop="2dp"
+                        android:paddingBottom="1dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:paddingTop="1dp"
                         android:text="复制"
                         android:textColor="@color/white"
                         android:textSize="10sp" />

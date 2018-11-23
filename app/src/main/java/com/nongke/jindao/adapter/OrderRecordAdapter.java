@@ -96,10 +96,10 @@ public class OrderRecordAdapter extends BaseExpandableListAdapter {
         tv_time.setText(Utils.ms2Date(Long.parseLong(productOrder.createTime)));
         tv_order_status.setText(productOrder.statusDesc);
 
-        if (productOrder.isSend == 2)
+        if (productOrder.isSend == 2&& !"已完成".equals(productOrder.statusDesc)&& !"已取消".equals(productOrder.statusDesc))
             tv_order_status.setText("已发货");
-        if (productOrder.isConfirmReceive || "已完成".equals(productOrder.statusDesc))
-            tv_order_status.setText("已完成");
+//        if (productOrder.isConfirmReceive )
+//            tv_order_status.setText("已完成");
         return convertView;
     }
 
@@ -140,7 +140,7 @@ public class OrderRecordAdapter extends BaseExpandableListAdapter {
                 manageOrderEvent.groupPosition = groupPosition;
                 manageOrderEvent.orderId = productOrder.orderId;
                 EventBus.getDefault().post(manageOrderEvent);
-                productOrder.isConfirmReceive = true;
+                productOrder.statusDesc = "已完成";
                 notifyDataSetChanged();
 
             }
@@ -169,13 +169,12 @@ public class OrderRecordAdapter extends BaseExpandableListAdapter {
             tv_order_pay.setVisibility(View.VISIBLE);
 
             //订单状态为已发货才显示 确认收货按钮
-            if (productOrder.isSend == 2 && !"已完成".equals(productOrder.statusDesc))
+            if (productOrder.isSend == 2 && !"已完成".equals(productOrder.statusDesc)&& !"已取消".equals(productOrder.statusDesc))
                 tv_confirm_order.setVisibility(View.VISIBLE);
             else tv_confirm_order.setVisibility(View.GONE);
-//            if ("已完成".equals(productOrder.statusDesc))
-//                tv_confirm_order.setVisibility(View.GONE);
-            if (productOrder.isConfirmReceive) tv_confirm_order.setText("已确认收货");
-            else tv_confirm_order.setText("确认收货");
+
+//            if (productOrder.isConfirmReceive) tv_confirm_order.setText("已确认收货");
+//            else tv_confirm_order.setText("确认收货");
         } else {
             ll_product_del_confirm.setVisibility(View.GONE);
         }

@@ -307,7 +307,7 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
         if (UserUtil.getUserInfo().rspBody.isVip == 1) {
             tv_member_type.setText("VIP会员");
             tv_member_type.setTextColor(getResources().getColor(R.color.color_efe620));
-            tv_vip_recharge.setText(" 邀请码：" + UserUtil.userInfo.rspBody.uid);
+            tv_vip_recharge.setText(" 邀请码:" + UserUtil.userInfo.rspBody.uid);
             tv_copy_invite_code.setVisibility(View.VISIBLE);
 
         } else {
