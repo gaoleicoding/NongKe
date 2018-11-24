@@ -42,7 +42,7 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.View> impl
     @Override
     public void uploadImg(String path) {
         final File file = new File(path);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
         MultipartBody.Part photo = MultipartBody.Part.createFormData("photo", file.getName(), requestBody);
 
         Observable observable = RetrofitProvider.getInstance().createService(ApiService.class).uploadImg(photo);

@@ -41,6 +41,7 @@ import com.nongke.jindao.base.event.UpdateUserInfoEvent;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.photopicker.ImageUtils;
+import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.PermissionUtil;
 import com.nongke.jindao.base.utils.SharedPreferencesUtils;
 import com.nongke.jindao.base.utils.Utils;
@@ -310,6 +311,7 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
     }
 
     public void uploadPhoto(String path) {
+        LogUtil.d(TAG,"path-------------"+path);
         mPresenter.uploadImg(path);
     }
 
@@ -322,7 +324,7 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
             tv_copy_invite_code.setVisibility(View.VISIBLE);
 
         } else {
-            tv_member_type.setText(" 普通会员");
+            tv_member_type.setText("普通会员");
             tv_member_type.setTextColor(getResources().getColor(R.color.color_fff3eb));
             tv_vip_recharge.setText(" 申请高级会员>>");
             tv_copy_invite_code.setVisibility(View.GONE);

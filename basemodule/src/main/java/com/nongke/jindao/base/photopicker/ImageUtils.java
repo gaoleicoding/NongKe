@@ -42,7 +42,7 @@ public class ImageUtils {
     //裁剪图像 URI
     public Uri imgUriCrop;
     public PopupWindow popWinChoose;
-    public static final String TAG = "CameraDemo_MainActivity";
+    public static final String TAG = "UserFragment";
     public static final int REQUEST_OPEN_CAMERA = 0x011;
     public static final int REQUEST_OPEN_GALLERY = 0x022;
     public static final int REQUEST_CROP_PHOTO = 0x033;
@@ -119,7 +119,7 @@ public class ImageUtils {
         }
         File image = File.createTempFile(
                 imgNameCrop,         /* prefix */
-                ".jpg",             /* suffix */
+                ".png",             /* suffix */
                 pictureDirCrop      /* directory */
         );
         imgPathCrop = image.getAbsolutePath();
