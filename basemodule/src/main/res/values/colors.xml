@@ -4,8 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="app_color">#fa0007</color>
-    <color name="app_color_bb">#bbfa0007</color>
+    <color name="app_color">#FF625B</color>
+    <color name="app_color_bb">#bbFF625B</color>
     <color name="color_tab_unselect">#9b9b9b</color>
     <color name="color_bfbfbf">#bfbfbf</color>
     <color name="white">#FFFFFF</color>

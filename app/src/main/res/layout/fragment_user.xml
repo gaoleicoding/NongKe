@@ -19,9 +19,7 @@
             android:paddingBottom="15dp"
             android:paddingLeft="18dp"
             android:paddingRight="15dp"
-            android:paddingTop="15dp"
-
-
+            android:paddingTop="18dp"
             >
 
             <com.nongke.jindao.base.view.CircleImageView
@@ -45,8 +43,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
-                android:orientation="vertical"
-                android:visibility="gone">
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tv_user_phone_num"

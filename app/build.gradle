@@ -1,18 +1,19 @@
-apply plugin: 'com.android.application'
-
 ext.getCNName = {
     java.util.HashMap<String, String> map = new HashMap<>();
 
-    map.put("Baidu", "Baidu-百度.apk");
+
+    map.put("xiaomi", "xiaomi-小米.apk");
+    map.put("oppo", "oppo-oppo手机.apk");
     map.put("Tencent", "Tencent-腾讯应用宝.apk");
     map.put("huawei", "huawei-华为.apk");
     map.put("Qihoo", "Qihoo-360手机助手.apk");
-    map.put("jindao", "jindao-金稻.apk");
-    map.put("oppo", "oppo-oppo手机.apk");
-    map.put("vivo", "vivo-vivo手机.apk");
-    map.put("xiaomi", "xiaomi-小米.apk");
+        map.put("jindao", "jindao-金稻.apk");
+    //    map.put("Baidu", "Baidu-百度.apk");
+//    map.put("vivo", "vivo-vivo手机.apk");
     return map;
 }
+apply plugin: 'com.android.application'
+
 
 android {
     signingConfigs {
@@ -40,7 +41,7 @@ android {
         abortOnError false
         disable 'MissingTranslation'
     }
-    aaptOptions {         cruncherEnabled = false     }
+    aaptOptions { cruncherEnabled = false }
     buildTypes {
         debug {
             minifyEnabled false //是否启用Proguard
@@ -73,24 +74,19 @@ android {
 
     flavorDimensions("dimension1")
     productFlavors {
+
+
         xiaomi {
             dimension "dimension1"
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi", SPAM_VALUE: "xiaomi"];
         }
 
-        Baidu {
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "Baidu", SPAM_VALUE: "Baidu"];
-            dimension "dimension1"
-        }
+
         Tencent {
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "Tencent", SPAM_VALUE: "Tencent"];
             dimension "dimension1"
         }
 
-//        Wandoujia {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "Wandoujia", SPAM_VALUE: "Wandoujia"];
-//            dimension "dimension1"
-//        }
         huawei {
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "huawei", SPAM_VALUE: "huawei"];
             dimension "dimension1"
@@ -99,34 +95,24 @@ android {
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "Qihoo", SPAM_VALUE: "Qihoo"];
             dimension "dimension1"
         }
-        jindao {
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "jindao", SPAM_VALUE: "jindao"];
-            dimension "dimension1"
-        }
+
 
         oppo {
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "oppo", SPAM_VALUE: "oppo"];
             dimension "dimension1"
         }
-//        lenovo {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "lenovo", SPAM_VALUE: "lenovo"];
-//            dimension "dimension1"
-//        }
-//
-//        ppzhushou {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "ppzhushou", SPAM_VALUE: "ppzhushou"];
-//            dimension "dimension1"
-//        }
-//
-//        letv {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "letv", SPAM_VALUE: "letv"];
-//            dimension "dimension1"
-//        }
-
-        vivo {
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "vivo", SPAM_VALUE: "vivo"];
+        jindao {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "jindao", SPAM_VALUE: "jindao"];
             dimension "dimension1"
         }
+//        Baidu {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "Baidu", SPAM_VALUE: "Baidu"];
+//            dimension "dimension1"
+//        }
+//        vivo {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "vivo", SPAM_VALUE: "vivo"];
+//            dimension "dimension1"
+//        }
 
 
     }

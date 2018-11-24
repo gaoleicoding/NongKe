@@ -79,7 +79,7 @@
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:layout_marginLeft">20dp</item>
         <item name="android:textColor">@color/color_black</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
     <style name="common_txt_14sp">
@@ -161,7 +161,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">5dp</item>
         <item name="android:textColor">@color/color_fff3eb</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
     <style name="horizontal_divider">

@@ -180,6 +180,7 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
     public void showBannerList(BannerResData productResData) {
 
         final List<Product> bannerList = productResData.rspBody;
+        if (bannerList.size() == 0) banner.setVisibility(View.GONE);
         LogUtil.d("bannerList.size():" + bannerList.size());
         List imageList = new ArrayList();
         List titleList = new ArrayList();
@@ -329,7 +330,10 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
     public void showMessageList(MessageResData messageResData) {
         if (messageResData == null || messageResData.rspBody == null) return;
         List<MessageBody> messageList = messageResData.rspBody;
-        if (messageList.size() == 0) rl_notice.setVisibility(View.GONE);
+        if (messageList.size() == 0) {
+            rl_notice.setVisibility(View.GONE);
+            return;
+        }
 
         if (messageList.size() > 0 && messageList.size() < 4) {
             messageBodyList = messageList;

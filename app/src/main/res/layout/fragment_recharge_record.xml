@@ -6,19 +6,17 @@
     <!--下拉刷新组件-->
 
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recharge_recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/title"
-            android:background="#ffffff" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recharge_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title"
+        android:background="#ffffff" />
 
 
     <TextView
         android:id="@+id/tv_recharge_hint"
-        style="@style/common_hint_txt"
-        />
-
+        style="@style/common_hint_txt" />
 
 
 </RelativeLayout>

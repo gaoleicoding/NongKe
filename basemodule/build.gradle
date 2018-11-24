@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'org.greenrobot.greendao'
 apply plugin: 'com.jakewharton.butterknife'
 android {
-    compileSdkVersion 28
+    compileSdkVersion 26
     buildToolsVersion '26.0.2'
     defaultConfig {
         minSdkVersion rootProject.ext.android.minSdkVersion
@@ -20,11 +20,13 @@ android {
     buildTypes {
         debug {
             minifyEnabled false //是否启用Proguard
+            shrinkResources false //是否清理无用资源,依赖于minifyEnabled
             zipAlignEnabled false //是否启用zipAlign压缩
         }
         release {
-            minifyEnabled true //是否启用Proguard
-            zipAlignEnabled true //是否启用zipAlign压缩
+            minifyEnabled false //是否启用Proguard
+            shrinkResources false //是否清理无用资源,依赖于minifyEnabled
+            zipAlignEnabled false //是否启用zipAlign压缩
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
