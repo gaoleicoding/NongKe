@@ -46,6 +46,10 @@ public class OnlineParamResData extends BaseResData {
         public ParamContent custom_service_subscription_num;
         public ParamContent custom_service_email_receiver;//客服邮箱，在我的反馈与意见中用到
         public ParamContent company_website;//公司网址，首页的公司介绍跳转到此网页
+        public ParamContent android_versionCode;//判断是否提醒用户升级
+        public ParamContent android_app_download_url;//android升级下载地址
+        public ParamContent android_update_content;//android更新内容
+        public ParamContent android_must_update;//android是否强制更新
 
     }
 

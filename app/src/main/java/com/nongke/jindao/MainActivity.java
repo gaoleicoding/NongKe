@@ -2,12 +2,16 @@ package com.nongke.jindao;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -15,6 +19,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nongke.jindao.activity.OrderActivity;
 import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.adapter.MainTabAdapter;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
@@ -24,6 +29,7 @@ import com.nongke.jindao.base.photopicker.UriUtils;
 import com.nongke.jindao.base.utils.FileProvider7;
 import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.PermissionUtil;
+import com.nongke.jindao.base.utils.account.OnlineParamUtil;
 import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.fragment.CartFragment;
@@ -33,6 +39,7 @@ import com.nongke.jindao.fragment.RechargeFragment;
 import com.nongke.jindao.fragment.UserFragment;
 import com.nongke.jindao.mcontract.OnlineParameContract;
 import com.nongke.jindao.mpresenter.OnlineParamePresenter;
+import com.nongke.jindao.update.UpdateApk;
 import com.nongke.jindao.view.CustomViewPager;
 
 import java.io.File;
@@ -68,9 +75,27 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
     private static final int REQUEST_OPEN_CAMERA = 0x011;
     private static final int REQUEST_OPEN_GALLERY = 0x022;
     private static final int REQUEST_CROP_PHOTO = 0x033;
-    private static final int REQUEST_PERMISSIONS = 0x044;
+    private static final int CHECK_UPDATE = 0x044;
     ImageUtils imageUtils;
     private static final String TAG = "MainActivity";
+    boolean isAllPermissionsGrantedd;
+
+    Handler handler = new Handler() {
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case CHECK_UPDATE:
+                    if (OnlineParamUtil.getParamResData().rspBody == null) {
+                        handler.sendEmptyMessageDelayed(CHECK_UPDATE, 1000);
+                        return;
+                    } else {
+                        handler.removeMessages(CHECK_UPDATE);
+                        checkUpdate();
+                    }
+                    break;
+            }
+        }
+    };
 
 
     public static void startActivity(Context context) {
@@ -130,8 +155,8 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
         BigDecimal b4 = new BigDecimal("10");
         BigDecimal b = b1.subtract(b2);//会输出0.1
         float b5 = b3.divide(b4).floatValue();//会输出0.1
-        Log.d(TAG,"value1:"+b);
-        Log.d(TAG,"value1:"+b5);
+        Log.d(TAG, "value1:" + b);
+        Log.d(TAG, "value1:" + b5);
     }
 
 
@@ -191,7 +216,7 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
 
             @Override
             public void granted() {
-
+                checkUpdate();
             }
 
             @Override
@@ -298,7 +323,42 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
             rl_maintain_desc.setVisibility(View.VISIBLE);
             tv_maintain_desc.setText(onlineParamResData.rspBody.is_maintaining_content.content);
         }
+
     }
 
+    private void checkUpdate() {
+        if (OnlineParamUtil.getParamResData() == null || OnlineParamUtil.getParamResData().rspBody == null) {
+            handler.sendEmptyMessageDelayed(CHECK_UPDATE, 1000);
+            return;
+        }
+        String android_versionCode = OnlineParamUtil.getParamResData().rspBody.android_versionCode.content;
+        final String android_app_download_url = OnlineParamUtil.getParamResData().rspBody.android_app_download_url.content;
+        String android_update_content = OnlineParamUtil.getParamResData().rspBody.android_update_content.content;
+        String android_must_update = OnlineParamUtil.getParamResData().rspBody.android_must_update.content;
 
+        if (Utils.stringToInt(android_versionCode) <= Utils.getVersionCode(this)) return;
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("升级提醒");
+        builder.setIcon(R.drawable.update);
+        builder.setMessage(android_update_content);
+        builder.setCancelable(false);
+        if ("false".equals(android_must_update)) {
+            builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+
+                }
+            });
+        }
+        builder.setPositiveButton("升级", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+                UpdateApk.downFile(android_app_download_url, MainActivity.this);
+            }
+        });
+
+        builder.show();
+    }
 }

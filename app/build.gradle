@@ -2,12 +2,12 @@ ext.getCNName = {
     java.util.HashMap<String, String> map = new HashMap<>();
 
 
-    map.put("xiaomi", "xiaomi-小米.apk");
-    map.put("oppo", "oppo-oppo手机.apk");
-    map.put("Tencent", "Tencent-腾讯应用宝.apk");
-    map.put("huawei", "huawei-华为.apk");
-    map.put("Qihoo", "Qihoo-360手机助手.apk");
-        map.put("jindao", "jindao-金稻.apk");
+    map.put("xiaomi", "xiaomi.apk");
+    map.put("oppo", "oppo.apk");
+    map.put("Tencent", "Tencent.apk");
+    map.put("huawei", "huawei.apk");
+    map.put("Qihoo", "360.apk");
+        map.put("jindao", "jindao.apk");
     //    map.put("Baidu", "Baidu-百度.apk");
 //    map.put("vivo", "vivo-vivo手机.apk");
     return map;
@@ -63,7 +63,7 @@ android {
                     if (outputFile != null && outputFile.name.endsWith('.apk')) {
                         // 输出apk名称为XuetangXRelease-3.1.0(3100)_Baidu-百度.apk
                         def channel = variant.productFlavors[0].name
-                        def releaseFileName = "build/outputs/金稻商城－${variant.buildType.name}-V${variant.versionName}(${variant.versionCode})_${getCNName().get(channel)}"
+                        def releaseFileName = "build/outputs/JinDao－${variant.buildType.name}-V${variant.versionName}(${variant.versionCode})_${getCNName().get(channel)}"
                         outputFileName = releaseFileName
                     }
                 }
