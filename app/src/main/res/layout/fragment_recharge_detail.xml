@@ -23,6 +23,7 @@
             <TextView
                 android:id="@+id/tv_vip_recharge"
                 style="@style/user_info_txt"
+
                 android:layout_marginLeft="0dp"
                 android:text="@string/you_are_not_vip"
                 android:textColor="@color/app_color" />
@@ -39,6 +40,7 @@
             <TextView
                 android:id="@+id/tv_recharge_phone_num"
                 style="@style/user_info_txt"
+                android:textSize="16sp"
                 android:textColor="@color/app_color" />
 
         </LinearLayout>
