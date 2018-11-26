@@ -22,7 +22,6 @@ import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.ResponseStatusUtil;
 import com.nongke.jindao.base.utils.SharedPreferencesUtils;
 import com.nongke.jindao.base.utils.Utils;
-import com.nongke.jindao.base.event.LoginEvent;
 import com.nongke.jindao.base.utils.account.OnlineParamUtil;
 import com.nongke.jindao.event.UpdateCartEvent;
 import com.nongke.jindao.mcontract.RegisterLoginContract;
@@ -31,8 +30,6 @@ import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.view.CountDownButton;
 
 import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.OnClick;

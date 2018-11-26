@@ -23,7 +23,7 @@ public class OnlineParamePresenter extends BasePresenter<OnlineParameContract.Vi
             @Override
             public void onNext(OnlineParamResData paramResData) {
                 LogUtil.d2("OnlineParamePresenter------------ :" + paramResData.rspBody.vip_phone_discount.toString());
-                OnlineParamUtil.setParamResData(paramResData);
+                OnlineParamUtil.paramResData=paramResData;
                 mView.showOnlineParame(paramResData);
             }
         });

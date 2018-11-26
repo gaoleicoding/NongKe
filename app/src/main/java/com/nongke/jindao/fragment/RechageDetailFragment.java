@@ -1,22 +1,15 @@
 package com.nongke.jindao.fragment;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.nongke.jindao.base.pay.alipay.PayResult;
+import com.nongke.jindao.base.event.LoginEvent;
 import com.nongke.jindao.R;
 import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.activity.VipRechargeActivity;
-import com.nongke.jindao.base.event.LoginAccountEvent;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
-import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.mmodel.RechargeResData;
 import com.nongke.jindao.base.pay.alipay.AliPayUtil;
 import com.nongke.jindao.base.pay.wxpay.WXPayUtil;
@@ -32,7 +25,6 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.math.BigDecimal;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -150,7 +142,7 @@ public class RechageDetailFragment extends BaseMvpFragment<RechargePresenter> im
 
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEvent(LoginAccountEvent accountEvent) {
+    public void onEvent(LoginEvent accountEvent) {
         judgeLoginAndVip();
     }
 

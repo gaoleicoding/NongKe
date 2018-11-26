@@ -2,7 +2,7 @@ package com.nongke.jindao.base.utils;
 
 import com.gaolei.basemodule.R;
 import com.nongke.jindao.base.application.CustomApplication;
-import com.nongke.jindao.base.event.LoginEvent;
+import com.nongke.jindao.base.event.FreezeEvent;
 import com.nongke.jindao.base.mmodel.BaseResData;
 
 import org.greenrobot.eventbus.EventBus;
@@ -21,7 +21,7 @@ public class ResponseStatusUtil {
                 Utils.showToast(baseResData.retDesc, true);
 
         } else if ("30000".equals(baseResData.retCode)) {
-            EventBus.getDefault().post(new LoginEvent());
+            EventBus.getDefault().post(new FreezeEvent());
         } else Utils.showToast(baseResData.retDesc, true);
     }
 }

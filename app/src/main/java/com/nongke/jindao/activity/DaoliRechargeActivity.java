@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
-import com.nongke.jindao.base.event.LoginAccountEvent;
+import com.nongke.jindao.base.event.LoginEvent;
 import com.nongke.jindao.base.mmodel.RechargeResData;
 import com.nongke.jindao.base.pay.alipay.AliPayUtil;
 import com.nongke.jindao.base.pay.wxpay.WXPayUtil;
@@ -121,7 +121,7 @@ public class DaoliRechargeActivity extends BaseMvpActivity<RechargePresenter> im
 
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEvent(LoginAccountEvent accountEvent) {
+    public void onEvent(LoginEvent accountEvent) {
         tv_daoli_amount.setText(UserUtil.getUserInfo().rspBody.cardMoney + "");
     }
 

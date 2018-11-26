@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.nongke.jindao.R;
 import com.nongke.jindao.adapter.PhoneRecordAdapter;
 import com.nongke.jindao.adapter.divider.RecycleViewDivider;
-import com.nongke.jindao.base.event.LoginAccountEvent;
+import com.nongke.jindao.base.event.LoginEvent;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mmodel.PhoneRecordResData;
 import com.nongke.jindao.base.utils.account.UserUtil;
@@ -103,7 +103,7 @@ public class RechageRecordFragment extends BaseMvpFragment<RechargeRecordPresent
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEvent(LoginAccountEvent accountEvent) {
+    public void onEvent(LoginEvent accountEvent) {
         judgeLogin();
     }
 

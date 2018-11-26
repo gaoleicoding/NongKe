@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.nongke.jindao.R;
 import com.nongke.jindao.adapter.OrderRecordAdapter;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
-import com.nongke.jindao.base.event.LoginAccountEvent;
 import com.nongke.jindao.base.event.ManageOrderEvent;
 import com.nongke.jindao.base.mmodel.OrderRecordResData;
 import com.nongke.jindao.base.mmodel.ProductOrder;

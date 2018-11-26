@@ -17,7 +17,7 @@ import com.nongke.jindao.activity.OrderActivity;
 import com.nongke.jindao.activity.RegisterLoginActivity;
 import com.nongke.jindao.adapter.CartAdapter;
 import com.nongke.jindao.adapter.divider.SpacesItemDecoration;
-import com.nongke.jindao.base.event.LoginAccountEvent;
+import com.nongke.jindao.base.event.LoginEvent;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mmodel.Product;
 import com.nongke.jindao.base.mmodel.ProductResData;
@@ -248,7 +248,7 @@ public class CartFragment extends BaseMvpFragment<CartPresenter> implements Cart
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEvent(LoginAccountEvent accountEvent) {
+    public void onEvent(LoginEvent accountEvent) {
         judgeLogin();
     }
 

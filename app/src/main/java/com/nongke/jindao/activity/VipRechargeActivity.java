@@ -4,23 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.nongke.jindao.base.event.LoginAccountEvent;
-import com.nongke.jindao.base.pay.alipay.PayResult;
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
-import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.mmodel.RechargeResData;
 import com.nongke.jindao.base.pay.alipay.AliPayUtil;
 import com.nongke.jindao.base.pay.wxpay.WXPayUtil;
@@ -32,17 +24,8 @@ import com.nongke.jindao.mcontract.RechargeContract;
 import com.nongke.jindao.mpresenter.RechargePresenter;
 import com.nongke.jindao.view.PayView;
 
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
-import java.util.Map;
-
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static com.nongke.jindao.base.pay.alipay.AliPayUtil.SDK_PAY_FLAG;
-
-
 
 
 public class VipRechargeActivity extends BaseMvpActivity<RechargePresenter> implements RechargeContract.View {
@@ -147,6 +130,7 @@ public class VipRechargeActivity extends BaseMvpActivity<RechargePresenter> impl
                 mPresenter.recharge(1, pay_view.getPayType(), Utils.stringToFloat(OnlineParamUtil.paramResData.rspBody.vip_price.content), Utils.stringToFloat(OnlineParamUtil.paramResData.rspBody.vip_price.content));
                 break;
             case R.id.tv_vip_contract:
+                if(OnlineParamUtil.paramResData==null)return;
                 isInContract = true;
                 tv_vip_contract_content.setText(OnlineParamUtil.paramResData.rspBody.vip_contract.content);
                 tv_vip_contract_content.setVisibility(View.VISIBLE);
@@ -198,7 +182,7 @@ public class VipRechargeActivity extends BaseMvpActivity<RechargePresenter> impl
     }
 
 //    @Subscribe(threadMode = ThreadMode.MAIN)
-//    public void onEvent(LoginAccountEvent accountEvent) {
+//    public void onEvent(LoginEvent accountEvent) {
 //        finish();
 //    }
 }

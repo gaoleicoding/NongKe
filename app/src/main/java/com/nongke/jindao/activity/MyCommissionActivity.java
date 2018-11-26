@@ -3,7 +3,6 @@ package com.nongke.jindao.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -16,7 +15,7 @@ import com.nongke.jindao.R;
 import com.nongke.jindao.adapter.UserRecordAdapter;
 import com.nongke.jindao.adapter.divider.RecycleViewDivider;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
-import com.nongke.jindao.base.event.LoginAccountEvent;
+import com.nongke.jindao.base.event.LoginEvent;
 import com.nongke.jindao.base.event.UpdateUserInfoEvent;
 import com.nongke.jindao.base.mmodel.UserRecordResData;
 import com.nongke.jindao.base.mmodel.UserRecordResData.UserRecordBody;
@@ -116,7 +115,7 @@ public class MyCommissionActivity extends BaseMvpActivity<UserRecordPresenter> i
         }
     }
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEvent(LoginAccountEvent accountEvent) {
+    public void onEvent(LoginEvent accountEvent) {
         tv_commission_balance_ammount.setText(UserUtil.getUserInfo().rspBody.commission+"");
     }
     public void onDestroy() {

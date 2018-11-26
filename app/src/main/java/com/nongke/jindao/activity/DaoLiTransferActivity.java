@@ -3,25 +3,19 @@ package com.nongke.jindao.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
-import com.nongke.jindao.base.event.LoginAccountEvent;
+import com.nongke.jindao.base.event.LoginEvent;
 import com.nongke.jindao.base.mmodel.BaseResData;
-import com.nongke.jindao.base.mmodel.LoginResData;
-import com.nongke.jindao.base.mpresenter.BasePresenter;
 import com.nongke.jindao.base.utils.Utils;
 import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.mcontract.DaoLiTransferContract;
-import com.nongke.jindao.mcontract.RechargeContract;
 import com.nongke.jindao.mpresenter.DaoLiTransferPresenter;
-import com.nongke.jindao.mpresenter.RechargePresenter;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -118,7 +112,7 @@ public class DaoLiTransferActivity extends BaseMvpActivity<DaoLiTransferPresente
         if ("10000".equals(baseResData.retCode)) finish();
     }
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEvent(LoginAccountEvent accountEvent) {
+    public void onEvent(LoginEvent accountEvent) {
         tv_daoli.setText(UserUtil.userInfo.rspBody.cardMoney + "");
     }
     public void onDestroy() {

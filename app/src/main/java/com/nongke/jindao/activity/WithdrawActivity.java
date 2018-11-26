@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
-import com.nongke.jindao.base.event.LoginAccountEvent;
+import com.nongke.jindao.base.event.LoginEvent;
 import com.nongke.jindao.base.mmodel.BaseResData;
 import com.nongke.jindao.base.mmodel.MyProfileResData;
 import com.nongke.jindao.base.utils.Constants;
@@ -258,7 +258,7 @@ public class WithdrawActivity extends BaseMvpActivity<WithdrawPresenter> impleme
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEvent(LoginAccountEvent accountEvent) {
+    public void onEvent(LoginEvent accountEvent) {
         tv_commission_amount.setText(UserUtil.getUserInfo().rspBody.commission + "");
         tv_commission.setText(UserUtil.getUserInfo().rspBody.commission + "");
         tv_withdrawable_amount.setText(UserUtil.getUserInfo().rspBody.money + "");

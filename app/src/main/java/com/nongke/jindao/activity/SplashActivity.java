@@ -10,7 +10,7 @@ import android.view.View;
 import com.nongke.jindao.MainActivity;
 import com.nongke.jindao.R;
 import com.nongke.jindao.base.activity.BaseMvpActivity;
-import com.nongke.jindao.base.event.LoginEvent;
+import com.nongke.jindao.base.event.FreezeEvent;
 import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.ResponseStatusUtil;
@@ -82,7 +82,7 @@ public class SplashActivity extends BaseMvpActivity<SplashLoginPresenter> implem
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEvent(LoginEvent accountEvent) {
+    public void onEvent(FreezeEvent accountEvent) {
         if(UserUtil.isLogined())
         RegisterLoginActivity.startActivity(this);
     }

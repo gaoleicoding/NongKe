@@ -2,7 +2,6 @@ package com.nongke.jindao.fragment;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -23,7 +22,6 @@ import com.bumptech.glide.request.RequestOptions;
 import com.nongke.jindao.R;
 import com.nongke.jindao.activity.DaoLiTransferActivity;
 import com.nongke.jindao.activity.DaoliRechargeActivity;
-import com.nongke.jindao.activity.HelpFeedbackActivity;
 import com.nongke.jindao.activity.MyAddressActivity;
 import com.nongke.jindao.activity.MyBillActivity;
 import com.nongke.jindao.activity.MyCommissionActivity;
@@ -37,7 +35,7 @@ import com.nongke.jindao.activity.VipRechargeActivity;
 import com.nongke.jindao.activity.WithdrawActivity;
 import com.nongke.jindao.activity.WithdrawRecordActivity;
 import com.nongke.jindao.base.activity.BaseActivity;
-import com.nongke.jindao.base.event.LoginAccountEvent;
+import com.nongke.jindao.base.event.LoginEvent;
 import com.nongke.jindao.base.event.LogoutEvent;
 import com.nongke.jindao.base.event.UpdateUserInfoEvent;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
@@ -165,6 +163,7 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
 
     public void refreshUserInfo() {
         if (UserUtil.isLogined()) {
+            if (ll_userinfo_profile_logined == null || tv_user_profile_not_login == null) return;
             ll_userinfo_profile_logined.setVisibility(View.VISIBLE);
             tv_user_profile_not_login.setVisibility(View.GONE);
             if (UserUtil.getUserInfo().rspBody == null) return;
@@ -177,6 +176,7 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
             judgeLoginAndVip();
 
         } else {
+            if (tv_user_profile_not_login == null) return;
             tv_user_profile_not_login.setVisibility(View.VISIBLE);
         }
 
@@ -348,8 +348,8 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEvent(LoginAccountEvent accountEvent) {
-        judgeLoginAndVip();
+    public void onEvent(LoginEvent accountEvent) {
+        refreshUserInfo();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

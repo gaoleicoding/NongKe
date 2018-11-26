@@ -87,24 +87,6 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
     boolean isAllPermissionsGranted;
     boolean hasShowUpdate;
 
-//    Handler handler = new Handler() {
-//        public void handleMessage(Message msg) {
-//            super.handleMessage(msg);
-//            switch (msg.what) {
-//                case CHECK_UPDATE:
-//                    if (OnlineParamUtil.getParamResData().rspBody == null) {
-//                        handler.sendEmptyMessageDelayed(CHECK_UPDATE, 1000);
-//                        return;
-//                    } else {
-//                        checkUpdate();
-//                        handler.removeMessages(CHECK_UPDATE);
-//                    }
-//                    break;
-//            }
-//        }
-//    };
-
-
     public static void startActivity(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
         context.startActivity(intent);
@@ -245,7 +227,7 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         LogUtil.d("PhotoPickerUtil------------------onNewIntent");
-        userFragment.refreshUserInfo();
+//        userFragment.refreshUserInfo();
     }
 
     // 用来计算返回键的点击间隔时间
