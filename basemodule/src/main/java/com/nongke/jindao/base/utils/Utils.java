@@ -178,7 +178,7 @@ public class Utils {
         }
         return Float.parseFloat(value.trim());
     }
-    public static synchronized int getVersionCode(Context context) {
+    public static  int getVersionCode(Context context) {
         try {
             PackageManager packageManager = context.getPackageManager();
             PackageInfo packageInfo = packageManager.getPackageInfo(
@@ -188,5 +188,16 @@ public class Utils {
             e.printStackTrace();
         }
         return 0;
+    }
+    public static  String getVersionName(Context context) {
+        try {
+            PackageManager packageManager = context.getPackageManager();
+            PackageInfo packageInfo = packageManager.getPackageInfo(
+                    context.getPackageName(), 0);
+            return packageInfo.versionName;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }

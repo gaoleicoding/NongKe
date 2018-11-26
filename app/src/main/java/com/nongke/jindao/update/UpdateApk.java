@@ -1,6 +1,7 @@
 package com.nongke.jindao.update;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -27,6 +28,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
+import static butterknife.internal.Utils.arrayOf;
 import static java.lang.Thread.sleep;
 
 public class UpdateApk {
@@ -34,8 +36,10 @@ public class UpdateApk {
 
     //下载进度
     private static ProgressDialog progressDialog;
+    public static Activity activity;
 
-    public static void downFile(final String url, final Context context) {
+    public static void downFile(final String url, final Activity context) {
+        activity = context;
         progressDialog = new ProgressDialog(context);    //进度条，在下载的时候实时更新进度，提高用户友好度
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         progressDialog.setTitle("正在下载");
@@ -62,6 +66,7 @@ public class UpdateApk {
                     File file = null;
                     if (is != null) {
                         file = new File(Environment.getExternalStorageDirectory(), "jindao.apk");// 设置路径
+                        if (file.exists()) file.delete();
                         fos = new FileOutputStream(file);
                         byte[] buf = new byte[1024];
                         int ch = -1;
@@ -104,7 +109,7 @@ public class UpdateApk {
      * @param i
      */
     public static void downLoading(final int i, Context context) {
-        ((MainActivity) context).runOnUiThread(new Runnable() {
+        (activity).runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 progressDialog.setProgress(i);
@@ -114,7 +119,7 @@ public class UpdateApk {
 
     public static void downSuccess(final Context context, final File file) {
         //安装
-        ((MainActivity) context).runOnUiThread(new Runnable() {
+        (activity).runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 if (progressDialog != null && progressDialog.isShowing()) {
@@ -129,51 +134,35 @@ public class UpdateApk {
 
             }
         });
+        activity=null;
     }
 
     public static void installApk(File file, Context context) {
 
-//            Intent intent = new Intent(Intent.ACTION_VIEW);
-//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//广播里面操作需要加上这句，存在于一个独立的栈里
-//
-//            // 兼容系统7.0及以上版本
-//            FileProvider7.setIntentDataAndType(context,
-//                    intent, "application/vnd.android.package-archive", file, false);
-//
-//            context.startActivity(intent);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//广播里面操作需要加上这句，存在于一个独立的栈里
 
-        Intent intent = new Intent();
-        //执行动作
-        intent.setAction(Intent.ACTION_VIEW);
-        if (Build.VERSION.SDK_INT > 23) { //判读版本是否在7.0以上
-            //参数1 上下文, 参数2 Provider主机地址 和配置文件中保持一致   参数3  共享的文件
-            Uri apkUri =
-                    FileProvider.getUriForFile(context, context.getPackageName()+".fileprovider", file);
-            //添加这一句表示对目标应用临时授权该Uri所代表的文件
-//      Attempt to invoke virtual   android.content.res.XmlResourceParser
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            intent.setDataAndType(apkUri, "application/vnd.android.package-archive");
-        } else {
-            intent.setDataAndType(Uri.fromFile(file),
-                    "application/vnd.android.package-archive");
-        }
-        //执行的数据类型
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        // 兼容系统7.0及以上版本
+        FileProvider7.setIntentDataAndType(context,
+                intent, "application/vnd.android.package-archive", file, false);
+
         context.startActivity(intent);
+
     }
 
     public static void downFial(final Context context) {
-        ((MainActivity) context).runOnUiThread(new Runnable() {
+        (activity).runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 progressDialog.cancel();
                 Toast.makeText(context, "更新失败", Toast.LENGTH_LONG).show();
             }
         });
+        activity=null;
     }
 
     public static void setMax(final long total, Context context) {
-        ((MainActivity) context).runOnUiThread(new Runnable() {
+        (activity).runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 progressDialog.setMax((int) total);

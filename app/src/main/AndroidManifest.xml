@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <application
         android:name=".base.application.CustomApplication"
@@ -62,6 +63,7 @@
         <activity android:name=".activity.DaoLiTransferRecordActivity"></activity>
         <activity android:name=".activity.CustomServiceActivity"></activity>
         <activity android:name=".activity.HelpFeedbackActivity"></activity>
+        <activity android:name=".activity.SettingActivity"></activity>
 
 
         <!--value的值填写你在友盟后台申请的应用Appkey-->

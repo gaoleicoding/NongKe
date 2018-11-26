@@ -182,6 +182,8 @@ public class HelpFeedbackActivity extends BaseMvpActivity {
                 if (e.getMessage() != null)
                     Utils.showToast("反馈发送失败，请稍后再试", false);
                 e.printStackTrace();
+            }finally {
+                finish();
             }
         }
     }

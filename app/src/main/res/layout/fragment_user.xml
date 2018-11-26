@@ -310,21 +310,23 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/help_feedback_layout"
-            style="@style/user_info_layout">
+            android:id="@+id/setting_layout"
+            style="@style/user_info_layout"
+            android:layout_marginTop="10dp">
 
             <ImageView
                 style="@style/user_info_icon"
-                android:src="@drawable/icon_help_feedback2" />
+                android:src="@drawable/icon_setting" />
 
             <TextView
                 style="@style/user_info_txt"
-                android:text="@string/help_feedback" />
+                android:text="@string/my_setting" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/my_logout_layout"
             style="@style/user_info_layout"
+            android:visibility="gone"
             android:layout_marginTop="10dp">
 
             <ImageView

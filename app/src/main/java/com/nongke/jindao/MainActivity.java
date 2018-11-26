@@ -4,12 +4,16 @@ import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -49,6 +53,8 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+import static butterknife.internal.Utils.arrayOf;
+
 public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> implements OnlineParameContract.View {
 
     private ArrayList<Fragment> mFragments;
@@ -75,27 +81,28 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
     private static final int REQUEST_OPEN_CAMERA = 0x011;
     private static final int REQUEST_OPEN_GALLERY = 0x022;
     private static final int REQUEST_CROP_PHOTO = 0x033;
-    private static final int CHECK_UPDATE = 0x044;
+    private static final int INSTALL_APK_REQUESTCODE = 0x044;
     ImageUtils imageUtils;
     private static final String TAG = "MainActivity";
-    boolean isAllPermissionsGrantedd;
+    boolean isAllPermissionsGranted;
+    boolean hasShowUpdate;
 
-    Handler handler = new Handler() {
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what) {
-                case CHECK_UPDATE:
-                    if (OnlineParamUtil.getParamResData().rspBody == null) {
-                        handler.sendEmptyMessageDelayed(CHECK_UPDATE, 1000);
-                        return;
-                    } else {
-                        handler.removeMessages(CHECK_UPDATE);
-                        checkUpdate();
-                    }
-                    break;
-            }
-        }
-    };
+//    Handler handler = new Handler() {
+//        public void handleMessage(Message msg) {
+//            super.handleMessage(msg);
+//            switch (msg.what) {
+//                case CHECK_UPDATE:
+//                    if (OnlineParamUtil.getParamResData().rspBody == null) {
+//                        handler.sendEmptyMessageDelayed(CHECK_UPDATE, 1000);
+//                        return;
+//                    } else {
+//                        checkUpdate();
+//                        handler.removeMessages(CHECK_UPDATE);
+//                    }
+//                    break;
+//            }
+//        }
+//    };
 
 
     public static void startActivity(Context context) {
@@ -216,7 +223,11 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
 
             @Override
             public void granted() {
-                checkUpdate();
+                isAllPermissionsGranted = true;
+                if (OnlineParamUtil.getParamResData() != null && OnlineParamUtil.getParamResData().rspBody != null) {
+                    Log.d(TAG, "checkUpdate()-------granted----");
+                    checkUpdate();
+                }
             }
 
             @Override
@@ -314,7 +325,7 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
     @Override
     protected void loadData() {
         mPresenter.getOnlineParame();
-
+        Log.d(TAG, "MainActivity----------loadData()-----------");
     }
 
     @Override
@@ -323,42 +334,63 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
             rl_maintain_desc.setVisibility(View.VISIBLE);
             tv_maintain_desc.setText(onlineParamResData.rspBody.is_maintaining_content.content);
         }
+        Log.d(TAG, "checkUpdate()-------showOnlineParame----");
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                checkUpdate();
+            }
+        });
+
 
     }
 
     private void checkUpdate() {
-        if (OnlineParamUtil.getParamResData() == null || OnlineParamUtil.getParamResData().rspBody == null) {
-            handler.sendEmptyMessageDelayed(CHECK_UPDATE, 1000);
-            return;
-        }
-        String android_versionCode = OnlineParamUtil.getParamResData().rspBody.android_versionCode.content;
-        final String android_app_download_url = OnlineParamUtil.getParamResData().rspBody.android_app_download_url.content;
-        String android_update_content = OnlineParamUtil.getParamResData().rspBody.android_update_content.content;
-        String android_must_update = OnlineParamUtil.getParamResData().rspBody.android_must_update.content;
+        Log.d(TAG, "checkUpdate()-----------");
+        Log.d(TAG, "isAllPermissionsGranted-----------" + isAllPermissionsGranted);
+        Log.d(TAG, "UOnlineParamUtil.getParamResData()-----------" + OnlineParamUtil.getParamResData());
+        Log.d(TAG, "UOnlineParamUtil.getParamResData().rspBody -----------" + OnlineParamUtil.getParamResData().rspBody);
+        if (hasShowUpdate) return;
+        if (OnlineParamUtil.getParamResData() != null && OnlineParamUtil.getParamResData().rspBody != null) {
+            if (isAllPermissionsGranted) {
+                String android_versionCode = OnlineParamUtil.getParamResData().rspBody.android_versionCode.content;
 
-        if (Utils.stringToInt(android_versionCode) <= Utils.getVersionCode(this)) return;
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle("升级提醒");
-        builder.setIcon(R.drawable.update);
-        builder.setMessage(android_update_content);
-        builder.setCancelable(false);
-        if ("false".equals(android_must_update)) {
-            builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
+                String android_update_content = OnlineParamUtil.getParamResData().rspBody.android_update_content.content;
+                String android_must_update = OnlineParamUtil.getParamResData().rspBody.android_must_update.content;
+                final String android_app_download_url = OnlineParamUtil.getParamResData().rspBody.android_app_download_url.content;
+                Log.d(TAG, "Utils.stringToInt(android_versionCode)-----------" + Utils.stringToInt(android_versionCode));
+                Log.d(TAG, "Utils.getVersionCode(this)-----------" + Utils.getVersionCode(this));
+                if (Utils.stringToInt(android_versionCode) <= Utils.getVersionCode(this)) return;
+                hasShowUpdate = true;
+                AlertDialog.Builder builder;
+                builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("升级提醒");
+                builder.setIcon(R.drawable.update);
+                builder.setMessage(android_update_content);
+                builder.setCancelable(false);
+                if ("false".equals(android_must_update)) {
+                    builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
 
+                        }
+                    });
                 }
-            });
-        }
-        builder.setPositiveButton("升级", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-                UpdateApk.downFile(android_app_download_url, MainActivity.this);
+                builder.setPositiveButton("升级", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+//                        checkIsAndroidO(MainActivity.this);
+                        UpdateApk.downFile(android_app_download_url, MainActivity.this);
+                    }
+                });
+                Log.d(TAG, "builder.show()-----------");
+                builder.show();
             }
-        });
+        }
 
-        builder.show();
     }
+
+
 }

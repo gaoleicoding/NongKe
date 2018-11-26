@@ -32,11 +32,13 @@ import com.nongke.jindao.activity.MyProfileActivity;
 import com.nongke.jindao.activity.OrderRecordActivity;
 import com.nongke.jindao.activity.PromotionActivity;
 import com.nongke.jindao.activity.RegisterLoginActivity;
+import com.nongke.jindao.activity.SettingActivity;
 import com.nongke.jindao.activity.VipRechargeActivity;
 import com.nongke.jindao.activity.WithdrawActivity;
 import com.nongke.jindao.activity.WithdrawRecordActivity;
 import com.nongke.jindao.base.activity.BaseActivity;
 import com.nongke.jindao.base.event.LoginAccountEvent;
+import com.nongke.jindao.base.event.LogoutEvent;
 import com.nongke.jindao.base.event.UpdateUserInfoEvent;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mmodel.LoginResData;
@@ -93,8 +95,8 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
     LinearLayout ll_userinfo_profile_logined;
     @BindView(R.id.custom_service_layout)
     LinearLayout custom_service_layout;
-    @BindView(R.id.help_feedback_layout)
-    LinearLayout help_feedback_layout;
+    @BindView(R.id.setting_layout)
+    LinearLayout setting_layout;
 
     @BindView(R.id.iv_user_photo)
     public ImageView iv_user_photo;
@@ -151,6 +153,7 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
         super.onCreate(savedInstanceState);
 
     }
+
     //和activity一致
     @Override
     public void onResume() {
@@ -159,6 +162,7 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
         mPresenter.getUserInfo();
         Log.i(TAG, "--UserFragment->>onResume");
     }
+
     public void refreshUserInfo() {
         if (UserUtil.isLogined()) {
             ll_userinfo_profile_logined.setVisibility(View.VISIBLE);
@@ -199,8 +203,8 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
 
 
     @OnClick({R.id.iv_user_photo, R.id.my_daoli_recharge_layout, R.id.my_daoli_transfer_layout, R.id.my_bill_layout, R.id.my_commission_layout, R.id.my_withdraw_layout,
-            R.id.my_withdraw_record_layout, R.id.my_profile_layout, R.id.my_promotion_layout, R.id.my_location_layout, R.id.my_order_layout, R.id.my_logout_layout,
-            R.id.tv_vip_recharge, R.id.my_inviter_layout, R.id.custom_service_layout, R.id.help_feedback_layout, R.id.tv_copy_invite_code})
+            R.id.my_withdraw_record_layout, R.id.my_profile_layout, R.id.my_promotion_layout, R.id.my_location_layout, R.id.my_order_layout,
+            R.id.tv_vip_recharge, R.id.my_inviter_layout, R.id.custom_service_layout, R.id.setting_layout, R.id.my_logout_layout, R.id.tv_copy_invite_code})
     public void click(View view) {
 //        if (view.getId() != R.id.custom_service_layout && view.getId() != R.id.help_feedback_layout) {
         if (!UserUtil.isLogined()) {
@@ -251,25 +255,15 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
             case R.id.my_location_layout:
                 MyAddressActivity.startActivity(getActivity());
                 break;
+            case R.id.setting_layout:
+                SettingActivity.startActivity(getActivity());
+                break;
             case R.id.my_order_layout:
                 OrderRecordActivity.startActivity(getActivity());
                 break;
 
             case R.id.my_logout_layout:
 
-                if (UserUtil.getUserInfo() == null) {
-                    Utils.showToast(getString(R.string.user_not_login), true);
-                    return;
-                }
-
-                ll_userinfo_profile_logined.setVisibility(View.GONE);
-                tv_user_profile_not_login.setVisibility(View.VISIBLE);
-                iv_user_photo.setImageResource(R.drawable.user_default_photo);
-                SharedPreferencesUtils.clear(getActivity(), "phone_num");
-                SharedPreferencesUtils.clear(getActivity(), "password");
-                mPresenter.getLogoutData();
-                RegisterLoginActivity.startActivity(getActivity());
-                UserUtil.setUserInfo(null);
 
                 break;
             case R.id.iv_user_photo:
@@ -283,9 +277,7 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
             case R.id.custom_service_layout:
                 toQQServer(getActivity());
                 break;
-            case R.id.help_feedback_layout:
-                HelpFeedbackActivity.startActivity(getActivity());
-                break;
+
             case R.id.tv_copy_invite_code:
                 Utils.copyTxt(getActivity(), UserUtil.userInfo.rspBody.uid);
                 break;
@@ -311,12 +303,28 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
     }
 
     public void uploadPhoto(String path) {
-        LogUtil.d(TAG,"path-------------"+path);
+        LogUtil.d(TAG, "path-------------" + path);
         mPresenter.uploadImg(path);
     }
 
+    private void logout() {
+        if (UserUtil.getUserInfo() == null) {
+            Utils.showToast(getString(R.string.user_not_login), true);
+            return;
+        }
+
+        ll_userinfo_profile_logined.setVisibility(View.GONE);
+        tv_user_profile_not_login.setVisibility(View.VISIBLE);
+        iv_user_photo.setImageResource(R.drawable.user_default_photo);
+        SharedPreferencesUtils.clear(getActivity(), "phone_num");
+        SharedPreferencesUtils.clear(getActivity(), "password");
+        mPresenter.getLogoutData();
+        RegisterLoginActivity.startActivity(getActivity());
+        UserUtil.setUserInfo(null);
+    }
+
     private void judgeLoginAndVip() {
-        if(tv_member_type==null)return;
+        if (tv_member_type == null) return;
         if (UserUtil.getUserInfo().rspBody.isVip == 1) {
             tv_member_type.setText("VIP会员");
             tv_member_type.setTextColor(getResources().getColor(R.color.color_efe620));
@@ -342,6 +350,11 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(LoginAccountEvent accountEvent) {
         judgeLoginAndVip();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(LogoutEvent logoutEvent) {
+        logout();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -402,7 +415,6 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
         super.onStart();
         Log.i(TAG, "--UserFragment->>onStart");
     }
-
 
 
     //和activity一致

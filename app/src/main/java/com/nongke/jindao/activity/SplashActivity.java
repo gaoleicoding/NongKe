@@ -88,6 +88,7 @@ public class SplashActivity extends BaseMvpActivity<SplashLoginPresenter> implem
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(LoginEvent accountEvent) {
+        if(UserUtil.isLogined())
         RegisterLoginActivity.startActivity(this);
     }
 
