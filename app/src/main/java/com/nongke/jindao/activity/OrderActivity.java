@@ -51,11 +51,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-/**
- * description: test
- * author: zlm
- * date: 2017/3/17 16:01
- */
+
 public class OrderActivity extends BaseMvpActivity<OrderProductPresenter> implements OrderProductContract.View, PayView.OnPayTypeClickListener {
     @BindView(R.id.iv_back)
     ImageView iv_back;

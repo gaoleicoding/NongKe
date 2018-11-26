@@ -33,11 +33,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-/**
- * description: test
- * author: zlm
- * date: 2017/3/17 16:01
- */
+
 public class WithdrawActivity extends BaseMvpActivity<WithdrawPresenter> implements WithdrawContract.View {
     @BindView(R.id.iv_back)
     ImageView iv_back;

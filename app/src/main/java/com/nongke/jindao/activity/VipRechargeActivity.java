@@ -43,10 +43,7 @@ import butterknife.OnClick;
 import static com.nongke.jindao.base.pay.alipay.AliPayUtil.SDK_PAY_FLAG;
 
 
-/**
- * @author quchao
- * @date 2018/2/11
- */
+
 
 public class VipRechargeActivity extends BaseMvpActivity<RechargePresenter> implements RechargeContract.View {
     @BindView(R.id.iv_back)

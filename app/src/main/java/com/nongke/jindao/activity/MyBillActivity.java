@@ -24,11 +24,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-/**
- * description: test
- * author: zlm
- * date: 2017/3/17 16:01
- */
+
 public class MyBillActivity extends BaseMvpActivity<MyBillPresenter> implements MyBillContract.View {
     @BindView(R.id.iv_back)
     ImageView iv_back;

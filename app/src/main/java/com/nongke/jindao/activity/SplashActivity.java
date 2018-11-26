@@ -23,11 +23,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-/**
- * description: test
- * author: zlm
- * date: 2017/3/17 16:01
- */
 public class SplashActivity extends BaseMvpActivity<SplashLoginPresenter> implements SplashLoginContract.View {
 
 

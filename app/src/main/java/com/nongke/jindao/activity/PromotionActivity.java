@@ -35,10 +35,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 
-/**
- * @author quchao
- * @date 2018/2/11
- */
+
 
 public class PromotionActivity extends BaseActivity {
     @BindView(R.id.iv_back)

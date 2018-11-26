@@ -21,7 +21,7 @@ import butterknife.BindView;
 
 /**
  * description: test
- * author: zlm
+ * author: gaolei
  * date: 2017/3/17 16:01
  */
 public class MessageActivity extends BaseActivity {

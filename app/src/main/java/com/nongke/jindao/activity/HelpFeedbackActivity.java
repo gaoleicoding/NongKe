@@ -31,11 +31,7 @@ import com.nongke.jindao.base.utils.account.OnlineParamUtil;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-/**
- * description: test
- * author: zlm
- * date: 2017/3/17 16:01
- */
+
 public class HelpFeedbackActivity extends BaseMvpActivity {
     private final int FILECHOOSER_RESULTCODE = 1;
     private String sendEmail = "tuohuangnongke@163.com";//发送方邮件

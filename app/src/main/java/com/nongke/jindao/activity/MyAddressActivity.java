@@ -18,11 +18,7 @@ import com.nongke.jindao.mpresenter.MyAddressPresenter;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-/**
- * description: test
- * author: zlm
- * date: 2017/3/17 16:01
- */
+
 public class MyAddressActivity extends BaseMvpActivity<MyAddressPresenter> implements MyAddressContract.View {
 
     @BindView(R.id.iv_back)

@@ -28,11 +28,7 @@ import com.nongke.jindao.view.CustomWebview;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-/**
- * description: test
- * author: zlm
- * date: 2017/3/17 16:01
- */
+
 public class WebViewActivity extends BaseMvpActivity {
     @BindView(R.id.iv_back)
     ImageView iv_back;
