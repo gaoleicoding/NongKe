@@ -335,11 +335,11 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
         if (hasShowUpdate) return;
         if (OnlineParamUtil.getParamResData() != null && OnlineParamUtil.getParamResData().rspBody != null) {
             if (isAllPermissionsGranted) {
-                String android_versionCode = OnlineParamUtil.getParamResData().rspBody.android_versionCode.content;
+                String android_versionCode = OnlineParamUtil.getParamResData().rspBody.android_versionCode.content.trim();
 
-                String android_update_content = OnlineParamUtil.getParamResData().rspBody.android_update_content.content;
-                String android_must_update = OnlineParamUtil.getParamResData().rspBody.android_must_update.content;
-                final String android_app_download_url = OnlineParamUtil.getParamResData().rspBody.android_app_download_url.content;
+                String android_update_content = OnlineParamUtil.getParamResData().rspBody.android_update_content.content.trim();
+                String android_must_update = OnlineParamUtil.getParamResData().rspBody.android_must_update.content.trim();
+                final String android_app_download_url = OnlineParamUtil.getParamResData().rspBody.android_app_download_url.content.trim();
                 Log.d(TAG, "Utils.stringToInt(android_versionCode)-----------" + Utils.stringToInt(android_versionCode));
                 Log.d(TAG, "Utils.getVersionCode(this)-----------" + Utils.getVersionCode(this));
                 if (Utils.stringToInt(android_versionCode) <= Utils.getVersionCode(this)) return;

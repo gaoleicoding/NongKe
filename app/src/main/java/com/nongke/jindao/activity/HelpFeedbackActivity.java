@@ -68,7 +68,7 @@ public class HelpFeedbackActivity extends BaseMvpActivity {
     protected void initData(Bundle bundle) {
         title.setText(getString(R.string.help_feedback));
         iv_back.setVisibility(View.VISIBLE);
-        receiveEmail = OnlineParamUtil.getParamResData().rspBody.custom_service_email_receiver.content;
+        receiveEmail = OnlineParamUtil.getParamResData().rspBody.custom_service_email_receiver.content.trim();
     }
 
     @Override
@@ -96,7 +96,7 @@ public class HelpFeedbackActivity extends BaseMvpActivity {
                     Utils.showToast("请输入反馈内容", true);
                     return;
                 }
-                receiveEmail=OnlineParamUtil.getParamResData().rspBody.custom_service_email_receiver.content;
+                receiveEmail=OnlineParamUtil.getParamResData().rspBody.custom_service_email_receiver.content.trim();
                 senderRunnable.setMail(sendTitle, sendContent,
                         receiveEmail, file_path);
                 new Thread(senderRunnable).start();

@@ -69,7 +69,7 @@ public class DaoliRechargeActivity extends BaseMvpActivity<RechargePresenter> im
         iv_back.setVisibility(View.VISIBLE);
         if (OnlineParamUtil.paramResData == null || OnlineParamUtil.paramResData.rspBody == null)
             return;
-        daoli_recharge_limit_100 = OnlineParamUtil.getParamResData().rspBody.daoli_recharge_limit_100.content;
+        daoli_recharge_limit_100 = OnlineParamUtil.getParamResData().rspBody.daoli_recharge_limit_100.content.trim();
         if ("true".equals(daoli_recharge_limit_100)) {
             et_recharge_amount.setHint(getResources().getString(R.string.input_with_amount_hint));
         }

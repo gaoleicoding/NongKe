@@ -96,11 +96,11 @@ public class SettingActivity extends BaseMvpActivity {
     private void checkUpdate() {
 
         if (OnlineParamUtil.getParamResData() != null && OnlineParamUtil.getParamResData().rspBody != null) {
-            String android_versionCode = OnlineParamUtil.getParamResData().rspBody.android_versionCode.content;
+            String android_versionCode = OnlineParamUtil.getParamResData().rspBody.android_versionCode.content.trim();
 
-            String android_update_content = OnlineParamUtil.getParamResData().rspBody.android_update_content.content;
-            String android_must_update = OnlineParamUtil.getParamResData().rspBody.android_must_update.content;
-            final String android_app_download_url = OnlineParamUtil.getParamResData().rspBody.android_app_download_url.content;
+            String android_update_content = OnlineParamUtil.getParamResData().rspBody.android_update_content.content.trim();
+            String android_must_update = OnlineParamUtil.getParamResData().rspBody.android_must_update.content.trim();
+            final String android_app_download_url = OnlineParamUtil.getParamResData().rspBody.android_app_download_url.content.trim();
             if (Utils.stringToInt(android_versionCode) <= Utils.getVersionCode(this)) {
                 Utils.showToast("当前是最新版本", true);
                 return;

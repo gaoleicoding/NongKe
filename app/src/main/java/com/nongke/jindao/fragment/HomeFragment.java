@@ -303,12 +303,12 @@ public class HomeFragment extends BaseMvpFragment<ProductPresenter> implements P
                 VipRechargeActivity.startActivity(getActivity());
                 break;
             case R.id.home_company_layout:
-                bundle.putString("url", OnlineParamUtil.getParamResData().rspBody.company_website.content);
+                bundle.putString("url", OnlineParamUtil.getParamResData().rspBody.company_website.content.trim());
                 bundle.putString("fromWhere", Constants.COMPANY_WEBSITE);
                 WebViewActivity.startActivity(getActivity(), bundle);
                 break;
             case R.id.home_download_layout:
-                bundle.putString("url", OnlineParamUtil.getParamResData().rspBody.register_redirect_url.content);
+                bundle.putString("url", OnlineParamUtil.getParamResData().rspBody.register_redirect_url.content.trim());
                 bundle.putString("fromWhere", Constants.FROM_DOWNLOAD);
                 WebViewActivity.startActivity(getActivity(), bundle);
                 break;

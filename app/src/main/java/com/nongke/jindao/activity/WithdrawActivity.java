@@ -95,7 +95,7 @@ public class WithdrawActivity extends BaseMvpActivity<WithdrawPresenter> impleme
         tv_withdrawable_amount.setText(UserUtil.getUserInfo().rspBody.money + "");
         EventBus.getDefault().register(this);
 
-        withdraw_limit_100 = OnlineParamUtil.getParamResData().rspBody.withdraw_limit_100.content;
+        withdraw_limit_100 = OnlineParamUtil.getParamResData().rspBody.withdraw_limit_100.content.trim();
         if ("true".equals(withdraw_limit_100)) {
             et_withdraw_amount.setHint(getResources().getString(R.string.input_with_amount_hint));
         }
