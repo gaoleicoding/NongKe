@@ -71,7 +71,7 @@ public class Utils {
     //判断手机号是否正确
     public static boolean isMobileNO(String mobile) {
 
-        String telRegex = "[1][23456789]\\d{9}";//"[1]"代表第1位为数字1，"[35678]"代表第二位可以为3、5、6、7、8中的一个，"\\d{9}"代表后面是可以是0～9的数字，有9位。
+        String telRegex = "[1][23456789]\\d{9}";//"[1]"代表第1位为数字1，"[35678]"代表第二位可以为23456789中的一个，"\\d{9}"代表后面是可以是0～9的数字，有9位。
 
         if (TextUtils.isEmpty(mobile)) {
             Utils.showToast("请输入正确的手机号", true);
