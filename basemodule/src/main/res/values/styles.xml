@@ -220,7 +220,7 @@
         <item name="android:textSize">16sp</item>
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:singleLine">true</item>
-        <item name="android:digits">0123456789abcdefghijklmnopqrstuvwxyz</item>
+        <item name="android:digits">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</item>
         <item name="android:maxLines">1</item>
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:background">@drawable/code_edit_bg</item>
@@ -261,7 +261,7 @@
         <item name="android:textSize">16sp</item>
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:singleLine">true</item>
-        <item name="android:digits">0123456789abcdefghijklmnopqrstuvwxyz</item>
+        <item name="android:digits">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</item>
         <item name="android:background">@drawable/code_edit_bg</item>
         <item name="android:layout_marginLeft">30dp</item>
         <item name="android:layout_marginRight">30dp</item>

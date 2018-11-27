@@ -237,142 +237,151 @@ public class MainActivity extends BaseMvpActivity<OnlineParamePresenter> impleme
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK
                 && event.getAction() == KeyEvent.ACTION_DOWN) {
-            if (classifyFragment.defaultFragment.isSearching || classifyFragment.salesFragment.isSearching || classifyFragment.priceFragment.isSearching) {
-                classifyFragment.backFromSearch();
-                return false;
-            }
-
-            if ((System.currentTimeMillis() - exitTime) > 2000) {
-                //弹出提示，可以有多种方式
-                Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
-                exitTime = System.currentTimeMillis();
-            } else {
-                finish();
-            }
-            return true;
-        }
-
-        return super.onKeyDown(keyCode, event);
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        imageUtils = userFragment.imageUtils;
-        if (resultCode != RESULT_OK) {
-            return;
-        }
-        //data的返回值根据
-        switch (requestCode) {
-            case REQUEST_OPEN_CAMERA:
-                imageUtils.addPicToGallery(imageUtils.imgPathOri);
-                imageUtils.cropPhoto(imageUtils.imgUriOri);
-                Log.i(TAG, "openCameraResult_imgPathOri:" + imageUtils.imgPathOri);
-                Log.i(TAG, "openCameraResult_imgUriOri:" + imageUtils.imgUriOri.toString());
-                break;
-            case REQUEST_OPEN_GALLERY:
-                if (data != null) {
-                    Uri imgUriSel = data.getData();
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                        //打开相册会返回一个经过图像选择器安全化的Uri，直接放入裁剪程序会不识别，抛出[暂不支持此类型：华为7.0]
-                        //formatUri会返回根据Uri解析出的真实路径
-                        String imgPathSel = UriUtils.formatUri(this, imgUriSel);
-                        //根据真实路径转成File,然后通过应用程序重新安全化，再放入裁剪程序中才可以识别
-                        imageUtils.cropPhoto(FileProvider7.getUriForFile(this, new File(imgPathSel)));
-                        Log.i(TAG, "Kit_sel_path:" + imgPathSel);
-                        Log.i(TAG, "Kit_sel_uri:" + Uri.fromFile(new File(imgPathSel)));
-                    } else {
-                        imageUtils.cropPhoto(imgUriSel);
-                    }
-                    Log.i(TAG, "openGalleryResult_imgUriSel:" + imgUriSel);
+                if (classifyFragment.defaultFragment != null && classifyFragment.defaultFragment.isSearching ) {
+                    classifyFragment.backFromSearch();
+                    return false;
                 }
-                break;
-            case REQUEST_CROP_PHOTO:
-                imageUtils.addPicToGallery(imageUtils.imgPathCrop);
-                ImageUtils.imageViewSetPic(userFragment.iv_user_photo, imageUtils.imgPathCrop);
-                revokeUriPermission(imageUtils.imgUriCrop, Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-                userFragment.uploadPhoto(imageUtils.imgPathCrop);
-                Log.i(TAG, "cropPhotoResult_imgPathCrop:" + imageUtils.imgPathCrop);
-                Log.i(TAG, "cropPhotoResult_imgUriCrop:" + imageUtils.imgUriCrop.toString());
-                break;
-        }
-    }
+                if (classifyFragment.salesFragment != null && classifyFragment.salesFragment.isSearching) {
+                    classifyFragment.backFromSearch();
+                    return false;
+                }
+                if (classifyFragment.priceFragment != null && classifyFragment.priceFragment.isSearching) {
+                    classifyFragment.backFromSearch();
+                    return false;
+                }
 
-    @Override
-    public OnlineParamePresenter initPresenter() {
-        return new OnlineParamePresenter();
-    }
-
-    @Override
-    protected void loadData() {
-        mPresenter.getOnlineParame();
-        Log.d(TAG, "MainActivity----------loadData()-----------");
-    }
-
-    @Override
-    public void showOnlineParame(OnlineParamResData onlineParamResData) {
-        if ("true".equals(onlineParamResData.rspBody.is_maintaining_boolean.content.trim())) {
-            rl_maintain_desc.setVisibility(View.VISIBLE);
-            tv_maintain_desc.setText(onlineParamResData.rspBody.is_maintaining_content.content);
-        }
-        Log.d(TAG, "checkUpdate()-------showOnlineParame----");
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                checkUpdate();
+                if ((System.currentTimeMillis() - exitTime) > 2000) {
+                    //弹出提示，可以有多种方式
+                    Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                    exitTime = System.currentTimeMillis();
+                } else {
+                    finish();
+                }
+                return true;
             }
-        });
+
+            return super.onKeyDown(keyCode, event);
+        }
 
 
-    }
+        @Override
+        protected void onActivityResult ( int requestCode, int resultCode, Intent data){
+            super.onActivityResult(requestCode, resultCode, data);
+            imageUtils = userFragment.imageUtils;
+            if (resultCode != RESULT_OK) {
+                return;
+            }
+            //data的返回值根据
+            switch (requestCode) {
+                case REQUEST_OPEN_CAMERA:
+                    imageUtils.addPicToGallery(imageUtils.imgPathOri);
+                    imageUtils.cropPhoto(imageUtils.imgUriOri);
+                    Log.i(TAG, "openCameraResult_imgPathOri:" + imageUtils.imgPathOri);
+                    Log.i(TAG, "openCameraResult_imgUriOri:" + imageUtils.imgUriOri.toString());
+                    break;
+                case REQUEST_OPEN_GALLERY:
+                    if (data != null) {
+                        Uri imgUriSel = data.getData();
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                            //打开相册会返回一个经过图像选择器安全化的Uri，直接放入裁剪程序会不识别，抛出[暂不支持此类型：华为7.0]
+                            //formatUri会返回根据Uri解析出的真实路径
+                            String imgPathSel = UriUtils.formatUri(this, imgUriSel);
+                            //根据真实路径转成File,然后通过应用程序重新安全化，再放入裁剪程序中才可以识别
+                            imageUtils.cropPhoto(FileProvider7.getUriForFile(this, new File(imgPathSel)));
+                            Log.i(TAG, "Kit_sel_path:" + imgPathSel);
+                            Log.i(TAG, "Kit_sel_uri:" + Uri.fromFile(new File(imgPathSel)));
+                        } else {
+                            imageUtils.cropPhoto(imgUriSel);
+                        }
+                        Log.i(TAG, "openGalleryResult_imgUriSel:" + imgUriSel);
+                    }
+                    break;
+                case REQUEST_CROP_PHOTO:
+                    imageUtils.addPicToGallery(imageUtils.imgPathCrop);
+                    ImageUtils.imageViewSetPic(userFragment.iv_user_photo, imageUtils.imgPathCrop);
+                    revokeUriPermission(imageUtils.imgUriCrop, Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                    userFragment.uploadPhoto(imageUtils.imgPathCrop);
+                    Log.i(TAG, "cropPhotoResult_imgPathCrop:" + imageUtils.imgPathCrop);
+                    Log.i(TAG, "cropPhotoResult_imgUriCrop:" + imageUtils.imgUriCrop.toString());
+                    break;
+            }
+        }
 
-    private void checkUpdate() {
-        Log.d(TAG, "checkUpdate()-----------");
-        Log.d(TAG, "isAllPermissionsGranted-----------" + isAllPermissionsGranted);
-        Log.d(TAG, "UOnlineParamUtil.getParamResData()-----------" + OnlineParamUtil.getParamResData());
-        Log.d(TAG, "UOnlineParamUtil.getParamResData().rspBody -----------" + OnlineParamUtil.getParamResData().rspBody);
-        if (hasShowUpdate) return;
-        if (OnlineParamUtil.getParamResData() != null && OnlineParamUtil.getParamResData().rspBody != null) {
-            if (isAllPermissionsGranted) {
-                String android_versionCode = OnlineParamUtil.getParamResData().rspBody.android_versionCode.content.trim();
+        @Override
+        public OnlineParamePresenter initPresenter () {
+            return new OnlineParamePresenter();
+        }
 
-                String android_update_content = OnlineParamUtil.getParamResData().rspBody.android_update_content.content.trim();
-                String android_must_update = OnlineParamUtil.getParamResData().rspBody.android_must_update.content.trim();
-                final String android_app_download_url = OnlineParamUtil.getParamResData().rspBody.android_app_download_url.content.trim();
-                Log.d(TAG, "Utils.stringToInt(android_versionCode)-----------" + Utils.stringToInt(android_versionCode));
-                Log.d(TAG, "Utils.getVersionCode(this)-----------" + Utils.getVersionCode(this));
-                if (Utils.stringToInt(android_versionCode) <= Utils.getVersionCode(this)) return;
-                hasShowUpdate = true;
-                AlertDialog.Builder builder;
-                builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("升级提醒");
-                builder.setIcon(R.drawable.update);
-                builder.setMessage(android_update_content);
-                builder.setCancelable(false);
-                if ("false".equals(android_must_update)) {
-                    builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        @Override
+        protected void loadData () {
+            mPresenter.getOnlineParame();
+            Log.d(TAG, "MainActivity----------loadData()-----------");
+        }
+
+        @Override
+        public void showOnlineParame (OnlineParamResData onlineParamResData){
+            if ("true".equals(onlineParamResData.rspBody.is_maintaining_boolean.content.trim())) {
+                rl_maintain_desc.setVisibility(View.VISIBLE);
+                tv_maintain_desc.setText(onlineParamResData.rspBody.is_maintaining_content.content);
+            }
+            Log.d(TAG, "checkUpdate()-------showOnlineParame----");
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    checkUpdate();
+                }
+            });
+
+
+        }
+
+        private void checkUpdate () {
+            Log.d(TAG, "checkUpdate()-----------");
+            Log.d(TAG, "isAllPermissionsGranted-----------" + isAllPermissionsGranted);
+            Log.d(TAG, "UOnlineParamUtil.getParamResData()-----------" + OnlineParamUtil.getParamResData());
+            Log.d(TAG, "UOnlineParamUtil.getParamResData().rspBody -----------" + OnlineParamUtil.getParamResData().rspBody);
+            if (hasShowUpdate) return;
+            if (OnlineParamUtil.getParamResData() != null && OnlineParamUtil.getParamResData().rspBody != null) {
+                if (isAllPermissionsGranted) {
+                    String android_versionCode = OnlineParamUtil.getParamResData().rspBody.android_versionCode.content.trim();
+
+                    String android_update_content = OnlineParamUtil.getParamResData().rspBody.android_update_content.content.trim();
+                    String android_must_update = OnlineParamUtil.getParamResData().rspBody.android_must_update.content.trim();
+                    final String android_app_download_url = OnlineParamUtil.getParamResData().rspBody.android_app_download_url.content.trim();
+                    Log.d(TAG, "Utils.stringToInt(android_versionCode)-----------" + Utils.stringToInt(android_versionCode));
+                    Log.d(TAG, "Utils.getVersionCode(this)-----------" + Utils.getVersionCode(this));
+                    if (Utils.stringToInt(android_versionCode) <= Utils.getVersionCode(this))
+                        return;
+                    hasShowUpdate = true;
+                    AlertDialog.Builder builder;
+                    builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setTitle("升级提醒");
+                    builder.setIcon(R.drawable.update);
+                    builder.setMessage(android_update_content);
+                    builder.setCancelable(false);
+                    if ("false".equals(android_must_update)) {
+                        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+
+                            }
+                        });
+                    }
+                    builder.setPositiveButton("升级", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.cancel();
-
+//                        checkIsAndroidO(MainActivity.this);
+                            UpdateApk.downFile(android_app_download_url, MainActivity.this);
                         }
                     });
+                    Log.d(TAG, "builder.show()-----------");
+                    builder.show();
                 }
-                builder.setPositiveButton("升级", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-//                        checkIsAndroidO(MainActivity.this);
-                        UpdateApk.downFile(android_app_download_url, MainActivity.this);
-                    }
-                });
-                Log.d(TAG, "builder.show()-----------");
-                builder.show();
             }
+
         }
 
+
     }
-
-
-}
