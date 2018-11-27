@@ -2,6 +2,7 @@ package com.nongke.jindao.mcontract;
 
 import com.nongke.jindao.base.mmodel.LoginResData;
 import com.nongke.jindao.base.mmodel.MsgCodeResData;
+import com.nongke.jindao.base.mmodel.OnlineParamResData;
 import com.nongke.jindao.base.mmodel.RegisterResData;
 
 /**
@@ -16,10 +17,12 @@ public class UserInfoContract {
         void uploadImg(String path);
         void getLogoutData();
         void getUserInfo();
+        void getOnlineParame();
     }
 
 
     public interface View {
         void showUserInfo(LoginResData loginResData);
+        void showOnlineParame(OnlineParamResData onlineParamResData);
     }
 }

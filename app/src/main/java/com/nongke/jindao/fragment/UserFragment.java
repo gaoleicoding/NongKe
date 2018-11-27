@@ -40,6 +40,7 @@ import com.nongke.jindao.base.event.LogoutEvent;
 import com.nongke.jindao.base.event.UpdateUserInfoEvent;
 import com.nongke.jindao.base.fragment.BaseMvpFragment;
 import com.nongke.jindao.base.mmodel.LoginResData;
+import com.nongke.jindao.base.mmodel.OnlineParamResData;
 import com.nongke.jindao.base.photopicker.ImageUtils;
 import com.nongke.jindao.base.utils.LogUtil;
 import com.nongke.jindao.base.utils.PermissionUtil;
@@ -87,8 +88,6 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
     LinearLayout my_location_layout;
     @BindView(R.id.my_order_layout)
     LinearLayout my_order_layout;
-    @BindView(R.id.my_logout_layout)
-    LinearLayout my_logout_layout;
     @BindView(R.id.ll_userinfo_profile_logined)
     LinearLayout ll_userinfo_profile_logined;
     @BindView(R.id.custom_service_layout)
@@ -133,32 +132,12 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
-
-    /**
-     * 系统创建 Fragment 的时候回调，介于 onAttach() 和 onCreateView() 之间
-     * 一般用于初始化一些数据
-     * 值得注意的是，此时 Activity 还在创建中，因此不能在执行一些跟 Activity UI 相关的操作
-     * 否则，会出现一些难以预料的问题，比如：NullPointException
-     * 如果要对 Activity 上的 UI 进行操作，建议在 onActivityCreated() 中操作
-     *
-     * @param savedInstanceState
-     */
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
-
-    //和activity一致
-    @Override
     public void onResume() {
         // TODO Auto-generated method stub
         super.onResume();
+        //这个方法是只要UserFragment从隐藏到显示就会调用，在这里不断刷新显示用户最新信息和最新在线参数的状态
         mPresenter.getUserInfo();
-        Log.i(TAG, "--UserFragment->>onResume");
+        mPresenter.getOnlineParame();
     }
 
     public void refreshUserInfo() {
@@ -204,7 +183,7 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
 
     @OnClick({R.id.iv_user_photo, R.id.my_daoli_recharge_layout, R.id.my_daoli_transfer_layout, R.id.my_bill_layout, R.id.my_commission_layout, R.id.my_withdraw_layout,
             R.id.my_withdraw_record_layout, R.id.my_profile_layout, R.id.my_promotion_layout, R.id.my_location_layout, R.id.my_order_layout,
-            R.id.tv_vip_recharge, R.id.my_inviter_layout, R.id.custom_service_layout, R.id.setting_layout, R.id.my_logout_layout, R.id.tv_copy_invite_code})
+            R.id.tv_vip_recharge, R.id.my_inviter_layout, R.id.custom_service_layout, R.id.setting_layout,  R.id.tv_copy_invite_code})
     public void click(View view) {
 //        if (view.getId() != R.id.custom_service_layout && view.getId() != R.id.help_feedback_layout) {
         if (!UserUtil.isLogined()) {
@@ -260,11 +239,6 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
                 break;
             case R.id.my_order_layout:
                 OrderRecordActivity.startActivity(getActivity());
-                break;
-
-            case R.id.my_logout_layout:
-
-
                 break;
             case R.id.iv_user_photo:
                 if (!UserUtil.isLogined())
@@ -365,7 +339,13 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
 
     @Override
     public void showUserInfo(LoginResData loginResData) {
-        UserUtil.setUserInfo(loginResData);
+        UserUtil.userInfo = loginResData;
+        refreshUserInfo();
+    }
+
+    @Override
+    public void showOnlineParame(OnlineParamResData onlineParamResData) {
+
     }
 
     public static void toQQServer(Context context) {
@@ -383,70 +363,60 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
     }
 
 
-    //获得activity的传递的值
     @Override
-    public void onAttach(Activity activity) {
-        // TODO Auto-generated method stub
-        super.onAttach(activity);
-        Log.i(TAG, "--UserFragment->>onAttach");
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.i(TAG, "UserFragment->>onCreate");
     }
 
-    //实例化成员变量
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        // TODO Auto-generated method stub
-//        super.onCreate(savedInstanceState);
-//        Log.i(TAG, "--UserFragment->>onCreate");
-//    }
 
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        Log.i(TAG, "UserFragment->>onAttach");
+    }
 
     //表示activity执行oncreate方法完成了的时候会调用此方法
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onActivityCreated(savedInstanceState);
-        Log.i(TAG, "--UserFragment->>onActivityCreated");
+        Log.i(TAG, "UserFragment->>onActivityCreated");
     }
 
     //和activity一致
     @Override
     public void onStart() {
-        // TODO Auto-generated method stub
         super.onStart();
-        Log.i(TAG, "--UserFragment->>onStart");
+        Log.i(TAG, "UserFragment->>onStart");
     }
 
 
     //和activity一致
     @Override
     public void onPause() {
-        // TODO Auto-generated method stub
         super.onPause();
-        Log.i(TAG, "--UserFragment->>onPause");
+        Log.i(TAG, "UserFragment->>onPause");
     }
 
     //和activity一致
     @Override
     public void onStop() {
-        // TODO Auto-generated method stub
         super.onStop();
-        Log.i(TAG, "--UserFragment->>onStop");
+        Log.i(TAG, "UserFragment->>onStop");
     }
 
     //表示fragment销毁相关联的UI布局
     @Override
     public void onDestroyView() {
-        // TODO Auto-generated method stub
         super.onDestroyView();
-        Log.i(TAG, "--UserFragment->>onDestroyView");
+        Log.i(TAG, "UserFragment->>onDestroyView");
     }
 
     //销毁fragment对象
     @Override
     public void onDestroy() {
-        // TODO Auto-generated method stub
         super.onDestroy();
-        Log.i(TAG, "--UserFragment->>onDestroy");
+        Log.i(TAG, "UserFragment->>onDestroy");
     }
 
     //脱离activity
@@ -454,6 +424,6 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
     public void onDetach() {
         // TODO Auto-generated method stub
         super.onDetach();
-        Log.i(TAG, "--UserFragment->>onDetach");
+        Log.i(TAG, "UserFragment->>onDetach");
     }
 }

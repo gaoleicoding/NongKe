@@ -20,6 +20,7 @@ import com.nongke.jindao.base.utils.account.UserUtil;
 import com.nongke.jindao.mcontract.RechargeContract;
 import com.nongke.jindao.mpresenter.RechargePresenter;
 import com.nongke.jindao.view.PayView;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -83,7 +84,11 @@ public class DaoliRechargeActivity extends BaseMvpActivity<RechargePresenter> im
         switch (view.getId()) {
 
             case R.id.tv_daoli_recharge:
-                String ammountStr = et_recharge_amount.getText().toString();
+                String ammountStr = et_recharge_amount.getText().toString().trim();
+                if ("".equals(ammountStr)) {
+                    Utils.showToast("请输入充值金额", true);
+                    return;
+                }
                 rechargeAmount = Utils.stringToInt(ammountStr);
                 if ("true".equals(daoli_recharge_limit_100)) {
                     if (rechargeAmount % 100 != 0) {
