@@ -39,7 +39,7 @@ public class MyInviterActivity extends BaseMvpActivity<MyInviterPresenter> imple
     RecyclerView recyclerview_inviter;
     private List<InviterBody> inviterList;
     InviterAdapter inviterAdapter;
-    String uid;
+    String uid,phone;
     public static int level = 1;
 
     public static void startActivity(Context context, Bundle bundle) {
@@ -57,7 +57,10 @@ public class MyInviterActivity extends BaseMvpActivity<MyInviterPresenter> imple
     @Override
     protected void initData(Bundle bundle) {
         uid = bundle.getString("uid", "");
+        phone = bundle.getString("phone", "");
+        if("".equals(phone))
         title.setText(getString(R.string.my_contact));
+        else title.setText(phone+"的粉丝");
         iv_back.setVisibility(View.VISIBLE);
         initRecyclerView();
 

@@ -16,7 +16,7 @@
 
         <ImageView
             style="@style/user_info_icon"
-            android:src="@drawable/icon_help_feedback2" />
+            android:src="@drawable/icon_help_feedback" />
 
         <TextView
             style="@style/user_info_txt"

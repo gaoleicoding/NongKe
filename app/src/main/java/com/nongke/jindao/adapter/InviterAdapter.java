@@ -63,6 +63,7 @@ public class InviterAdapter extends RecyclerView.Adapter<InviterAdapter.MyViewHo
                     MyInviterActivity.level = MyInviterActivity.level + 1;
                     Bundle bundle = new Bundle();
                     bundle.putString("uid", resData.invitedUid);
+                    bundle.putString("phone", resData.phone);
                     MyInviterActivity.startActivity(context, bundle);
 
                 } else {

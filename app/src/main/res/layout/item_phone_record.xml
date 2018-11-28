@@ -5,8 +5,8 @@
     android:background="@color/white"
     android:orientation="horizontal"
     android:paddingBottom="15dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
     android:paddingTop="15dp">
 
 
@@ -16,21 +16,21 @@
 
     <TextView
         android:id="@+id/tv_recharge_phone"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="9dp"
         style="@style/common_txt_12sp" />
 
     <TextView
         android:id="@+id/tv_recharge_amount"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="9dp"
         style="@style/common_txt_12sp" />
 
     <TextView
         android:id="@+id/tv_recharge_discount_pay"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="9dp"
         style="@style/common_txt_12sp" />
 
     <TextView
         android:id="@+id/tv_recharge_status"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="9dp"
         style="@style/common_txt_12sp" />
 </LinearLayout>
