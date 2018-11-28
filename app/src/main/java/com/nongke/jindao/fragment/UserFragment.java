@@ -363,67 +363,11 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
     }
 
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Log.i(TAG, "UserFragment->>onCreate");
-    }
-
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        Log.i(TAG, "UserFragment->>onAttach");
-    }
-
-    //表示activity执行oncreate方法完成了的时候会调用此方法
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Log.i(TAG, "UserFragment->>onActivityCreated");
-    }
-
-    //和activity一致
-    @Override
-    public void onStart() {
-        super.onStart();
-        Log.i(TAG, "UserFragment->>onStart");
-    }
-
-
-    //和activity一致
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.i(TAG, "UserFragment->>onPause");
-    }
-
-    //和activity一致
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.i(TAG, "UserFragment->>onStop");
-    }
-
-    //表示fragment销毁相关联的UI布局
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        Log.i(TAG, "UserFragment->>onDestroyView");
-    }
-
     //销毁fragment对象
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.i(TAG, "UserFragment->>onDestroy");
+        EventBus.getDefault().unregister(getActivity());
     }
 
-    //脱离activity
-    @Override
-    public void onDetach() {
-        // TODO Auto-generated method stub
-        super.onDetach();
-        Log.i(TAG, "UserFragment->>onDetach");
-    }
 }
