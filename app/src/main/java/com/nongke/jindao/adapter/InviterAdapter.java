@@ -59,8 +59,8 @@ public class InviterAdapter extends RecyclerView.Adapter<InviterAdapter.MyViewHo
         holder.iv_user_photo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (MyInviterActivity.level < 3) {
-                    MyInviterActivity.level = MyInviterActivity.level + 1;
+                if (MyInviterActivity.fansLevel < 3) {
+                    MyInviterActivity.fansLevel = MyInviterActivity.fansLevel + 1;
                     Bundle bundle = new Bundle();
                     bundle.putString("uid", resData.invitedUid);
                     bundle.putString("phone", resData.phone);

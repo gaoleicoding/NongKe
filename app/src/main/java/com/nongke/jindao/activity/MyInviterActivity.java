@@ -40,7 +40,7 @@ public class MyInviterActivity extends BaseMvpActivity<MyInviterPresenter> imple
     private List<InviterBody> inviterList;
     InviterAdapter inviterAdapter;
     String uid,phone;
-    public static int level = 1;
+    public static int fansLevel = 1;
 
     public static void startActivity(Context context, Bundle bundle) {
         Intent intent = new Intent(context, MyInviterActivity.class);
@@ -104,7 +104,7 @@ public class MyInviterActivity extends BaseMvpActivity<MyInviterPresenter> imple
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK
                 && event.getAction() == KeyEvent.ACTION_DOWN) {
-            if (level > 0) level = level - 1;
+            if (fansLevel > 0) fansLevel = fansLevel - 1;
             finish();
             return true;
         }

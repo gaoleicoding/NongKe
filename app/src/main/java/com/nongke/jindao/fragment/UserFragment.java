@@ -213,6 +213,7 @@ public class UserFragment extends BaseMvpFragment<UserInfoPresenter> implements 
                 Bundle bundle = new Bundle();
                 bundle.putString("uid", UserUtil.getUserInfo().rspBody.uid);
                 MyInviterActivity.startActivity(getActivity(), bundle);
+                MyInviterActivity.fansLevel=1;
                 break;
             case R.id.my_withdraw_layout:
                 WithdrawActivity.startActivity(getActivity());
